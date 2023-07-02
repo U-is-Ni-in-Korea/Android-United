@@ -10,6 +10,5 @@ class UniApplication : Application() {
         super.onCreate()
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
-
     }
 }
