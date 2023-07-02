@@ -1,4 +1,4 @@
-package sopt.uni_aos.base
+package sopt.uni_aos.util.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

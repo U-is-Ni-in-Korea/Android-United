@@ -1,4 +1,4 @@
-package sopt.uni_aos.base
+package sopt.uni_aos.util.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
