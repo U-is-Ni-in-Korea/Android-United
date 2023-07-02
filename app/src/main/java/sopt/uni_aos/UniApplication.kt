@@ -5,13 +5,11 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class UniApplication: Application() {
+class UniApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        if (BuildConfig.DEBUG){
-            Timber.plant(Timber.DebugTree())
-        }
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
 
     }
 }
