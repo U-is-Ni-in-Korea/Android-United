@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Gray -->
+    <color name="Gray_600">#222222</color>
+    <color name="Gray_550">#2F2F2F</color>
+    <color name="Gray_500">#444444</color>
+    <color name="Gray_450">#5B5B5B</color>
+    <color name="Gray_400">#717171</color>
+    <color name="Gray_350">#8E8E8E</color>
+    <color name="Gray_300">#A7A7A7</color>
+    <color name="Gray_250">#C2C2C2</color>
+    <color name="Gray_200">#DCDCDC</color>
+    <color name="Gray_150">#EBEBEB</color>
+    <color name="Gray_100">#F5F5F5</color>
+    <color name="Gray_50">#FAFAFA</color>
+    <color name="Gray_000">#FFFFFF</color>
+
+    <!-- Primary Light Blue -->
+    <color name="Lightblue_950">#001319</color>
+    <color name="Lightblue_900">#002732</color>
+    <color name="Lightblue_850">#003A4A</color>
+    <color name="Lightblue_800">#004D63</color>
+    <color name="Lightblue_700">#017495</color>
+    <color name="Lightblue_600">#019AC6</color>
+    <color name="Lightblue_500">#01C1F8</color>
+    <color name="Lightblue_400">#34CDF9</color>
+    <color name="Lightblue_300">#67DAFB</color>
+    <color name="Lightblue_200">#A6EBE8</color>
+    <color name="Lightblue_150">#B3ECFD</color>
+    <color name="Lightblue_100">#CCF3FE</color>
+    <color name="Lightblue_50">#E6F9FE</color>
+
+    <!-- Pink -->
+    <color name="Pink_50">#FFF8FB</color>
+    <color name="Pink_100">#FFF1F7</color>
+    <color name="Pink_150">#FFE9F2</color>
+    <color name="Pink_200">#FFE2EE</color>
+    <color name="Pink_300">#FFD4E6</color>
+    <color name="Pink_400">#FFC5DD</color>
+    <color name="Pink_500">#FFB7D5</color>
+    <color name="Pink_600">#E892B6</color>
+    <color name="Pink_700">#D26E97</color>
+    <color name="Pink_800">#BB4979</color>
+    <color name="Pink_850">#B03769</color>
+    <color name="Pink_900">#A5255A</color>
+    <color name="Pink_950">#8E003B</color>
+
+    <!-- Yellow -->
+    <color name="Yellow_600">#F0EE7F</color>
+    <color name="Yellow_500">#FEFC93</color>
+    <color name="Yellow_300">#FEFDBE</color>
+    <color name="Yellow_200">#FFFED4</color>
+    <color name="Yellow_150">#FFFEE9</color>
+    <color name="Yellow_50">#FFFFF4</color>
+
+    <!-- Red -->
+    <color name="Red_500">#EA4153</color>
+
+    <!-- Orange -->
+    <color name="Orange_500">#F26F44</color>
+
 </resources>

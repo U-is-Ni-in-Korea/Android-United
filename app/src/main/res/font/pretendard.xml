@@ -8,7 +8,7 @@
         android:fontWeight="500" />
     <font
         android:font="@font/pretendard_semibold"
-        android:fontWeight="600"/>
+        android:fontWeight="600" />
     <font
         android:font="@font/pretendard_bold"
         android:fontWeight="700" />
