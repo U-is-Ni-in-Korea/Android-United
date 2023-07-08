@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Title -->
+    <style name="Headline">
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="lineHeight">38sp</item>
+    </style>
+
+    <style name="Title1">
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Title2">
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">28sp</item>
+    </style>
+
+    <!-- Body -->
+    <style name="Body1">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Body1_Regular">
+        <item name="fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Body2">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+
+    <style name="Body2_long">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Caption">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+
+
+    <!-- Button -->
+    <style name="Btn1">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="Btn2">
+        <item name="fontFamily">14sp</item>
+        <item name="android:textSize">@font/pretendard_medium</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+
+
+</resources>
