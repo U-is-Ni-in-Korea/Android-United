@@ -1,6 +1,6 @@
-# 🍀 Sparkle-AOS 🍀
+# 🍀 Uni-AOS 🍀
 
-## 스파클 (Sparkle)
+## 유니 (Uni)
 
 ```
 일상 속 데이트에서 다양한 미션을 수행하며, 사랑하는 연인과 보다 더 소중한 추억을 쌓아갈 수 있도록 돕는 서비스
@@ -92,14 +92,14 @@ Done
 </details>
 <br>
 
-[CODING CONVENTION](https://kotlinlang.org/docs/coding-conventions.html#names-for-backing-properties)
+[CODING CONVENTION](https://trite-squirrel-6ef.notion.site/7c8e55041b0e437cb96827632e2d2217?v=9ff52f8daead49a9a5f1bc880c40aa01)
 
 <br>
 
 PACKAGE CONVENTION
 
 ```
-📦java.sopt.sparkle
+📦java.com.uni
 ├─📂data
 │  ├─📂entity
 │  ├─📂repository
