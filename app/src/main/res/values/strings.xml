@@ -10,4 +10,8 @@
     <string name="back_button">back_button</string>
     <string name="close_button">close_button</string>
     <string name="next">다음</string>
+    <string name="invite_logo">invite logo</string>
+    <string name="enter_invite_code">초대코드 입력하기</string>
+    <string name="or">or</string>
+    <string name="share_invite_code">초대코드 공유하기</string>
 </resources>
