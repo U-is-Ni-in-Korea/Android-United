@@ -10,16 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_on_boarding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="on boarding"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="129dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/indicator"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp"
+            app:dotsColor="@color/Lightblue_100"
+            app:dotsCornerRadius="3dp"
+            app:dotsSize="6dp"
+            app:dotsSpacing="6dp"
+            app:layout_constraintEnd_toEndOf="@id/vp_on_boarding"
+            app:layout_constraintStart_toStartOf="@id/vp_on_boarding"
+            app:layout_constraintTop_toBottomOf="@id/vp_on_boarding"
+            app:selectedDotColor="@color/Lightblue_500" />
+
+        <TextView
+            android:id="@+id/tv_skip"
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="65dp"
+            android:text="@string/on_boarding_skip"
+            android:textColor="@color/Lightblue_600"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

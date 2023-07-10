@@ -4,6 +4,7 @@ import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMainBinding
+import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.startActivity
 

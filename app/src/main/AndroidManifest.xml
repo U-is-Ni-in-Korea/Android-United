@@ -34,7 +34,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".presentation.OnBoardingActivity"
+            android:name=".presentation.onboarding.OnBoardingActivity"
             android:screenOrientation="portrait" />
     </application>
 
