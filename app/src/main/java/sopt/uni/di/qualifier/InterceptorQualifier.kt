@@ -1,4 +1,4 @@
-package sopt.uni.di
+package sopt.uni.di.qualifier
 
 import javax.inject.Qualifier
 
