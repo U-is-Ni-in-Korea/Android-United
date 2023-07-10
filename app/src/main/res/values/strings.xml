@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SPARKLE</string>
     <string name="binding_error">에러가 발생했습니다</string>
+    <string name="sparkle_logo">sparkle_logo</string>
 </resources>
