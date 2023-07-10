@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Gray_100">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_wish_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Gray_100"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_wish_title"
+        style="@style/Title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp"
+        android:text="@string/wish_title"
+        android:textColor="@color/Gray_600"
+        app:layout_constraintLeft_toRightOf="@id/btn_wish_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_wish_ment_main"
+        style="@style/Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="6dp"
+        android:text="@string/wish_ment_main"
+        android:textColor="@color/Gray_600"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_title" />
+
+    <TextView
+        android:id="@+id/tv_wish_ment_sub"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="16dp"
+        android:text="@string/wish_ment_sub"
+        android:textColor="@color/Gray_350"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_main" />
+
+    <TextView
+        android:id="@+id/tv_wish_ment_sub_amount"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        android:textColor="@color/Gray_350"
+        app:layout_constraintLeft_toRightOf="@+id/tv_wish_ment_sub"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_main" />
+
+    <TextView
+        android:id="@+id/tv_wish_ment_sub_unit"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wish_ment_sub2"
+        android:textColor="@color/Gray_350"
+        app:layout_constraintLeft_toRightOf="@+id/tv_wish_ment_sub_amount"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_main" />
+
+    <TextView
+        android:id="@+id/tv_wish_my_wish"
+        style="@style/Body1_Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:layout_marginStart="16dp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="7dp"
+        android:text="@string/wish_my_wish"
+        android:textColor="@color/Gray_300"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_sub" />
+
+    <TextView
+        android:id="@+id/tv_wish_contour"
+        style="@style/Body1_Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:paddingVertical="7dp"
+        android:text="@string/wish_contour"
+        android:textColor="@color/Gray_300"
+        app:layout_constraintLeft_toRightOf="@+id/tv_wish_my_wish"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_sub" />
+
+    <TextView
+        android:id="@+id/tv_wish_your_wish"
+        style="@style/Body1_Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="7dp"
+        android:text="@string/wish_your_wish"
+        android:textColor="@color/Gray_300"
+        app:layout_constraintLeft_toRightOf="@+id/tv_wish_contour"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_sub" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/fcv_wish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wish_my_wish"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

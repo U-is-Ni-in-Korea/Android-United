@@ -22,4 +22,18 @@
     <string name="when_is_d_day">두 분의 시작일은 언제인가요?</string>
     <string name="please_enter_invite_code">초대코드를 입력하세요</string>
     <string name="connect">연결하기</string>
+
+    <!-- 소원권 -->
+    <string name="wish_title">소원권</string>
+    <string name="wish_ment_main">남은 소원권을 써보세요!</string>
+    <string name="wish_ment_sub">사용 가능한 소원권이 </string>
+    <string name="wish_ment_sub2">개 있어요</string>
+    <string name="wish_my_wish">내 소원권</string>
+    <string name="wish_your_wish">상대 소원권</string>
+    <string name="wish_contour">|</string>
+    <string name="wish_coupon_blue">새 소원권 </string>
+    <string name="wish_coupon_blue_unit">개</string>
+    <string name="wish_coupon_green">소원권 사용하기</string>
+    <string name="wish_coupon_gray">소원 성취</string>
+
 </resources>
