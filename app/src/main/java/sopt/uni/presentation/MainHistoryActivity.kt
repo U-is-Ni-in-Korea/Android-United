@@ -2,6 +2,7 @@ package sopt.uni.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMainHistoryBinding
@@ -21,5 +22,10 @@ class MainHistoryActivity :
         binding.rvHistoryList.layoutManager = LinearLayoutManager(this)
         val mockRepoList = viewModel.getMockRepoList()
         historyAdapter.submitList(mockRepoList)
+
+        val dividerItemDecoration =
+            DividerItemDecoration(binding.rvHistoryList.context, LinearLayoutManager(this).orientation)
+
+        binding.rvHistoryList.addItemDecoration(dividerItemDecoration)
     }
 }
