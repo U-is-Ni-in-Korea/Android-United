@@ -48,7 +48,6 @@ android {
 }
 
 dependencies {
-
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
@@ -79,8 +78,7 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0'
 
     // define a BOM and its version
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
-
+    implementation platform("com.squareup.okhttp3:okhttp-bom:4.10.0")
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
