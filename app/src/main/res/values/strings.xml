@@ -3,4 +3,6 @@
     <string name="binding_error">에러가 발생했습니다</string>
     <string name="sparkle_logo">sparkle_logo</string>
     <string name="on_boarding_skip">건너뛰기</string>
+    <string name="onboading_start">시작하기</string>
+    <string name="onboarding_skip">건너뛰기</string>
 </resources>
