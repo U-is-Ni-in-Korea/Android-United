@@ -65,8 +65,8 @@
     </style>
 
     <style name="Btn2">
-        <item name="fontFamily">14dp</item>
-        <item name="android:textSize">@font/pretendard_medium</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:lineSpacingExtra">6dp</item>
     </style>
 
