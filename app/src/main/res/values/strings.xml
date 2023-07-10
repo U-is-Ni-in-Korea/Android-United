@@ -4,4 +4,10 @@
     <string name="sparkle_logo">sparkle_logo</string>
     <string name="on_boarding_skip">건너뛰기</string>
     <string name="on_boarding_start">시작하기</string>
+    <string name="nickname_enter">사용할 닉네임을 입력하세요</string>
+    <string name="nickname_lover_name">내 애인이 나를 부르는 애칭은?</string>
+    <string name="nickname">닉네임</string>
+    <string name="back_button">back_button</string>
+    <string name="close_button">close_button</string>
+    <string name="next">다음</string>
 </resources>
