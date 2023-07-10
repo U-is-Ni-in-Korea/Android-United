@@ -30,6 +30,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_nickname_btn"
+            android:stateListAnimator="@null"
             android:text="@string/share_invite_code"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/tv_or"
@@ -80,6 +81,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="100dp"
             android:background="@drawable/bg_enter_invite_code_btn"
+            android:stateListAnimator="@null"
             android:text="@string/enter_invite_code"
             android:textColor="@color/Lightblue_600"
             app:layout_constraintBottom_toBottomOf="parent" />
