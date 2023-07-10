@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_wish_graph"
+    app:startDestination="@id/fragment_my_wish">
+
+    <fragment
+        android:id="@+id/fragment_my_wish"
+        android:name="sopt.uni.presentation.WishMyWishFragment"
+        android:label="@string/wish_my_wish"
+        tools:layout="@layout/fragment_wish_my_wish" />
+
+    <fragment
+        android:id="@+id/fragment_your_wish"
+        android:name="sopt.uni.presentation.WishYourWishFragment"
+        android:label="@string/wish_your_wish"
+        tools:layout="@layout/fragment_wish_your_wish" />
+
+</navigation>

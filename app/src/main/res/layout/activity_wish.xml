@@ -114,6 +114,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/fcv_wish"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_wish_graph"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_wish_my_wish"
         app:layout_constraintBottom_toBottomOf="parent"/>
