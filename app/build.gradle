@@ -76,6 +76,7 @@ dependencies {
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion"
+    implementation "androidx.activity:activity-ktx:1.7.2"
 
     // Fragment
     implementation "androidx.fragment:fragment-ktx:1.6.0"
