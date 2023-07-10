@@ -35,29 +35,37 @@ object RetrofitModule {
     fun providesInterceptor(): Interceptor = Interceptor { chain ->
         with(chain) {
             proceed(
-                request().newBuilder().addHeader(CONTENT_TYPE, JSON).build()
+                request().newBuilder().addHeader(CONTENT_TYPE, JSON).build(),
             )
         }
     }
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(interceptor: Interceptor): OkHttpClient =
+    @Logger
+    fun provideHttpLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    @Provides
+    @Singleton
+    fun providesOkHttpClient(
+        interceptor: Interceptor,
+        @Logger loggingInterceptor: Interceptor,
+    ): OkHttpClient =
         OkHttpClient
             .Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
+                loggingInterceptor,
             ).build()
 
     @Provides
     @Singleton
     fun providesAuthRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(okHttpClient).addConverterFactory(
-            Json.asConverterFactory("application/json".toMediaType())
+            Json.asConverterFactory("application/json".toMediaType()),
         ).build()
 }
