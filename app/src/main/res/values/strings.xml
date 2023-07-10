@@ -14,4 +14,8 @@
     <string name="enter_invite_code">초대코드 입력하기</string>
     <string name="or">or</string>
     <string name="share_invite_code">초대코드 공유하기</string>
+    <string name="my_cord">나의 코드</string>
+    <string name="example_code">123 456 789</string>
+    <string name="refresh">새로고침</string>
+    <string name="share_link">링크 공유하기</string>
 </resources>
