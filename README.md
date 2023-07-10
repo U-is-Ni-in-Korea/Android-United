@@ -20,7 +20,7 @@
 [UNIROID 칸반보드3 - 서버 연결 + QA 준비](https://github.com/orgs/U-is-Ni-in-Korea/projects/4)
 <br>
 
-## 📝 CONVENTIO#8N
+## 📝 CONVENTION
 <details>
 <summary>COMMIT CONVENTION</summary>
 <div markdown="1">
