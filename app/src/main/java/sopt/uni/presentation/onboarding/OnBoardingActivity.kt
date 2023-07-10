@@ -28,18 +28,16 @@ class OnBoardingActivity :
     }
 
     private fun changeSkipText() {
-        binding.vpOnBoarding.registerOnPageChangeCallback(
-            object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    if (position == 2) {
-                        binding.tvSkip.text = getString(R.string.on_boarding_start)
-                    } else {
-                        binding.tvSkip.text = getString(R.string.on_boarding_skip)
-                    }
+        binding.vpOnBoarding.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == 2) {
+                    binding.tvSkip.text = getString(R.string.onboading_start)
+                } else {
+                    binding.tvSkip.text = getString(R.string.onboarding_skip)
                 }
-            },
-        )
+            }
+        })
     }
 }
