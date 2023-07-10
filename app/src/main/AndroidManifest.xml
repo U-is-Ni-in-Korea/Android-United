@@ -36,6 +36,11 @@
         <activity
             android:name=".presentation.onboarding.OnBoardingActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.invite.NickNameActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
