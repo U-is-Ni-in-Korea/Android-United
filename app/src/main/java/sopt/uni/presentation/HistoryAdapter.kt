@@ -24,6 +24,7 @@ class HistoryAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.onBind(getItem(position))
+        holder.itemView.requestLayout()
     }
 
     class HistoryViewHolder(private val binding: ItemHistorylistBinding) :
