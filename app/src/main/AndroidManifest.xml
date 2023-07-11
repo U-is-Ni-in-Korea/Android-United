@@ -57,6 +57,11 @@
             android:name=".presentation.invite.ShareInviteCodeActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.invite.DdayActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

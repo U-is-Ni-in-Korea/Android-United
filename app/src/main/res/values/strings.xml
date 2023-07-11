@@ -18,4 +18,6 @@
     <string name="example_code">123 456 789</string>
     <string name="refresh">새로고침</string>
     <string name="share_link">링크 공유하기</string>
+    <string name="enter_d_day">두 분의 디데이를 입력하세요</string>
+    <string name="when_is_d_day">두 분의 시작일은 언제인가요?</string>
 </resources>
