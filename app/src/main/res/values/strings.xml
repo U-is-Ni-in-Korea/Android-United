@@ -22,4 +22,5 @@
     <string name="when_is_d_day">두 분의 시작일은 언제인가요?</string>
     <string name="please_enter_invite_code">초대코드를 입력하세요</string>
     <string name="connect">연결하기</string>
+    <string name="kakao_login_button">카카오 로그인 버튼</string>
 </resources>
