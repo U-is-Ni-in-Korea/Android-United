@@ -22,9 +22,17 @@ class WishActivity : AppCompatActivity() {
 
         with(binding) {
             tvWishMyWish.setOnClickListener() {
+                tvWishMyWish.setTextColor(resources.getColor(R.color.Lightblue_600))
+                tvWishYourWish.setTextColor(resources.getColor(R.color.Gray_300))
+                tvWishMyWish.setTextAppearance(R.style.Subtitle)
+                tvWishYourWish.setTextAppearance(R.style.Body1_Regular)
                 changeFragment(WishMyWishFragment())
             }
             tvWishYourWish.setOnClickListener() {
+                tvWishMyWish.setTextColor(resources.getColor(R.color.Gray_300))
+                tvWishYourWish.setTextColor(resources.getColor(R.color.Lightblue_600))
+                tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
+                tvWishYourWish.setTextAppearance(R.style.Subtitle)
                 changeFragment(WishYourWishFragment())
             }
         }

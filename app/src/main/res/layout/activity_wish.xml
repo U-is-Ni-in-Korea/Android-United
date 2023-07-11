@@ -73,7 +73,7 @@
 
     <TextView
         android:id="@+id/tv_wish_my_wish"
-        style="@style/Body1_Regular"
+        style="@style/Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="4dp"
@@ -81,7 +81,7 @@
         android:paddingHorizontal="14dp"
         android:paddingVertical="7dp"
         android:text="@string/wish_my_wish"
-        android:textColor="@color/Gray_300"
+        android:textColor="@color/Lightblue_600"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_wish_ment_sub" />
 

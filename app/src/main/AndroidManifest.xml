@@ -19,7 +19,6 @@
 
         <activity
             android:name=".presentation.SplashActivity"
-            android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
