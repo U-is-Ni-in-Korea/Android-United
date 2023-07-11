@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.UNIAOS" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Neutral Key Color -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorOnBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.UNIAOS" parent="Base.Theme.UNIAOS" />
+
 </resources>
