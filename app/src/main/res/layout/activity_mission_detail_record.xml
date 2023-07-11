@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Gray_100"
+        tools:context=".presentation.MissionDetailRecordActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_mission_detail_record_app_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/mission_detail_record_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_backarrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mission_detail_record_tiltle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="미션 카테고리 설명"
+                android:textAppearance="@style/Title1"
+                app:layout_constraintBottom_toBottomOf="@+id/mission_detail_record_back"
+                app:layout_constraintStart_toEndOf="@id/mission_detail_record_back"
+                app:layout_constraintTop_toTopOf="@+id/mission_detail_record_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/mission_detail_record_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_mission_detail_record_app_bar">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mission_detail_record_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/imagecard_android"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_detail_record_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="내 연인의 모든것"
+                    android:textAppearance="@style/Subtitle"
+                    app:layout_constraintStart_toEndOf="@+id/mission_detail_record_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_detail_record_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:lineSpacingExtra="6dp"
+                    android:text="상대의 취향, 신체 사이즈 등 제시된 주제에 대한 답을 맞추며 서로를 알아가는 게임"
+                    android:textAppearance="@style/Body2"
+                    android:textColor="@color/Gray_350"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/mission_detail_record_image"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_subtitle" />
+
+                <TextView
+                    android:id="@+id/mission_detail_record_rule_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="룰 소개"
+                    android:textAppearance="@style/Subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_image" />
+
+
+                <TextView
+                    android:id="@+id/mission_detail_record_ruletext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_mission_detail_textbox"
+                    android:lineSpacingExtra="10dp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="12dp"
+                    android:text=" 1. 본인에게 할당된 주제의 답변을 상대방이 맞춰야하는 게임입니다.
+2. 단순 주제가 나와있는 미션이라면, 상대의 입장에서 해당 주제에 대한 답을 해주세요.
+3. 2지선다로 이루어진 미션이라면, 상대가 어떤 선지를 더 좋아할지에 대해 예상하여 답을 해주세요."
+                    android:textAppearance="@style/Body2_long"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_detail_record_description"
+                    app:layout_constraintStart_toStartOf="@+id/mission_detail_record_rule_title"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_rule_title" />
+
+
+                <TextView
+                    android:id="@+id/mission_detail_record_tiptitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="공략 팁"
+                    android:textAppearance="@style/Subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_ruletext" />
+
+
+                <TextView
+                    android:id="@+id/mission_detail_record_tiptext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_mission_detail_textbox"
+                    android:lineSpacingExtra="10dp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="12dp"
+                    android:text=" • 평소에 하나씩 연인에 대한 셀프 100문 100답을 해보세요!"
+                    android:textAppearance="@style/Body2_long"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_detail_record_ruletext"
+                    app:layout_constraintStart_toStartOf="@+id/mission_detail_record_tiptitle"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_tiptitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

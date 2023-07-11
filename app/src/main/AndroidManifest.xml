@@ -17,15 +17,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+<!--        <activity-->
+<!--            android:name=".presentation.SubHistoryActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".presentation.MainHistoryActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".presentation.SplashActivity"
             android:screenOrientation="portrait">
 
         </activity>
-
         <activity
-            android:name=".presentation.MainActivity"
-            android:exported="false"
+            android:name=".presentation.MissionDetailCreateActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
