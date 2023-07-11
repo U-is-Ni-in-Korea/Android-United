@@ -34,6 +34,7 @@ jobs:
       - name: Access Local Properties
         env:
            UNI_URL: ${{ secrets.BASE_URL }}
+           KAKAO_APP_KEY: ${{ secrets.KAKAO_APP_KEY }}
         run: |
             echo BASE_URL=\"$BASE_URL\" >> local.properties
 
