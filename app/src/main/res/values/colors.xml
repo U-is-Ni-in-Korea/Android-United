@@ -30,6 +30,22 @@
     <color name="Lightblue_100">#CCF3FE</color>
     <color name="Lightblue_50">#E6F9FE</color>
 
+    <!-- Green -->
+    <color name="Green_950">#091A14</color>
+    <color name="Green_900">#113026</color>
+    <color name="Green_850">#184537</color>
+    <color name="Green_800">#205B48</color>
+    <color name="Green_700">#30876B</color>
+    <color name="Green_600">#3FB28D</color>
+    <color name="Green_500">#4FDEB0</color>
+    <color name="Green_400">#72E5C0</color>
+    <color name="Green_300">#95EBD0</color>
+    <color name="Green_200">#B9F2DF</color>
+    <color name="Green_150">#CAF5E7</color>
+    <color name="Green_100">#DCF8EF</color>
+    <color name="Green_50">#EDFCF7</color>
+
+
     <!-- Pink -->
     <color name="Pink_50">#FFF8FB</color>
     <color name="Pink_100">#FFF1F7</color>
