@@ -83,12 +83,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_marginEnd="16dp"
                     android:id="@+id/mission_detail_create_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
                     android:lineSpacingExtra="6dp"
                     android:text="상대의 취향, 신체 사이즈 등 제시된 주제에 대한 답을 맞추며 서로를 알아가는 게임"
                     android:textAppearance="@style/Body2"
