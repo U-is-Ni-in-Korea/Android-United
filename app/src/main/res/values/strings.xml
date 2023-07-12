@@ -23,4 +23,22 @@
     <string name="please_enter_invite_code">초대코드를 입력하세요</string>
     <string name="connect">연결하기</string>
     <string name="kakao_login_button">카카오 로그인 버튼</string>
+    <string name="mission_detatil_create_title">미션 카테고리 설명</string>
+    <string name="mission_detatil_create_game_title">내 연인의 모든것</string>
+    <string name="mission_detatil_create_game_description">상대의 취향, 신체 사이즈 등 제시된 주제에 대한 답을 맞추며 서로를 알아가는 게임</string>
+    <string name="mission_detatil_create_rule_title">룰 소개</string>
+    <string name="mission_detatil_create_rule_description">1. 본인에게 할당된 주제의 답변을 상대방이 맞춰야하는 게임입니다. 2. 단순 주제가 나와있는 미션이라면, 상대의 입장에서 해당 주제에 대한 답을 해주세요. 3. 2지선다로 이루어진 미션이라면, 상대가 어떤 선지를 더 좋아할지에 대해 예상하여 답을 해주세요.</string>
+    <string name="mission_detatil_create_tip_title">공략 팁</string>
+    <string name="mission_detatil_create_tip_description">• 평소에 하나씩 연인에 대한 셀프 100문 100답을 해보세요!</string>
+    <string name="mission_detatil_create_example_title">미션 예시</string>
+    <string name="mission_detatil_create_example1">시력</string>
+    <string name="mission_detatil_create_example2">아메리카노 vs \n카페라떼</string>
+    <string name="mission_detatil_create_btn_text">선택하기</string>
+    <string name="mission_detatil_record_title">미션 카테고리 설명</string>
+    <string name="mission_detatil_record_game_title">내 연인의 모든것</string>
+    <string name="mission_detatil_record_game_description">상대의 취향, 신체 사이즈 등 제시된 주제에 대한 답을 맞추며 서로를 알아가는 게임</string>
+    <string name="mission_detatil_record_rule_title">룰 소개</string>
+    <string name="mission_detatil_record_rule_description">1. 본인에게 할당된 주제의 답변을 상대방이 맞춰야하는 게임입니다. 2. 단순 주제가 나와있는 미션이라면, 상대의 입장에서 해당 주제에 대한 답을 해주세요. 3. 2지선다로 이루어진 미션이라면, 상대가 어떤 선지를 더 좋아할지에 대해 예상하여 답을 해주세요.</string>
+    <string name="mission_detatil_record_tip_title">공략 팁</string>
+    <string name="mission_detatil_record_tip_description">• 평소에 하나씩 연인에 대한 셀프 100문 100답을 해보세요!</string>
 </resources>
