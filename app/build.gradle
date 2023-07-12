@@ -23,8 +23,9 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
-        buildConfigField "String", "KAKAO_APP_KEY", properties["KAKAO_APP_KEY"]
-        manifestPlaceholders = ["KAKAO_APP_KEY": "\"${properties.getProperty("KAKAO_API_KEY")}\""]
+
+        buildConfigField("String", "KAKAO_APP_KEY", "\"${properties.get('KAKAO_APP_KEY')}\"")
+        manifestPlaceholders = [KAKAO_APP_KEY: properties.get('KAKAO_APP_KEY')]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
