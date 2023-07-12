@@ -54,6 +54,18 @@
             app:layout_constraintStart_toStartOf="@id/tv_d_day_title"
             app:layout_constraintTop_toBottomOf="@id/tv_d_day_title" />
 
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_marginTop="30dp"
+            android:maxDate="07/14/2023"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_d_day_description"
+            />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
             style="@style/Btn1"
