@@ -35,13 +35,13 @@
         android:id="@+id/tv_item_wl_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Green_600"
-        android:text="@string/wish_coupon_green"
         android:background="@drawable/wish_ment_green_rectangle"
-        android:paddingVertical="4dp"
         android:paddingHorizontal="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingVertical="4dp"
+        android:text="@string/wish_coupon_green"
+        android:textColor="@color/Green_600"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_wl_title"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_wl_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
