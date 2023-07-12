@@ -87,5 +87,10 @@
     <string name="mission_detatil_record_rule_description">1. 본인에게 할당된 주제의 답변을 상대방이 맞춰야하는 게임입니다. 2. 단순 주제가 나와있는 미션이라면, 상대의 입장에서 해당 주제에 대한 답을 해주세요. 3. 2지선다로 이루어진 미션이라면, 상대가 어떤 선지를 더 좋아할지에 대해 예상하여 답을 해주세요.</string>
     <string name="mission_detatil_record_tip_title">공략 팁</string>
     <string name="mission_detatil_record_tip_description">• 평소에 하나씩 연인에 대한 셀프 100문 100답을 해보세요!</string>
-    <string name="kakao_login_button">카카오 로그인 버튼</string>
+
+    <!-- Google -->
+    <string name="GoogleSignInOptions">810225772635-5m6teda56ccsanv40fv3o4o8k2sju47a.apps.googleusercontent.com</string>
+    <string name="kakao_login">카카오 로그인</string>
+    <string name="google_login">Google계정으로 로그인</string>
+
 </resources>
