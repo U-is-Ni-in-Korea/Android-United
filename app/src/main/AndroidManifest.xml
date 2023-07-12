@@ -46,7 +46,7 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="${KAKAO_APP_KEY}" />
+                    android:scheme="kakao${KAKAO_APP_KEY}" />
             </intent-filter>
         </activity>
 
@@ -56,7 +56,13 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".presentation.login.LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".presentation.onboarding.OnBoardingActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
