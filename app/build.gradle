@@ -6,6 +6,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
+    id 'com.google.gms.google-services'
 }
 
 Properties properties = new Properties()
@@ -23,6 +24,8 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
+
+        buildConfigField "String", "GOOGLE_CLIENT_ID", properties["GOOGLE_CLIENT_ID"]
 
         buildConfigField("String", "KAKAO_APP_KEY", "\"${properties.get('KAKAO_APP_KEY')}\"")
         manifestPlaceholders = [KAKAO_APP_KEY: properties.get('KAKAO_APP_KEY')]
@@ -55,6 +58,7 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 
     // Coil
@@ -91,6 +95,12 @@ dependencies {
 
     // kakao login
     implementation "com.kakao.sdk:v2-user:2.11.0"
+
+    // Google Play services
+    implementation 'com.google.gms:google-services:4.3.15'
+    implementation 'com.google.firebase:firebase-auth:22.0.0'
+    implementation 'com.google.firebase:firebase-bom:32.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
