@@ -7,6 +7,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 Properties properties = new Properties()
@@ -24,8 +25,6 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
-
-        buildConfigField "String", "GOOGLE_CLIENT_ID", properties["GOOGLE_CLIENT_ID"]
 
         buildConfigField("String", "KAKAO_APP_KEY", "\"${properties.get('KAKAO_APP_KEY')}\"")
         manifestPlaceholders = [KAKAO_APP_KEY: properties.get('KAKAO_APP_KEY')]
