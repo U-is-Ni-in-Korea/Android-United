@@ -2,7 +2,7 @@ package sopt.uni.data.entity.history
 
 import sopt.uni.R
 
-val HistoryList = listOf(
+val HistoryList = listOf<HistoryItem>(
     HistoryItem(
         date = "23.06.20",
         result_img = R.drawable.rectangle,
