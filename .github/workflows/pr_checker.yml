@@ -41,6 +41,9 @@ jobs:
             echo KAKAO_APP_KEY=$KAKAO_APP_KEY >> local.properties
             echo GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID >> local.properties
 
+      - name: Access Firebase Service
+        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > ./app/google-services.json
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
