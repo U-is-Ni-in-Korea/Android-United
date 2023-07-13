@@ -91,5 +91,15 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".presentation.MainHistoryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.SubHistoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

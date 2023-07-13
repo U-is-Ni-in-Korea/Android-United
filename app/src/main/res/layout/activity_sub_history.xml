@@ -11,86 +11,194 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/Gray_100"
         tools:context=".presentation.SubHistoryActivity">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_history_app_bar"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/history_sub_back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_backarrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/iv_back"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="승부 히스토리"
-                android:textAppearance="@style/Title1"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_back"
-                app:layout_constraintStart_toEndOf="@id/iv_back"
-                app:layout_constraintTop_toTopOf="@+id/iv_back" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/history_sub_title"
+            style="@style/Title1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/history_sub_title"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/history_sub_back"
+            app:layout_constraintStart_toEndOf="@id/history_sub_back"
+            app:layout_constraintTop_toTopOf="@+id/history_sub_back" />
+
+        <TextView
+            android:id="@+id/history_sub_date"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
             android:paddingVertical="10dp"
             android:paddingStart="16dp"
-            android:text="23.06.20"
-            android:textAppearance="@style/Body2"
-            android:textColor="@color/Gray_400"
+            android:text="@string/history_sub_date"
+            android:textColor="@color/Gray_500"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_history_app_bar" />
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_title" />
 
         <ImageView
-            android:id="@+id/iv_subimg"
+            android:id="@+id/history_sub_result_image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/rectanglebig"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_date" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/history_sub_game_title"
+            style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:text="키워드 스무고개"
-            android:textAppearance="@style/Subtitle"
-            app:layout_constraintStart_toEndOf="@+id/iv_subimg"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            android:text="@string/history_sub_game_title"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintStart_toEndOf="@+id/history_sub_result_image"
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_date" />
 
         <TextView
+            android:id="@+id/history_sub_result_text"
+            style="@style/Body2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
-            android:text="철수님이 이겼어요"
-            android:textAppearance="@style/Body2"
+            android:text="@string/history_sub_result_text"
             android:textColor="@color/Lightblue_500"
-            app:layout_constraintStart_toEndOf="@+id/iv_subimg"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/history_sub_result_image"
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_game_title" />
+
+        <TextView
+            android:id="@+id/history_sub_my"
+            style="@style/Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/history_sub_my_text"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_result_image" />
+
+        <TextView
+            android:id="@+id/history_sub_rival"
+            style="@style/Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history_sub_rival_text"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintStart_toStartOf="@+id/history_sub_rival_mission_constraint_layout"
+            app:layout_constraintTop_toTopOf="@+id/history_sub_my" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/history_sub_my_mission_constraint_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_mission_detail_textbox"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_my">
+
+            <TextView
+                android:id="@+id/history_sub_my_mission"
+                style="@style/Btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/history_sub_my_mission"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/history_sub_mission_success"
+                style="@style/Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/bg_mission_success_textbox"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="4dp"
+                android:text="@string/history_sub_mission_success"
+                android:textColor="@color/Green_600"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/history_sub_my_mission"
+                app:layout_constraintTop_toBottomOf="@+id/history_sub_my_mission" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/history_sub_rival_mission_constraint_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_mission_detail_textbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/history_sub_rival">
+
+            <TextView
+                android:id="@+id/history_sub_rival_mission"
+                style="@style/Btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/history_sub_rival_mission_text"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/history_sub_mission_fail_text"
+                style="@style/Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/bg_mission_fail_textbox"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="4dp"
+                android:text="@string/history_sub_mission_fail_text"
+                android:textColor="@color/Pink_600"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/history_sub_rival_mission"
+                app:layout_constraintTop_toBottomOf="@+id/history_sub_rival_mission" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
