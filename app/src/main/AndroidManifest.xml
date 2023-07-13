@@ -51,8 +51,8 @@
         </activity>
 
         <activity
-            android:name=".presentation.MainActivity"
-            android:exported="false"
+            android:name=".presentation.MissionDetailCreateActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
