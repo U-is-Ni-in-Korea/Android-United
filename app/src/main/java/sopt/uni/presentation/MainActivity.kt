@@ -1,7 +1,6 @@
 package sopt.uni.presentation
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMainBinding
