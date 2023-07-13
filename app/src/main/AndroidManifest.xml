@@ -16,6 +16,7 @@
         android:theme="@style/Theme.UNIAOS"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.SubHistoryActivity"
             android:exported="false" />
@@ -23,7 +24,7 @@
             android:name=".presentation.MainHistoryActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -32,6 +33,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".presentation.OnBoardingActivity"
             android:screenOrientation="portrait" />
