@@ -1,4 +1,4 @@
-package sopt.uni.presentation
+package sopt.uni.presentation.wish
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
