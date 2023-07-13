@@ -17,7 +17,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.kakao.sdk.common.util.Utility
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import sopt.uni.BuildConfig
+import sopt.uni.BuildConfig.GOOGLE_CLIENT_ID
 import sopt.uni.R
 import sopt.uni.data.service.KakaoLoginService
 import sopt.uni.databinding.ActivityLoginBinding
@@ -84,7 +84,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     // TODO 함수 분리
     private fun googleInit() {
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(BuildConfig.GOOGLE_CLIENT_ID)
+            .requestIdToken("$GOOGLE_CLIENT_ID")
             .requestEmail()
             .requestId()
             .requestProfile()
