@@ -24,6 +24,9 @@ android {
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
 
+        buildConfigField("String", "KAKAO_APP_KEY", "\"${properties.get('KAKAO_APP_KEY')}\"")
+        manifestPlaceholders = [KAKAO_APP_KEY: properties.get('KAKAO_APP_KEY')]
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -85,6 +88,10 @@ dependencies {
 
     // define a BOM and its version
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.10.0")
+
+    // kakao login
+    implementation "com.kakao.sdk:v2-user:2.11.0"
+
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
