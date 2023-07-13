@@ -16,12 +16,7 @@
         android:theme="@style/Theme.UNIAOS"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".presentation.SubHistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.MainHistoryActivity"
-            android:exported="true" />
+
         <activity
             android:name=".presentation.SplashActivity"
             android:exported="true"
@@ -32,10 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.MissionDetailCreateActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -56,7 +47,7 @@
         <activity
             android:name=".presentation.MainActivity"
             android:exported="false" />
-                  
+
         <activity
             android:name=".presentation.MissionDetailCreateActivity"
             android:exported="true"
@@ -96,6 +87,14 @@
             android:name=".presentation.invite.EnterInviteCodeActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.SubHistoryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.MainHistoryActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
