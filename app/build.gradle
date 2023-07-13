@@ -23,6 +23,8 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
+        buildConfigField "String", "KAKAO_APP_KEY", properties["KAKAO_APP_KEY"]
+        manifestPlaceholders = ["KAKAO_APP_KEY": "\"${properties.getProperty("KAKAO_API_KEY")}\""]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,6 +50,7 @@ android {
 }
 
 dependencies {
+
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
@@ -84,6 +87,11 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0'
 
     // define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+
+    // kakao login
+    implementation "com.kakao.sdk:v2-user:2.11.0"
+
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.10.0")
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
