@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.UNIAOS" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Neutral Key Color -->
@@ -12,5 +12,11 @@
     </style>
 
     <style name="Theme.UNIAOS" parent="Base.Theme.UNIAOS" />
+
+    <!-- Custom Stutus bar color -->
+    <style name="Theme.UNIAOS.LightBlueStatusBar" parent="Base.Theme.UNIAOS">
+        <item name="android:statusBarColor">@color/Lightblue_500</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 
 </resources>
