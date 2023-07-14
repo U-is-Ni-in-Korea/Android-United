@@ -47,6 +47,12 @@
         </activity>
 
         <activity
+            android:name=".presentation.home.HomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UNIAOS.LightBlueStatusBar" />
+
+        <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
