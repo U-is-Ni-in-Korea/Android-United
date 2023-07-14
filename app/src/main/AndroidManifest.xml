@@ -88,16 +88,16 @@
 
         <activity
             android:name=".presentation.MissionDetailCreateActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".presentation.MainHistoryActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".presentation.SubHistoryActivity"
+            android:name=".presentation.HistoryMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.HistorySubActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
