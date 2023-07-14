@@ -24,7 +24,7 @@ class CreateShortGameActivity :
     private val missionAdapter by lazy {
         MissionCategoryAdapter(
             goToMissionDetailClickListener = { missionIdPosition ->
-                //TODO : 미션상세뷰 이동
+                // TODO : 미션상세뷰 이동
             },
             selectMissionClickListener = { missionIdPosition ->
                 selectItem(missionIdPosition.id, missionIdPosition.position)
@@ -69,10 +69,10 @@ class CreateShortGameActivity :
     private fun setClickListener() {
         binding.apply {
             ivClose.setOnClickListener {
-                //TODO : 종료 다이얼로그
+                // TODO : 종료 다이얼로그
             }
             btnCreate.setOnClickListener {
-                //TODO : 생성 다이얼로그 + 미션 기록 액티비티 이동
+                // TODO : 생성 다이얼로그 + 미션 기록 액티비티 이동
             }
         }
     }
@@ -107,4 +107,3 @@ class CreateShortGameActivity :
         }
     }
 }
-
