@@ -14,6 +14,7 @@ import sopt.uni.R
 import sopt.uni.databinding.ActivityCreateShortGameBinding
 import sopt.uni.util.ItemDecorations
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class CreateShortGameActivity :
@@ -68,10 +69,10 @@ class CreateShortGameActivity :
 
     private fun setClickListener() {
         binding.apply {
-            ivClose.setOnClickListener {
+            ivClose.setOnSingleClickListener {
                 // TODO : 종료 다이얼로그
             }
-            btnCreate.setOnClickListener {
+            btnCreate.setOnSingleClickListener {
                 // TODO : 생성 다이얼로그 + 미션 기록 액티비티 이동
             }
         }
