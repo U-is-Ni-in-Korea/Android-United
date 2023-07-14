@@ -6,7 +6,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.onboarding.onBoardingList
 import sopt.uni.databinding.ActivityOnBoardingBinding
+import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class OnBoardingActivity :
@@ -17,6 +20,7 @@ class OnBoardingActivity :
 
         setAdaptor()
         changeSkipText()
+        moveToLogin()
     }
 
     private fun setAdaptor() {
@@ -41,5 +45,11 @@ class OnBoardingActivity :
                 }
             },
         )
+    }
+
+    private fun moveToLogin() {
+        binding.tvSkip.setOnSingleClickListener {
+            startActivity<LoginActivity>()
+        }
     }
 }
