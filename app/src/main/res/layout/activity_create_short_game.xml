@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sopt.uni.presentation.shortgame.CreateShortGameViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_create_short_game_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/Gray_100"
+            tools:context=".presentation.shortgame.CreateShortGameActivity">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/create_short_game_title"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/tv_select_category"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_dismiss"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_select_category"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/create_short_game_select_mission"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_script"
+                style="@style/Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/create_short_game_more_script"
+                android:textColor="@color/Gray_350"
+                app:layout_constraintBottom_toTopOf="@id/rv_mission"
+                app:layout_constraintLeft_toLeftOf="@id/tv_select_category"
+                app:layout_constraintTop_toBottomOf="@id/tv_select_category" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_mission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginBottom="11dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tv_script"
+                app:spanCount="2"
+                tools:listitem="@layout/item_mission">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_wish"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/create_short_game_wish"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_mission" />
+
+            <ImageView
+                android:id="@+id/iv_ticket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_wish_ticket"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_wish" />
+
+            <EditText
+                android:id="@+id/et_wish_content"
+                style="@style/Body2"
+                setContentLength="@{viewModel.contentLength}"
+                android:layout_width="238dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="19dp"
+                android:background="@drawable/bg_wish_edit_text"
+                android:gravity="top"
+                android:hint="@string/create_short_game_wish_content_hint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:maxLength="54"
+                android:maxLines="3"
+                android:padding="10dp"
+                android:text="@={viewModel.wishContent}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ticket"
+                app:layout_constraintStart_toStartOf="@id/iv_ticket"
+                app:layout_constraintTop_toTopOf="@id/iv_ticket" />
+
+            <TextView
+                android:id="@+id/tv_content_length"
+                style="@style/Caption"
+                setContentLength="@{viewModel.contentLength}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/Gray_200"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ticket"
+                app:layout_constraintEnd_toEndOf="@id/iv_ticket"
+                tools:text="0/54" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_create"
+                style="@style/Btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="16dp"
+                android:layout_marginBottom="56dp"
+                android:background="@drawable/bg_shortgame_btn"
+                android:text="@string/create_short_game_btn"
+                android:textColor="@color/Gray_000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_ticket">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
