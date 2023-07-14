@@ -10,12 +10,12 @@ import sopt.uni.data.entity.history.HistoryList
 import sopt.uni.databinding.ActivityMainHistoryBinding
 import sopt.uni.util.binding.BindingActivity
 
-class MainHistoryActivity :
+class HistoryMainActivity :
     BindingActivity<ActivityMainHistoryBinding>(R.layout.activity_main_history) {
 
     private val historyAdapter by lazy {
         HistoryAdapter(
-            context = this@MainHistoryActivity,
+            context = this@HistoryMainActivity,
             onEmptyList = { isEmpty ->
                 if (isEmpty) {
                     binding.itemHistoryEmptylist.visibility = View.VISIBLE
@@ -24,7 +24,7 @@ class MainHistoryActivity :
                 }
             },
             itemClickedListener = { historyItem ->
-                val intent = Intent(this, SubHistoryActivity::class.java)
+                val intent = Intent(this, HistorySubActivity::class.java)
                 startActivity(intent)
             },
         )
@@ -35,14 +35,17 @@ class MainHistoryActivity :
         setContentView(binding.root)
 
         binding.rvHistoryList.adapter = historyAdapter
-        binding.rvHistoryList.layoutManager = LinearLayoutManager(this@MainHistoryActivity)
+        binding.rvHistoryList.layoutManager = LinearLayoutManager(this@HistoryMainActivity)
+
+        // 다이얼로그 띄우는 부분
+        HistoryDialog().show(supportFragmentManager, "HistoryDialog")
 
         historyAdapter.submitList(HistoryList)
 
         val dividerItemDecoration =
             DividerItemDecoration(
                 binding.rvHistoryList.context,
-                LinearLayoutManager(this@MainHistoryActivity).orientation,
+                LinearLayoutManager(this@HistoryMainActivity).orientation,
             )
         binding.rvHistoryList.addItemDecoration(dividerItemDecoration)
 

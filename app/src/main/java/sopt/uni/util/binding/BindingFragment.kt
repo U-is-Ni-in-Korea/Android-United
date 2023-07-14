@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import sopt.uni.R
 
 abstract class BindingFragment<T : ViewDataBinding>(
-    @LayoutRes private val layoutRes: Int
+    @LayoutRes private val layoutRes: Int,
 ) : Fragment() {
     private var _binding: T? = null
     protected val binding get() = _binding ?: error(getString(R.string.binding_error))
@@ -19,7 +19,7 @@ abstract class BindingFragment<T : ViewDataBinding>(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
         binding.lifecycleOwner = viewLifecycleOwner

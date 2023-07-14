@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import sopt.uni.data.entity.history.HistoryItem
 import sopt.uni.databinding.ItemHistorylistBinding
 import sopt.uni.util.extension.ItemDiffCallback
+import sopt.uni.util.extension.setOnSingleClickListener
 
 class HistoryAdapter(
     private val context: Context,
@@ -65,7 +66,7 @@ class HistoryAdapter(
                 historyItemGameResult.text = item.result
                 historyItemRightImage.setImageDrawable(binding.root.context.getDrawable(item.next))
 
-                historyItemRightImage.setOnClickListener {
+                historyItemRightImage.setOnSingleClickListener {
                     // 클릭 이벤트 처리
                     val item = getItem(adapterPosition)
                     itemClickedListener.invoke(item)

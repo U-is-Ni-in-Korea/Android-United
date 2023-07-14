@@ -85,4 +85,11 @@
     <string name="create_short_game_wish_content_hint">이번 승부에 걸 소원을 입력해주세요! \n소원은 지금 정하지 않고 승부가 끝난 뒤에도 작성할 수 있어요</string>
     <string name="create_short_game_btn">한판 승부 만들기</string>
 
+    <!-- dialog -->
+    <string name="dialog_cancel_text">취소</string>
+    <string name="dialog_apply_text">적용하기</string>
+    <string name="dialog_body_text">body</string>
+    <string name="dialog_ok_text">확인</string>
+    <string name="dialog_title_text">Title</string>
+
 </resources>
