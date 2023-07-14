@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import sopt.uni.R
 import sopt.uni.data.entity.history.HistoryList
 import sopt.uni.databinding.ActivityMainHistoryBinding
+import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.binding.BindingActivity
 
 class HistoryMainActivity :
@@ -50,7 +51,7 @@ class HistoryMainActivity :
         binding.rvHistoryList.addItemDecoration(dividerItemDecoration)
 
         binding.historyMainBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
