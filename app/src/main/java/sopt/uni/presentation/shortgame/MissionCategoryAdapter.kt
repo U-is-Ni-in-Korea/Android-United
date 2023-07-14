@@ -17,7 +17,7 @@ class MissionCategoryAdapter(
         onItemsTheSame = { old, new -> old == new },
     ),
 ) {
-    private var selectedPosition = 0;
+    private var selectedPosition = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MissionViewHolder {
         val binding =
             ItemMissionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
