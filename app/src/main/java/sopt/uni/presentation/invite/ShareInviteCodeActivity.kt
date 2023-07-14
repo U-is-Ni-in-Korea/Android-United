@@ -5,6 +5,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityShareInviteCodeBinding
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class ShareInviteCodeActivity :
@@ -12,5 +13,13 @@ class ShareInviteCodeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        moveToPrevPage()
+    }
+
+    private fun moveToPrevPage() {
+        binding.ivBackArrow.setOnSingleClickListener {
+            finish()
+        }
     }
 }
