@@ -76,6 +76,18 @@
     <string name="kakao_login">카카오 로그인</string>
     <string name="google_login">Google계정으로 로그인</string>
     <string name="invite_code_example">000-000-000</string>
+    <string name="user_profile">user profile</string>
+    <string name="home_couple_score">커플 스코어</string>
+    <string name="home_game_history">승부 히스토리</string>
+    <string name="home_go_to_history">go to history</string>
+    <string name="home_d_100">D+100</string>
+    <string name="draw">무</string>
+    <string name="lose">패</string>
+    <string name="win">승</string>
+    <string name="home_game_title">승부하기</string>
+    <string name="game_description">승부를 겨루고 소원권을 얻어보세요</string>
+    <string name="home_heart">heart</string>
+    <string name="home_short_game">한판 승부</string>
 
     <!-- dialog -->
     <string name="dialog_cancel_text">취소</string>
