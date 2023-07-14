@@ -75,6 +75,7 @@
     <!-- Google -->
     <string name="kakao_login">카카오 로그인</string>
     <string name="google_login">Google계정으로 로그인</string>
+    <string name="invite_code_example">000-000-000</string>
 
     <!-- dialog -->
     <string name="dialog_cancel_text">취소</string>

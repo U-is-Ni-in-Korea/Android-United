@@ -22,16 +22,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/close_button"
-            android:src="@drawable/ic_dismiss"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_back_arrow" />
-
-        <ImageView
             android:id="@+id/iv_share_card"
             android:layout_width="160dp"
             android:layout_height="0dp"
@@ -91,11 +81,11 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="100dp"
-            android:paddingEnd="120dp"
-            android:paddingLeft="120dp"
+            android:background="@drawable/bg_enter_invite_code_btn"
             android:drawableLeft="@drawable/ic_arrow_reset"
             android:drawableTint="@color/Lightblue_600"
-            android:background="@drawable/bg_enter_invite_code_btn"
+            android:paddingLeft="120dp"
+            android:paddingEnd="120dp"
             android:stateListAnimator="@null"
             android:text="@string/refresh"
             android:textColor="@color/Lightblue_600"
