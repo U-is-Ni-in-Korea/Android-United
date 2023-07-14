@@ -22,17 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/close_button"
-            android:src="@drawable/ic_dismiss"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_back_arrow" />
-
-
         <TextView
             android:id="@+id/tv_nickname_title"
             style="@style/Subtitle"

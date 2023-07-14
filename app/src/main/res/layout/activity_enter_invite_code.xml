@@ -21,16 +21,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/close_button"
-            android:src="@drawable/ic_dismiss"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_back_arrow" />
-
         <TextView
             android:id="@+id/tv_invite_code_title"
             style="@style/Subtitle"
@@ -51,7 +41,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="53dp"
             android:background="@drawable/bg_enter_edit_text"
-            android:hint="@string/nickname"
+            android:hint="@string/invite_code_example"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:paddingHorizontal="15dp"
