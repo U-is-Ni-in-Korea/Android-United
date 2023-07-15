@@ -77,28 +77,33 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_game_history"
-                style="@style/Body2"
+            <LinearLayout
+                android:id="@+id/ll_game_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/home_game_history"
-                android:textColor="@color/Gray_000"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_score_title" />
+                app:layout_constraintTop_toBottomOf="@id/tv_score_title">
 
-            <ImageView
-                android:id="@+id/iv_go_to_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/home_go_to_history"
-                android:src="@drawable/ic_chevron_right_24"
-                app:layout_constraintBottom_toBottomOf="@id/tv_game_history"
-                app:layout_constraintStart_toEndOf="@id/tv_game_history"
-                app:layout_constraintTop_toTopOf="@id/tv_game_history"
-                app:tint="@color/white" />
+                <TextView
+                    android:id="@+id/tv_game_history"
+                    style="@style/Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="2dp"
+                    android:text="@string/home_game_history"
+                    android:textColor="@color/Gray_000" />
+
+                <ImageView
+                    android:id="@+id/iv_go_to_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/home_go_to_history"
+                    android:src="@drawable/ic_chevron_right_24"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tv_d_day"
@@ -119,7 +124,7 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_game_history">
+                app:layout_constraintTop_toBottomOf="@id/ll_game_history">
 
                 <TextView
                     android:id="@+id/tv_win_score"
