@@ -29,7 +29,7 @@ class CreateShortGameActivity :
             },
             selectMissionClickListener = { missionIdPosition ->
                 selectItem(missionIdPosition.id, missionIdPosition.position)
-            }
+            },
         )
     }
 
