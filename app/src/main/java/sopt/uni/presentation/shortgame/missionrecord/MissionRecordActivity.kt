@@ -13,7 +13,7 @@ import sopt.uni.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class MissionRecordActivity :
-        BindingActivity<ActivityMissionRecordBinding>(R.layout.activity_mission_record) {
+    BindingActivity<ActivityMissionRecordBinding>(R.layout.activity_mission_record) {
 
     private val viewModel: MissionRecordViewModel by viewModels()
 
@@ -27,12 +27,12 @@ class MissionRecordActivity :
     private fun setClickListener() {
         binding.apply {
             tvStopGame.setOnSingleClickListener {
-                //TODO : 승부 그만두기 다이얼로그
+                // TODO : 승부 그만두기 다이얼로그
             }
             ivMissionDetail.setOnSingleClickListener {
                 MissionDetailRecordActivity.start(
-                        this@MissionRecordActivity,
-                        viewModel.missionId.value
+                    this@MissionRecordActivity,
+                    viewModel.missionId.value,
                 )
             }
             ivClose.setOnSingleClickListener {
@@ -54,9 +54,6 @@ class MissionRecordActivity :
             context.startActivity(getIntent(context, roundGameId))
         }
 
-        private fun getIntent(context: Context, roundGameId: Int) =
-                Intent(context, MissionRecordActivity::class.java).apply {
-                    putExtra(ROUND_GAME_ID, roundGameId)
-                }
+        private fun getIntent(context: Context, roundGameId: Int) = Intent(context, MissionRecordActivity::class.java).putExtra(ROUND_GAME_ID, roundGameId)
     }
 }
