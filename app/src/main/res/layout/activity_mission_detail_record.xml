@@ -5,13 +5,16 @@
 
     <data>
 
+        <variable
+            name="missionDetailReCordViewModel"
+            type="sopt.uni.presentation.shortgame.missiondetailrecord.MissionDetailRecordViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/Gray_100"
-        tools:context=".presentation.MissionDetailRecordActivity">
+        tools:context=".presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_mission_detail_record_app_bar"
@@ -63,40 +66,46 @@
 
                 <ImageView
                     android:id="@+id/mission_detail_record_image"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    setImage="@{missionDetailReCordViewModel.missionDetail.image}"
+                    android:layout_width="77dp"
+                    android:layout_height="77dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/imagecard_android"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/imagecard_android" />
 
                 <TextView
                     android:id="@+id/mission_detail_record_subtitle"
                     style="@style/Subtitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/mission_detatil_record_game_title"
+                    android:text="@{missionDetailReCordViewModel.missionDetail.title}"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintStart_toEndOf="@+id/mission_detail_record_image"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/mission_detatil_record_game_title" />
 
                 <TextView
                     android:id="@+id/mission_detail_record_description"
                     style="@style/Body2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/mission_detatil_record_game_description"
+                    android:text="@{missionDetailReCordViewModel.missionDetail.description}"
                     android:textColor="@color/Gray_350"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/mission_detail_record_image"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_subtitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_subtitle"
+                    tools:text="@string/mission_detatil_record_game_description" />
 
                 <TextView
                     android:id="@+id/mission_detail_record_rule_title"
                     style="@style/Subtitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
@@ -105,25 +114,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_image" />
 
-
                 <TextView
                     android:id="@+id/mission_detail_record_ruletext"
                     style="@style/Body2_long"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_mission_detail_textbox"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="12dp"
-                    android:text="@string/mission_detatil_record_rule_description"
+                    android:text="@{missionDetailReCordViewModel.missionDetail.rule}"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintEnd_toEndOf="@+id/mission_detail_record_description"
                     app:layout_constraintStart_toStartOf="@+id/mission_detail_record_rule_title"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_rule_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_rule_title"
+                    tools:text="@string/mission_detatil_record_rule_description" />
 
 
                 <TextView
                     android:id="@+id/mission_detail_record_tiptitle"
                     style="@style/Subtitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
@@ -136,17 +147,18 @@
                 <TextView
                     android:id="@+id/mission_detail_record_tiptext"
                     style="@style/Body2_long"
+                    text="@{missionDetailReCordViewModel.missionDetail.tip}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_mission_detail_textbox"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="12dp"
-                    android:text="@string/mission_detatil_record_tip_description"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintEnd_toEndOf="@+id/mission_detail_record_ruletext"
                     app:layout_constraintStart_toStartOf="@+id/mission_detail_record_tiptitle"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_tiptitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/mission_detail_record_tiptitle"
+                    tools:text="@string/mission_detatil_record_tip_description" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
