@@ -7,8 +7,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_mission_detail_textbox">
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:text="@string/dialog_body_text"
             android:textColor="@color/Gray_400"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,16 +30,14 @@
             style="@style/Body1_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="108dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="16dp"
             android:paddingHorizontal="14dp"
             android:paddingVertical="7dp"
             android:text="@string/dialog_cancel_text"
             android:textColor="@color/Lightblue_600"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_body" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_right" />
 
         <TextView
             android:id="@+id/btn_right"
@@ -55,7 +53,6 @@
             android:textColor="@color/Lightblue_600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_left"
             app:layout_constraintTop_toTopOf="@+id/btn_left" />
 
 
