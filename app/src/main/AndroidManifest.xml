@@ -113,5 +113,16 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".presentation.shortgame.missionrecord.MissionRecordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
     </application>
+
 </manifest>
