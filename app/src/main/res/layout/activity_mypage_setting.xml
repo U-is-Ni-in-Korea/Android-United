@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.mypage.MypageSettingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_mypage_setting_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/mypage_setting_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_backarrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/mypage_setting_title"
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="설정"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/mypage_setting_profil_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/imagecard_android"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_mypage_setting_app_bar" />
+
+    <TextView
+        android:id="@+id/mypage_setting_name"
+        style="@style/Title2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="50dp"
+        android:text="철수"
+        android:textColor="@color/Gray_600"
+        app:layout_constraintStart_toEndOf="@id/mypage_setting_profil_image"
+        app:layout_constraintTop_toBottomOf="@+id/layout_mypage_setting_app_bar" />
+
+    <TextView
+        android:id="@+id/mypage_setting_email"
+        style="@style/Body2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="uni@gmail.com"
+        android:textColor="@color/Gray_400"
+        app:layout_constraintStart_toStartOf="@+id/mypage_setting_name"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_setting_name" />
+
+    <TextView
+        style="@style/Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:background="@drawable/bg_mypage_profil"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:text="프로필 수정"
+        android:textColor="@color/Lightblue_600"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_profil_image"
+        app:layout_constraintStart_toEndOf="@id/mypage_setting_email"
+        app:layout_constraintTop_toTopOf="@+id/mypage_setting_profil_image" />
+
+    <TextView
+        android:id="@+id/mypage_setting_service_title"
+        style="@style/Body2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="36dp"
+        android:paddingVertical="7dp"
+        android:text="서비스 이용"
+        android:textColor="@color/Lightblue_600"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_setting_profil_image" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_service_list1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_setting_service_title">
+
+        <ImageView
+            android:id="@+id/mypage_setting_service_image1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mypage_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mypage_setting_service_text1"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="계정"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_service_image1"
+            app:layout_constraintStart_toEndOf="@+id/mypage_setting_service_image1"
+            app:layout_constraintTop_toTopOf="@+id/mypage_setting_service_image1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_service_list2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_setting_service_list1">
+
+        <ImageView
+            android:id="@+id/mypage_setting_service_image2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mypage_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mypage_setting_service_text2"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="서비스 이용약관"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_service_image2"
+            app:layout_constraintStart_toEndOf="@+id/mypage_setting_service_image2"
+            app:layout_constraintTop_toTopOf="@+id/mypage_setting_service_image2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_service_list3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_setting_service_list2">
+
+        <ImageView
+            android:id="@+id/mypage_setting_service_image3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mypage_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mypage_setting_service_text3"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="개인정보 처리방침"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_service_image3"
+            app:layout_constraintStart_toEndOf="@+id/mypage_setting_service_image3"
+            app:layout_constraintTop_toTopOf="@+id/mypage_setting_service_image3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_service_list4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_setting_service_list3">
+
+        <ImageView
+            android:id="@+id/mypage_setting_service_image4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mypage_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mypage_setting_service_text4"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="오픈소스 라이브러리"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_service_image4"
+            app:layout_constraintStart_toEndOf="@+id/mypage_setting_service_image4"
+            app:layout_constraintTop_toTopOf="@+id/mypage_setting_service_image4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_service_list5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_setting_service_list4">
+
+        <ImageView
+            android:id="@+id/mypage_setting_service_image5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mypage_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mypage_setting_service_text5"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="개발자 정보"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_setting_service_image5"
+            app:layout_constraintStart_toEndOf="@+id/mypage_setting_service_image5"
+            app:layout_constraintTop_toTopOf="@+id/mypage_setting_service_image5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

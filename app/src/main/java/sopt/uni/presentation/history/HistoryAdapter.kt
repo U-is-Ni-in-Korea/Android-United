@@ -1,4 +1,4 @@
-package sopt.uni.presentation
+package sopt.uni.presentation.history
 
 import android.content.Context
 import android.view.LayoutInflater
