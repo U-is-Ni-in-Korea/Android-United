@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/Gray_100"
-        tools:context=".presentation.HistorySubActivity">
+        tools:context=".presentation.history.HistorySubActivity">
 
         <ImageView
             android:id="@+id/history_sub_back"

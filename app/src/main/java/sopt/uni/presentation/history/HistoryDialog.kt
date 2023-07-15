@@ -1,9 +1,10 @@
-package sopt.uni.presentation
+package sopt.uni.presentation.history
 
 import android.os.Bundle
 import android.view.View
 import sopt.uni.R
 import sopt.uni.databinding.TitleAction1DialogBinding
+import sopt.uni.presentation.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 
 // 예시용 입니다! 히스토리는 다이얼로그 없어용

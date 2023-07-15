@@ -1,4 +1,4 @@
-package sopt.uni.presentation
+package sopt.uni.presentation.history
 
 import android.content.Intent
 import android.os.Bundle
