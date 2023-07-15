@@ -1,10 +1,11 @@
 package sopt.uni.presentation.history
 
-import android.content.Intent
 import android.os.Bundle
 import sopt.uni.R
 import sopt.uni.databinding.ActivitySubHistoryBinding
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.startActivity
 
 class HistorySubActivity :
     BindingActivity<ActivitySubHistoryBinding>(R.layout.activity_sub_history) {
@@ -12,9 +13,8 @@ class HistorySubActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.historySubBack.setOnClickListener {
-            val intent = Intent(this, HistoryMainActivity::class.java)
-            startActivity(intent)
+        binding.historySubBack.setOnSingleClickListener {
+            startActivity<HistoryMainActivity>()
             finish()
         }
     }

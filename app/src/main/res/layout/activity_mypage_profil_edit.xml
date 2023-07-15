@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@id/layout_mypage_profil_edit_app_bar" />
 
         <TextView
-            android:id="@+id/mypage_profil_edit_image_change_text"
+            android:id="@+id/mypage_profil_edit_image_change"
             style="@style/Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             android:text="닉네임"
             android:textColor="@color/Gray_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image_change_text" />
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image_change" />
 
         <EditText
             android:id="@+id/mypage_profil_edit_nickname_edittext"
@@ -111,8 +111,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="13dp"
             android:background="@drawable/bg_mypage_edit_text"
+            android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:maxLength="10"
+            android:inputType="text"
             android:maxLines="1"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
@@ -125,9 +126,9 @@
             tools:text="동동이" />
 
         <TextView
-            setMypageErrorTextVisible="@{viewModel.contentLength}"
-            android:id="@+id/mypage_profil_edit_errortext"
+            android:id="@+id/mypage_profil_edit_errortext_over"
             style="@style/Caption"
+            setMypageOverErrorTextVisible="@{viewModel.contentLength}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="글자수를 초과했어요"
@@ -136,6 +137,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_nickname_content_length"
             app:layout_constraintStart_toStartOf="@id/mypage_profil_edit_nickname_edittext"
             app:layout_constraintTop_toTopOf="@+id/mypage_profil_edit_nickname_content_length" />
+
+        <TextView
+            android:id="@+id/mypage_profil_edit_errortext_zero"
+            style="@style/Caption"
+            setMypageZeroErrorTextVisible="@{viewModel.contentLength}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임을 입력해주세요"
+            android:textColor="@color/Red_500"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_nickname_content_length"
+            app:layout_constraintStart_toStartOf="@id/mypage_profil_edit_nickname_edittext"
+            app:layout_constraintTop_toTopOf="@+id/mypage_profil_edit_nickname_content_length" />
+
 
         <TextView
             android:id="@+id/mypage_profil_edit_nickname_content_length"
@@ -161,13 +176,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_nickname_content_length" />
 
-        <EditText
+        <TextView
             android:id="@+id/mypage_profil_edit_couple_date_edittext"
             style="@style/Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_mypage_edit_text"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
@@ -189,7 +204,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_couple_date_edittext" />
 
-        <EditText
+        <TextView
             android:id="@+id/mypage_profil_edit_email_edittext"
             style="@style/Body2"
             android:layout_width="match_parent"
@@ -197,6 +212,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="13dp"
             android:background="@drawable/bg_mypage_edit_text"
+            android:importantForAutofill="no"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
             android:textColor="@color/Gray_600"

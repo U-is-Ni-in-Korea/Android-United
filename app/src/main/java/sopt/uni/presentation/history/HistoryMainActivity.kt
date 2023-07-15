@@ -10,6 +10,7 @@ import sopt.uni.data.entity.history.HistoryList
 import sopt.uni.databinding.ActivityMainHistoryBinding
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.startActivity
 
 class HistoryMainActivity :
     BindingActivity<ActivityMainHistoryBinding>(R.layout.activity_main_history) {
@@ -38,9 +39,6 @@ class HistoryMainActivity :
         binding.rvHistoryList.adapter = historyAdapter
         binding.rvHistoryList.layoutManager = LinearLayoutManager(this@HistoryMainActivity)
 
-        // 다이얼로그 띄우는 부분
-        HistoryDialog().show(supportFragmentManager, "HistoryDialog")
-
         historyAdapter.submitList(HistoryList)
 
         val dividerItemDecoration =
@@ -51,8 +49,7 @@ class HistoryMainActivity :
         binding.rvHistoryList.addItemDecoration(dividerItemDecoration)
 
         binding.historyMainBack.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            startActivity<HomeActivity>()
             finish()
         }
     }

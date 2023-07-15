@@ -7,8 +7,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_mission_detail_textbox">
 
@@ -41,7 +41,6 @@
             style="@style/Btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="16dp"
@@ -51,7 +50,6 @@
             android:textColor="@color/Lightblue_600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dialog_body" />
 
 
