@@ -1,180 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.mypage.MypageProfilEditActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="sopt.uni.presentation.mypage.MypageProfilEditViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_mypage_profil_edit_app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.mypage.MypageProfilEditActivity">
 
-        <ImageView
-            android:id="@+id/mypage_profil_edit_back"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_mypage_profil_edit_app_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_backarrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/mypage_profil_edit_title"
-            style="@style/Title1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="프로필 수정"
-            android:textColor="@color/Gray_600"
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/mypage_profil_edit_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_backarrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/mypage_profil_edit_title"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="프로필 수정"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mypage_profil_edit_save"
+                style="@style/Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="저장"
+                android:textColor="@color/Lightblue_600"
+                app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mypage_profil_edit_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/mypage_profil_edit_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:src="@drawable/imagecard_android"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_mypage_profil_edit_app_bar" />
 
         <TextView
-            android:id="@+id/mypage_profil_edit_save"
-            style="@style/Body2"
+            android:id="@+id/mypage_profil_edit_image_change_text"
+            style="@style/Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:paddingHorizontal="10dp"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/bg_mypage_profil"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:text="저장"
+            android:text="사진 변경하기"
             android:textColor="@color/Lightblue_600"
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/mypage_profil_edit_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image" />
+
+        <TextView
+            android:id="@+id/mypage_profil_edit_nickname_title"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="47dp"
+            android:text="닉네임"
+            android:textColor="@color/Gray_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image_change_text" />
+
+        <EditText
+            android:id="@+id/mypage_profil_edit_nickname_edittext"
+            style="@style/Body2"
+            setMypageContentLength="@{viewModel.contentLength}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_mypage_edit_text"
+            android:importantForAutofill="no"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="12dp"
+            android:singleLine="true"
+            android:text="@={viewModel.mypageContent}"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_nickname_title"
+            tools:text="동동이" />
+
+        <TextView
+            setMypageErrorTextVisible="@{viewModel.contentLength}"
+            android:id="@+id/mypage_profil_edit_errortext"
+            style="@style/Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="글자수를 초과했어요"
+            android:textColor="@color/Red_500"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_profil_edit_nickname_content_length"
+            app:layout_constraintStart_toStartOf="@id/mypage_profil_edit_nickname_edittext"
+            app:layout_constraintTop_toTopOf="@+id/mypage_profil_edit_nickname_content_length" />
+
+        <TextView
+            android:id="@+id/mypage_profil_edit_nickname_content_length"
+            style="@style/Caption"
+            setMypageContentLength="@{viewModel.contentLength}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/Gray_400"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_profil_edit_nickname_edittext"
+            app:layout_constraintTop_toBottomOf="@id/mypage_profil_edit_nickname_edittext"
+            tools:text="0/10" />
+
+
+        <TextView
+            android:id="@+id/mypage_profil_edit_couple_date_title"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="커플 기념일"
+            android:textColor="@color/Gray_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_nickname_content_length" />
+
+        <EditText
+            android:id="@+id/mypage_profil_edit_couple_date_edittext"
+            style="@style/Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_mypage_edit_text"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="12dp"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_couple_date_title"
+            tools:text="2023년 7월 14일" />
+
+        <TextView
+            android:id="@+id/mypage_profil_edit_email_title"
+            style="@style/Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:text="연동 이메일"
+            android:textColor="@color/Gray_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_couple_date_edittext" />
+
+        <EditText
+            android:id="@+id/mypage_profil_edit_email_edittext"
+            style="@style/Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_mypage_edit_text"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="12dp"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_email_title"
+            tools:text="dlknaldkfnlda@naver.com" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/mypage_profil_edit_image"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:src="@drawable/imagecard_android"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_mypage_profil_edit_app_bar" />
-
-    <TextView
-        android:id="@+id/mypage_profil_edit_image_change_text"
-        style="@style/Caption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:background="@drawable/bg_mypage_profil"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="4dp"
-        android:text="사진 변경하기"
-        android:textColor="@color/Lightblue_600"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image" />
-
-    <TextView
-        android:id="@+id/mypage_profil_edit_nickname_title"
-        style="@style/Body2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="47dp"
-        android:text="닉네임"
-        android:textColor="@color/Gray_400"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_image_change_text" />
-
-    <EditText
-        android:id="@+id/mypage_profil_edit_nickname_edittext"
-        style="@style/Body2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/bg_mypage_edit_text"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="12dp"
-        tools:text="동동이"
-        android:textColor="@color/Gray_600"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_nickname_title" />
-
-
-    <TextView
-        android:id="@+id/mypage_profil_edit_nickname_content_length"
-        style="@style/Caption"
-        setContentLength="@{viewModel.contentLength}"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/Gray_400"
-        app:layout_constraintEnd_toEndOf="@+id/mypage_profil_edit_nickname_edittext"
-        app:layout_constraintTop_toBottomOf="@id/mypage_profil_edit_nickname_edittext"
-        tools:text="0/10" />
-
-
-    <TextView
-        android:id="@+id/mypage_profil_edit_couple_date_title"
-        style="@style/Body2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="커플 기념일"
-        android:textColor="@color/Gray_400"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_nickname_content_length" />
-
-    <EditText
-        android:id="@+id/mypage_profil_edit_couple_date_edittext"
-        style="@style/Body2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/bg_mypage_edit_text"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="12dp"
-        tools:text="2023년 7월 14일"
-        android:textColor="@color/Gray_600"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_couple_date_title" />
-
-    <TextView
-        android:id="@+id/mypage_profil_edit_email_title"
-        style="@style/Body2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:text="연동 이메일"
-        android:textColor="@color/Gray_400"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_couple_date_edittext" />
-
-    <EditText
-        android:id="@+id/mypage_profil_edit_email_edittext"
-        style="@style/Body2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/bg_mypage_edit_text"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="12dp"
-        tools:text="dlknaldkfnlda@naver.com"
-        android:textColor="@color/Gray_600"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_profil_edit_email_title" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
