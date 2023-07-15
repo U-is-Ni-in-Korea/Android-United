@@ -8,11 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import sopt.uni.R
 import sopt.uni.data.entity.history.HistoryList
 import sopt.uni.databinding.ActivityMainHistoryBinding
-<<<<<<< develop:app/src/main/java/sopt/uni/presentation/HistoryMainActivity.kt
 import sopt.uni.presentation.home.HomeActivity
-=======
-import sopt.uni.presentation.MainActivity
->>>>>>> #38 / 마이페이지 설정(첫 화면) 뷰 그리기 완료:app/src/main/java/sopt/uni/presentation/history/HistoryMainActivity.kt
 import sopt.uni.util.binding.BindingActivity
 
 class HistoryMainActivity :
