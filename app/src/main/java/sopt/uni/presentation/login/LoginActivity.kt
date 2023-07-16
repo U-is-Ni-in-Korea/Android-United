@@ -40,7 +40,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
         val keyHash = Utility.getKeyHash(this)
         Timber.d(keyHash)
@@ -61,6 +60,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                     when (it) {
                         is KakaoLoginService.LoginState.Success -> {
                             startActivity<NickNameActivity>()
+                            loginViewModel.getAccessToken("kakao", it.token)
                             Timber.e("Kakao Login Success ${it.token} ${it.id}")
                         }
 
@@ -88,6 +88,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             .requestEmail()
             .requestId()
             .requestProfile()
+            .requestServerAuthCode("$GOOGLE_CLIENT_ID")
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
@@ -101,7 +102,8 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
                         try {
                             val account = task.getResult(ApiException::class.java)!!
-                            Timber.e("firebaseAuthWithGoogle:" + account.id)
+                            Timber.e("firebaseAuthWithGoogle:" + account.serverAuthCode)
+                            loginViewModel.getAccessToken("google", account.serverAuthCode.toString())
                             firebaseAuthWithGoogle(account.idToken!!)
                         } catch (e: ApiException) {
                             Timber.e("Google sign in failed", e)
