@@ -1,30 +1,39 @@
 package sopt.uni.presentation.login
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import sopt.uni.data.datasource.local.SparkleStorage
+import sopt.uni.data.repository.auth.AuthRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val authRepository: AuthRepository,
+) : ViewModel() {
 
     private val _loginResult: MutableStateFlow<InHouseLoginState> =
         MutableStateFlow(InHouseLoginState.Init)
     val loginResult: StateFlow<InHouseLoginState> = _loginResult.asStateFlow()
 
-//    fun login(token: String, id: String) {
-//        viewModelScope.launch {
-//            runCatching { authRepository.login(token, id) }
-//                .fold({
-//                    _loginResult.value = InHouseLoginState.Success
-//                }, {
-//                    _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다")
-//                    Timber.e(it)
-//                })
-//        }
-//    }
+    fun getAccessToken(social: String, code: String) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                authRepository.getToken(social, code)
+            }.onSuccess {
+                SparkleStorage.accessToken = it.getOrNull()?.accessToken ?: ""
+                _loginResult.value = InHouseLoginState.Success
+                Timber.e("getAccessToken: ${SparkleStorage.accessToken}")
+            }.onFailure {
+                _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
+            }
+        }
+    }
 
     sealed class InHouseLoginState {
         object Init : InHouseLoginState()

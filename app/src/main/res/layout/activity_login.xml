@@ -37,8 +37,8 @@
             <ImageView
                 android:id="@+id/iv_kakao_logo"
                 android:layout_width="wrap_content"
-                android:contentDescription="@string/kakao_login"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/kakao_login"
                 android:src="@drawable/ic_kakao_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

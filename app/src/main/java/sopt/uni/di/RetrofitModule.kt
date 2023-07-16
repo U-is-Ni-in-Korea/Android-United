@@ -11,7 +11,8 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import sopt.uni.BuildConfig
+import sopt.uni.BuildConfig.BASE_URL
+import sopt.uni.data.datasource.remote.AuthInterceptor
 import sopt.uni.di.qualifier.Logger
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -33,16 +34,6 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesInterceptor(): Interceptor = Interceptor { chain ->
-        with(chain) {
-            proceed(
-                request().newBuilder().addHeader(CONTENT_TYPE, JSON).build(),
-            )
-        }
-    }
-
-    @Provides
-    @Singleton
     @Logger
     fun provideHttpLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -51,22 +42,19 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(
-        interceptor: Interceptor,
         @Logger loggingInterceptor: Interceptor,
     ): OkHttpClient =
         OkHttpClient
             .Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(interceptor)
-            .addInterceptor(
-                loggingInterceptor,
-            ).build()
+            .addInterceptor(AuthInterceptor())
+            .addInterceptor(loggingInterceptor).build()
 
     @Provides
     @Singleton
     fun providesAuthRetrofit(okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(okHttpClient).addConverterFactory(
+        Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(
             Json.asConverterFactory("application/json".toMediaType()),
         ).build()
 }
