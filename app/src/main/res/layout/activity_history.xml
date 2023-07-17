@@ -56,10 +56,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            android:visibility="@{vm.historyData.isEmpty ? View.GONE : View.VISIBLE }"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_history"
-            android:visibility="@{vm.historyData.isEmpty ? View.GONE : View.VISIBLE }"
             tools:listitem="@layout/item_history" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
