@@ -86,9 +86,9 @@ class MissionResultActivity :
             )
 
         @JvmStatic
-        @BindingAdapter("setDateResult")
-        fun setDateResult(view: TextView, date: String?) {
-            if (date == null) {
+        @BindingAdapter("setDateResult", "setMissionComplete")
+        fun setDateResult(view: TextView, date: String?, isMissionComplete: String?) {
+            if (date == null || isMissionComplete == "LOSE") {
                 view.text = view.context.getString(R.string.mission_result_failure)
                 view.background = view.context.getDrawable(R.drawable.wish_ment_pink_rectangle)
             } else {
