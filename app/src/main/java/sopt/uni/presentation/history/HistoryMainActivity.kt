@@ -36,18 +36,24 @@ class HistoryMainActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        setupRecyclerView()
+        setupBackButton()
+    }
+
+    private fun setupRecyclerView() {
         binding.rvHistoryList.adapter = historyAdapter
         binding.rvHistoryList.layoutManager = LinearLayoutManager(this@HistoryMainActivity)
 
         historyAdapter.submitList(HistoryList)
 
-        val dividerItemDecoration =
-            DividerItemDecoration(
-                binding.rvHistoryList.context,
-                LinearLayoutManager(this@HistoryMainActivity).orientation,
-            )
+        val dividerItemDecoration = DividerItemDecoration(
+            binding.rvHistoryList.context,
+            LinearLayoutManager(this@HistoryMainActivity).orientation,
+        )
         binding.rvHistoryList.addItemDecoration(dividerItemDecoration)
+    }
 
+    private fun setupBackButton() {
         binding.historyMainBack.setOnClickListener {
             startActivity<HomeActivity>()
             finish()

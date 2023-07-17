@@ -14,21 +14,29 @@ class MypageSettingActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        with(binding) {
-            mypageSettingBack.setOnSingleClickListener {
-                startActivity<HomeActivity>()
-                finish()
-            }
+        setupBackButton()
+        setupServiceList1()
+        setupSettingProfilEdit()
+    }
 
-            mypageSettingServiceList1.setOnSingleClickListener {
-                startActivity<MypageAccountActivity>()
-                finish()
-            }
+    private fun setupBackButton() {
+        binding.mypageSettingBack.setOnSingleClickListener {
+            startActivity<HomeActivity>()
+            finish()
+        }
+    }
 
-            mypageSettingProfilEdit.setOnSingleClickListener {
-                startActivity<MypageProfilEditActivity>()
-                finish()
-            }
+    private fun setupServiceList1() {
+        binding.mypageSettingServiceList1.setOnSingleClickListener {
+            startActivity<MypageAccountActivity>()
+            finish()
+        }
+    }
+
+    private fun setupSettingProfilEdit() {
+        binding.mypageSettingProfilEdit.setOnSingleClickListener {
+            startActivity<MypageProfilEditActivity>()
+            finish()
         }
     }
 }

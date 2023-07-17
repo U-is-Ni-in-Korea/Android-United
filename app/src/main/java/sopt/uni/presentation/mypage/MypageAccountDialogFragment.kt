@@ -14,8 +14,8 @@ class MypageAccountLogoutDialogFragment :
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            dialogTitle.setText("로그아웃 하시겠습니까?")
-            btnRight.setText("로그아웃")
+            dialogTitle.setText(getString(R.string.logout_dialog_title))
+            btnRight.setText(getString(R.string.logout_message))
             btnLeft.setOnSingleClickListener {
                 dismiss()
             }
@@ -32,9 +32,9 @@ class MypageAccountDeleteDialogFragment :
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            dialogTitle.setText("계정을 탈퇴하시겠어요?")
-            dialogBody.setText("모든 기록이 사라져요")
-            btnRight.setText("탈퇴")
+            dialogTitle.setText(getString(R.string.delete_dialog_title))
+            dialogBody.setText(getString(R.string.delete_dialog_descirption))
+            btnRight.setText(getString(R.string.delete_message))
             btnLeft.setOnSingleClickListener {
                 dismiss()
             }
@@ -51,9 +51,9 @@ class MypageAccountCoupleDisconnectDialogFragment :
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            dialogTitle.setText("정말 커플 연결을 해제하시겠어요?")
-            dialogBody.setText("해제하면 다시 되돌릴 수 없어요")
-            btnRight.setText("연결 해제")
+            dialogTitle.setText(getString(R.string.disconnect_dialog_title))
+            dialogBody.setText(getString(R.string.disconnect_dialog_description))
+            btnRight.setText(getString(R.string.disconnect_message))
             btnLeft.setOnSingleClickListener {
                 dismiss()
             }
