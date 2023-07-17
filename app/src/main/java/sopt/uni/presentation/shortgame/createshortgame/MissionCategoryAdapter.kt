@@ -1,4 +1,4 @@
-package sopt.uni.presentation.shortgame
+package sopt.uni.presentation.shortgame.createshortgame
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

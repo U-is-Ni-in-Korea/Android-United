@@ -5,7 +5,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHomeBinding
 import sopt.uni.presentation.history.HistoryActivity
-import sopt.uni.presentation.shortgame.CreateShortGameActivity
+import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameActivity
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener

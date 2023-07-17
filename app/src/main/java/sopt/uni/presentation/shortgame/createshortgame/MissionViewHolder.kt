@@ -1,4 +1,4 @@
-package sopt.uni.presentation.shortgame
+package sopt.uni.presentation.shortgame.createshortgame
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load

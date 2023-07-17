@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="sopt.uni.presentation.shortgame.CreateShortGameViewModel" />
+            type="sopt.uni.presentation.shortgame.createshortgame.CreateShortGameViewModel" />
     </data>
 
     <ScrollView
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/Gray_100"
-            tools:context=".presentation.shortgame.CreateShortGameActivity">
+            tools:context=".presentation.shortgame.createshortgame.CreateShortGameActivity">
 
             <TextView
                 android:id="@+id/tv_title"
