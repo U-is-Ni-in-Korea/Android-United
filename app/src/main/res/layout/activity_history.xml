@@ -4,6 +4,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="sopt.uni.presentation.history.HistoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +17,7 @@
         tools:context=".presentation.HistoryMainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_history_main_app_bar"
+            android:id="@+id/cl_history"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/Gray_100"
@@ -20,45 +25,48 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/history_main_back"
+            <ImageButton
+                android:id="@+id/btn_history_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:layout_marginStart="8dp"
+                android:background="@null"
                 android:src="@drawable/ic_backarrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
-                android:id="@+id/history_main_title"
+                android:id="@+id/tv_history_title"
                 style="@style/Title1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/history_main_title"
+                android:text="@string/history_title"
                 android:textColor="@color/Gray_600"
-                app:layout_constraintBottom_toBottomOf="@+id/history_main_back"
-                app:layout_constraintStart_toEndOf="@id/history_main_back"
-                app:layout_constraintTop_toTopOf="@+id/history_main_back" />
+                app:layout_constraintBottom_toBottomOf="@+id/btn_history_back"
+                app:layout_constraintStart_toEndOf="@id/btn_history_back"
+                app:layout_constraintTop_toTopOf="@+id/btn_history_back" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_history_list"
+            android:id="@+id/rv_history"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_history_main_app_bar" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_history"
+            android:visibility="@{vm.historyData.isEmpty ? View.GONE : View.VISIBLE }"
+            tools:listitem="@layout/item_history" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/item_history_emptylist"
+            android:id="@+id/cl_history_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="@{vm.historyData.isEmpty ? View.VISIBLE : View.GONE}">
 
             <ImageView
                 android:id="@+id/item_history_emptylist_image"
@@ -68,7 +76,7 @@
                 android:src="@drawable/ic_historylist_empty"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/item_history_emptylist" />
+                app:layout_constraintTop_toTopOf="@+id/cl_history_empty" />
 
             <TextView
                 android:id="@+id/item_history_emptylist_title"

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="data"
+            type="sopt.uni.data.entity.history.History" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,18 +21,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:text="@string/history_item_date"
+            android:text="@{data.date}"
             android:textColor="@color/Gray_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="23.07.18" />
 
         <ImageView
             android:id="@+id/history_item_image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            setImage="@{data.image}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp"
-            android:src="@drawable/rectangle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/history_item_date"
             app:layout_constraintTop_toBottomOf="@+id/history_item_date" />
@@ -40,22 +45,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@string/history_item_game_title"
+            android:text="@{data.title}"
             android:textColor="@color/Gray_600"
             app:layout_constraintStart_toEndOf="@+id/history_item_image"
-            app:layout_constraintTop_toBottomOf="@+id/history_item_date" />
+            app:layout_constraintTop_toBottomOf="@+id/history_item_date"
+            tools:text="대답 유도하기" />
 
         <TextView
-            android:id="@+id/history_item_game_result"
+            android:id="@+id/tv_item_history_result"
             style="@style/Body2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
-            android:text="@string/history_item_game_result"
             android:textColor="@color/Lightblue_500"
             app:layout_constraintStart_toEndOf="@id/history_item_image"
-            app:layout_constraintTop_toBottomOf="@+id/history_item_game_title" />
+            app:layout_constraintTop_toBottomOf="@+id/history_item_game_title"
+            tools:text="승리" />
 
         <ImageView
             android:id="@+id/history_item_right_image"
@@ -66,7 +72,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/history_item_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/history_item_image" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
