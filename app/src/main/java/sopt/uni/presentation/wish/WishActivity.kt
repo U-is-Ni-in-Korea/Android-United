@@ -36,6 +36,31 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
+    private fun initRecyclerView() {
+        multiviewAdapter = WishMultiviewAdapter(this) {
+            val intent = Intent(this, WishFcActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.rvWish.adapter = multiviewAdapter
+
+        binding.rvWish.apply {
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            adapter = multiviewAdapter
+        }
+
+        datas.apply {
+            add(WishMultiData(MULTI_TYPE_WISH1, null, null, "green"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+            add(WishMultiData(MULTI_TYPE_WISH2, image = R.drawable.ic_apple, "맥북 사주기", "blue"))
+        }
+        multiviewAdapter.submitData(datas)
+        updateRecyclerViewVisibility()
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fcv_wish, fragment).commit()
