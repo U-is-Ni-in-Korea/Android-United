@@ -28,14 +28,15 @@
 
     <ImageView
         android:id="@+id/iv_on_boarding_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="6dp"
+        android:layout_width="@dimen/on_boarding_image"
+        android:layout_height="@dimen/on_boarding_image"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="53dp"
-        app:layout_constraintDimensionRatio="1"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_on_boarding_description"
-        tools:src="@mipmap/ic_sparkle" />
+        tools:src="@mipmap/ic_sparkle"
+        android:contentDescription="@string/on_boarding_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
