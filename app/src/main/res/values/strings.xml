@@ -55,22 +55,18 @@
     <string name="wish_coupon_gray">소원 성취</string>
 
     <!-- 히스토리 -->
-    <string name="history_item_date">23.06.20</string>
-    <string name="history_item_game_title">대답 유도하기</string>
     <string name="item_history_emptylist_title">승부 히스토리가 없어요</string>
     <string name="item_history_emptylist_description">연인과 승부를 진행해보세요</string>
-    <string name="history_sub_title">승부 히스토리</string>
-    <string name="history_sub_date">23.06.20</string>
-    <string name="history_sub_game_title">키워드 스무고개</string>
-    <string name="history_sub_result_text">철수님이 이겼어요</string>
-    <string name="history_item_game_result">승리</string>
-    <string name="history_main_title">승부 히스토리</string>
-    <string name="history_sub_mission_fail_text">미션 실패</string>
-    <string name="history_sub_my_text">나의 미션</string>
-    <string name="history_sub_rival_text">상대의 미션</string>
-    <string name="history_sub_my_mission">헤드셋</string>
-    <string name="history_sub_mission_success">23:22 미션성공</string>
-    <string name="history_sub_rival_mission_text">커피</string>
+    <string name="history_title">승부 히스토리</string>
+    <string name="history_detail_mission_fail_text">미션 실패</string>
+    <string name="history_detail_my_text">나의 미션</string>
+    <string name="history_detail_rival_text">상대의 미션</string>
+    <string name="history_detail_mission_success">%s 미션성공</string>
+    <string name="history_win">승리</string>
+    <string name="history_lose">패배</string>
+    <string name="history_draw">무승부</string>
+    <string name="history_result_draw_comment">이번 판은 무승부에요</string>
+    <string name="history_result_win_comment">%s님이 이겼어요</string>
 
     <!-- Google -->
     <string name="kakao_login">카카오 로그인</string>
@@ -167,5 +163,6 @@
     <string name="mission_result_partner_empty_script">상대가 미션을 끝내면\n 승부 히스토리에서\n 확인할 수 있어요</string>
     <string name="mission_result_complete">미션 성공</string>
     <string name="mission_result_failure">미션 실패</string>
+    <string name="history_result_win">님이 이겼어요</string>
 
 </resources>

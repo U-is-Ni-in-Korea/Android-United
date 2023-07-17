@@ -4,7 +4,7 @@ import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHomeBinding
-import sopt.uni.presentation.history.HistoryMainActivity
+import sopt.uni.presentation.history.HistoryActivity
 import sopt.uni.presentation.shortgame.CreateShortGameActivity
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
@@ -37,7 +37,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
 
     private fun moveToHistory() {
         binding.llGameHistory.setOnSingleClickListener {
-            startActivity<HistoryMainActivity>()
+            startActivity<HistoryActivity>()
         }
     }
 }
