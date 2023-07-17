@@ -1,45 +1,46 @@
 package sopt.uni.presentation.wish
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.View
+import androidx.core.view.isInvisible
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import sopt.uni.R
+import sopt.uni.data.entity.wish.MULTI_TYPE_WISH1
+import sopt.uni.data.entity.wish.MULTI_TYPE_WISH2
+import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ActivityWishBinding
+import sopt.uni.presentation.wish.fragment.WishNewWishFragment
 import sopt.uni.util.binding.BindingActivity
 
 class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish) {
 
+    private lateinit var multiviewAdapter: WishMultiviewAdapter
+    private val datas = mutableListOf<WishMultiData>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_wish)
-        if (currentFragment == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fcv_wish, WishMyWishFragment()).commit()
-        }
+        initRecyclerView()
 
         with(binding) {
-            tvWishMyWish.setOnClickListener() {
+            tvWishMyWish.setOnClickListener {
                 tvWishMyWish.setTextColor(resources.getColor(R.color.Lightblue_600))
                 tvWishYourWish.setTextColor(resources.getColor(R.color.Gray_300))
                 tvWishMyWish.setTextAppearance(R.style.Subtitle)
                 tvWishYourWish.setTextAppearance(R.style.Body1_Regular)
-                changeFragment(WishMyWishFragment())
             }
-            tvWishYourWish.setOnClickListener() {
+            tvWishYourWish.setOnClickListener {
                 tvWishMyWish.setTextColor(resources.getColor(R.color.Gray_300))
                 tvWishYourWish.setTextColor(resources.getColor(R.color.Lightblue_600))
                 tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
                 tvWishYourWish.setTextAppearance(R.style.Subtitle)
-                changeFragment(WishYourWishFragment())
             }
         }
     }
 
     private fun initRecyclerView() {
         multiviewAdapter = WishMultiviewAdapter(this) {
-            val intent = Intent(this, WishFcActivity::class.java)
-            startActivity(intent)
+            navigateToWishNewWishFragment()
         }
 
         binding.rvWish.adapter = multiviewAdapter
@@ -61,8 +62,24 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
         multiviewAdapter.submitData(datas)
         updateRecyclerViewVisibility()
-    private fun changeFragment(fragment: Fragment) {
+    }
+
+    private fun updateRecyclerViewVisibility() {
+        if (datas.isEmpty()) {
+            binding.rvWish.visibility = View.INVISIBLE
+            binding.tvWishEmptyMy.visibility = View.VISIBLE
+        } else {
+            binding.rvWish.visibility = View.VISIBLE
+            binding.tvWishEmptyMy.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun navigateToWishNewWishFragment() {
+        val fragment = WishNewWishFragment()
+
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fcv_wish, fragment).commit()
+            .replace(R.id.fc_wish, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

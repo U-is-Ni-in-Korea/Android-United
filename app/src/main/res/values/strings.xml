@@ -53,6 +53,19 @@
     <string name="wish_coupon_blue_unit">개</string>
     <string name="wish_coupon_green">소원권 사용하기</string>
     <string name="wish_coupon_gray">소원 성취</string>
+    <string name="wish_create_wish">소원권 만들기</string>
+    <string name="wish_write_wish">소원 작성하기</string>
+    <string name="wish_write_wish_describe">한번 입력된 소원은 수정할 수 없어요</string>
+    <string name="wish_write_ask">소원을 입력해주세요</string>
+    <string name="wish_expiration_period">유효기간</string>
+    <string name="wish_expiration_period_value">우리가 사랑할 때까지</string>
+    <string name="wish_my_wish_coupon">나의 소원권</string>
+    <string name="wish_use_my_ment">나의 소원은</string>
+    <string name="wish_use_wish">소원권 사용하기</string>
+    <string name="wish_used_subject">소원권 사용 완료!</string>
+    <string name="wish_go_home">홈으로 돌아가기</string>
+    <string name="wish_empty_my">아직 소원권이 없어요!</string>
+    <string name="wish_empty_your">아직 상대의 소원권이 없어요!</string>
 
     <!-- 히스토리 -->
     <string name="item_history_emptylist_title">승부 히스토리가 없어요</string>

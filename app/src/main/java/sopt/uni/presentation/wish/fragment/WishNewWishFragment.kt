@@ -1,27 +1,29 @@
-package sopt.uni.presentation.wish
+package sopt.uni.presentation.wish.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import sopt.uni.databinding.FragmentWishYourWishBinding
+import sopt.uni.databinding.FragmentWishNewWishBinding
 
-class WishYourWishFragment : Fragment() {
-    private var _binding: FragmentWishYourWishBinding? = null
-    private val binding: FragmentWishYourWishBinding
-        get() = requireNotNull(_binding) { "binding is null" }
+class WishNewWishFragment : Fragment() {
+    private var _binding: FragmentWishNewWishBinding? = null
+    private val binding: FragmentWishNewWishBinding
+        get() = requireNotNull(_binding) { "bindig is null" }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentWishYourWishBinding.inflate(inflater, container, false)
+        _binding = FragmentWishNewWishBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.bgNewWish.setOnClickListener {
+        }
     }
 }
