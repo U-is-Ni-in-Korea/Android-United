@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="missionResultViewModel"
+            type="sopt.uni.presentation.shortgame.missionresult.MissionResultViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_mission_result_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Gray_100"
+            tools:context=".presentation.shortgame.missionresult.MissionResultActivity">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/mission_result_title"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintBottom_toTopOf="@id/tv_my_mission"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_dismiss"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_my_mission"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/mission_result_my_mission"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/cl_card_my_mission"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_partner_mission"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mission_result_your_mission"
+                android:textColor="@color/Gray_600"
+                app:layout_constraintLeft_toLeftOf="@id/cl_card_partner_mission"
+                app:layout_constraintTop_toTopOf="@id/tv_my_mission" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_card_my_mission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_mission_detail_textbox"
+                android:padding="20dp"
+                app:layout_constraintEnd_toStartOf="@id/cl_card_partner_mission"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_my_mission">
+
+                <TextView
+                    android:id="@+id/tv_my_mission_content_title"
+                    style="@style/Btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{missionResultViewModel.myMissionResult.missionContent.content}"
+                    android:textColor="@color/Gray_600"
+                    android:textFontWeight="600"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="헤드셋" />
+
+                <TextView
+                    android:id="@+id/tv_my_mission_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pretendard"
+                    android:text="@{missionResultViewModel.myMissionResult.missionContent.missionCategory.title}"
+                    android:textColor="@color/Gray_600"
+                    android:textFontWeight="400"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_mission_content_title"
+                    tools:text="키워드 스무고개" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_my_mission__result"
+                    style="@style/Caption"
+                    setDateResult="@{missionResultViewModel.myMissionResult.updatedAt}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_mission_title"
+                    tools:background="@drawable/wish_ment_green_rectangle"
+                    tools:text="23:22 미션성공"
+                    tools:textColor="@color/Green_600" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_card_partner_mission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_mission_detail_textbox"
+                android:padding="20dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cl_card_my_mission"
+                app:layout_constraintTop_toBottomOf="@id/tv_my_mission">
+
+                <TextView
+                    android:id="@+id/tv_partner_mission_content_title"
+                    style="@style/Btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{missionResultViewModel.partnerMissionResult.missionContent.content}"
+                    android:textColor="@color/Gray_600"
+                    android:textFontWeight="600"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="헤드셋" />
+
+                <TextView
+                    android:id="@+id/tv_partner_mission_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pretendard"
+                    android:text="@{missionResultViewModel.partnerMissionResult.missionContent.missionCategory.title}"
+                    android:textColor="@color/Gray_600"
+                    android:textFontWeight="400"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_partner_mission_content_title"
+                    tools:text="키워드 스무고개" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_partner_mission__result"
+                    style="@style/Caption"
+                    setDateResult="@{missionResultViewModel.partnerMissionResult.updatedAt}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_partner_mission_title"
+                    tools:background="@drawable/wish_ment_pink_rectangle"
+                    tools:text="미션실패"
+                    tools:textColor="@color/Pink_600" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_card_partner_mission_empty"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_gray_150_round_10"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/cl_card_partner_mission"
+                app:layout_constraintEnd_toEndOf="@id/cl_card_partner_mission"
+                app:layout_constraintStart_toStartOf="@id/cl_card_partner_mission"
+                app:layout_constraintTop_toTopOf="@id/cl_card_partner_mission">
+
+                <TextView
+                    android:id="@+id/tv_partner_mission_empty_script"
+                    style="@style/Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/mission_result_partner_empty_script"
+                    android:textAlignment="center"
+                    android:textColor="@color/Gray_300"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_mission_result_script"
+                style="@style/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_card_my_mission"
+                tools:text="@string/mission_result_win" />
+
+            <ImageView
+                android:id="@+id/iv_mission_result"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/bg_round_10"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_mission_result_script"
+                tools:src="@drawable/mission_win" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_go_wish"
+                style="@style/Btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginBottom="29dp"
+                android:background="@drawable/bg_shortgame_btn"
+                android:padding="12dp"
+                android:text="@string/mission_result_go_wish"
+                android:textColor="@color/Gray_000"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_mission_result" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_go_home"
+                style="@style/Btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginBottom="29dp"
+                android:background="@drawable/bg_mission_image_round"
+                android:padding="12dp"
+                android:text="@string/mission_result_go_wish"
+                android:textColor="@color/Lightblue_600"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_mission_result" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
