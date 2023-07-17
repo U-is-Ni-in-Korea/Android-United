@@ -7,5 +7,5 @@ data class MissionDetail(
     val rule: String,
     val tip: String,
     val image: String,
-    val missionContentList: List<MissionContent>
+    val missionContentList: List<MissionExample>
 )
