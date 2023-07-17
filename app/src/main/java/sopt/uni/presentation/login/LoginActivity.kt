@@ -120,11 +120,9 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Timber.e("signInWithCredential:success")
                     startActivity<NickNameActivity>()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Timber.e("signInWithCredential:failure", task.exception)
                 }
             }
