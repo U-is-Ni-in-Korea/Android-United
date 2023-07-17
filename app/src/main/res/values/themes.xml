@@ -19,4 +19,9 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="Theme.UNIAOS.GrayStatusBar" parent="Base.Theme.UNIAOS">
+        <item name="android:statusBarColor">@color/Gray_100</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
 </resources>

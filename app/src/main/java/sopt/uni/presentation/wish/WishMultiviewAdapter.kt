@@ -9,10 +9,12 @@ import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ItemWishLargeBinding
 import sopt.uni.databinding.ItemWishSmallBinding
 
-class WishMultiviewAdapter(private val context: Context) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WishMultiviewAdapter(
+    private val context: Context,
+    private val onItemClick: () -> Unit,
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var datas = mutableListOf<WishMultiData>()
+    private var datas = listOf<WishMultiData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -36,16 +38,27 @@ class WishMultiviewAdapter(private val context: Context) :
         return datas[position].type
     }
 
+    fun submitData(new: List<WishMultiData>) {
+        datas = new.toList()
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (datas[position].type) {
-            MULTI_TYPE_WISH1 -> {
-                (holder as MultiViewWishHolder1).bind(datas[position])
+        when (holder) {
+            is MultiViewWishHolder1 -> {
+                holder.bind(datas[position])
                 holder.setIsRecyclable(false)
+                holder.itemView.setOnClickListener {
+                    onItemClick.invoke()
+                }
             }
 
-            else -> {
-                (holder as MultiViewWishHolder2).bind(datas[position])
+            is MultiViewWishHolder2 -> {
+                holder.bind(datas[position])
                 holder.setIsRecyclable(false)
+                holder.itemView.setOnClickListener {
+                    onItemClick.invoke()
+                }
             }
         }
     }
