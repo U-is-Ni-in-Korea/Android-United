@@ -27,29 +27,40 @@ class MypageProfilEditActivity :
         val datePickerDialogFragment = MypageDatePickerDialogFragment()
         binding.viewModel = viewModel
 
-        with(binding) {
-            datePickerDialogFragment.setDatePickerDialogListener(object : DatePickerDialogListener {
-                override fun onDateSelected(date: String) {
-                    mypageProfilEditCoupleDateEdittext.setText(date)
-                }
-            })
+        setupDatePicker(datePickerDialogFragment)
+        setupBackButton()
+        setupSaveButton()
+        setupImageChangeButton()
+    }
 
-            mypageProfilEditCoupleDateEdittext.setOnSingleClickListener {
-                datePickerDialogFragment.show(supportFragmentManager, "MyPageDatePickerDialog")
+    private fun setupDatePicker(datePickerDialogFragment: MypageDatePickerDialogFragment) {
+        datePickerDialogFragment.setDatePickerDialogListener(object : DatePickerDialogListener {
+            override fun onDateSelected(date: String) {
+                binding.mypageProfilEditCoupleDateEdittext.setText(date)
             }
+        })
 
-            mypageProfilEditBack.setOnSingleClickListener {
-                startActivity<MypageSettingActivity>()
-                finish()
-            }
+        binding.mypageProfilEditCoupleDateEdittext.setOnSingleClickListener {
+            datePickerDialogFragment.show(supportFragmentManager, "MyPageDatePickerDialog")
+        }
+    }
 
-            mypageProfilEditSave.setOnSingleClickListener {
-                // 프로필 저장 처리
-            }
+    private fun setupBackButton() {
+        binding.mypageProfilEditBack.setOnSingleClickListener {
+            startActivity<MypageSettingActivity>()
+            finish()
+        }
+    }
 
-            mypageProfilEditImageChange.setOnSingleClickListener {
-                // 프로필 이미지 바꾸기
-            }
+    private fun setupSaveButton() {
+        binding.mypageProfilEditSave.setOnSingleClickListener {
+            // 프로필 저장 처리
+        }
+    }
+
+    private fun setupImageChangeButton() {
+        binding.mypageProfilEditImageChange.setOnSingleClickListener {
+            // 프로필 이미지 바꾸기
         }
     }
 
@@ -63,7 +74,7 @@ class MypageProfilEditActivity :
                     v.clearFocus()
                     val imm: InputMethodManager =
                         getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
                 }
             }
         }

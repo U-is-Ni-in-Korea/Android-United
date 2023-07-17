@@ -113,4 +113,45 @@
     <string name="mission_record_mission_fail">미션 실패</string>
     <string name="mission_record_stop_game">승부 그만두기</string>
 
+    <!-- 마이페이지 다이얼로그 -->
+    <string name="logout_dialog_title">로그아웃 하시겠습니까?</string>
+    <string name="logout_message">로그아웃</string>
+    <string name="delete_dialog_title">계정을 탈퇴하시겠어요?</string>
+    <string name="delete_dialog_descirption">모든 기록이 사라져요</string>
+    <string name="delete_message">탈퇴</string>
+    <string name="disconnect_dialog_title">정말 커플 연결을 해제하시겠어요?</string>
+    <string name="disconnect_dialog_description">해제하면 다시 되돌릴 수 없어요</string>
+    <string name="disconnect_message">연결 해제</string>
+    <string name="year">"년 "</string>
+    <string name="month">"월 "</string>
+    <string name="day">일</string>
+
+    <!-- MypageAccount -->
+    <string name="mypage_account_title">계정</string>
+    <string name="mypage_account_logout_text">로그아웃</string>
+    <string name="mypage_account_delete_text">탈퇴</string>
+    <string name="mypage_account_disconnect_text">커플 연결 해제</string>
+
+    <!-- MypageProfilEdit -->
+    <string name="mypage_profil_edit_title">프로필 수정</string>
+    <string name="mypage_profil_edit_save">저장</string>
+    <string name="mypage_profil_edit_image_change">사진 변경하기</string>
+    <string name="mypage_profil_edit_nickname_title">닉네임</string>
+    <string name="mypage_profil_edit_errortext_over">글자수를 초과했어요</string>
+    <string name="mypage_profil_edit_errortext_zero">닉네임을 입력해주세요</string>
+    <string name="mypage_profil_edit_couple_date_title">커플 기념일</string>
+    <string name="mypage_profil_edit_email_title">연동 이메일</string>
+
+    <!-- MypageSettiong -->
+    <string name="mypage_setting_title">설정</string>
+    <string name="mypage_setting_name">철수</string>
+    <string name="mypage_setting_email">uni@gmail.com</string>
+    <string name="mypage_setting_profil_edit">프로필 수정</string>
+    <string name="mypage_setting_service_title">서비스 이용</string>
+    <string name="mypage_setting_service_account_text">계정</string>
+    <string name="mypage_setting_service_text">서비스 이용약관</string>
+    <string name="mypage_setting_service_privacy_text">개인정보 처리방침</string>
+    <string name="mypage_setting_service_opensource_text">오픈소스 라이브러리</string>
+    <string name="mypage_setting_service_developer_info_text">개발자 정보</string>
+
 </resources>

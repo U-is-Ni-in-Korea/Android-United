@@ -25,9 +25,9 @@ class MypageDatePickerDialogFragment :
         }
         binding.btnRight.setOnSingleClickListener {
             val selectedDate = binding.datePicker.year.toString() +
-                "년 " + (binding.datePicker.month + 1).toString() +
-                "월 " + binding.datePicker.dayOfMonth.toString() +
-                "일"
+                getString(R.string.year) + (binding.datePicker.month + 1).toString() +
+                getString(R.string.month) + binding.datePicker.dayOfMonth.toString() +
+                getString(R.string.day)
 
             listener?.onDateSelected(selectedDate)
             dismiss()
