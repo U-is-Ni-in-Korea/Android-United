@@ -154,4 +154,18 @@
     <string name="mypage_setting_service_opensource_text">오픈소스 라이브러리</string>
     <string name="mypage_setting_service_developer_info_text">개발자 정보</string>
 
+    <!-- missionResult -->
+    <string name="mission_result_title">한판 승부 결과</string>
+    <string name="mission_result_my_mission">나의 미션</string>
+    <string name="mission_result_your_mission">상대의 미션</string>
+    <string name="mission_result_win">멋진 승리네요!</string>
+    <string name="mission_result_lose">아쉬운 패배네요</string>
+    <string name="mission_result_draw">앗 무승부에요</string>
+    <string name="mission_result_undecided">승부 종료 후 히스토리에서 최종 결과를 확인하세요</string>
+    <string name="mission_result_go_wish">소원권 조회하러 가기</string>
+    <string name="mission_result_go_home">홈으로 돌아가기</string>
+    <string name="mission_result_partner_empty_script">상대가 미션을 끝내면\n 승부 히스토리에서\n 확인할 수 있어요</string>
+    <string name="mission_result_complete">미션 성공</string>
+    <string name="mission_result_failure">미션 실패</string>
+
 </resources>
