@@ -1,11 +1,15 @@
 package sopt.uni.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sopt.uni.data.repository.auth.AuthRepository
 import sopt.uni.data.repository.auth.AuthRepositoryImpl
+import javax.inject.Singleton
+import sopt.uni.data.repository.onboarding.OnBoardingRepository
+import sopt.uni.data.repository.onboarding.OnBoardingRepositoryImpl
 import javax.inject.Singleton
 
 @Module
@@ -14,4 +18,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideAuthRepository(authRepository: AuthRepositoryImpl): AuthRepository = authRepository
+
+    @Provides
+    @Singleton
+    fun provideOnBoardingRepository(onBoardingRepository: OnBoardingRepositoryImpl): OnBoardingRepository = onBoardingRepository
 }

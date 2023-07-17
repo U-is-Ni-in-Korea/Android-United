@@ -23,6 +23,8 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
         setContentView(binding.root)
 
         binding.viewModel = nickNameViewModel
+
+        patchNickName()
         moveToInviteHub()
         moveToPrevPage()
     }
@@ -37,6 +39,10 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
         binding.ivBackArrow.setOnSingleClickListener {
             finish()
         }
+    }
+
+    private fun patchNickName(){
+        nickNameViewModel.patchNickName(nickNameViewModel.nickName.value)
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
