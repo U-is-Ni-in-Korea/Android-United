@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 한판승부 결과 -->
+    <integer-array name="result_state_image">
+        <item>@drawable/mission_win</item>
+        <item>@drawable/mission_lose</item>
+        <item>@drawable/mission_draw</item>
+        <item>@drawable/mission_undecided</item>
+    </integer-array>
+
+    <integer-array name="result_state_text">
+        <item>@string/mission_result_win</item>
+        <item>@string/mission_result_lose</item>
+        <item>@string/mission_result_draw</item>
+        <item>@string/mission_result_undecided</item>
+    </integer-array>
+</resources>
