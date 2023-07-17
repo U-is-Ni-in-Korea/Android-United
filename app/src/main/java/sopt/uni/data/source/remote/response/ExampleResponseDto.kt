@@ -8,4 +8,3 @@ data class ExampleResponseDto(
     @SerialName("id")
     val id: Int,
 )
-
