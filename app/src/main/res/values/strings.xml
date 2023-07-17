@@ -108,6 +108,7 @@
     <string name="mission_record_mission_complete">미션 완료</string>
     <string name="mission_record_mission_fail">미션 실패</string>
     <string name="mission_record_stop_game">승부 그만두기</string>
+    <string name="on_boarding_image">온보딩 이미지</string>
 
     <!-- 마이페이지 다이얼로그 -->
     <string name="logout_dialog_title">로그아웃 하시겠습니까?</string>

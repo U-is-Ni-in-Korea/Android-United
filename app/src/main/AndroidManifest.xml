@@ -62,6 +62,7 @@
         <activity
             android:name=".presentation.invite.NickNameActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.invite.InviteHubActivity"
