@@ -1,5 +1,6 @@
 package sopt.uni.presentation.shortgame.createshortgame
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
@@ -9,6 +10,9 @@ class CreateShortGameViewModel : ViewModel() {
     private val _selectedMissionId = MutableLiveData<Int>()
     val selectedMissionId = _selectedMissionId
 
+    private val _roundGameId = MutableLiveData<Int>()
+    val roundGameId = _roundGameId
+
     private val _missionList = MutableLiveData<List<Mission>>()
     val missionList = _missionList
 
@@ -17,6 +21,9 @@ class CreateShortGameViewModel : ViewModel() {
     val contentLength = wishContent.map {
         it.length
     }
+
+    private val _isCreateSuccess = MutableLiveData<Boolean>(false)
+    val isCreateSuccess = _isCreateSuccess
 
     init {
         setDummyList()
@@ -31,10 +38,15 @@ class CreateShortGameViewModel : ViewModel() {
                     image = "https://github.com/U-is-Ni-in-Korea/Android-United/assets/50603273/8c345eb3-d688-42bd-8585-a02f1016e213",
                     title = "뀨$i",
                     id = i,
-                )
+                ),
             )
         }
         _missionList.value = missionList
+    }
+
+    fun createShortGame() {
+        _isCreateSuccess.postValue(true)
+        _roundGameId.value = 1
     }
 
     fun setSelectedMissionId(missionId: Int) {
