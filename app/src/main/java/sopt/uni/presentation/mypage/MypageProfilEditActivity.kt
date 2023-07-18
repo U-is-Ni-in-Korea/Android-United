@@ -87,7 +87,7 @@ class MypageProfilEditActivity :
         @JvmStatic
         @BindingAdapter("setMypageContentLength")
         fun setMypageContentLength(view: TextView, length: Int) {
-            if (length >= MAX_LENGTH || length == 0) {
+            if (length > MAX_LENGTH || length == 0) {
                 view.setTextColor(view.context.getColor(R.color.Red_500))
             } else {
                 view.setTextColor(view.context.getColor(R.color.Gray_400))
@@ -98,7 +98,7 @@ class MypageProfilEditActivity :
         @JvmStatic
         @BindingAdapter("setMypageOverErrorTextVisible")
         fun setMypageOverErrorTextVisible(view: TextView, length: Int) {
-            if (length >= MAX_LENGTH) {
+            if (length > MAX_LENGTH) {
                 view.visibility = View.VISIBLE
             } else {
                 view.visibility = View.INVISIBLE
@@ -118,7 +118,7 @@ class MypageProfilEditActivity :
         @JvmStatic
         @BindingAdapter("setMypageContentLength")
         fun setMypageContentLength(view: EditText, length: Int) {
-            if (length >= MAX_LENGTH || length == 0) {
+            if (length > MAX_LENGTH || length == 0) {
                 view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text_error)
             } else {
                 view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text)
