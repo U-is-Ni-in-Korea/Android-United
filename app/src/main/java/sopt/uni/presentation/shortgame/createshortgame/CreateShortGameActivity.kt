@@ -86,7 +86,7 @@ class CreateShortGameActivity :
             missionAdapter.submitList(it)
         }
         viewModel.isCreateSuccess.observe(this) {
-            if (it == true) {
+            if (it) {
                 MissionRecordActivity.start(
                     this,
                     viewModel.roundGameId.value
