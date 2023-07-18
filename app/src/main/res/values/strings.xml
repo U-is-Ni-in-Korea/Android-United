@@ -165,4 +165,12 @@
     <string name="mission_result_failure">미션 실패</string>
     <string name="history_result_win">님이 이겼어요</string>
 
+    <!-- CreateShortGame dialog -->
+    <string name="create_short_game_exit_dialog_title">승부 만들기가 완료되지 않았어요</string>
+    <string name="create_short_game_exit_dialog_body">여기서 나가실래요</string>
+    <string name="create_short_game_exit_dialog_exit">나가기</string>
+    <string name="create_short_game_create_dialog_title">설정된 내용으로 승부를 만들까요?</string>
+    <string name="create_short_game_create_dialog_body">한번 설정한 내용은 변경할 수 없어요</string>
+    <string name="create_short_game_create_dialog_create">만들기</string>
+    
 </resources>
