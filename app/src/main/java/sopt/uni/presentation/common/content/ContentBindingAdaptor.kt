@@ -1,8 +1,10 @@
 package sopt.uni.presentation.common.content
 
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import sopt.uni.R
 
 @BindingAdapter("setNicknameErrorMessage")
 fun setNicknameErrorMessage(view: TextView, length: Int) {
@@ -13,5 +15,14 @@ fun setNicknameErrorMessage(view: TextView, length: Int) {
     } else {
         view.text = "글자 수를 초과했어요"
         view.visibility = View.VISIBLE
+    }
+}
+
+@BindingAdapter("setNicknameContentLength")
+fun setNicknameContentLength(view: EditText, length: Int) {
+    if (length > MAX_LENGTH) {
+        view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text_error)
+    } else {
+        view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text)
     }
 }
