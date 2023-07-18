@@ -1,7 +1,7 @@
 package sopt.uni.di
 
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sopt.uni.data.repository.auth.AuthRepository
@@ -10,8 +10,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
-    @Binds
+object RepositoryModule {
+    @Provides
     @Singleton
-    abstract fun provideAuthRepository(authRepository: AuthRepositoryImpl): AuthRepository
+    fun provideAuthRepository(authRepository: AuthRepositoryImpl): AuthRepository = authRepository
 }
