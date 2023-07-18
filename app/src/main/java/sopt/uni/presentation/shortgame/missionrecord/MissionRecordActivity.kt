@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMissionRecordBinding
+import sopt.uni.presentation.shortgame.createshortgame.dialog.CreateShortGameDialogFragment
 import sopt.uni.presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity
+import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
@@ -22,12 +24,41 @@ class MissionRecordActivity :
         setContentView(binding.root)
         binding.missionRecordViewModel = viewModel
         setClickListener()
+        setViewModelObserve()
+    }
+
+    private fun cancelDialog() {
+        CreateShortGameDialogFragment().apply {
+            titleText = this@MissionRecordActivity.resources.getString(R.string.mission_detatil_record_rule_title)
+            bodyText = this@MissionRecordActivity.resources.getString(R.string.mission_record_cancel_dialog_body)
+            confirmButtonText = this@MissionRecordActivity.resources.getString(R.string.dialog_ok_text)
+            dismissButtonText = this@MissionRecordActivity.resources.getString(R.string.dialog_cancel_text)
+            confirmClickListener = {
+                viewModel.requestStopMission()
+                this.dismiss()
+            }
+            dismissClickListener = {
+                this.dismiss()
+            }
+        }.show(supportFragmentManager, "")
+    }
+
+    private fun setViewModelObserve() {
+        viewModel.isMissionCancelSuccess.observe(this) {
+            if (it) finish()
+        }
+        viewModel.isMissionRequestSuccess.observe(this) {
+            if (it) {
+                MissionResultActivity.start(this, viewModel.roundGameId)
+                finish()
+            }
+        }
     }
 
     private fun setClickListener() {
         binding.apply {
             tvStopGame.setOnSingleClickListener {
-                // TODO : 승부 그만두기 다이얼로그
+                cancelDialog()
             }
             ivMissionDetail.setOnSingleClickListener {
                 MissionDetailRecordActivity.start(
