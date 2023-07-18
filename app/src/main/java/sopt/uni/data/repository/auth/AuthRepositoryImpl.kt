@@ -12,7 +12,7 @@ class AuthRepositoryImpl @Inject constructor(
         kotlin.runCatching {
             authDatasource.getToken(social, RequestAuthDto(code)).toToken()
         }.onSuccess {
-            Result.success(it.toToken())
+            Result.success(it)
         }.onFailure {
             Result.failure<Token>(it)
         }

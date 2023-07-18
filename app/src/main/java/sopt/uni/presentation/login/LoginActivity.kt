@@ -64,8 +64,13 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                             Timber.e("Kakao Login Success ${it.token} ${it.id}")
                         }
 
-                        is KakaoLoginService.LoginState.Failure -> Timber.d("Kakao Login Failed ${it.error}")
-                        else -> Timber.d("Kakao INIT")
+                        is KakaoLoginService.LoginState.Failure -> {
+                            Timber.d("Kakao Login Failed ${it.error}")
+                        }
+
+                        else -> {
+                            Timber.d("Kakao INIT")
+                        }
                     }
                 }
         }
@@ -88,7 +93,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             .requestEmail()
             .requestId()
             .requestProfile()
-            .requestServerAuthCode("$GOOGLE_CLIENT_ID")
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
@@ -102,8 +106,8 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
                         try {
                             val account = task.getResult(ApiException::class.java)!!
-                            Timber.e("firebaseAuthWithGoogle:" + account.serverAuthCode)
-                            loginViewModel.getAccessToken("google", account.serverAuthCode.toString())
+                            Timber.e("firebaseAuthWithGoogle:" + account.idToken)
+                            loginViewModel.getAccessToken("google", account.idToken!!)
                             firebaseAuthWithGoogle(account.idToken!!)
                         } catch (e: ApiException) {
                             Timber.e("Google sign in failed", e)

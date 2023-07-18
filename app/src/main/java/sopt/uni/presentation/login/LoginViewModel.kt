@@ -23,15 +23,14 @@ class LoginViewModel @Inject constructor(
 
     fun getAccessToken(social: String, code: String) {
         viewModelScope.launch {
-            kotlin.runCatching {
-                authRepository.getToken(social, code)
-            }.onSuccess {
-                SparkleStorage.accessToken = it.getOrNull()?.accessToken ?: ""
-                _loginResult.value = InHouseLoginState.Success
-                Timber.e("getAccessToken: ${SparkleStorage.accessToken}")
-            }.onFailure {
-                _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
-            }
+            authRepository.getToken(social, code)
+                .onSuccess { token ->
+                    SparkleStorage.accessToken = token.accessToken
+                    _loginResult.value = InHouseLoginState.Success
+                    Timber.tag("accessToken").d("getAccessToken with server: $token.accessToken")
+                }.onFailure {
+                    _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
+                }
         }
     }
 
