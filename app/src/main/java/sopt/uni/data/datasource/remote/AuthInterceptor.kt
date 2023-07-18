@@ -18,7 +18,7 @@ class AuthInterceptor() : Interceptor {
         val headerRequest = originalRequest.newBuilder()
             .header(
                 "Authorization",
-                accessToken ?: return chain.proceed(originalRequest),
+                if (accessToken != null) BEARER + accessToken else return chain.proceed(originalRequest),
             )
             .build()
         return chain.proceed(headerRequest)
@@ -29,5 +29,9 @@ class AuthInterceptor() : Interceptor {
             return true
         }
         return false
+    }
+
+    companion object {
+        private const val BEARER = "Bearer "
     }
 }
