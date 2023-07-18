@@ -26,7 +26,7 @@ class HistoryDetailActivity :
     }
 
     private fun setBackBtnOnClickListener() {
-        binding.historySubBack.setOnSingleClickListener {
+        binding.btnHistoryDetailBack.setOnSingleClickListener {
             startActivity<HistoryActivity>()
             finish()
         }

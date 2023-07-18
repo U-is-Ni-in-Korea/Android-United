@@ -16,31 +16,32 @@
         android:background="@color/Gray_100"
         tools:context=".presentation.history.HistoryDetailActivity">
 
-        <ImageView
-            android:id="@+id/history_sub_back"
+        <ImageButton
+            android:id="@+id/btn_history_detail_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@null"
             android:src="@drawable/ic_backarrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/history_sub_title"
+            android:id="@+id/tv_history_detail_title"
             style="@style/Title1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/history_title"
             android:textColor="@color/Gray_600"
-            app:layout_constraintBottom_toBottomOf="@+id/history_sub_back"
-            app:layout_constraintStart_toEndOf="@id/history_sub_back"
-            app:layout_constraintTop_toTopOf="@+id/history_sub_back" />
+            app:layout_constraintBottom_toBottomOf="@+id/btn_history_detail_back"
+            app:layout_constraintStart_toEndOf="@id/btn_history_detail_back"
+            app:layout_constraintTop_toTopOf="@+id/btn_history_detail_back" />
 
         <TextView
-            android:id="@+id/history_sub_date"
+            android:id="@+id/tv_history_detail_date"
             style="@style/Body2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,22 +51,22 @@
             android:text="@{vm.history.date}"
             android:textColor="@color/Gray_500"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_title"
             tools:text="23.07.18" />
 
         <ImageView
-            android:id="@+id/history_sub_result_image"
+            android:id="@+id/iv_history_detail_result_image"
             setImage="@{vm.history.image}"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_date"
             tools:src="@drawable/rectanglebig" />
 
         <TextView
-            android:id="@+id/history_sub_game_title"
+            android:id="@+id/tv_history_detail_game_title"
             style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,8 +74,8 @@
             android:layout_marginTop="20dp"
             android:text="@{vm.history.title}"
             android:textColor="@color/Gray_600"
-            app:layout_constraintStart_toEndOf="@+id/history_sub_result_image"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_date"
+            app:layout_constraintStart_toEndOf="@+id/iv_history_detail_result_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_date"
             tools:text="대답 유도하기" />
 
         <TextView
@@ -86,12 +87,12 @@
             android:layout_marginTop="5dp"
             android:text="@{vm.history.result == `DRAW` ? @string/history_result_draw_comment : @string/history_result_win_comment(vm.history.winner)}"
             android:textColor="@color/Lightblue_500"
-            app:layout_constraintStart_toEndOf="@+id/history_sub_result_image"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_game_title"
+            app:layout_constraintStart_toEndOf="@+id/iv_history_detail_result_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_game_title"
             tools:text="철수님이 승리했습니다" />
 
         <TextView
-            android:id="@+id/history_sub_my"
+            android:id="@+id/tv_history_detail_my"
             style="@style/Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,17 +101,17 @@
             android:text="@string/history_detail_my_text"
             android:textColor="@color/Gray_600"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_result_image" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_history_detail_result_image" />
 
         <TextView
-            android:id="@+id/history_sub_rival"
+            android:id="@+id/tv_history_detail_rival"
             style="@style/Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/history_detail_rival_text"
             android:textColor="@color/Gray_600"
-            app:layout_constraintStart_toStartOf="@+id/history_sub_rival_mission_constraint_layout"
-            app:layout_constraintTop_toTopOf="@+id/history_sub_my" />
+            app:layout_constraintStart_toStartOf="@+id/cl_history_detail_rival_mission"
+            app:layout_constraintTop_toTopOf="@+id/tv_history_detail_my" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -120,7 +121,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/history_sub_my_mission_constraint_layout"
+            android:id="@+id/cl_history_detail_my_mission"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -129,10 +130,10 @@
             android:background="@drawable/bg_mission_detail_textbox"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_my">
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_my">
 
             <TextView
-                android:id="@+id/history_sub_my_mission"
+                android:id="@+id/tv_history_detail_my_mission"
                 style="@style/Btn1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -145,7 +146,7 @@
                 tools:text="헤드셋" />
 
             <TextView
-                android:id="@+id/history_sub_mission_success"
+                android:id="@+id/tv_history_detail_mission_success"
                 style="@style/Caption"
                 result="@{vm.history.myMission.result}"
                 time="@{vm.history.myMission.time}"
@@ -155,8 +156,8 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/history_sub_my_mission"
-                app:layout_constraintTop_toBottomOf="@+id/history_sub_my_mission"
+                app:layout_constraintStart_toStartOf="@+id/tv_history_detail_my_mission"
+                app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_my_mission"
                 tools:background="@drawable/bg_mission_fail_textbox"
                 tools:text="@string/history_detail_mission_fail_text"
                 tools:textColor="@color/Pink_600" />
@@ -164,7 +165,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/history_sub_rival_mission_constraint_layout"
+            android:id="@+id/cl_history_detail_rival_mission"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -173,10 +174,10 @@
             android:background="@drawable/bg_mission_detail_textbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/history_sub_rival">
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_rival">
 
             <TextView
-                android:id="@+id/history_sub_rival_mission"
+                android:id="@+id/tv_history_detail_rival_mission"
                 style="@style/Btn1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -189,7 +190,7 @@
                 tools:text="커피" />
 
             <TextView
-                android:id="@+id/history_sub_mission_fail_text"
+                android:id="@+id/tv_history_detail_mission_fail_text"
                 style="@style/Caption"
                 result="@{vm.history.partnerMission.result}"
                 time="@{vm.history.partnerMission.time}"
@@ -199,8 +200,8 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/history_sub_rival_mission"
-                app:layout_constraintTop_toBottomOf="@+id/history_sub_rival_mission"
+                app:layout_constraintStart_toStartOf="@+id/tv_history_detail_rival_mission"
+                app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_rival_mission"
                 tools:background="@drawable/bg_mission_fail_textbox"
                 tools:text="@string/history_detail_mission_fail_text"
                 tools:textColor="@color/Pink_600" />

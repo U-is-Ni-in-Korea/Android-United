@@ -20,26 +20,26 @@ class MypageAccountActivity :
     }
 
     private fun setupBackButton() {
-        binding.mypageAccountBack.setOnSingleClickListener {
+        binding.btnMypageAccountBack.setOnSingleClickListener {
             startActivity<MypageSettingActivity>()
             finish()
         }
     }
 
     private fun setupAccountList1() {
-        binding.mypageAccountList1.setOnSingleClickListener {
+        binding.tvMypageAccountLogout.setOnSingleClickListener {
             MypageAccountLogoutDialogFragment().show(supportFragmentManager, "MypageAccountLogoutDialogFragment")
         }
     }
 
     private fun setupAccountList2() {
-        binding.mypageAccountList2.setOnSingleClickListener {
-            MypageAccountDeleteDialogFragment().show(supportFragmentManager, "MypageAccountDeleteDialogFragment")
+        binding.tvMypageAccountSecession.setOnSingleClickListener {
+            MypageAccountDeleteDialogFragment().show(supportFragmentManager, "MypageAccountSecessionDialogFragment")
         }
     }
 
     private fun setupAccountList3() {
-        binding.mypageAccountList3.setOnSingleClickListener {
+        binding.tvMypageAccountDisconnect.setOnSingleClickListener {
             MypageAccountCoupleDisconnectDialogFragment().show(supportFragmentManager, "MypageAccountCoupleDisconnectDialogFragment")
         }
     }

@@ -36,30 +36,30 @@ class MypageProfilEditActivity :
     private fun setupDatePicker(datePickerDialogFragment: MypageDatePickerDialogFragment) {
         datePickerDialogFragment.setDatePickerDialogListener(object : DatePickerDialogListener {
             override fun onDateSelected(date: String) {
-                binding.mypageProfilEditCoupleDateEdittext.setText(date)
+                binding.tvMypageProfilEditCoupleDate.setText(date)
             }
         })
 
-        binding.mypageProfilEditCoupleDateEdittext.setOnSingleClickListener {
+        binding.tvMypageProfilEditCoupleDate.setOnSingleClickListener {
             datePickerDialogFragment.show(supportFragmentManager, "MyPageDatePickerDialog")
         }
     }
 
     private fun setupBackButton() {
-        binding.mypageProfilEditBack.setOnSingleClickListener {
+        binding.btnMypageProfilEditBack.setOnSingleClickListener {
             startActivity<MypageSettingActivity>()
             finish()
         }
     }
 
     private fun setupSaveButton() {
-        binding.mypageProfilEditSave.setOnSingleClickListener {
+        binding.tvMypageProfilEditSave.setOnSingleClickListener {
             // 프로필 저장 처리
         }
     }
 
     private fun setupImageChangeButton() {
-        binding.mypageProfilEditImageChange.setOnSingleClickListener {
+        binding.tvMypageProfilEditImageChange.setOnSingleClickListener {
             // 프로필 이미지 바꾸기
         }
     }
