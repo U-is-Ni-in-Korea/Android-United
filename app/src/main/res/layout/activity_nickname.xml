@@ -60,6 +60,7 @@
             android:hint="@string/nickname"
             android:imeOptions="actionDone"
             android:inputType="text"
+            android:maxLength="15"
             android:paddingHorizontal="15dp"
             android:paddingVertical="14dp"
             android:text="@={viewModel.nickName}"
