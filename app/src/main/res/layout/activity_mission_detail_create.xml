@@ -5,13 +5,16 @@
 
     <data>
 
+        <variable
+            name="missionDetailCreateViewModel"
+            type="sopt.uni.presentation.shortgame.missiondetailcreate.MissionDetailCreateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/Gray_100"
-        tools:context=".presentation.MissionDetailCreateActivity">
+        tools:context=".presentation.shortgame.missiondetailcreate.MissionDetailCreateActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_mission_detail_create_app_bar"
@@ -64,13 +67,14 @@
 
                 <ImageView
                     android:id="@+id/mission_detail_create_image"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    setImage="@{missionDetailCreateViewModel.missionDetail.image}"
+                    android:layout_width="77dp"
+                    android:layout_height="77dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/imagecard_android"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/imagecard_android" />
 
                 <TextView
                     android:id="@+id/mission_detail_create_subtitle"
@@ -79,10 +83,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/mission_detatil_create_game_title"
+                    android:text="@{missionDetailCreateViewModel.missionDetail.title}"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintStart_toEndOf="@+id/mission_detail_create_image"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/mission_detatil_create_game_title" />
 
                 <TextView
                     android:id="@+id/mission_detail_create_description"
@@ -91,7 +96,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/mission_detatil_create_game_description"
+                    android:text="@{missionDetailCreateViewModel.missionDetail.description}"
+                    tools:text="@string/mission_detatil_create_game_description"
                     android:textColor="@color/Gray_350"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/mission_detail_create_image"
@@ -109,7 +115,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mission_detail_create_image" />
 
-
                 <TextView
                     android:id="@+id/mission_detail_create_ruletext"
                     style="@style/Body2_long"
@@ -120,7 +125,8 @@
                     android:background="@drawable/bg_mission_detail_textbox"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="12dp"
-                    android:text="@string/mission_detatil_create_rule_description"
+                    android:text="@{missionDetailCreateViewModel.missionDetail.rule}"
+                    tools:text="@string/mission_detatil_create_rule_description"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +145,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mission_detail_create_ruletext" />
 
-
                 <TextView
                     android:id="@+id/mission_detail_create_tiptext"
                     style="@style/Body2_long"
@@ -150,12 +155,12 @@
                     android:background="@drawable/bg_mission_detail_textbox"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="12dp"
-                    android:text="@string/mission_detatil_create_tip_description"
+                    android:text="@{missionDetailCreateViewModel.missionDetail.tip}"
+                    tools:text="@string/mission_detatil_create_tip_description"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mission_detail_create_tiptitle" />
-
 
                 <TextView
                     android:id="@+id/mission_detail_create_mission_example"
@@ -189,7 +194,8 @@
                         android:background="@drawable/bg_mission_detail_textbox"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="20dp"
-                        android:text="@string/mission_detatil_create_example1"
+                        android:text="@{missionDetailCreateViewModel.missionDetail.missionContentList[0].content}"
+                        tools:text="@string/mission_detatil_create_example1"
                         android:textColor="@color/Gray_600" />
 
                     <Space
@@ -206,7 +212,8 @@
                         android:background="@drawable/bg_mission_detail_textbox"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="20dp"
-                        android:text="@string/mission_detatil_create_example2"
+                        android:text="@{missionDetailCreateViewModel.missionDetail.missionContentList[1].content}"
+                        tools:text="@string/mission_detatil_create_example2"
                         android:textColor="@color/Gray_600" />
                 </LinearLayout>
 
