@@ -34,7 +34,7 @@ class HistoryAdapter(
         fun onBind(data: History) {
             binding.data = data
             binding.tvItemHistoryResult.text = setResult(absoluteAdapterPosition)
-            binding.historyItemRightImage.setOnSingleClickListener {
+            binding.btnHistoryItemRight.setOnSingleClickListener {
                 onClick(absoluteAdapterPosition)
             }
         }

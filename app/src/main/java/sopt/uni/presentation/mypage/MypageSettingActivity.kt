@@ -15,26 +15,26 @@ class MypageSettingActivity :
         setContentView(binding.root)
 
         setupBackButton()
-        setupServiceList1()
+        setupServiceAccount()
         setupSettingProfilEdit()
     }
 
     private fun setupBackButton() {
-        binding.mypageSettingBack.setOnSingleClickListener {
+        binding.btnMypageSettingBack.setOnSingleClickListener {
             startActivity<HomeActivity>()
             finish()
         }
     }
 
-    private fun setupServiceList1() {
-        binding.mypageSettingServiceList1.setOnSingleClickListener {
+    private fun setupServiceAccount() {
+        binding.clMypageSettingServiceAccount.setOnSingleClickListener {
             startActivity<MypageAccountActivity>()
             finish()
         }
     }
 
     private fun setupSettingProfilEdit() {
-        binding.mypageSettingProfilEdit.setOnSingleClickListener {
+        binding.tvMypageSettingProfilEdit.setOnSingleClickListener {
             startActivity<MypageProfilEditActivity>()
             finish()
         }
