@@ -14,7 +14,6 @@ import sopt.uni.databinding.ActivityNicknameBinding
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
-import timber.log.Timber
 
 @AndroidEntryPoint
 class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activity_nickname) {
