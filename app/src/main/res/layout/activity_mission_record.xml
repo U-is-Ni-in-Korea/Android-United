@@ -65,10 +65,10 @@
 
             <ImageView
                 android:id="@+id/iv_mission"
+                setImage="@{missionRecordViewModel.myMissionResult.missionContent.missionCategory.image}"
                 android:layout_width="77dp"
                 android:layout_height="77dp"
                 android:background="@drawable/bg_mission_image_round"
-                android:src="@drawable/imagecard_android"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:text="@{missionRecordViewModel.missionContent}"
+                android:text="@{missionRecordViewModel.myMissionResult.missionContent.content}"
                 android:textColor="@color/Gray_600"
                 android:textFontWeight="600"
                 app:layout_constraintStart_toEndOf="@id/iv_mission"
@@ -93,7 +93,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/pretendard"
-                android:text="@{missionRecordViewModel.missionTitle}"
+                android:text="@{missionRecordViewModel.myMissionResult.missionContent.missionCategory.title}"
                 android:textColor="@color/Gray_600"
                 android:textFontWeight="400"
                 android:textSize="14dp"
