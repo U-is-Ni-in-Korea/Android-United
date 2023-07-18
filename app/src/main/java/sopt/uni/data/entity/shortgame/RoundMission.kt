@@ -14,5 +14,5 @@ data class RoundMission(
     @SerialName("result")
     val result: String,
     @SerialName("updatedAt")
-    val updatedAt: String,
+    val updatedAt: String?,
 )
