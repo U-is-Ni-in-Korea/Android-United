@@ -25,9 +25,9 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.getToken(social, code)
                 .onSuccess { token ->
-                    SparkleStorage.accessToken = token.accessToken
+                    SparkleStorage.accessToken = token.toToken().accessToken
                     _loginResult.value = InHouseLoginState.Success
-                    Timber.tag("accessToken").d("getAccessToken with server: $token.accessToken")
+                    Timber.tag("accessToken").d("getAccessToken with server: ${token.toToken().accessToken}")
                 }.onFailure {
                     _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
                 }

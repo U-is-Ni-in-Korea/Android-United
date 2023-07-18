@@ -33,10 +33,10 @@ class NickNameViewModel @Inject constructor(
                 onBoardingRepository.patchNickName(nickName)
             }.fold(
                 {
-                    Timber.d("닉네임 갱신이 완료되었습니다.")
+                    Timber.e("닉네임 갱신이 완료되었습니다.")
                 },
                 {
-                    Timber.d("닉네임 갱신이 실패했습니다.")
+                    Timber.e("닉네임 갱신이 실패했습니다.")
                 },
             )
         }
