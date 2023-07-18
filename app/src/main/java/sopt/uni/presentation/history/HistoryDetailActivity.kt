@@ -10,7 +10,6 @@ import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
-import timber.log.Timber
 
 /** TODO 준희 : @AndroiEntryPoint 붙이기*/
 class HistoryDetailActivity :
@@ -34,7 +33,6 @@ class HistoryDetailActivity :
 
     private fun setHistory() {
         val history = intent.parcelable<History>(HISTORY)
-        Timber.tag("asdf").d("$history")
         viewModel.setHistory(requireNotNull(history))
     }
 }
