@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import sopt.uni.R
 import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.databinding.ActivityMissionResultBinding
+import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
@@ -73,7 +74,6 @@ class MissionResultActivity :
     }
 
     companion object {
-        const val ROUND_GAME_ID = "ROUND_GAME_ID"
 
         fun start(context: Context, roundGameId: Int) {
             context.startActivity(getIntent(context, roundGameId))
@@ -81,7 +81,7 @@ class MissionResultActivity :
 
         private fun getIntent(context: Context, roundGameId: Int) =
             Intent(context, MissionResultActivity::class.java).putExtra(
-                ROUND_GAME_ID,
+                MissionRecordActivity.ROUND_GAME_ID,
                 roundGameId,
             )
 
