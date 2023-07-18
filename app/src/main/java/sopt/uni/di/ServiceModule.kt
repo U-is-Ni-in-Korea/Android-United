@@ -6,8 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import sopt.uni.data.service.AuthService
-import javax.inject.Singleton
-import retrofit2.Retrofit
 import sopt.uni.data.service.OnBoardingService
 import javax.inject.Singleton
 

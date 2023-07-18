@@ -4,13 +4,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ResPonseNickNameDto(
+data class ResponseNickNameDto(
     @SerialName("couple")
-    val couple: Couple,
+    val couple: Couple?,
     @SerialName("id")
     val id: Int,
     @SerialName("image")
-    val image: String,
+    val image: String?,
     @SerialName("nickname")
     val nickname: String,
 ) {
