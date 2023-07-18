@@ -107,7 +107,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.mypage.MypageProfilEditActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.mypage.MypageAccountActivity"
