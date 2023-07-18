@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/fragment_my_wish"
-        android:name="sopt.uni.presentation.wish.WishMyWishFragment"
+        android:name="sopt.uni.presentation.wish.fragment.WishUseMyFragment"
         android:label="@string/wish_my_wish"
-        tools:layout="@layout/fragment_wish_my_wish" />
+        tools:layout="@layout/fragment_wish_use_my" />
 
     <fragment
         android:id="@+id/fragment_your_wish"
-        android:name="sopt.uni.presentation.wish.WishYourWishFragment"
+        android:name="sopt.uni.presentation.wish.fragment.WishUseYourFragment"
         android:label="@string/wish_your_wish"
-        tools:layout="@layout/fragment_wish_your_wish" />
+        tools:layout="@layout/fragment_wish_use_your" />
 
 </navigation>

@@ -29,40 +29,40 @@
             app:layout_constraintTop_toBottomOf="@id/iv_wish_left" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_wish_use_my_subject"
+            android:id="@+id/cl_wish_use_your_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/wish_title_rectangle"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btn_wish_use_my_back"
+                android:id="@+id/btn_wish_use_your_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="#80FFFFFF"
                 android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="@id/cl_wish_use_my_subject"
+                app:layout_constraintBottom_toBottomOf="@id/cl_wish_use_your_subject"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cl_wish_use_my_subject" />
+                app:layout_constraintTop_toTopOf="@id/cl_wish_use_your_subject" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_wish_use_my_subject"
+                android:id="@+id/tv_wish_use_your_subject"
                 style="@style/Title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="14dp"
                 android:paddingStart="16dp"
-                android:text="@string/wish_my_wish_coupon"
+                android:text="@string/wish_your_wish_coupon"
                 android:textColor="@color/Gray_600"
-                app:layout_constraintStart_toEndOf="@id/btn_wish_use_my_back"
+                app:layout_constraintStart_toEndOf="@id/btn_wish_use_your_back"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_wish_use_my"
+            android:id="@+id/cl_wish_use_your"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="30dp"
@@ -71,12 +71,12 @@
             android:background="@drawable/bg_wish_card"
             android:elevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_wish_use_my_subject"
+            app:layout_constraintTop_toBottomOf="@id/cl_wish_use_your_subject"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="30dp">
 
             <ImageView
-                android:id="@+id/iv_wish_use_my"
+                android:id="@+id/iv_wish_use_your"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="62dp"
@@ -86,21 +86,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_wish_use_my"
+                android:id="@+id/tv_wish_use_your"
                 style="@style/Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="4dp"
-                android:text="나의 소원은"
+                android:text="소원은"
                 android:textColor="@color/Gray_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_wish_use_my" />
+                app:layout_constraintTop_toBottomOf="@id/iv_wish_use_your" />
 
 
             <TextView
-                android:id="@+id/tv_wish_use_my_description"
+                android:id="@+id/tv_wish_use_your_description"
                 style="@style/Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
@@ -110,18 +110,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_my" />
+                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_your" />
 
             <ImageView
-                android:id="@+id/iv_wish_use_my_dotted_line"
+                android:id="@+id/iv_wish_use_your_dotted_line"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/wish_dotted_line"
-                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_my_description" />
+                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_your_description" />
 
             <TextView
-                android:id="@+id/tv_wish_use_my_expiration_period"
+                android:id="@+id/tv_wish_use_your_expiration_period"
                 style="@style/Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,10 +130,10 @@
                 android:textColor="@color/Gray_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_wish_use_my_dotted_line" />
+                app:layout_constraintTop_toBottomOf="@id/iv_wish_use_your_dotted_line" />
 
             <TextView
-                android:id="@+id/tv_wish_use_my_expiration_period_value"
+                android:id="@+id/tv_wish_use_your_expiration_period_value"
                 style="@style/Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,26 +142,25 @@
                 android:textColor="@color/Gray_600"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_my_expiration_period" />
+                app:layout_constraintTop_toBottomOf="@id/tv_wish_use_your_expiration_period" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_wish_use_my_finish"
-            style="@style/Btn1"
+        <TextView
+            android:id="@+id/tv_wish_use_your_finish"
+            style="@style/Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="74dp"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/btn_wish"
-            android:backgroundTint="@color/Lightblue_500"
+            android:gravity="center"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
-            android:text="@string/wish_use_wish"
-            android:textColor="@color/Gray_000"
-            app:layout_constraintTop_toBottomOf="@id/cl_wish_use_my" />
+            android:text="@string/wish_your"
+            android:textColor="@color/Gray_300"
+            app:layout_constraintTop_toBottomOf="@id/cl_wish_use_your" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

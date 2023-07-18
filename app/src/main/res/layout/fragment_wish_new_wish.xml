@@ -98,7 +98,8 @@
             android:layout_height="0dp"
             android:background="@drawable/bg_wish_card"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginBottom="138dp"
+            android:layout_marginBottom="162dp"
+            android:elevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_new_wish_title">
 
@@ -126,8 +127,9 @@
                 android:gravity="center"
                 android:hint="@string/wish_write_ask"
                 android:importantForAutofill="no"
+                android:maxLength="60"
                 android:inputType="textMultiLine"
-                android:maxLength="54"
+                android:imeOptions="actionDone"
                 android:textColorHint="@color/Gray_300"
                 android:textColor="@color/Gray_600"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +141,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="0/54"
                 android:textColor="@color/Gray_400"
                 app:layout_constraintEnd_toEndOf="@+id/edt_new_wish_cv"
                 app:layout_constraintTop_toBottomOf="@id/edt_new_wish_cv"
@@ -180,17 +181,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--        <View-->
-<!--            android:id="@+id/new_wish_blurview"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginHorizontal="30dp"-->
-<!--            android:layout_marginBottom="138dp"-->
-<!--            android:background="@drawable/bg_wish_blur_card"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/cl_new_wish_title" />-->
 
 
         <androidx.appcompat.widget.AppCompatButton
