@@ -42,8 +42,6 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
 
     private fun initRecyclerView() {
         multiviewAdapter = WishMultiviewAdapter(this) {
-            val intent = Intent(this, WishFcActivity::class.java)
-            startActivity(intent)
         }
 
         binding.rvWish.adapter = multiviewAdapter
@@ -77,12 +75,8 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
-//    private fun navigateToWishNewWishFragment() {
-//        val fragment = WishNewWishFragment()
-//
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.fc_wish, fragment)
-//            .addToBackStack(null)
-//            .commit()
-//    }
+    private fun onClickWish(position: Int) {
+        val intent = Intent(this, WishFcActivity::class.java)
+        startActivity(intent)
+    }
 }
