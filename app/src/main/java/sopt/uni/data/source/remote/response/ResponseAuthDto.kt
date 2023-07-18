@@ -6,10 +6,10 @@ import sopt.uni.data.entity.auth.Token
 
 @Serializable
 data class ResponseAuthDto(
-    @SerialName("accessToken")
+    @SerialName("access_token")
     val accessToken: String,
-    @SerialName("refreshToken")
-    val refreshToken: String,
+    @SerialName("refresh_token")
+    val refreshToken: String?,
 ) {
     fun toToken(): Token = Token(accessToken = this.accessToken, refreshToken = this.refreshToken)
 }
