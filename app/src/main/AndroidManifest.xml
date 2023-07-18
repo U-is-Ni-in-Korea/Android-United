@@ -120,6 +120,9 @@
             android:name=".presentation.mypage.MypageSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity android:name=".presentation.wish.WishFcActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".presentation.shortgame.missionresult.MissionResultActivity"

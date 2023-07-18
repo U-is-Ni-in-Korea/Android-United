@@ -60,12 +60,18 @@
     <string name="wish_expiration_period">유효기간</string>
     <string name="wish_expiration_period_value">우리가 사랑할 때까지</string>
     <string name="wish_my_wish_coupon">나의 소원권</string>
+    <string name="wish_your_wish_coupon">상대 소원권</string>
     <string name="wish_use_my_ment">나의 소원은</string>
     <string name="wish_use_wish">소원권 사용하기</string>
     <string name="wish_used_subject">소원권 사용 완료!</string>
     <string name="wish_go_home">홈으로 돌아가기</string>
     <string name="wish_empty_my">아직 소원권이 없어요!</string>
     <string name="wish_empty_your">아직 상대의 소원권이 없어요!</string>
+    <string name="new_wish_dialog_title">소원권 만들기를 중단하시나요?</string>
+    <string name="new_wish_dialog_description">작성된 내용은 저장되지 않아요</string>
+    <string name="use_wish_dialog_title">소원권을 사용하시나요?</string>
+    <string name="use_wish_dialog_description">사용하신 소원권은 돌아오지 않아요</string>
+    <string name="wish_your">상대가 아직 사용하지 않은 소원권이에요</string>
 
     <!-- 히스토리 -->
     <string name="item_history_emptylist_title">승부 히스토리가 없어요</string>

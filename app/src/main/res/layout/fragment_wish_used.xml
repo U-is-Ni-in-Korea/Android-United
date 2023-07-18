@@ -21,6 +21,7 @@
             android:gravity="center"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_wish_used_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dismiss"
@@ -49,7 +50,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:paddingVertical="12dp"
-        android:layout_margin="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/wish_go_home"
         android:textColor="@color/Gray_000"
         style="@style/Btn1"

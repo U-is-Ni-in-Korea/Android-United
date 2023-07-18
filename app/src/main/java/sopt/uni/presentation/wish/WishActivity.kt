@@ -1,15 +1,14 @@
 package sopt.uni.presentation.wish
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import sopt.uni.R
 import sopt.uni.data.entity.wish.MULTI_TYPE_WISH1
 import sopt.uni.data.entity.wish.MULTI_TYPE_WISH2
 import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ActivityWishBinding
-import sopt.uni.presentation.wish.fragment.WishNewWishFragment
 import sopt.uni.util.binding.BindingActivity
 
 class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish) {
@@ -35,12 +34,16 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
                 tvWishYourWish.setTextAppearance(R.style.Subtitle)
             }
+            btnWishBack.setOnClickListener {
+                // 화면 전환
+            }
         }
     }
 
     private fun initRecyclerView() {
         multiviewAdapter = WishMultiviewAdapter(this) {
-            navigateToWishNewWishFragment()
+            val intent = Intent(this, WishFcActivity::class.java)
+            startActivity(intent)
         }
 
         binding.rvWish.adapter = multiviewAdapter
@@ -74,12 +77,12 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
-    private fun navigateToWishNewWishFragment() {
-        val fragment = WishNewWishFragment()
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fc_wish, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
+//    private fun navigateToWishNewWishFragment() {
+//        val fragment = WishNewWishFragment()
+//
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.fc_wish, fragment)
+//            .addToBackStack(null)
+//            .commit()
+//    }
 }
