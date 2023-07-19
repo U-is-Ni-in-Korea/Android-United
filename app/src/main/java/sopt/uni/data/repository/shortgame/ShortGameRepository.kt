@@ -20,4 +20,6 @@ interface ShortGameRepository {
         roundGameId: Int,
         result: Boolean,
     ): Result<ResponseShortGameResultDto>
+
+    suspend fun deleteShortGame(roundGameId: Int): Result<Unit>
 }

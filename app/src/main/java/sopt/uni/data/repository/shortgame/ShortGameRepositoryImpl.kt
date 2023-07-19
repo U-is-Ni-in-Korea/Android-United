@@ -64,4 +64,13 @@ class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: 
         }.onFailure {
             Result.failure<ResponseShortGameResultDto>(it)
         }
+
+    override suspend fun deleteShortGame(roundGameId: Int): Result<Unit> =
+        kotlin.runCatching {
+            shortGameService.deleteShortGameResult(roundGameId)
+        }.onSuccess {
+            Result.success(Unit)
+        }.onFailure {
+            Result.failure<Unit>(it)
+        }
 }
