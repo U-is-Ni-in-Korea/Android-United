@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.databinding.ActivityMissionResultBinding
@@ -14,6 +15,7 @@ import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
+@AndroidEntryPoint
 class MissionResultActivity :
     BindingActivity<ActivityMissionResultBinding>(R.layout.activity_mission_result) {
 
@@ -41,15 +43,14 @@ class MissionResultActivity :
 
     private fun setResultImageText(state: MissionResultState) {
         val imageArray = this.resources.obtainTypedArray(R.array.result_state_image)
-        val stringArray = this.resources.obtainTypedArray(R.array.result_state_text)
+        val stringArray = this.resources.getStringArray(R.array.result_state_text)
         binding.ivMissionResult.setImageResource(imageArray.getResourceId(state.order, 0))
-        binding.tvMyMissionResult.text = stringArray.getString(state.order)
+        binding.tvMissionResultScript.text = stringArray[state.order]
     }
 
     private fun setButtonVisible(state: MissionResultState) {
         when (state) {
             MissionResultState.WIN -> binding.btnGoWish.visibility = View.VISIBLE
-
             else -> binding.btnGoHome.visibility = View.VISIBLE
         }
     }
@@ -92,7 +93,7 @@ class MissionResultActivity :
                 view.text = view.context.getString(R.string.mission_result_failure)
                 view.background = view.context.getDrawable(R.drawable.wish_ment_pink_rectangle)
             } else {
-                val dateString = date.split(" ")[1].substring(5)
+                val dateString = date.split("T")[1].substring(0, 5)
                 view.text =
                     "$dateString ${view.context.getString(R.string.mission_result_complete)}"
                 view.background = view.context.getDrawable(R.drawable.wish_ment_green_rectangle)
