@@ -30,7 +30,6 @@ class MypageProfilEditActivity :
         setContentView(binding.root)
         val datePickerDialogFragment = MypageDatePickerDialogFragment()
         binding.viewModel = viewModel
-        binding.etMypageProfilEditNickname.setText(viewModel.mypageData.value?.nickname)
 
         setMyPage()
         setupDatePicker(datePickerDialogFragment)
@@ -73,6 +72,7 @@ class MypageProfilEditActivity :
     private fun setMyPage() {
         val mypage = intent.parcelable<MyPage>(MypageSettingActivity.MYPAGE)
         viewModel.setMyPage(requireNotNull(mypage))
+        viewModel.setNickname(mypage.nickname)
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
