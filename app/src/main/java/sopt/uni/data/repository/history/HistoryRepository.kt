@@ -1,8 +1,7 @@
 package sopt.uni.data.repository.history
 
-import sopt.uni.data.source.remote.response.HistoryResponse
+import sopt.uni.data.entity.history.History
 
 interface HistoryRepository {
-
-    suspend fun getHistoryList(): Result<HistoryResponse>
+    suspend fun getHistoryList(): Result<List<History>>
 }

@@ -1,18 +1,48 @@
 package sopt.uni.data.repository.history
 
+import sopt.uni.data.entity.history.History
+import sopt.uni.data.entity.history.Mission
 import sopt.uni.data.service.HistoryService
 import sopt.uni.data.source.remote.response.HistoryResponse
+import javax.inject.Inject
 
-class HistoryRepositoryImpl(
+class HistoryRepositoryImpl @Inject constructor(
     private val historyService: HistoryService,
 ) : HistoryRepository {
-    override suspend fun getHistoryList(): Result<HistoryResponse> {
-        val token = ""
-        return try {
-            val historyResponse = historyService.getHistoryList("Bearer $token")
-            Result.success(historyResponse)
-        } catch (e: Exception) {
-            Result.failure(e)
+    override suspend fun getHistoryList(): Result<List<History>> {
+        return kotlin.runCatching {
+            historyService.getHistoryList()
+        }.fold(
+            onSuccess = { response ->
+                val historyList = convertToHistoryList(response)
+                Result.success(historyList)
+            },
+            onFailure = { exception ->
+                Result.failure(exception)
+            },
+        )
+    }
+
+    private fun convertToHistoryList(historyResponse: List<HistoryResponse>): List<History> {
+        val historyList = historyResponse.map { historyResponse ->
+            History(
+                date = historyResponse.date,
+                image = historyResponse.image,
+                title = historyResponse.title,
+                result = historyResponse.result,
+                winner = historyResponse.winner,
+                myMission = Mission(
+                    content = historyResponse.myMission.content,
+                    result = historyResponse.myMission.result,
+                    time = historyResponse.myMission.time,
+                ),
+                partnerMission = Mission(
+                    content = historyResponse.partnerMission.content,
+                    result = historyResponse.partnerMission.result,
+                    time = historyResponse.partnerMission.time,
+                ),
+            )
         }
+        return historyList
     }
 }

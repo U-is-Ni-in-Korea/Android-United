@@ -3,10 +3,12 @@ package sopt.uni.presentation.history
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import sopt.uni.data.entity.history.History
+import javax.inject.Inject
 
-/** TODO 준희 : @HiltViewModel 붙이기*/
-class HistoryDetailViewModel : ViewModel() {
+@HiltViewModel
+class HistoryDetailViewModel @Inject constructor() : ViewModel() {
     private val _history = MutableLiveData<History>()
     val history: LiveData<History> = _history
 
