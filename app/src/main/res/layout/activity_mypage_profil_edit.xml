@@ -8,7 +8,6 @@
         <variable
             name="viewModel"
             type="sopt.uni.presentation.mypage.MypageProfilEditViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,11 +65,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
+            android:src="@{viewModel.mypageData.image}"
             android:id="@+id/iv_mypage_profil_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:layout_marginTop="39dp"
-            android:src="@drawable/imagecard_android"
+            tools:src="@drawable/imagecard_android"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_profil_edit_app_bar" />
@@ -152,7 +152,6 @@
             app:layout_constraintStart_toStartOf="@id/et_mypage_profil_edit_nickname"
             app:layout_constraintTop_toTopOf="@+id/tv_mypage_profil_edit_nickname_content_length" />
 
-
         <TextView
             android:id="@+id/tv_mypage_profil_edit_nickname_content_length"
             style="@style/Caption"
@@ -164,7 +163,6 @@
             app:layout_constraintEnd_toEndOf="@+id/et_mypage_profil_edit_nickname"
             app:layout_constraintTop_toBottomOf="@id/et_mypage_profil_edit_nickname"
             tools:text="0/10" />
-
 
         <TextView
             android:id="@+id/tv_mypage_profil_edit_couple_date_title"
@@ -178,6 +176,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_nickname_content_length" />
 
         <TextView
+            android:text="@{viewModel.parseStartDate(viewModel.mypageData.startDate)}"
             android:id="@+id/tv_mypage_profil_edit_couple_date"
             style="@style/Body2"
             android:layout_width="match_parent"
@@ -192,35 +191,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_couple_date_title"
             tools:text="2023년 7월 14일" />
-
-        <TextView
-            android:id="@+id/tv_mypage_profil_edit_email_title"
-            style="@style/Body2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
-            android:text="@string/mypage_profil_edit_email_title"
-            android:textColor="@color/Gray_400"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_couple_date" />
-
-        <TextView
-            android:id="@+id/tv_mypage_profil_edit_email"
-            style="@style/Body2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/bg_mypage_edit_text"
-            android:importantForAutofill="no"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="12dp"
-            android:textColor="@color/Gray_600"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_email_title"
-            tools:text="dlknaldkfnlda@naver.com" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

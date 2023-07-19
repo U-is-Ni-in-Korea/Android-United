@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import sopt.uni.data.service.AuthService
 import sopt.uni.data.service.HistoryService
+import sopt.uni.data.service.MyPageService
 import sopt.uni.data.service.OnBoardingService
 import javax.inject.Singleton
 
@@ -19,6 +20,11 @@ object ServiceModule {
     @Singleton
     fun provideHistoryApi(retrofit: Retrofit): HistoryService =
         retrofit.create(HistoryService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideMyPageApi(retrofit: Retrofit): MyPageService =
+        retrofit.create(MyPageService::class.java)
 
     @Provides
     @Singleton

@@ -3,7 +3,7 @@ package sopt.uni.data.repository.history
 import sopt.uni.data.entity.history.History
 import sopt.uni.data.entity.history.Mission
 import sopt.uni.data.service.HistoryService
-import sopt.uni.data.source.remote.response.HistoryResponse
+import sopt.uni.data.source.remote.response.HistoryResponseDto
 import javax.inject.Inject
 
 class HistoryRepositoryImpl @Inject constructor(
@@ -23,8 +23,8 @@ class HistoryRepositoryImpl @Inject constructor(
         )
     }
 
-    private fun convertToHistoryList(historyResponse: List<HistoryResponse>): List<History> {
-        val historyList = historyResponse.map { historyResponse ->
+    private fun convertToHistoryList(historyResponseDto: List<HistoryResponseDto>): List<History> {
+        val historyList = historyResponseDto.map { historyResponse ->
             History(
                 date = historyResponse.date,
                 image = historyResponse.image,

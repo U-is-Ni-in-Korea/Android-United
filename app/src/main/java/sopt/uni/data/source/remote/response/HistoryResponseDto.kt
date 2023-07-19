@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class HistoryResponse(
+data class HistoryResponseDto(
     @SerialName("date")
     val date: String,
     @SerialName("image")

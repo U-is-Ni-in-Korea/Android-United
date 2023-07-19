@@ -86,7 +86,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.history.HistoryActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.history.HistoryDetailActivity"
@@ -107,11 +107,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.mypage.MypageProfilEditActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.mypage.MypageAccountActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.mypage.MypageSettingActivity"

@@ -137,10 +137,9 @@
     <string name="mypage_profil_edit_errortext_over">글자수를 초과했어요</string>
     <string name="mypage_profil_edit_errortext_zero">닉네임을 입력해주세요</string>
     <string name="mypage_profil_edit_couple_date_title">커플 기념일</string>
-    <string name="mypage_profil_edit_email_title">연동 이메일</string>
 
     <!-- MypageSettiong -->
-    <string name="mypage_setting_title">설정</string>
+    <string name="mypage_setting_title">마이페이지</string>
     <string name="mypage_setting_name">철수</string>
     <string name="mypage_setting_email">uni@gmail.com</string>
     <string name="mypage_setting_profil_edit">프로필 수정</string>
