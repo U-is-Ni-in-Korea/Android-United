@@ -1,5 +1,6 @@
 package sopt.uni.presentation.invite
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +27,7 @@ class ShareInviteCodeActivity :
         moveToPrevPage()
         getInviteCode()
         checkCoupleConnection()
+        copyInviteCode()
     }
 
     private fun getInviteCode() {
@@ -51,6 +53,19 @@ class ShareInviteCodeActivity :
                     }
                 }
             }
+        }
+    }
+
+    private fun copyInviteCode() {
+        binding.btnCopyInviteCode.setOnSingleClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, binding.tvInviteCode.text.toString())
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
         }
     }
 }
