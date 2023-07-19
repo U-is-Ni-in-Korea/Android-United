@@ -12,6 +12,7 @@ import sopt.uni.presentation.shortgame.missiondetailrecord.MissionDetailRecordAc
 import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MissionRecordActivity :
@@ -29,10 +30,14 @@ class MissionRecordActivity :
 
     private fun cancelDialog() {
         CreateShortGameDialogFragment().apply {
-            titleText = this@MissionRecordActivity.resources.getString(R.string.mission_detatil_record_rule_title)
-            bodyText = this@MissionRecordActivity.resources.getString(R.string.mission_record_cancel_dialog_body)
-            confirmButtonText = this@MissionRecordActivity.resources.getString(R.string.dialog_ok_text)
-            dismissButtonText = this@MissionRecordActivity.resources.getString(R.string.dialog_cancel_text)
+            titleText =
+                this@MissionRecordActivity.resources.getString(R.string.mission_detatil_record_rule_title)
+            bodyText =
+                this@MissionRecordActivity.resources.getString(R.string.mission_record_cancel_dialog_body)
+            confirmButtonText =
+                this@MissionRecordActivity.resources.getString(R.string.dialog_ok_text)
+            dismissButtonText =
+                this@MissionRecordActivity.resources.getString(R.string.dialog_cancel_text)
             confirmClickListener = {
                 viewModel.requestStopMission()
                 this.dismiss()
@@ -44,7 +49,7 @@ class MissionRecordActivity :
     }
 
     private fun setViewModelObserve() {
-        viewModel.isMissionCancelSuccess.observe(this) {
+        viewModel.isMissionDeleteSuccess.observe(this) {
             if (it) finish()
         }
         viewModel.isMissionRequestSuccess.observe(this) {
@@ -65,6 +70,7 @@ class MissionRecordActivity :
                     this@MissionRecordActivity,
                     viewModel.missionId.value,
                 )
+                Timber.tag("testt4").d(viewModel.missionId.value.toString())
             }
             ivClose.setOnSingleClickListener {
                 finish()
@@ -85,6 +91,7 @@ class MissionRecordActivity :
             context.startActivity(getIntent(context, roundGameId))
         }
 
-        private fun getIntent(context: Context, roundGameId: Int) = Intent(context, MissionRecordActivity::class.java).putExtra(ROUND_GAME_ID, roundGameId)
+        private fun getIntent(context: Context, roundGameId: Int) =
+            Intent(context, MissionRecordActivity::class.java).putExtra(ROUND_GAME_ID, roundGameId)
     }
 }
