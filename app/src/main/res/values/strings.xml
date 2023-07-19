@@ -89,7 +89,7 @@
     <!-- Google -->
     <string name="kakao_login">카카오 로그인</string>
     <string name="google_login">Google계정으로 로그인</string>
-    <string name="invite_code_example">000-000-000</string>
+    <string name="invite_code_example">ag14f0hkl</string>
     <string name="user_profile">user profile</string>
     <string name="home_couple_score">커플 스코어</string>
     <string name="home_game_history">승부 히스토리</string>
