@@ -1,15 +1,20 @@
 package sopt.uni.presentation.mypage
 
+import ContentUriRequestBody
 import android.content.Context
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.history.MyPage
@@ -24,6 +29,12 @@ class MypageProfilEditActivity :
     BindingActivity<ActivityMypageProfilEditBinding>(R.layout.activity_mypage_profil_edit) {
 
     private val viewModel: MypageProfilEditViewModel by viewModels()
+
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
+            binding.ivMypageProfilEdit.load(imageUri)
+            viewModel.setRequestBody(ContentUriRequestBody(this, imageUri!!))
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +70,16 @@ class MypageProfilEditActivity :
 
     private fun setupSaveButton() {
         binding.tvMypageProfilEditSave.setOnSingleClickListener {
-            // 프로필 저장 처리
+            val nickname = binding.etMypageProfilEditNickname.text.toString()
+            val startDate = binding.tvMypageProfilEditCoupleDate.text.toString()
+
+            if (nickname.isNotBlank() && nickname.length <= 10 && !nickname.all { it.isWhitespace() }) {
+                viewModel.saveProfile(nickname, startDate)
+                startActivity<MypageSettingActivity>()
+                finish()
+            } else {
+                Toast.makeText(this, "닉네임을 올바르게 입력해주세요.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

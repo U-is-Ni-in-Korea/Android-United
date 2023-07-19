@@ -10,13 +10,13 @@ class ItemDecorations(
     private val topSpace: Int,
     private val bottomSpace: Int,
     private val leftSpace: Int,
-    private val rightSpace: Int
+    private val rightSpace: Int,
 ) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
         parent: RecyclerView,
-        state: RecyclerView.State
+        state: RecyclerView.State,
     ) {
         super.getItemOffsets(outRect, view, parent, state)
 
