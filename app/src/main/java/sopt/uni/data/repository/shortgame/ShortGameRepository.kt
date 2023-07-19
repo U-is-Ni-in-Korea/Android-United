@@ -10,4 +10,6 @@ interface ShortGameRepository {
         missionCategoryId: Int,
         wishContent: String,
     ): Result<ResponseCreateShortGameDto>
+
+    suspend fun getMissionDetail(missionCategoryId: Int): Result<MissionDetail>
 }

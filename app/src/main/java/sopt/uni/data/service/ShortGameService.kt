@@ -3,6 +3,7 @@ package sopt.uni.data.service
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
 import sopt.uni.data.source.remote.response.ResponseCreateShortGameDto
@@ -15,4 +16,9 @@ interface ShortGameService {
     suspend fun postCreateShortGame(
         @Body request: RequestCreateShortGameDto,
     ): ResponseCreateShortGameDto
+
+    @GET("/api/mission/{missionCategoryId}")
+    suspend fun getMissionDetail(
+        @Path("missionCategoryId") missionCategoryId: Int,
+    ): MissionDetail
 }
