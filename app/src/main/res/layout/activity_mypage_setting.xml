@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="sopt.uni.presentation.mypage.MypageSettingViewModel" />
@@ -52,28 +53,28 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:src="@{vm.mypage.image}"
             android:id="@+id/iv_mypage_setting_profil_image"
             android:layout_width="76dp"
             android:layout_height="76dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
-            tools:src="@drawable/mypage_profil_image"
+            android:src="@{vm.mypage.image}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_app_bar" />
+            app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_app_bar"
+            tools:src="@drawable/mypage_profil_image" />
 
         <TextView
-            android:text="@{vm.mypage.nickname}"
             android:id="@+id/tv_mypage_setting_name"
             style="@style/Title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            tools:text="@string/mypage_setting_name"
+            android:text="@{vm.mypage.nickname}"
             android:textColor="@color/Gray_600"
             app:layout_constraintBottom_toBottomOf="@+id/iv_mypage_setting_profil_image"
             app:layout_constraintStart_toEndOf="@id/iv_mypage_setting_profil_image"
-            app:layout_constraintTop_toTopOf="@+id/iv_mypage_setting_profil_image" />
+            app:layout_constraintTop_toTopOf="@+id/iv_mypage_setting_profil_image"
+            tools:text="@string/mypage_setting_name" />
 
         <TextView
             android:id="@+id/tv_mypage_setting_profil_edit"

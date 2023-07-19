@@ -6,6 +6,9 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import sopt.uni.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 object BindingAdapter {
     @JvmStatic
@@ -26,5 +29,12 @@ object BindingAdapter {
             setTextColor(ContextCompat.getColor(context, R.color.Pink_600))
             text = resources.getString(R.string.history_detail_mission_fail_text)
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("startDate")
+    fun TextView.setCoupleDate(startDate: String) {
+        val parsedDate = LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE)
+        text = parsedDate.format(DateTimeFormatter.ofPattern("yyyy년 M월 d일", Locale.getDefault()))
     }
 }

@@ -65,15 +65,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:src="@{viewModel.mypageData.image}"
             android:id="@+id/iv_mypage_profil_edit"
             android:layout_width="76dp"
             android:layout_height="76dp"
             android:layout_marginTop="39dp"
-            tools:src="@drawable/imagecard_android"
+            android:src="@{viewModel.mypageData.image}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_mypage_profil_edit_app_bar" />
+            app:layout_constraintTop_toBottomOf="@id/cl_mypage_profil_edit_app_bar"
+            tools:src="@drawable/imagecard_android" />
 
         <TextView
             android:id="@+id/tv_mypage_profil_edit_image_change"
@@ -176,9 +176,9 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_nickname_content_length" />
 
         <TextView
-            android:text="@{viewModel.parseStartDate(viewModel.mypageData.startDate)}"
             android:id="@+id/tv_mypage_profil_edit_couple_date"
             style="@style/Body2"
+            startDate="@{viewModel.mypageData.startDate}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
