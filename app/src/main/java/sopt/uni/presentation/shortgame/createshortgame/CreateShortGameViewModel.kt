@@ -1,6 +1,5 @@
 package sopt.uni.presentation.shortgame.createshortgame
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
@@ -40,6 +39,7 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
         viewModelScope.launch {
             shortGameRepository.getMissionCategory().onSuccess {
                 _missionList.postValue(it)
+                selectedMissionId.postValue(it[0].id)
             }.onFailure {
                 // TODO: 실패시 예외처리
             }
@@ -47,8 +47,17 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
     }
 
     fun createShortGame() {
-        _isCreateSuccess.postValue(true)
-        _roundGameId.value = 1
+        viewModelScope.launch {
+            shortGameRepository.createShortGame(
+                selectedMissionId.value ?: return@launch,
+                wishContent.value ?: "",
+            ).onSuccess {
+                _roundGameId.value = it.roundGameId
+                _isCreateSuccess.value = true
+            }.onFailure {
+                // TODO: 실패시 예외처리
+            }
+        }
     }
 
     fun setSelectedMissionId(missionId: Int) {
