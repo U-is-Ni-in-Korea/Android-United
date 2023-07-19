@@ -4,8 +4,10 @@ import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityShareInviteCodeBinding
+import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ShareInviteCodeActivity :
@@ -15,6 +17,12 @@ class ShareInviteCodeActivity :
         setContentView(binding.root)
 
         moveToPrevPage()
+        getInviteCode()
+    }
+
+    private fun getInviteCode() {
+        Timber.e(intent.getStringExtra(INVITECODE))
+        binding.tvInviteCode.text = intent.getStringExtra(INVITECODE)
     }
 
     private fun moveToPrevPage() {

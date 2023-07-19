@@ -4,5 +4,5 @@ interface OnBoardingRepository {
 
     suspend fun patchNickName(nickname: String)
 
-    suspend fun postStartDate(startDate: String)
+    suspend fun postStartDate(startDate: String): String
 }

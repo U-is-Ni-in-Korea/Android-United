@@ -13,7 +13,7 @@ class OnBoardingRepositoryImpl @Inject constructor(
         onBoardingService.patchNickName(RequestNickNameDto(nickname))
     }
 
-    override suspend fun postStartDate(startDate: String) {
-        onBoardingService.postStartDate(RequestStartDateDto(startDate))
+    override suspend fun postStartDate(startDate: String): String {
+        return onBoardingService.postStartDate(RequestStartDateDto(startDate)).inviteCode
     }
 }
