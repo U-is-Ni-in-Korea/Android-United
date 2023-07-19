@@ -1,5 +1,6 @@
 package sopt.uni.data.repository.shortgame
 
+import retrofit2.Response
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.service.ShortGameService
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
@@ -67,7 +68,7 @@ class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: 
 
     override suspend fun deleteShortGame(roundGameId: Int): Result<Unit> =
         kotlin.runCatching {
-            shortGameService.deleteShortGameResult(roundGameId)
+            shortGameService.deleteShortGameResult(roundGameId).body() ?: Unit
         }.onSuccess {
             Result.success(Unit)
         }.onFailure {
