@@ -82,15 +82,15 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="100dp"
             android:background="@drawable/bg_enter_invite_code_btn"
-            android:drawableLeft="@drawable/ic_arrow_reset"
+            android:drawableStart="@drawable/ic_arrow_reset"
             android:drawableTint="@color/Lightblue_600"
-            android:paddingLeft="120dp"
-            android:paddingEnd="120dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingHorizontal="100dp"
             android:stateListAnimator="@null"
-            android:text="@string/refresh"
+            android:text="@string/check_couple_state"
             android:textColor="@color/Lightblue_600"
             app:layout_constraintBottom_toBottomOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
