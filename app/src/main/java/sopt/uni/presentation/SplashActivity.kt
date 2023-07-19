@@ -21,9 +21,9 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
 
         lifecycleScope.launch {
             delay(2000)
-            if(SparkleStorage.accessToken != null){
+            if (SparkleStorage.accessToken != null) {
                 startActivity<NickNameActivity>()
-            } else{
+            } else {
                 startActivity<OnBoardingActivity>()
             }
             overridePendingTransition(0, 0)

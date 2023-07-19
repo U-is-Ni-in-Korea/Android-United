@@ -73,7 +73,7 @@
             setNicknameErrorMessage="@{viewModel.nickName.length()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mypage_profil_edit_errortext_zero"
+            android:text="@string/over_nickname"
             android:textColor="@color/Red_500"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_nickname_count"

@@ -2,6 +2,7 @@ package sopt.uni.data.repository.onboarding
 
 import sopt.uni.data.service.OnBoardingService
 import sopt.uni.data.source.remote.request.RequestNickNameDto
+import sopt.uni.data.source.remote.request.RequestStartDateDto
 import javax.inject.Inject
 
 class OnBoardingRepositoryImpl @Inject constructor(
@@ -10,5 +11,9 @@ class OnBoardingRepositoryImpl @Inject constructor(
 
     override suspend fun patchNickName(nickname: String) {
         onBoardingService.patchNickName(RequestNickNameDto(nickname))
+    }
+
+    override suspend fun postStartDate(startDate: String) {
+        onBoardingService.postStartDate(RequestStartDateDto(startDate))
     }
 }

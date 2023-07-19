@@ -5,6 +5,7 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.MotionEvent.ACTION_DOWN
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.viewModels
@@ -23,6 +24,7 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
 
         binding.viewModel = nickNameViewModel
 
+        blockSpaceNickName()
         moveToInviteHub()
         moveToPrevPage()
     }
@@ -37,6 +39,14 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
             finish()
+        }
+    }
+
+    private fun blockSpaceNickName() {
+        if (nickNameViewModel.nickName.value.filterNot { it.isWhitespace() }.isEmpty()) {
+            binding.etNickname.background = getDrawable(R.drawable.bg_mypage_edit_text_error)
+            binding.tvNicknameErrorMessage.text = "공백으로 시작할 수 없어요"
+            binding.tvNicknameErrorMessage.visibility = View.VISIBLE
         }
     }
 
