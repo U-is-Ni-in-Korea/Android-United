@@ -16,4 +16,8 @@ class OnBoardingRepositoryImpl @Inject constructor(
     override suspend fun postStartDate(startDate: String): String {
         return onBoardingService.postStartDate(RequestStartDateDto(startDate)).inviteCode
     }
+
+    override suspend fun checkCoupleConnection(): Boolean {
+        return onBoardingService.checkConnection().connection
+    }
 }

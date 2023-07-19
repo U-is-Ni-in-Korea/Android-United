@@ -1,10 +1,12 @@
 package sopt.uni.data.service
 
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import sopt.uni.data.source.remote.request.RequestNickNameDto
 import sopt.uni.data.source.remote.request.RequestStartDateDto
+import sopt.uni.data.source.remote.response.ResponseCheckConnectionDto
 import sopt.uni.data.source.remote.response.ResponseNickNameDto
 import sopt.uni.data.source.remote.response.ResponseStartDateDto
 
@@ -19,4 +21,7 @@ interface OnBoardingService {
     suspend fun postStartDate(
         @Body request: RequestStartDateDto,
     ): ResponseStartDateDto
+
+    @GET("api/couple/join")
+    suspend fun checkConnection(): ResponseCheckConnectionDto
 }

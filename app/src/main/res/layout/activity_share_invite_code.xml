@@ -61,7 +61,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_my_code" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_share_link"
+            android:id="@+id/btn_copy_invite_code"
             style="@style/Btn1"
             android:layout_width="0dp"
             android:layout_height="48dp"
@@ -70,12 +70,12 @@
             android:stateListAnimator="@null"
             android:text="@string/copy_invite_code"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/btn_refresh"
+            app:layout_constraintBottom_toTopOf="@id/btn_check_connection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_refresh"
+            android:id="@+id/btn_check_connection"
             style="@style/Btn1"
             android:layout_width="match_parent"
             android:layout_height="48dp"
