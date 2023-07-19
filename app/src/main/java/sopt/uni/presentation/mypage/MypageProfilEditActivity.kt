@@ -10,12 +10,16 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
+import sopt.uni.data.entity.history.MyPage
 import sopt.uni.databinding.ActivityMypageProfilEditBinding
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
 
+@AndroidEntryPoint
 class MypageProfilEditActivity :
     BindingActivity<ActivityMypageProfilEditBinding>(R.layout.activity_mypage_profil_edit) {
 
@@ -26,7 +30,9 @@ class MypageProfilEditActivity :
         setContentView(binding.root)
         val datePickerDialogFragment = MypageDatePickerDialogFragment()
         binding.viewModel = viewModel
+        binding.etMypageProfilEditNickname.setText(viewModel.mypageData.value?.nickname)
 
+        setMyPage()
         setupDatePicker(datePickerDialogFragment)
         setupBackButton()
         setupSaveButton()
@@ -62,6 +68,11 @@ class MypageProfilEditActivity :
         binding.tvMypageProfilEditImageChange.setOnSingleClickListener {
             // 프로필 이미지 바꾸기
         }
+    }
+
+    private fun setMyPage() {
+        val mypage = intent.parcelable<MyPage>(MypageSettingActivity.MYPAGE)
+        viewModel.setMyPage(requireNotNull(mypage))
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
