@@ -1,15 +1,17 @@
 package sopt.uni.presentation.invite
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityDDayBinding
+import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.util.DateUtil
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.startActivity
-import timber.log.Timber
 import java.util.Calendar
 
 @AndroidEntryPoint
@@ -30,9 +32,17 @@ class DdayActivity : BindingActivity<ActivityDDayBinding>(R.layout.activity_d_da
                 binding.dpDDay.dayOfMonth,
             )
         binding.btnNext.setOnSingleClickListener {
-            Timber.e(formatedDate)
             dDayViewModel.postStartDate(formatedDate)
-            startActivity<ShareInviteCodeActivity>()
+            lifecycleScope.launch {
+                dDayViewModel.inviteCode.collect { inviteCode ->
+                    if (inviteCode.isNotEmpty()) {
+                        Intent(this@DdayActivity, ShareInviteCodeActivity::class.java).apply {
+                            putExtra(INVITECODE, inviteCode)
+                            startActivity(this)
+                        }
+                    }
+                }
+            }
         }
     }
 
