@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import sopt.uni.data.entity.shortgame.ResponseShortGameResult
+import sopt.uni.data.source.remote.response.ResponseShortGameResultDto
 
 class MissionRecordViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
     val roundGameId: Int = savedStateHandle.get<Int>(MissionRecordActivity.ROUND_GAME_ID) ?: -1
 
-    private val _missionResult = MutableLiveData<ResponseShortGameResult>()
-    val missionResult: LiveData<ResponseShortGameResult> = _missionResult
+    private val _missionResult = MutableLiveData<ResponseShortGameResultDto>()
+    val missionResult: LiveData<ResponseShortGameResultDto> = _missionResult
 
     private val _isMissionCancelSuccess = MutableLiveData<Boolean>(false)
     val isMissionCancelSuccess = _isMissionCancelSuccess
