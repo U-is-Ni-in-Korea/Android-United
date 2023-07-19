@@ -31,7 +31,7 @@ class DdayActivity : BindingActivity<ActivityDDayBinding>(R.layout.activity_d_da
             binding.dpDDay.year.toString() + "-" + DateUtil.formatedMonth(binding.dpDDay.month) + "-" + DateUtil.formatedDay(
                 binding.dpDDay.dayOfMonth,
             )
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             dDayViewModel.postStartDate(formatedDate)
             lifecycleScope.launch {
                 dDayViewModel.inviteCode.collect { inviteCode ->
