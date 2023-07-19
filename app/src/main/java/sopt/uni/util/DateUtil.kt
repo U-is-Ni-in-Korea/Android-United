@@ -2,7 +2,7 @@ package sopt.uni.util
 
 object DateUtil {
     fun formatedMonth(month: Int) =
-        if (month <= 0) {
+        if (month <= 0 || month > 12) {
             throw IllegalArgumentException("month can not be less than equal 0")
         } else if (month < 10) {
             "0$month"
