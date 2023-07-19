@@ -4,6 +4,7 @@ import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.service.ShortGameService
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
 import sopt.uni.data.source.remote.response.ResponseCreateShortGameDto
+import sopt.uni.data.source.remote.response.ResponseShortGameResultDto
 import javax.inject.Inject
 
 class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: ShortGameService) :
@@ -37,5 +38,14 @@ class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: 
             Result.success(it)
         }.onFailure {
             Result.failure<MissionDetail>(it)
+        }
+
+    override suspend fun getShortGameResult(roundGameId: Int): Result<ResponseShortGameResultDto> =
+        kotlin.runCatching {
+            shortGameService.getShortGameResult(roundGameId)
+        }.onSuccess {
+            Result.success(it)
+        }.onFailure {
+            Result.failure<ResponseShortGameResultDto>(it)
         }
 }
