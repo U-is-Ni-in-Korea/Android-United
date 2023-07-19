@@ -8,10 +8,10 @@
         <item>@drawable/mission_undecided</item>
     </integer-array>
 
-    <integer-array name="result_state_text">
+    <string-array name="result_state_text">
         <item>@string/mission_result_win</item>
         <item>@string/mission_result_lose</item>
         <item>@string/mission_result_draw</item>
         <item>@string/mission_result_undecided</item>
-    </integer-array>
+    </string-array>
 </resources>

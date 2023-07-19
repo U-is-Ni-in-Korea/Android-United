@@ -258,7 +258,7 @@
                 android:layout_marginBottom="29dp"
                 android:background="@drawable/bg_mission_image_round"
                 android:padding="12dp"
-                android:text="@string/mission_result_go_wish"
+                android:text="@string/mission_result_go_home"
                 android:textColor="@color/Lightblue_600"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
