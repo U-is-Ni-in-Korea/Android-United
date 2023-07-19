@@ -42,12 +42,13 @@ class ShareInviteCodeActivity :
     }
 
     private fun checkCoupleConnection() {
-        binding.btnCheckConnection.setOnSingleClickListener {
+        binding.llCheckConnection.setOnSingleClickListener {
             shareInviteCodeViewModel.checkCoupleConnection()
             lifecycleScope.launch {
                 shareInviteCodeViewModel.isConnected.collect { isConnected ->
                     if (isConnected) {
                         startActivity<HomeActivity>()
+                        finishAffinity()
                     } else {
                         showSnackbar(binding.root, getString(R.string.cannot_connect))
                     }
