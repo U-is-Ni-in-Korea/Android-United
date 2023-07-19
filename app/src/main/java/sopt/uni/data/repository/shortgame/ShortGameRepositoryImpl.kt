@@ -29,4 +29,13 @@ class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: 
         }.onFailure {
             Result.failure<ResponseCreateShortGameDto>(it)
         }
+
+    override suspend fun getMissionDetail(missionCategoryId: Int): Result<MissionDetail> =
+        kotlin.runCatching {
+            shortGameService.getMissionDetail(missionCategoryId)
+        }.onSuccess {
+            Result.success(it)
+        }.onFailure {
+            Result.failure<MissionDetail>(it)
+        }
 }
