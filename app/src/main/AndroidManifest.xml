@@ -59,8 +59,8 @@
             android:name=".presentation.wish.WishActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".presentation.invite.NickNameActivity"
@@ -82,7 +82,8 @@
         <activity
             android:name=".presentation.invite.EnterInviteCodeActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.shortgame.missiondetailcreate.MissionDetailCreateActivity"
             android:exported="false"
@@ -120,9 +121,10 @@
             android:name=".presentation.mypage.MypageSettingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".presentation.wish.WishFcActivity"
+        <activity
+            android:name=".presentation.wish.WishFcActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".presentation.shortgame.missionresult.MissionResultActivity"
