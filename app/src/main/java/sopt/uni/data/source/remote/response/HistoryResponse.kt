@@ -5,32 +5,37 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class HistoryResponse(
-    @SerialName("roundGameId")
-    val roundGameId: Int,
     @SerialName("date")
     val date: String,
-    @SerialName("result")
-    val result: String,
-    @SerialName("title")
-    val title: String,
     @SerialName("image")
     val image: String,
+    @SerialName("myMission")
+    val myMission: MyMission,
+    @SerialName("partnerMission")
+    val partnerMission: PartnerMission,
+    @SerialName("result")
+    val result: String,
+    @SerialName("roundGameId")
+    val roundGameId: Int,
+    @SerialName("title")
+    val title: String,
+    @SerialName("winner")
+    val winner: String,
 ) {
     @Serializable
     data class MyMission(
-        @SerialName("nickname")
-        val nickname: String,
+        @SerialName("content")
+        val content: String,
         @SerialName("result")
         val result: String,
         @SerialName("time")
         val time: String,
-
     )
 
     @Serializable
     data class PartnerMission(
-        @SerialName("nickname")
-        val nickname: String,
+        @SerialName("content")
+        val content: String,
         @SerialName("result")
         val result: String,
         @SerialName("time")

@@ -2,6 +2,7 @@ package sopt.uni.presentation.history
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.history.History
 import sopt.uni.databinding.ActivityHistoryDetailBinding
@@ -11,7 +12,7 @@ import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
 
-/** TODO 준희 : @AndroiEntryPoint 붙이기*/
+@AndroidEntryPoint
 class HistoryDetailActivity :
     BindingActivity<ActivityHistoryDetailBinding>(R.layout.activity_history_detail) {
     private val viewModel: HistoryDetailViewModel by viewModels()
