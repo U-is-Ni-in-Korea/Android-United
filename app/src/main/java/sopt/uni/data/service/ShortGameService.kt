@@ -1,6 +1,7 @@
 package sopt.uni.data.service
 
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -35,4 +36,9 @@ interface ShortGameService {
         @Path("roundGameId") roundGameId: Int,
         @Body request: RequestRecordShortGameDto,
     ): ResponseShortGameResultDto
+
+    @DELETE("/api/game/short/{roundGameId}")
+    suspend fun deleteShortGameResult(
+        @Path("roundGameId") roundGameId: Int,
+    )
 }
