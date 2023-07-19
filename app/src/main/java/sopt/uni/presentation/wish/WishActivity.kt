@@ -1,6 +1,5 @@
 package sopt.uni.presentation.wish
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -10,6 +9,7 @@ import sopt.uni.data.entity.wish.MULTI_TYPE_WISH2
 import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ActivityWishBinding
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.startActivity
 
 class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish) {
 
@@ -77,7 +77,12 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
     }
 
     private fun onClickWish() {
-        val intent = Intent(this, WishFcActivity::class.java)
-        startActivity(intent)
+        startActivity<WishFcActivity>()
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.rvWish.adapter = null
     }
 }

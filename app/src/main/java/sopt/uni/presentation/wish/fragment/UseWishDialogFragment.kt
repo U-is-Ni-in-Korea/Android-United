@@ -19,19 +19,6 @@ class UseWishDialogFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-//        with(binding) {
-//            dialogTitle.setText(getString(R.string.use_wish_dialog_title))
-//            dialogBody.setText(getString(R.string.use_wish_dialog_description))
-//            btnRight.setText(getString(R.string.dialog_ok_text))
-//            btnLeft.setOnSingleClickListener {
-//                dismiss()
-//            }
-//            btnRight.setOnSingleClickListener {
-//                val fragment = WishUsedFragment()
-//                parentFragmentManager.beginTransaction()
-//                    .replace(R.id.fcv_wish_fc, fragment).commit()
-//            }
-//        }
     }
 
     private fun initView() {
