@@ -58,10 +58,9 @@
             android:layout_height="76dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
-            android:src="@{vm.mypage.image}"
+            android:src="@drawable/mypage_profil_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_app_bar"
-            tools:src="@drawable/mypage_profil_image" />
+            app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_app_bar" />
 
         <TextView
             android:id="@+id/tv_mypage_setting_name"
