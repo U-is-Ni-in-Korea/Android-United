@@ -21,7 +21,7 @@ class DdayViewModel @Inject constructor(
             kotlin.runCatching {
                 onBoardingRepository.postStartDate(startDate = startDate)
             }.fold({
-                inviteCode = MutableStateFlow(it)
+                inviteCode.emit(it)
                 Timber.d("기념일 갱신이 완료되었습니다.")
             }, {
                 Timber.d("기념일 갱신이 실패했습니다.")
