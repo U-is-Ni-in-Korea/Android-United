@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="입력하신 코드 정보를 찾을 수 없어요"
+            android:text="@string/cannot_find_code_information"
             android:textColor="@color/Red_500"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/et_invite_code"
