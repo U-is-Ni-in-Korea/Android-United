@@ -24,10 +24,10 @@ class WishUsedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            btnWishUsedClose.setOnClickListener{
+            btnWishUsedClose.setOnClickListener {
                 activity?.finish()
             }
-            btnWishUsedGoHome.setOnClickListener{
+            btnWishUsedGoHome.setOnClickListener {
                 // 홈 화면 전환O
             }
         }
