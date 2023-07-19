@@ -1,6 +1,5 @@
 package sopt.uni.data.repository.shortgame
 
-import retrofit2.Response
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.service.ShortGameService
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
