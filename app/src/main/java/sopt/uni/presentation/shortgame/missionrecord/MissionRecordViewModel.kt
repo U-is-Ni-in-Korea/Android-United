@@ -1,6 +1,5 @@
 package sopt.uni.presentation.shortgame.missionrecord
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.shortgame.RoundMission
 import sopt.uni.data.repository.shortgame.ShortGameRepository
-import sopt.uni.data.source.remote.response.ResponseShortGameResultDto
 import timber.log.Timber
 import javax.inject.Inject
 
