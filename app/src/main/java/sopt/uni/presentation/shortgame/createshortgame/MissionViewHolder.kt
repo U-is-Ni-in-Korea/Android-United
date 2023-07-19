@@ -3,7 +3,7 @@ package sopt.uni.presentation.shortgame.createshortgame
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import sopt.uni.R
-import sopt.uni.data.entity.shortgame.Mission
+import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.databinding.ItemMissionBinding
 import sopt.uni.presentation.entity.MissionIdPosition
 
@@ -11,13 +11,12 @@ class MissionViewHolder(val binding: ItemMissionBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(
-        data: Mission,
+        data: MissionDetail,
         isSelected: Boolean,
         position: Int,
         goToMissionDetailClickListener: (MissionIdPosition) -> Unit,
-        selectMissionClickListener: (MissionIdPosition) -> Unit
+        selectMissionClickListener: (MissionIdPosition) -> Unit,
     ) {
-
         binding.apply {
             ivMission.load(data.image)
             tvMissionTitle.text = data.title
@@ -29,9 +28,10 @@ class MissionViewHolder(val binding: ItemMissionBinding) :
             }
         }
 
-        if (isSelected)
+        if (isSelected) {
             binding.cvBackground.setBackgroundResource(R.drawable.bg_mission_hover)
-        else
+        } else {
             binding.cvBackground.setBackgroundResource(0)
+        }
     }
 }
