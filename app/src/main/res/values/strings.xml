@@ -197,5 +197,7 @@
     <string name="mission_record_cancel_dialog_body">소모된 하트는 다시 돌아오지 않아요</string>
     <string name="over_nickname">글자수를 초과했어요</string>
     <string name="cannot_connect">상대가 아직 연결되지 않았어요</string>
+    <string name="couple_connect_success">커플 연결에 성공했습니다</string>
+    <string name="cannot_find_code_information">입력하신 코드 정보를 찾을 수 없어요</string>
 
 </resources>

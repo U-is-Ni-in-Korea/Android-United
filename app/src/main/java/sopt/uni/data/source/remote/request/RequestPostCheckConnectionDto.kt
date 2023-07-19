@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RequestPostCheckConnectionDto(
-    @SerialName
-    ("inviteCode")
+    @SerialName("inviteCode")
     val inviteCode: String,
 )

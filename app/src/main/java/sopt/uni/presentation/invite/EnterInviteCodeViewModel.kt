@@ -24,7 +24,6 @@ class EnterInviteCodeViewModel @Inject constructor(
                 onBoardingRepository.postCheckConnection(inviteCode = inviteCode.value)
             }.fold({
                 connectState.emit(it.code().toString())
-                Timber.d("커플 연결 통신에 성공했습니다. code = ${it.code()}")
             }, {
                 Timber.d(it)
             })

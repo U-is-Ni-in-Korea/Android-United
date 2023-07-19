@@ -44,9 +44,8 @@ class EnterInviteCodeActivity :
             lifecycleScope.launch {
                 enterInviteCodeViewModel.connectState.collect { responseCode ->
                     if (responseCode == "204") {
-                        this@EnterInviteCodeActivity.showToast("커플 연결에 성공했습니다")
-                        binding.etInviteCode.background =
-                            getDrawable(R.drawable.bg_mypage_edit_text)
+                        this@EnterInviteCodeActivity.showToast(getString(R.string.couple_connect_success))
+                        binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text)
                         binding.tvInviteCodeErrorMessage.visibility = View.INVISIBLE
                         startActivity<HomeActivity>()
                         finishAffinity()
