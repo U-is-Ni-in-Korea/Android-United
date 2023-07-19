@@ -4,15 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RequestWishDetail(
+data class RequestUseWish(
     @SerialName("wishCouponId")
     val wishCouponId: Int,
-)
-
-@Serializable
-data class ResponseWishDetail(
-    @SerialName("isMine")
-    val isMine: Boolean,
-    @SerialName("wishCoupon")
-    val wishCoupon: WishCoupon,
 )
