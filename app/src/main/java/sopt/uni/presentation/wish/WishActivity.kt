@@ -42,6 +42,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
 
     private fun initRecyclerView() {
         multiviewAdapter = WishMultiviewAdapter(this) {
+            onClickWish()
         }
 
         binding.rvWish.adapter = multiviewAdapter
@@ -75,7 +76,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
-    private fun onClickWish(position: Int) {
+    private fun onClickWish() {
         val intent = Intent(this, WishFcActivity::class.java)
         startActivity(intent)
     }
