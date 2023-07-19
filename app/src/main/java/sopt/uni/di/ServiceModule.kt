@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import sopt.uni.data.service.AuthService
 import sopt.uni.data.service.HistoryService
 import sopt.uni.data.service.OnBoardingService
+import sopt.uni.data.service.ShortGameService
 import javax.inject.Singleton
 
 @Module
@@ -27,4 +28,8 @@ object ServiceModule {
     @Provides
     @Singleton
     fun provideOnBoardingService(retrofit: Retrofit): OnBoardingService = retrofit.create()
+
+    @Provides
+    @Singleton
+    fun provideShortGameService(retrofit: Retrofit): ShortGameService = retrofit.create()
 }

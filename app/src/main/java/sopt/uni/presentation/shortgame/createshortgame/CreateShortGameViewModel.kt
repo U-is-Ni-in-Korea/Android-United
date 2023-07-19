@@ -1,18 +1,26 @@
 package sopt.uni.presentation.shortgame.createshortgame
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import sopt.uni.data.entity.shortgame.Mission
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import sopt.uni.data.entity.shortgame.MissionDetail
+import sopt.uni.data.repository.shortgame.ShortGameRepository
+import javax.inject.Inject
 
-class CreateShortGameViewModel : ViewModel() {
+@HiltViewModel
+class CreateShortGameViewModel @Inject constructor(private val shortGameRepository: ShortGameRepository) :
+    ViewModel() {
     private val _selectedMissionId = MutableLiveData<Int>()
     val selectedMissionId = _selectedMissionId
 
     private val _roundGameId = MutableLiveData<Int>()
     val roundGameId = _roundGameId
 
-    private val _missionList = MutableLiveData<List<Mission>>()
+    private val _missionList = MutableLiveData<List<MissionDetail>>()
     val missionList = _missionList
 
     val wishContent = MutableLiveData<String>("")
@@ -25,22 +33,17 @@ class CreateShortGameViewModel : ViewModel() {
     val isCreateSuccess = _isCreateSuccess
 
     init {
-        setDummyList()
+        getMissionCategory()
     }
 
-    private fun setDummyList() {
-        val missionList = mutableListOf<Mission>()
-
-        for (i in 0..7) {
-            missionList.add(
-                Mission(
-                    image = "https://github.com/U-is-Ni-in-Korea/Android-United/assets/50603273/8c345eb3-d688-42bd-8585-a02f1016e213",
-                    title = "뀨$i",
-                    id = i,
-                ),
-            )
+    private fun getMissionCategory() {
+        viewModelScope.launch {
+            shortGameRepository.getMissionCategory().onSuccess {
+                _missionList.postValue(it)
+            }.onFailure {
+                // TODO: 실패시 예외처리
+            }
         }
-        _missionList.value = missionList
     }
 
     fun createShortGame() {
