@@ -68,7 +68,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/bg_nickname_btn"
             android:stateListAnimator="@null"
-            android:text="@string/copy_invite_code"
+            android:text="@string/share_invite_code"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/btn_check_connection"
             app:layout_constraintEnd_toEndOf="parent"
