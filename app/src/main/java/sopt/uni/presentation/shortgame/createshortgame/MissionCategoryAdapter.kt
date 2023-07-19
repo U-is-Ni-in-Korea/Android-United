@@ -3,16 +3,16 @@ package sopt.uni.presentation.shortgame.createshortgame
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import sopt.uni.data.entity.shortgame.Mission
+import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.databinding.ItemMissionBinding
 import sopt.uni.presentation.entity.MissionIdPosition
 import sopt.uni.util.extension.ItemDiffCallback
 
 class MissionCategoryAdapter(
     private val goToMissionDetailClickListener: (MissionIdPosition) -> Unit,
-    private val selectMissionClickListener: (MissionIdPosition) -> Unit
-) : ListAdapter<Mission, MissionViewHolder>(
-    ItemDiffCallback<Mission>(
+    private val selectMissionClickListener: (MissionIdPosition) -> Unit,
+) : ListAdapter<MissionDetail, MissionViewHolder>(
+    ItemDiffCallback<MissionDetail>(
         onContentsTheSame = { old, new -> old == new },
         onItemsTheSame = { old, new -> old == new },
     ),
@@ -30,7 +30,7 @@ class MissionCategoryAdapter(
             position == selectedPosition,
             position,
             goToMissionDetailClickListener,
-            selectMissionClickListener
+            selectMissionClickListener,
         )
     }
 
