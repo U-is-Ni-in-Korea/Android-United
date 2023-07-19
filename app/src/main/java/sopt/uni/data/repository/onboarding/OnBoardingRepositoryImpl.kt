@@ -1,7 +1,9 @@
 package sopt.uni.data.repository.onboarding
 
+import retrofit2.Response
 import sopt.uni.data.service.OnBoardingService
 import sopt.uni.data.source.remote.request.RequestNickNameDto
+import sopt.uni.data.source.remote.request.RequestPostCheckConnectionDto
 import sopt.uni.data.source.remote.request.RequestStartDateDto
 import javax.inject.Inject
 
@@ -19,5 +21,9 @@ class OnBoardingRepositoryImpl @Inject constructor(
 
     override suspend fun checkCoupleConnection(): Boolean {
         return onBoardingService.checkConnection().connection
+    }
+
+    override suspend fun postCheckConnection(inviteCode: String): Response<Unit> {
+        return onBoardingService.postCheckConnection(RequestPostCheckConnectionDto(inviteCode))
     }
 }

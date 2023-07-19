@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="sopt.uni.presentation.invite.EnterInviteCodeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +50,20 @@
             android:inputType="text"
             android:paddingHorizontal="15dp"
             android:paddingVertical="14dp"
+            android:text="@={viewModel.inviteCode}"
             app:layout_constraintTop_toBottomOf="@id/tv_invite_code_title" />
+
+        <TextView
+            android:id="@+id/tv_invite_code_error_message"
+            style="@style/Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="입력하신 코드 정보를 찾을 수 없어요"
+            android:textColor="@color/Red_500"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/et_invite_code"
+            app:layout_constraintTop_toBottomOf="@id/et_invite_code" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_connect"
