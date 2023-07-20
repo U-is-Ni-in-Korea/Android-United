@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="sopt.uni.presentation.home.HomeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -113,10 +117,11 @@
                 android:background="@drawable/bg_home_d_day"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="4dp"
-                android:text="@string/home_d_100"
+                android:text="@{@string/d_day(viewModel.homeInfo.DDay)}"
                 android:textColor="@color/Gray_000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/home_d_100" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -131,11 +136,12 @@
                     style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15"
+                    android:text="@{viewModel.homeInfo.myScore.toString()}"
                     android:textColor="@color/Lightblue_500"
                     app:layout_constraintEnd_toStartOf="@id/divider1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="15" />
 
                 <TextView
                     style="@style/Body2"
@@ -165,11 +171,12 @@
                     style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10"
+                    android:text="@{viewModel.homeInfo.drawCount.toString()}"
                     android:textColor="@color/Gray_600"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="10" />
 
                 <TextView
                     style="@style/Body2"
@@ -198,11 +205,12 @@
                     style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2"
+                    android:text="@{viewModel.homeInfo.partnerScore.toString()}"
                     android:textColor="@color/Gray_300"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/divider2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2" />
 
                 <TextView
                     style="@style/Body2"
@@ -276,7 +284,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
-                    android:text="x5"
+                    android:text="@string/x5"
                     android:textColor="@color/Lightblue_600" />
 
             </LinearLayout>
@@ -319,7 +327,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/temp_imagecard"
+                android:src="@drawable/home_short_game_imagecard"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -345,20 +353,19 @@
                 style="@style/Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="소원권"
+                android:text="@string/home_wish_coupon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/temp_imagecard"
+                android:src="@drawable/home_wish_coupon_imagecard"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

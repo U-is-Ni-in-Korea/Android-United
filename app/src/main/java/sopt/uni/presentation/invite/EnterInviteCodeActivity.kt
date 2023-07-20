@@ -20,7 +20,9 @@ class EnterInviteCodeActivity :
     private val enterInviteCodeViewModel by viewModels<EnterInviteCodeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding.viewModel = enterInviteCodeViewModel
+
         moveToPrevPage()
         checkInviteCode()
         changeBoxStrokeColor()
@@ -33,8 +35,10 @@ class EnterInviteCodeActivity :
     }
 
     private fun changeBoxStrokeColor() {
-        if (binding.etInviteCode.text.isNotBlank()) {
+        if (enterInviteCodeViewModel.inviteCode.value.isNotBlank()) {
             binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text)
+        } else {
+            binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text_error)
         }
     }
 
@@ -45,7 +49,8 @@ class EnterInviteCodeActivity :
                 enterInviteCodeViewModel.connectState.collect { responseCode ->
                     if (responseCode == "204") {
                         this@EnterInviteCodeActivity.showToast(getString(R.string.couple_connect_success))
-                        binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text)
+                        binding.etInviteCode.background =
+                            getDrawable(R.drawable.bg_mypage_edit_text)
                         binding.tvInviteCodeErrorMessage.visibility = View.INVISIBLE
                         startActivity<HomeActivity>()
                         finishAffinity()

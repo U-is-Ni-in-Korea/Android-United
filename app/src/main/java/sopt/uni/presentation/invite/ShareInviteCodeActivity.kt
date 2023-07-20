@@ -12,7 +12,7 @@ import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.showSnackbar
+import sopt.uni.util.extension.showToast
 import sopt.uni.util.extension.startActivity
 import timber.log.Timber
 
@@ -50,7 +50,7 @@ class ShareInviteCodeActivity :
                         startActivity<HomeActivity>()
                         finishAffinity()
                     } else {
-                        showSnackbar(binding.root, getString(R.string.cannot_connect))
+                        this@ShareInviteCodeActivity.showToast(getString(R.string.cannot_connect))
                     }
                 }
             }
