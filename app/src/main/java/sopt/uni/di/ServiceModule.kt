@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import sopt.uni.data.service.AuthService
 import sopt.uni.data.service.HistoryService
+import sopt.uni.data.service.HomeService
 import sopt.uni.data.service.MyPageService
 import sopt.uni.data.service.OnBoardingService
 import sopt.uni.data.service.ShortGameService
@@ -38,4 +39,8 @@ object ServiceModule {
     @Provides
     @Singleton
     fun provideShortGameService(retrofit: Retrofit): ShortGameService = retrofit.create()
+
+    @Provides
+    @Singleton
+    fun provideHomeService(retrofit: Retrofit): HomeService = retrofit.create()
 }

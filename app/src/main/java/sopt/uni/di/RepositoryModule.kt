@@ -8,6 +8,8 @@ import sopt.uni.data.repository.auth.AuthRepository
 import sopt.uni.data.repository.auth.AuthRepositoryImpl
 import sopt.uni.data.repository.history.HistoryRepository
 import sopt.uni.data.repository.history.HistoryRepositoryImpl
+import sopt.uni.data.repository.home.HomeRepository
+import sopt.uni.data.repository.home.HomeRepositoryImpl
 import sopt.uni.data.repository.mypage.MypageRepository
 import sopt.uni.data.repository.mypage.MypageRepositoryImpl
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
@@ -43,4 +45,9 @@ object RepositoryModule {
     @Singleton
     fun providesMyPageRepository(mypageRepository: MypageRepositoryImpl): MypageRepository =
         mypageRepository
+
+    @Provides
+    @Singleton
+    fun providesHomeRepository(homeRepository: HomeRepositoryImpl): HomeRepository =
+        homeRepository
 }
