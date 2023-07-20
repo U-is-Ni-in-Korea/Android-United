@@ -68,30 +68,29 @@
             style="@style/Title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="34dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{vm.mypage.nickname}"
             android:textColor="@color/Gray_600"
             app:layout_constraintBottom_toBottomOf="@+id/iv_mypage_setting_profil_image"
-            app:layout_constraintEnd_toStartOf="@id/tv_mypage_setting_profil_edit"
+            app:layout_constraintEnd_toStartOf="@+id/tv_mypage_setting_profil_edit"
             app:layout_constraintStart_toEndOf="@id/iv_mypage_setting_profil_image"
             app:layout_constraintTop_toTopOf="@+id/iv_mypage_setting_profil_image"
             tools:text="@string/mypage_setting_name" />
 
-        <TextView
+        <ImageButton
             android:id="@+id/tv_mypage_setting_profil_edit"
-            style="@style/Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_mypage_profil"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:text="@string/mypage_setting_profil_edit"
-            android:textColor="@color/Lightblue_600"
+            android:background="@null"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:src="@drawable/ic_mypage_profil_edit"
             app:layout_constraintBottom_toBottomOf="@+id/iv_mypage_setting_profil_image"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cl_mypage_setting_app_bar"
             app:layout_constraintTop_toTopOf="@+id/iv_mypage_setting_profil_image" />
 
         <TextView
