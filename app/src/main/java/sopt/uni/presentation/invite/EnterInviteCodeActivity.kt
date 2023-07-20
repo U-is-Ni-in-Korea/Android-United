@@ -25,20 +25,11 @@ class EnterInviteCodeActivity :
 
         moveToPrevPage()
         checkInviteCode()
-        changeBoxStrokeColor()
     }
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
             finish()
-        }
-    }
-
-    private fun changeBoxStrokeColor() {
-        if (enterInviteCodeViewModel.inviteCode.value.isNotBlank()) {
-            binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text)
-        } else {
-            binding.etInviteCode.background = getDrawable(R.drawable.bg_mypage_edit_text_error)
         }
     }
 
@@ -54,7 +45,7 @@ class EnterInviteCodeActivity :
                         binding.tvInviteCodeErrorMessage.visibility = View.INVISIBLE
                         startActivity<HomeActivity>()
                         finishAffinity()
-                    } else {
+                    } else if (responseCode != "") {
                         binding.etInviteCode.background =
                             getDrawable(R.drawable.bg_mypage_edit_text_error)
                         binding.tvInviteCodeErrorMessage.visibility = View.VISIBLE
