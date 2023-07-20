@@ -25,6 +25,10 @@ class MypageSettingActivity :
         setupSettingProfilEdit()
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
+
     private fun setupBackButton() {
         binding.btnMypageSettingBack.setOnSingleClickListener {
             startActivity<HomeActivity>()
@@ -35,7 +39,6 @@ class MypageSettingActivity :
     private fun setupServiceAccount() {
         binding.clMypageSettingServiceAccount.setOnSingleClickListener {
             startActivity<MypageAccountActivity>()
-            finish()
         }
     }
 
@@ -47,7 +50,6 @@ class MypageSettingActivity :
                 requireNotNull(viewModel.mypage.value),
             )
             startActivity(intent)
-            finish()
         }
     }
 

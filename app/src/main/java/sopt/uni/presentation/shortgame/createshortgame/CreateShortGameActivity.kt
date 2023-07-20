@@ -29,12 +29,14 @@ class CreateShortGameActivity :
 
     private val viewModel: CreateShortGameViewModel by viewModels()
 
-    private val activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == RESULT_OK) {
-            val data = it.data?.parcelable<MissionIdPosition>(MissionDetailCreateActivity.MISSION_ID_POSITION) as MissionIdPosition
-            selectItem(data.id, data.position)
+    private val activityLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val data =
+                    it.data?.parcelable<MissionIdPosition>(MissionDetailCreateActivity.MISSION_ID_POSITION) as MissionIdPosition
+                selectItem(data.id, data.position)
+            }
         }
-    }
 
     private val missionAdapter by lazy {
         MissionCategoryAdapter(
@@ -76,6 +78,10 @@ class CreateShortGameActivity :
         return super.dispatchTouchEvent(event)
     }
 
+    override fun onBackPressed() {
+        exitDialog()
+    }
+
     private fun setAdapter() {
         binding.rvMission.adapter = missionAdapter
         binding.rvMission.addItemDecoration(ItemDecorations(0, 9, 0, 9))
@@ -110,10 +116,14 @@ class CreateShortGameActivity :
 
     private fun exitDialog() {
         CreateShortGameDialogFragment().apply {
-            titleText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_title)
-            bodyText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_body)
-            confirmButtonText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_exit)
-            dismissButtonText = this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
+            titleText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_title)
+            bodyText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_body)
+            confirmButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_exit)
+            dismissButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
             confirmClickListener = {
                 finish()
                 this.dismiss()
@@ -126,10 +136,14 @@ class CreateShortGameActivity :
 
     private fun createDialog() {
         CreateShortGameDialogFragment().apply {
-            titleText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_title)
-            bodyText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_body)
-            confirmButtonText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_create)
-            dismissButtonText = this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
+            titleText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_title)
+            bodyText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_body)
+            confirmButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_create)
+            dismissButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
             confirmClickListener = {
                 viewModel.createShortGame()
                 this.dismiss()

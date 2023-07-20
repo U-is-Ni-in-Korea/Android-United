@@ -1,6 +1,7 @@
 package sopt.uni.presentation.home
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
@@ -16,6 +17,8 @@ import sopt.uni.util.extension.startActivity
 @AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private val homeViewModel by viewModels<HomeViewModel>()
+
+    var backPressedTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,10 +30,23 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         moveToMyPage()
     }
 
+    override fun onBackPressed() {
+        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "한번 더 뒤로가기 버튼을 누르면 종료됩니다.",
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
+        backPressedTime = System.currentTimeMillis()
+    }
+
     private fun moveToShortGame() {
         binding.clShortGame.setOnSingleClickListener {
             startActivity<CreateShortGameActivity>()
-            finish()
         }
     }
 
