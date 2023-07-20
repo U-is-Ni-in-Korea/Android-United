@@ -8,7 +8,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorOnBackground</item>
         <item name="android:windowLightStatusBar">true</item>
+
         <!-- Customize your theme here. -->
+        <item name="colorControlActivated">@color/Lightblue_300</item>
+        <item name="android:textColorHighlight">@color/Lightblue_200</item>
     </style>
 
     <style name="Theme.UNIAOS" parent="Base.Theme.UNIAOS" />
