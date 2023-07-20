@@ -203,5 +203,6 @@
     <string name="x5">x5</string>
     <string name="home_wish_coupon">소원권</string>
     <string name="my_page_profile_image">my page profile image</string>
+    <string name="exit_text">한번 더 뒤로가기 버튼을 누르면 종료됩니다.</string>
 
 </resources>
