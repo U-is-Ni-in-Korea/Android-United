@@ -204,5 +204,7 @@
     <string name="home_wish_coupon">소원권</string>
     <string name="my_page_profile_image">my page profile image</string>
     <string name="exit_text">한번 더 뒤로가기 버튼을 누르면 종료됩니다.</string>
+    <string name="success_kakao_login">카카오 로그인에 성공했어요</string>
+    <string name="success_google_login">구글 로그인에 성공했어요</string>
 
 </resources>
