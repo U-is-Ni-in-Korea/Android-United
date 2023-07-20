@@ -29,9 +29,9 @@ class MissionViewHolder(val binding: ItemMissionBinding) :
         }
 
         if (isSelected) {
-            binding.cvBackground.setBackgroundResource(R.drawable.bg_mission_hover)
+            binding.clBackground.setBackgroundResource(R.drawable.bg_mission_hover)
         } else {
-            binding.cvBackground.setBackgroundResource(0)
+            binding.clBackground.setBackgroundResource(R.drawable.bg_white_round_10)
         }
     }
 }
