@@ -8,7 +8,6 @@ import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.NoBodyAction2DialogBinding
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.presentation.BindingDialogFragment
-import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 

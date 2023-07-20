@@ -29,7 +29,7 @@ class MypageAccountActivity :
     }
 
     private fun setupAccountList1() {
-        binding.tvMypageAccountLogout.setOnSingleClickListener {
+        binding.clMypageAccountLogout.setOnSingleClickListener {
             MypageAccountLogoutDialogFragment().show(
                 supportFragmentManager,
                 "MypageAccountLogoutDialogFragment",
@@ -38,7 +38,7 @@ class MypageAccountActivity :
     }
 
     private fun setupAccountList2() {
-        binding.tvMypageAccountSecession.setOnSingleClickListener {
+        binding.clMypageAccountSecession.setOnSingleClickListener {
             MypageAccountDeleteDialogFragment().show(
                 supportFragmentManager,
                 "MypageAccountSecessionDialogFragment",
@@ -47,7 +47,7 @@ class MypageAccountActivity :
     }
 
     private fun setupAccountList3() {
-        binding.tvMypageAccountDisconnect.setOnSingleClickListener {
+        binding.clMypageAccountDisconnect.setOnSingleClickListener {
             MypageAccountCoupleDisconnectDialogFragment().show(
                 supportFragmentManager,
                 "MypageAccountCoupleDisconnectDialogFragment",
