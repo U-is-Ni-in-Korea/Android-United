@@ -40,7 +40,7 @@ data class ResponseHomeDto(
         @SerialName("enable")
         val enable: Boolean,
         @SerialName("finishAt")
-        val finishAt: String,
+        val finishAt: String?,
         @SerialName("id")
         val id: Int,
     )
