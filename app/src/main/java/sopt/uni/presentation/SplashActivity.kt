@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.ActivitySplashBinding
+import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.binding.BindingActivity
@@ -22,7 +23,11 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
         lifecycleScope.launch {
             delay(2000)
             if (SparkleStorage.accessToken != null) {
-                startActivity<NickNameActivity>()
+                if (SparkleStorage.partnerId != -1) {
+                    startActivity<HomeActivity>()
+                } else {
+                    startActivity<NickNameActivity>()
+                }
             } else {
                 startActivity<OnBoardingActivity>()
             }

@@ -39,6 +39,14 @@ object SparkleStorage {
         get() = pref.getString(REFRESH_TOKEN, null)
         set(value) = pref.edit { putString(REFRESH_TOKEN, value).apply() }
 
+    var userId: Int?
+        get() = pref.getInt(USER_ID, -1)
+        set(value) = pref.edit { putInt(USER_ID, value ?: -1).apply() }
+
+    var partnerId: Int?
+        get() = pref.getInt(PARTNER_ID, -1)
+        set(value) = pref.edit { putInt(PARTNER_ID, value ?: -1).apply() }
+
     fun clear() {
         pref.edit().clear().apply()
     }
@@ -47,3 +55,5 @@ object SparkleStorage {
 const val ACCESS_TOKEN = "accessToken"
 const val REFRESH_TOKEN = "refreshToken"
 const val AUTH = "auth"
+const val USER_ID = "userId"
+const val PARTNER_ID = "partnerId"
