@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -29,12 +30,14 @@ class CreateShortGameActivity :
 
     private val viewModel: CreateShortGameViewModel by viewModels()
 
-    private val activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == RESULT_OK) {
-            val data = it.data?.parcelable<MissionIdPosition>(MissionDetailCreateActivity.MISSION_ID_POSITION) as MissionIdPosition
-            selectItem(data.id, data.position)
+    private val activityLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val data =
+                    it.data?.parcelable<MissionIdPosition>(MissionDetailCreateActivity.MISSION_ID_POSITION) as MissionIdPosition
+                selectItem(data.id, data.position)
+            }
         }
-    }
 
     private val missionAdapter by lazy {
         MissionCategoryAdapter(
@@ -110,10 +113,14 @@ class CreateShortGameActivity :
 
     private fun exitDialog() {
         CreateShortGameDialogFragment().apply {
-            titleText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_title)
-            bodyText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_body)
-            confirmButtonText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_exit)
-            dismissButtonText = this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
+            titleText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_title)
+            bodyText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_body)
+            confirmButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_exit_dialog_exit)
+            dismissButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
             confirmClickListener = {
                 finish()
                 this.dismiss()
@@ -126,10 +133,14 @@ class CreateShortGameActivity :
 
     private fun createDialog() {
         CreateShortGameDialogFragment().apply {
-            titleText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_title)
-            bodyText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_body)
-            confirmButtonText = this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_create)
-            dismissButtonText = this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
+            titleText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_title)
+            bodyText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_body)
+            confirmButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.create_short_game_create_dialog_create)
+            dismissButtonText =
+                this@CreateShortGameActivity.resources.getString(R.string.dialog_cancel_text)
             confirmClickListener = {
                 viewModel.createShortGame()
                 this.dismiss()
@@ -167,6 +178,12 @@ class CreateShortGameActivity :
             } else {
                 view.background = view.context.getDrawable(R.drawable.bg_wish_edit_text)
             }
+        }
+
+        @JvmStatic
+        @BindingAdapter("setContentLength")
+        fun setButtonEnable(view: Button, length: Int) {
+            view.isEnabled = length <= MAX_LENGTH
         }
     }
 }
