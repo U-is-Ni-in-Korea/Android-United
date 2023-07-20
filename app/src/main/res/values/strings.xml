@@ -39,6 +39,7 @@
     <string name="when_is_d_day">두 분의 시작일은 언제인가요?</string>
     <string name="please_enter_invite_code">초대코드를 입력하세요</string>
     <string name="connect">연결하기</string>
+    <string name="d_day">D+%d</string>
 
     <!-- 소원권 -->
     <string name="wish_title">소원권</string>
@@ -199,5 +200,8 @@
     <string name="cannot_connect">상대가 아직 연결되지 않았어요</string>
     <string name="couple_connect_success">커플 연결에 성공했습니다</string>
     <string name="cannot_find_code_information">입력하신 코드 정보를 찾을 수 없어요</string>
+    <string name="x5">x5</string>
+    <string name="home_wish_coupon">소원권</string>
+    <string name="my_page_profile_image">my page profile image</string>
 
 </resources>

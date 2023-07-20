@@ -54,11 +54,12 @@
 
         <ImageView
             android:id="@+id/iv_mypage_setting_profil_image"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
-            android:src="@drawable/mypage_profil_image"
+            android:contentDescription="@string/my_page_profile_image"
+            android:src="@drawable/ic_my_page_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_app_bar" />
 
@@ -67,10 +68,13 @@
             style="@style/Title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="34dp"
+            android:layout_marginHorizontal="34dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{vm.mypage.nickname}"
             android:textColor="@color/Gray_600"
             app:layout_constraintBottom_toBottomOf="@+id/iv_mypage_setting_profil_image"
+            app:layout_constraintEnd_toStartOf="@id/tv_mypage_setting_profil_edit"
             app:layout_constraintStart_toEndOf="@id/iv_mypage_setting_profil_image"
             app:layout_constraintTop_toTopOf="@+id/iv_mypage_setting_profil_image"
             tools:text="@string/mypage_setting_name" />

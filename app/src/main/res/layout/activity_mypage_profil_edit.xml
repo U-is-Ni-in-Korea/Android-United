@@ -66,10 +66,11 @@
 
         <ImageView
             android:id="@+id/iv_mypage_profil_edit"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
-            android:src="@drawable/mypage_profil_image"
+            android:contentDescription="@string/my_page_profile_image"
+            android:src="@drawable/ic_my_page_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_profil_edit_app_bar" />
