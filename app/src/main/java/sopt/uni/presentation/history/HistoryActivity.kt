@@ -74,7 +74,7 @@ class HistoryActivity :
     private fun setupBackButton() {
         binding.btnHistoryBack.setOnSingleClickListener {
             startActivity<HomeActivity>()
-            finish()
+            finishAffinity()
         }
     }
 

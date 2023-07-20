@@ -79,6 +79,10 @@ class CreateShortGameActivity :
         return super.dispatchTouchEvent(event)
     }
 
+    override fun onBackPressed() {
+        exitDialog()
+    }
+
     private fun setAdapter() {
         binding.rvMission.adapter = missionAdapter
         binding.rvMission.addItemDecoration(ItemDecorations(0, 9, 0, 9))
