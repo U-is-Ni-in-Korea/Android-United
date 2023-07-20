@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
+import sopt.uni.util.UiState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -15,7 +17,9 @@ class EnterInviteCodeViewModel @Inject constructor(
 ) : ViewModel() {
 
     val inviteCode = MutableStateFlow("")
-    val connectState = MutableStateFlow("")
+
+    private var _connectState = MutableStateFlow<UiState<String>>(UiState.Loading)
+    val connectState get() = _connectState.asStateFlow()
 
     fun checkCoupleConnection() {
         viewModelScope.launch {
@@ -23,7 +27,7 @@ class EnterInviteCodeViewModel @Inject constructor(
                 Timber.d("invite = ${inviteCode.value}")
                 onBoardingRepository.postCheckConnection(inviteCode = inviteCode.value)
             }.fold({
-                connectState.emit(it.code().toString())
+                _connectState.value = UiState.Success(it.code().toString())
             }, {
                 Timber.d(it)
             })
