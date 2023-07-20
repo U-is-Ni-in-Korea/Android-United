@@ -2,6 +2,7 @@ package sopt.uni.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -37,6 +38,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     private lateinit var auth: FirebaseAuth
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var startGoogleLoginForResult: ActivityResultLauncher<Intent>
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,20 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         moveToKakaoLogin()
         moveToGoogleLogin()
         collectIsTokenAvailability()
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "한번 더 뒤로가기 버튼을 누르면 종료됩니다.",
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 
     private fun collectIsTokenAvailability() {
