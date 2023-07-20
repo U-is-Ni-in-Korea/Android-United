@@ -17,14 +17,13 @@
 
 
         <DatePicker
-            android:paddingHorizontal="20dp"
             android:id="@+id/date_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
-            android:maxDate="07/15/2023"
+            android:paddingHorizontal="20dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_left"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

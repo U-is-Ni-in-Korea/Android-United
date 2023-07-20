@@ -1,11 +1,15 @@
 package sopt.uni.presentation.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.NoBodyAction2DialogBinding
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.presentation.BindingDialogFragment
+import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
 class MypageAccountLogoutDialogFragment :
@@ -20,7 +24,12 @@ class MypageAccountLogoutDialogFragment :
                 dismiss()
             }
             btnRight.setOnSingleClickListener {
-                // 로그아웃 처리
+                SparkleStorage.clear()
+                Intent(requireContext(), LoginActivity::class.java).apply {
+                    startActivity(this)
+                }
+                requireActivity().finish()
+                dismiss()
             }
         }
     }

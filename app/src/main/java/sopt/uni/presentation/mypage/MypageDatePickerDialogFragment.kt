@@ -6,6 +6,7 @@ import sopt.uni.R
 import sopt.uni.databinding.DatepickerDialogBinding
 import sopt.uni.presentation.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
+import java.util.Calendar
 
 class MypageDatePickerDialogFragment :
     BindingDialogFragment<DatepickerDialogBinding>(
@@ -20,6 +21,9 @@ class MypageDatePickerDialogFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setMaxDate()
+
         binding.btnLeft.setOnSingleClickListener {
             dismiss()
         }
@@ -32,5 +36,10 @@ class MypageDatePickerDialogFragment :
             listener?.onDateSelected(selectedDate)
             dismiss()
         }
+    }
+
+    private fun setMaxDate() {
+        val calendar = Calendar.getInstance()
+        binding.datePicker.maxDate = calendar.timeInMillis
     }
 }
