@@ -61,7 +61,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         } else {
             Toast.makeText(
                 applicationContext,
-                "한번 더 뒤로가기 버튼을 누르면 종료됩니다.",
+                getString(R.string.exit_text),
                 Toast.LENGTH_SHORT,
             ).show()
         }
