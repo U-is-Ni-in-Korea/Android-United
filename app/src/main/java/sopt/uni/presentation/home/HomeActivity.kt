@@ -18,7 +18,7 @@ import sopt.uni.util.extension.startActivity
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private val homeViewModel by viewModels<HomeViewModel>()
 
-    var backPressedTime: Long = 0
+    private var backPressedTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
