@@ -12,6 +12,7 @@ import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.util.DateUtil
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import timber.log.Timber
 import java.util.Calendar
 
 @AndroidEntryPoint
@@ -27,11 +28,11 @@ class DdayActivity : BindingActivity<ActivityDDayBinding>(R.layout.activity_d_da
     }
 
     private fun moveToShareInviteCode() {
-        val formatedDate =
-            binding.dpDDay.year.toString() + "-" + DateUtil.formatedMonth(binding.dpDDay.month) + "-" + DateUtil.formatedDay(
-                binding.dpDDay.dayOfMonth,
-            )
         binding.btnNext.setOnSingleClickListener {
+            val formatedDate =
+                binding.dpDDay.year.toString() + "-" + DateUtil.formatedMonth(binding.dpDDay.month + 1) + "-" + DateUtil.formatedDay(
+                    binding.dpDDay.dayOfMonth,
+                )
             dDayViewModel.postStartDate(formatedDate)
             lifecycleScope.launch {
                 dDayViewModel.inviteCode.collect { inviteCode ->
