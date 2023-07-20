@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
+import sopt.uni.util.UiState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -13,16 +15,18 @@ import javax.inject.Inject
 class ShareInviteCodeViewModel @Inject constructor(
     private val onBoardingRepository: OnBoardingRepository,
 ) : ViewModel() {
-    val isConnected = MutableStateFlow<Boolean>(false)
+
+    private var _connectedState = MutableStateFlow<UiState<Boolean>>(UiState.Loading)
+    val connectedState get() = _connectedState.asStateFlow()
 
     fun checkCoupleConnection() {
         viewModelScope.launch {
             kotlin.runCatching {
                 onBoardingRepository.checkCoupleConnection()
             }.fold({
-                isConnected.emit(it)
+                _connectedState.value = UiState.Success(it)
             }, {
-                Timber.d(it)
+                _connectedState.value = UiState.Failure(it.message ?: "Cannot find error message")
             })
         }
     }

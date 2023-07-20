@@ -3,13 +3,16 @@ package sopt.uni.presentation.invite
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import sopt.uni.R
 import sopt.uni.databinding.ActivityShareInviteCodeBinding
 import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showToast
@@ -44,17 +47,26 @@ class ShareInviteCodeActivity :
     private fun checkCoupleConnection() {
         binding.llCheckConnection.setOnSingleClickListener {
             shareInviteCodeViewModel.checkCoupleConnection()
-            lifecycleScope.launch {
-                shareInviteCodeViewModel.isConnected.collect { isConnected ->
-                    if (isConnected) {
+            collectConnectState()
+        }
+    }
+
+    private fun collectConnectState() {
+        shareInviteCodeViewModel.connectedState.flowWithLifecycle(lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> {
+                    if (it.data) {
+                        this@ShareInviteCodeActivity.showToast(getString(R.string.couple_connect_success))
                         startActivity<HomeActivity>()
                         finishAffinity()
                     } else {
                         this@ShareInviteCodeActivity.showToast(getString(R.string.cannot_connect))
                     }
                 }
+
+                else -> {}
             }
-        }
+        }.launchIn(lifecycleScope)
     }
 
     private fun copyInviteCode() {
