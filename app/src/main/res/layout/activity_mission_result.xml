@@ -188,6 +188,7 @@
                 android:layout_height="0dp"
                 android:background="@drawable/bg_gray_150_round_10"
                 android:padding="20dp"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/cl_card_partner_mission"
                 app:layout_constraintEnd_toEndOf="@id/cl_card_partner_mission"
                 app:layout_constraintStart_toStartOf="@id/cl_card_partner_mission"

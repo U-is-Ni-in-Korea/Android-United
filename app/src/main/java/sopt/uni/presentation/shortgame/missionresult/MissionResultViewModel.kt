@@ -37,10 +37,7 @@ class MissionResultViewModel @Inject constructor(
         viewModelScope.launch {
             shortGameRepository.getShortGameResult(roundGameId).onSuccess {
                 _myMissionResult.value = it.myRoundMission
-                if (it.partnerRoundMission != null) {
-                    _partnerMissionResult.value =
-                        it.partnerRoundMission
-                }
+                _partnerMissionResult.value = it.partnerRoundMission
                 _myMissionResultState.value =
                     MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
             }.onFailure {
