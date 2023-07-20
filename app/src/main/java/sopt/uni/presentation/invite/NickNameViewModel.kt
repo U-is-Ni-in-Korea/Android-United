@@ -24,7 +24,7 @@ class NickNameViewModel @Inject constructor(
 
     val checkNickNameState: StateFlow<Boolean?> = nickName.debounce(300L)
         .distinctUntilChanged()
-        .map { it.length in 1..10 }
+        .map { it.length <= 10 && !it.all { char -> char.isWhitespace() } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun patchNickName(nickName: String) {
