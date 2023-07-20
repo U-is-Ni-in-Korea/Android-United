@@ -25,6 +25,7 @@ import sopt.uni.databinding.ActivityLoginBinding
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showToast
 import sopt.uni.util.extension.startActivity
 import timber.log.Timber
 import javax.inject.Inject
@@ -76,6 +77,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                     when (it) {
                         is KakaoLoginService.LoginState.Success -> {
                             startActivity<NickNameActivity>()
+                            this@LoginActivity.showToast(getString(R.string.success_kakao_login))
                             loginViewModel.getAccessToken("kakao", it.token)
                             Timber.e("Kakao Login Success ${it.token} ${it.id}")
                         }
@@ -142,6 +144,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 if (task.isSuccessful) {
                     Timber.e("signInWithCredential:success")
                     startActivity<NickNameActivity>()
+                    this@LoginActivity.showToast(getString(R.string.success_google_login))
                 } else {
                     Timber.e("signInWithCredential:failure", task.exception)
                 }
