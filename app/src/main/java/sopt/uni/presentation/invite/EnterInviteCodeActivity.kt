@@ -3,12 +3,15 @@ package sopt.uni.presentation.invite
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import sopt.uni.R
 import sopt.uni.databinding.ActivityEnterInviteCodeBinding
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showToast
@@ -36,22 +39,29 @@ class EnterInviteCodeActivity :
     private fun checkInviteCode() {
         binding.btnConnect.setOnSingleClickListener {
             enterInviteCodeViewModel.checkCoupleConnection()
-            lifecycleScope.launch {
-                enterInviteCodeViewModel.connectState.collect { responseCode ->
-                    if (responseCode == "204") {
+            collectResponseState()
+        }
+    }
+
+    private fun collectResponseState() {
+        enterInviteCodeViewModel.connectState.flowWithLifecycle(lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> {
+                    if (it.data == "204") {
                         this@EnterInviteCodeActivity.showToast(getString(R.string.couple_connect_success))
                         binding.etInviteCode.background =
                             getDrawable(R.drawable.bg_mypage_edit_text)
                         binding.tvInviteCodeErrorMessage.visibility = View.INVISIBLE
                         startActivity<HomeActivity>()
                         finishAffinity()
-                    } else if (responseCode != "") {
+                    } else {
                         binding.etInviteCode.background =
                             getDrawable(R.drawable.bg_mypage_edit_text_error)
                         binding.tvInviteCodeErrorMessage.visibility = View.VISIBLE
                     }
                 }
+                else -> {}
             }
-        }
+        }.launchIn(lifecycleScope)
     }
 }
