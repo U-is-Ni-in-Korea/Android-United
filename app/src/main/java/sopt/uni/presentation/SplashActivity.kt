@@ -29,7 +29,11 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
                     startActivity<NickNameActivity>()
                 }
             } else {
-                startActivity<OnBoardingActivity>()
+                if (SparkleStorage.partnerId != -1) {
+                    startActivity<HomeActivity>()
+                } else {
+                    startActivity<OnBoardingActivity>()
+                }
             }
             overridePendingTransition(0, 0)
             finish()
