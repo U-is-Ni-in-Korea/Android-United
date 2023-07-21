@@ -208,5 +208,6 @@
     <string name="exit_text">한번 더 뒤로가기 버튼을 누르면 종료됩니다.</string>
     <string name="success_kakao_login">카카오 로그인에 성공했어요</string>
     <string name="success_google_login">구글 로그인에 성공했어요</string>
+    <string name="prepare_heart_function">하트 추가 기능은 준비중이에요!</string>
 
 </resources>
