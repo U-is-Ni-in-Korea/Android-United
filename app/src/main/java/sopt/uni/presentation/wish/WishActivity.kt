@@ -3,11 +3,10 @@ package sopt.uni.presentation.wish
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.activity.viewModels
+import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -40,8 +39,8 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
 
     private var _wishList = mutableListOf<WishMultiData>()
 
-     private val userId = SparkleStorage.userId
-     private val partnerId = SparkleStorage.partnerId
+    private val userId = SparkleStorage.userId
+    private val partnerId = SparkleStorage.partnerId
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +77,10 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
 
         with(binding) {
+            val animator = rvWish.itemAnimator
+            if (animator is SimpleItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
             tvWishMyWish.setOnClickListener {
                 tvWishMyWish.setTextColor(resources.getColor(R.color.Lightblue_600))
                 tvWishYourWish.setTextColor(resources.getColor(R.color.Gray_300))
