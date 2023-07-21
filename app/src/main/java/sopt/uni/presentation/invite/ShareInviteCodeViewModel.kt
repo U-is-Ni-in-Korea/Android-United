@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
 import sopt.uni.util.UiState
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
