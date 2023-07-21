@@ -111,6 +111,16 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        wishViewModel.setWishData(userId!!)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        wishViewModel.setWishData(userId!!)
+    }
+
     private fun initRecyclerView() {
         binding.rvWish.adapter = multiviewAdapter
 

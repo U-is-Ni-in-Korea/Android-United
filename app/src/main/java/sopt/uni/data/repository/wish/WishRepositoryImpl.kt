@@ -1,8 +1,10 @@
 package sopt.uni.data.repository.wish
 
+import kotlinx.serialization.json.JsonNull.content
+import retrofit2.Response
 import sopt.uni.data.service.WishService
-import sopt.uni.data.source.remote.request.RequestCreateWish
 import sopt.uni.data.source.remote.request.RequestUseWish
+import sopt.uni.data.source.remote.request.RequestWishCouponDto
 import sopt.uni.data.source.remote.response.ResponseAllWish
 import sopt.uni.data.source.remote.response.ResponseWishDetail
 import javax.inject.Inject
@@ -28,14 +30,9 @@ class WishRepositoryImpl @Inject constructor(
             Result.failure<List<ResponseWishDetail>>(it)
         }
 
-    override suspend fun patchCreateWish(gameType: String, content: String): Result<Unit> =
-        kotlin.runCatching {
-            wishService.patchCreateWish(RequestCreateWish(gameType, content)).body() ?: Unit
-        }.onSuccess {
-            Result.success(Unit)
-        }.onFailure {
-            Result.failure<Unit>(it)
-        }
+    override suspend fun patchCreateWish(gameType: String, content: String): Response<Unit> {
+        return wishService.patchCreateWish(RequestWishCouponDto(gameType, content))
+    }
 
     override suspend fun patchUseWish(wishCouponId: Int): Result<Unit> =
         kotlin.runCatching {

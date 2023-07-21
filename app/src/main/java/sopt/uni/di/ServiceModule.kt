@@ -10,8 +10,8 @@ import sopt.uni.data.service.HistoryService
 import sopt.uni.data.service.HomeService
 import sopt.uni.data.service.MyPageService
 import sopt.uni.data.service.OnBoardingService
-import sopt.uni.data.service.WishService
 import sopt.uni.data.service.ShortGameService
+import sopt.uni.data.service.WishService
 import javax.inject.Singleton
 
 @Module

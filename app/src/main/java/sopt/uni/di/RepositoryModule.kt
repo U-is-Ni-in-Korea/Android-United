@@ -14,11 +14,10 @@ import sopt.uni.data.repository.mypage.MypageRepository
 import sopt.uni.data.repository.mypage.MypageRepositoryImpl
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
 import sopt.uni.data.repository.onboarding.OnBoardingRepositoryImpl
-import sopt.uni.data.repository.wish.WishRepository
-import sopt.uni.data.repository.wish.WishRepositoryImpl
-import sopt.uni.data.service.WishService
 import sopt.uni.data.repository.shortgame.ShortGameRepository
 import sopt.uni.data.repository.shortgame.ShortGameRepositoryImpl
+import sopt.uni.data.repository.wish.WishRepository
+import sopt.uni.data.repository.wish.WishRepositoryImpl
 import sopt.uni.data.service.ShortGameService
 import javax.inject.Singleton
 
