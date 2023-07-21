@@ -38,7 +38,6 @@ class WishViewModel @Inject constructor(
                 _newWishCoupon.postValue(it.newWishCoupon)
                 _availableWishCoupon.postValue(it.availableWishCoupon)
                 _wishCouponList.postValue(it.wishCouponList)
-                Log.d("test2", "${newWishCoupon.value}")
             }.onFailure {
                 // TODO: 실패 처리
             }

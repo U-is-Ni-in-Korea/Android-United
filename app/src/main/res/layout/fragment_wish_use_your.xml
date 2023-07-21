@@ -89,12 +89,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!--          android:text="@{(vm.nickname)@string/your_wish_is}" -->
-
             <TextView
                 android:id="@+id/tv_wish_use_your"
                 style="@style/Body2"
-                android:text="상대의 소원은"
+                android:text="@{@string/your_wish_is(vm.nickname)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -150,7 +148,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_use_your_expiration_period" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -167,7 +164,6 @@
             android:text="@{vm.wishCouponIsUsed ? @string/wish_your_used : @string/wish_your}"
             android:textColor="@color/Gray_300"
             app:layout_constraintTop_toBottomOf="@id/cl_wish_use_your" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
