@@ -88,31 +88,33 @@
             android:name=".presentation.shortgame.missiondetailcreate.MissionDetailCreateActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.history.HistoryActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.history.HistoryDetailActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.shortgame.createshortgame.CreateShortGameActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.shortgame.missionrecord.MissionRecordActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.mypage.MypageProfilEditActivity"
             android:exported="false"
@@ -134,7 +136,7 @@
             android:name=".presentation.shortgame.missionresult.MissionResultActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar"/>
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
     </application>
 
 </manifest>
