@@ -117,3 +117,39 @@ PACKAGE CONVENTION
     └─📂extension
 ```
 <br>
+
+# Specification
+<table class="tg">
+<tbody>
+  <tr>
+    <td><b>Architecture</b></td>
+    <td>MVVM</td>
+  </tr>
+  <tr>
+    <td><b>Design Pattern</b></td>
+    <td>Repository Pattern, Observer Pattern</td>
+  </tr>
+<tr>
+    <td><b>Jetpack Components</b></td>
+<td>DataBinding, LiveData, ViewModel, Lifecycle, ViewPager2 </td>
+</tr>
+<tr>
+    <td><b>Other Library</b></td>
+<td> Coil, Hilt2 </td>
+</tr>
+<tr>
+    <td><b>Network</b></td>
+<td>Retrofit2, coroutine</td>
+</tr>
+<tr>
+    <td><b>Strategy</b></td>
+<td>Git Flow</td>
+</tr>
+<tr>
+    <td><b>CI/b></td>
+<td>GiHub Action(KtLint, Build Gradle)</td>
+</tr>
+<tr>
+    <td><b>Other Tool</b></td>
+<td>Slack, Notion, Figma</td>
+</tr>
