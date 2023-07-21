@@ -74,7 +74,7 @@
 
             <TextView
                 android:id="@+id/tv_mission_content_title"
-                style="@style/Btn2"
+                style="@style/Btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -82,6 +82,7 @@
                 android:text="@{missionRecordViewModel.myMissionResult.missionContent.content}"
                 android:textColor="@color/Gray_600"
                 android:textFontWeight="600"
+                android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@id/iv_mission"
                 app:layout_constraintTop_toTopOf="@id/iv_mission"
                 tools:text="헤드셋" />
