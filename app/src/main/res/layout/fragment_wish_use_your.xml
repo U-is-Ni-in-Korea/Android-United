@@ -82,20 +82,23 @@
                 android:id="@+id/iv_wish_use_your"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
+                setImage="@{vm.wishCouponImage}"
                 android:layout_marginTop="62dp"
                 android:background="@color/Gray_150"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!--          android:text="@{(vm.nickname)@string/your_wish_is}" -->
+
             <TextView
                 android:id="@+id/tv_wish_use_your"
                 style="@style/Body2"
+                android:text="상대의 소원은"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="4dp"
-                android:text="소원은"
                 android:textColor="@color/Gray_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +164,7 @@
             android:gravity="center"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
-            android:text="@string/wish_your"
+            android:text="@{vm.wishCouponIsUsed ? @string/wish_your_used : @string/wish_your}"
             android:textColor="@color/Gray_300"
             app:layout_constraintTop_toBottomOf="@id/cl_wish_use_your" />
 

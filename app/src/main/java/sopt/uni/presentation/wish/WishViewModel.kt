@@ -1,10 +1,12 @@
 package sopt.uni.presentation.wish
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import sopt.uni.data.repository.wish.WishRepository
 import sopt.uni.data.source.remote.response.WishCoupon
@@ -33,9 +35,10 @@ class WishViewModel @Inject constructor(
     fun setWishData(userId: Int) {
         viewModelScope.launch {
             wishRepository.getWishList(userId).onSuccess {
-                _availableWishCoupon.value = it.availableWishCoupon
-                _wishCouponList.value = it.wishCouponList
-                _newWishCoupon.value = it.newWishCoupon
+                _newWishCoupon.postValue(it.newWishCoupon)
+                _availableWishCoupon.postValue(it.availableWishCoupon)
+                _wishCouponList.postValue(it.wishCouponList)
+                Log.d("test2", "${newWishCoupon.value}")
             }.onFailure {
                 // TODO: 실패 처리
             }
@@ -53,13 +56,17 @@ class WishViewModel @Inject constructor(
         }
     }
 
-    fun getMyWishList(myId: Int) {
-        _isMineState.postValue(true)
-        getWishData(myId)
+    fun getMyWishList(myId: Int): Job {
+        return viewModelScope.launch {
+            getWishData(myId)
+            _isMineState.postValue(true)
+        }
     }
 
-    fun getPartnerWishList(partnerId: Int) {
-        _isMineState.postValue(false)
-        getWishData(partnerId)
+    fun getPartnerWishList(partnerId: Int): Job {
+        return viewModelScope.launch {
+            getWishData(partnerId)
+            _isMineState.postValue(false)
+        }
     }
 }
