@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="vm"
+            type="sopt.uni.presentation.wish.WishViewModel" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -77,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="6"
+                android:text="@{vm.availableWishCoupon.toString()}"
                 android:textColor="@color/Gray_350"
                 app:layout_constraintLeft_toRightOf="@id/tv_wish_ment_sub"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_ment_main" />
@@ -135,16 +140,17 @@
                 app:layout_constraintLeft_toRightOf="@id/tv_wish_contour"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_ment_sub" />
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_wish"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="112dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="14dp"
                 android:paddingTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_my_wish"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_wish_large" />
 
             <TextView

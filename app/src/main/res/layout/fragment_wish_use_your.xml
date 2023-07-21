@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="sopt.uni.presentation.wish.WishFcViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -105,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:gravity="center"
-                android:text="dkfljdlkj"
+                android:text="@{vm.wishCouponContent}"
                 android:textColor="@color/Gray_600"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

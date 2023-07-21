@@ -49,8 +49,7 @@
     <string name="wish_my_wish">내 소원권</string>
     <string name="wish_your_wish">상대 소원권</string>
     <string name="wish_contour">|</string>
-    <string name="wish_coupon_blue">새 소원권 </string>
-    <string name="wish_coupon_blue_unit">개</string>
+    <string name="wish_coupon_blue">새 소원권 %d개</string>
     <string name="wish_coupon_green">소원권 사용하기</string>
     <string name="wish_coupon_gray">소원 성취</string>
     <string name="wish_create_wish">소원권 만들기</string>

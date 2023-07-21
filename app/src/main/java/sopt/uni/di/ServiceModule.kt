@@ -10,6 +10,7 @@ import sopt.uni.data.service.HistoryService
 import sopt.uni.data.service.HomeService
 import sopt.uni.data.service.MyPageService
 import sopt.uni.data.service.OnBoardingService
+import sopt.uni.data.service.WishService
 import sopt.uni.data.service.ShortGameService
 import javax.inject.Singleton
 
@@ -43,4 +44,8 @@ object ServiceModule {
     @Provides
     @Singleton
     fun provideHomeService(retrofit: Retrofit): HomeService = retrofit.create()
+
+    @Provides
+    @Singleton
+    fun provideWishService(retrofit: Retrofit): WishService = retrofit.create()
 }
