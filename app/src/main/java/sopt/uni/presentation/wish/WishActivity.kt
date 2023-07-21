@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ActivityWishBinding
 import sopt.uni.presentation.home.HomeActivity
@@ -37,12 +38,10 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
-    private val partnerId = 7
-    private val userId = 4
     private var _wishList = mutableListOf<WishMultiData>()
 
-    // private val userId = SparkleStorage.userId
-    private val userId = 4
+     private val userId = SparkleStorage.userId
+     private val partnerId = SparkleStorage.partnerId
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,7 +97,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
                 tvWishYourWish.setTextAppearance(R.style.Subtitle)
                 lifecycleScope.launch {
-                    wishViewModel.getPartnerWishList(partnerId).join()
+                    wishViewModel.getPartnerWishList(partnerId!!).join()
                 }
                 yourMultiviewAdapter.submitData(_wishList)
                 rvWish.adapter = yourMultiviewAdapter
