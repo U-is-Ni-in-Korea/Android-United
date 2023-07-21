@@ -62,8 +62,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_date"
-            tools:src="@drawable/rectanglebig" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_history_detail_date" />
 
         <TextView
             android:id="@+id/tv_history_detail_game_title"
