@@ -1,4 +1,4 @@
-package sopt.uni.data.entity.wish
+package sopt.uni.data.source.remote.request
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
