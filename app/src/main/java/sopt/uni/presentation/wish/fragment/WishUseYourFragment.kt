@@ -10,8 +10,6 @@ import androidx.fragment.app.viewModels
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
-import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.databinding.FragmentWishUseYourBinding
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.presentation.wish.WishFcViewModel
@@ -23,6 +21,8 @@ class WishUseYourFragment : Fragment() {
         get() = requireNotNull(_binding) { "binding is null" }
     private var wishCouponId: Int = 0
     private val wishFcViewModel: WishFcViewModel by viewModels()
+    private var wishCouponImage: String = ""
+    private var wishCouponIsUsed: Boolean = true
 
     companion object {
         fun newInstance(wishCouponId: WishActivity.WishTypeId): WishUseYourFragment {
@@ -78,7 +78,6 @@ class WishUseYourFragment : Fragment() {
         binding.ivWishUseYour.load(image)
 
         with(binding) {
-
             if (wishCouponIsUsed == true) {
                 tvWishUseYourDescription.text =
                     this@WishUseYourFragment.resources.getString(R.string.wish_your)
