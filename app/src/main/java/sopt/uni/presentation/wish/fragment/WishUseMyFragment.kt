@@ -85,6 +85,10 @@ class WishUseMyFragment : Fragment() {
 //        binding.tvWishUseMyDescription.text = wishFcViewModel.wishCouponContent.value
     }
 
+    private fun useWishData() {
+        wishFcViewModel.useWishData(wishCouponId)
+    }
+
     private fun useWishDialog() {
         UseWishDialogFragment().apply {
             titleText = this@WishUseMyFragment.resources.getString(R.string.use_wish_dialog_title)
@@ -97,6 +101,7 @@ class WishUseMyFragment : Fragment() {
                 val fragment = WishUsedFragment()
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fcv_wish_fc, fragment).commit()
+                useWishData()
                 this.dismiss()
             }
             dismissClickListener = {

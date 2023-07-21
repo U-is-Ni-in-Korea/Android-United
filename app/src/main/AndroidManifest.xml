@@ -57,7 +57,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.wish.WishActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar"
             android:windowSoftInputMode="adjustPan" />
