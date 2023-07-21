@@ -1,13 +1,7 @@
-package sopt.uni.data.entity.wish
+package sopt.uni.data.source.remote.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
-@Serializable
-data class RequestAllWish(
-    @SerialName("usedId")
-    val usedId: Int,
-)
 
 @Serializable
 data class ResponseAllWish(

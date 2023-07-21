@@ -1,11 +1,13 @@
 package sopt.uni.presentation.wish.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import sopt.uni.databinding.FragmentWishUsedBinding
+import sopt.uni.presentation.home.HomeActivity
 
 class WishUsedFragment : Fragment() {
     private var _binding: FragmentWishUsedBinding? = null
@@ -28,7 +30,8 @@ class WishUsedFragment : Fragment() {
                 activity?.finish()
             }
             btnWishUsedGoHome.setOnClickListener {
-                // 홈 화면 전환O
+                val intent = Intent(requireContext(), HomeActivity::class.java)
+                startActivity(intent)
             }
         }
     }

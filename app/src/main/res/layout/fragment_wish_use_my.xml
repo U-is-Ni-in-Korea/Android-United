@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="sopt.uni.presentation.wish.WishFcViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,7 +71,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="82dp"
-            android:layout_marginBottom="162dp"
+            android:layout_marginBottom="142dp"
             android:background="@drawable/bg_wish_card"
             android:elevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -105,10 +109,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:gravity="center"
-                android:text="dkfljdlkj"
+                android:text="@{vm.wishCouponContent}"
                 android:textColor="@color/Gray_600"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_use_my" />
 
@@ -116,7 +119,7 @@
                 android:id="@+id/iv_wish_use_my_dotted_line"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/wish_dotted_line"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_use_my_description" />
 
