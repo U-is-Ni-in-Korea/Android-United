@@ -52,7 +52,14 @@ class WishFcViewModel @Inject constructor(
 
     fun useWishData(wishCouponId: Int) {
         viewModelScope.launch {
-            wishRepository.patchUseWish(wishCouponId)
+            kotlin.runCatching {
+                wishRepository.patchUseWish(wishCouponId)
+            }.fold(
+                {
+                },
+                {
+                },
+            )
         }
     }
 }
