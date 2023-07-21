@@ -3,20 +3,28 @@ package sopt.uni.presentation.home
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHomeBinding
+import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.history.HistoryActivity
 import sopt.uni.presentation.mypage.MypageSettingActivity
 import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameActivity
+import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
+import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showToast
 import sopt.uni.util.extension.startActivity
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private val homeViewModel by viewModels<HomeViewModel>()
+    private var result = ""
 
     private var backPressedTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +33,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         binding.viewModel = homeViewModel
 
         moveToHistory()
+        getRoundResult()
         moveToShortGame()
         moveToWish()
         moveToMyPage()
@@ -44,9 +53,47 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         backPressedTime = System.currentTimeMillis()
     }
 
+    override fun onResume() {
+        super.onResume()
+        result = ""
+        homeViewModel.fetchHomeInfo()
+    }
+
     private fun moveToShortGame() {
         binding.clShortGame.setOnSingleClickListener {
+            homeViewModel.fetchHomeInfo()
+            moveToCreateShortGame()
+        }
+    }
+
+    private fun moveToCreateShortGame() = lifecycleScope.launch {
+        homeViewModel.fetchHomeInfo().join()
+        Timber.e("shortGameEnabled: ${homeViewModel.shortGameEnabled.value}")
+        if (!homeViewModel.shortGameEnabled.value) {
             startActivity<CreateShortGameActivity>()
+        } else {
+            this@HomeActivity.showToast("상대가 이미 게임을 생성했습니다.")
+            homeViewModel.getShortGameResult()
+        }
+    }
+
+    private fun getRoundResult() {
+        homeViewModel.roundResult.observe(this) { roundResult ->
+            result = roundResult
+            if (result == UNDECIDED) {
+                MissionRecordActivity.start(
+                    this@HomeActivity,
+                    homeViewModel.roundGameId.value!!,
+                )
+            } else if (result == "") {
+                return@observe
+            } else {
+                Timber.e("result: $result")
+                MissionResultActivity.start(
+                    this@HomeActivity,
+                    homeViewModel.roundGameId.value!!,
+                )
+            }
         }
     }
 
