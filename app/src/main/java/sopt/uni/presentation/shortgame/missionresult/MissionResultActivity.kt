@@ -13,8 +13,10 @@ import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.databinding.ActivityMissionResultBinding
 import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
+import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class MissionResultActivity :
@@ -75,6 +77,8 @@ class MissionResultActivity :
             ivClose.setOnSingleClickListener { finish() }
             btnGoHome.setOnSingleClickListener { finish() }
             btnGoWish.setOnClickListener { // TODO : 소원권 페이지 이동 }
+                startActivity<WishActivity>()
+                finish()
             }
         }
     }
