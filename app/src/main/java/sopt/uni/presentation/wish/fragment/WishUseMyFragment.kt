@@ -1,6 +1,7 @@
 package sopt.uni.presentation.wish.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.FragmentWishUseMyBinding
 import sopt.uni.presentation.wish.WishActivity
+import sopt.uni.presentation.wish.WishFcViewModel
 import sopt.uni.presentation.wish.WishFcViewModel
 
 @AndroidEntryPoint
 class WishUseMyFragment : Fragment() {
     private var _binding: FragmentWishUseMyBinding? = null
+    private val wishFcViewModel: WishFcViewModel by viewModels()
+    private var wishCouponId: Int = 0
     private val wishFcViewModel: WishFcViewModel by viewModels()
     private var wishCouponId: Int = 0
     private var wishCouponImage: String = ""
@@ -82,6 +88,7 @@ class WishUseMyFragment : Fragment() {
             val image = wishCouponImage
             ivWishUseMy.load(image)
         }
+//        binding.tvWishUseMyDescription.text = wishFcViewModel.wishCouponContent.value
     }
 
     private fun useWishDialog() {

@@ -31,11 +31,9 @@ class WishFcActivity : BindingActivity<ActivityWishFcBinding>(R.layout.activity_
             fragmentTransaction.replace(R.id.fcv_wish_fc, WishNewWishFragment()).commit()
         } else {
             if (wishCouponId.isMine) {
-                Log.d("aaaa","myFragment")
                 val myFragment = WishUseMyFragment.newInstance(wishCouponId)
                 fragmentTransaction.replace(R.id.fcv_wish_fc, myFragment).commit()
             } else {
-                Log.d("aaaa","yourFragment")
                 val YourFragment = WishUseYourFragment.newInstance(wishCouponId)
                 fragmentTransaction.replace(R.id.fcv_wish_fc, YourFragment).commit()
             }

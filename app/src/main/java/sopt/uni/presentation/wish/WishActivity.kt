@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,11 +37,12 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         }
     }
 
-    // private val partnerId = SparkleStorage.partnerId
-    // private val userId = SparkleStorage.userId
     private val partnerId = 7
     private val userId = 4
     private var _wishList = mutableListOf<WishMultiData>()
+
+    // private val userId = SparkleStorage.userId
+    private val userId = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,7 +100,6 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 lifecycleScope.launch {
                     wishViewModel.getPartnerWishList(partnerId).join()
                 }
-                Log.d("asdad", "$_wishList")
                 yourMultiviewAdapter.submitData(_wishList)
                 rvWish.adapter = yourMultiviewAdapter
                 rvWish.layoutManager =

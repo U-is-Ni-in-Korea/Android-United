@@ -1,6 +1,7 @@
 package sopt.uni.presentation.wish.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.fragment.app.viewModels
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.databinding.FragmentWishUseYourBinding
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.presentation.wish.WishFcViewModel
@@ -18,10 +21,8 @@ class WishUseYourFragment : Fragment() {
     private var _binding: FragmentWishUseYourBinding? = null
     private val binding: FragmentWishUseYourBinding
         get() = requireNotNull(_binding) { "binding is null" }
-    private val wishFcViewModel: WishFcViewModel by viewModels()
     private var wishCouponId: Int = 0
-    private var wishCouponImage: String = ""
-    private var wishCouponIsUsed: Boolean = true
+    private val wishFcViewModel: WishFcViewModel by viewModels()
 
     companion object {
         fun newInstance(wishCouponId: WishActivity.WishTypeId): WishUseYourFragment {
@@ -64,6 +65,12 @@ class WishUseYourFragment : Fragment() {
         binding.btnWishUseYourBack.setOnClickListener {
             activity?.finish()
         }
+
+        val bundle = arguments
+        if (bundle != null) {
+            wishCouponId = bundle.getInt("wishCouponId")
+        }
+        Log.d("wishCouponId", "$wishCouponId")
 
         wishFcViewModel.setWishDetailData(wishCouponId)
 
