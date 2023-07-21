@@ -11,7 +11,7 @@ import sopt.uni.databinding.ItemWishSmallBinding
 
 class WishMultiviewAdapter(
     private val context: Context,
-    private val onItemClick: () -> Unit,
+    private val changePageClickListener: (Int) -> Unit,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var datas = listOf<WishMultiData>()
@@ -46,19 +46,11 @@ class WishMultiviewAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is MultiViewWishHolder1 -> {
-                holder.bind(datas[position])
-                holder.setIsRecyclable(false)
-                holder.itemView.setOnClickListener {
-                    onItemClick.invoke()
-                }
+                holder.bind(datas[position], changePageClickListener)
             }
 
             is MultiViewWishHolder2 -> {
-                holder.bind(datas[position])
-                holder.setIsRecyclable(false)
-                holder.itemView.setOnClickListener {
-                    onItemClick.invoke()
-                }
+                holder.bind(datas[position], changePageClickListener, context)
             }
         }
     }
