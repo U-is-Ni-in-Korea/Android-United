@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.databinding.ActivityMissionResultBinding
+import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -36,7 +37,11 @@ class MissionResultActivity :
                 setButtonVisible(it)
             }
             partnerMissionResult.observe(this@MissionResultActivity) {
-                setPartnerMissionContent(it == null)
+                if (it == null) {
+                    setPartnerMissionContent(true)
+                } else {
+                    setPartnerMissionContent(it.result == UNDECIDED)
+                }
             }
         }
     }
