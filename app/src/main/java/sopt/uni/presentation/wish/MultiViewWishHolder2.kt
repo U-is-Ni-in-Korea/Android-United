@@ -9,7 +9,11 @@ import sopt.uni.databinding.ItemWishLargeBinding
 
 class MultiViewWishHolder2(private val binding: ItemWishLargeBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: WishMultiData, clickListener: (WishActivity.WishTypeId) -> Unit, context: Context) {
+    fun bind(
+        item: WishMultiData,
+        clickListener: (WishActivity.WishTypeId) -> Unit,
+        context: Context,
+    ) {
         with(binding) {
             val image = item.wishCoupon!!.image
             ivItemWl.load(image)
@@ -25,7 +29,14 @@ class MultiViewWishHolder2(private val binding: ItemWishLargeBinding) :
             }
 
             root.setOnClickListener {
-                clickListener(WishActivity.WishTypeId(item.type, item.wishCoupon.id, item.wishCoupon.isUsed,isMine = true))
+                clickListener(
+                    WishActivity.WishTypeId(
+                        item.type,
+                        item.wishCoupon.id,
+                        item.wishCoupon.isUsed,
+                        isMine = true,
+                    ),
+                )
             }
         }
     }

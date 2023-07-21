@@ -1,7 +1,6 @@
 package sopt.uni.presentation.wish
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
