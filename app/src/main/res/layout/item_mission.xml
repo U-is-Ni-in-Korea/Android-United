@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_background"
@@ -19,10 +20,11 @@
 
         <TextView
             android:id="@+id/tv_mission_title"
-            style="@style/Btn2"
+            style="@style/Btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textFontWeight="600"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/iv_mission"
             app:layout_constraintTop_toBottomOf="@id/iv_mission" />
