@@ -22,7 +22,6 @@
             android:layout_marginHorizontal="39dp"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/Gray_100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>

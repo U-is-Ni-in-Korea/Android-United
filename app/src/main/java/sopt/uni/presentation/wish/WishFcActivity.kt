@@ -10,6 +10,7 @@ import sopt.uni.presentation.wish.fragment.WishNewWishFragment
 import sopt.uni.presentation.wish.fragment.WishUseMyFragment
 import sopt.uni.presentation.wish.fragment.WishUseYourFragment
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.parcelable
 
 @AndroidEntryPoint
 class WishFcActivity : BindingActivity<ActivityWishFcBinding>(R.layout.activity_wish_fc) {
@@ -17,46 +18,26 @@ class WishFcActivity : BindingActivity<ActivityWishFcBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = wishFcViewModel
+        binding.lifecycleOwner = this
         setContentView(binding.root)
 
-        val wishCouponId = intent.getIntExtra("wishCouponId", -1)
+        val wishCouponId = intent.parcelable<WishActivity.WishTypeId>(WishActivity.WISH_TYPE_ID)
 
-        wishFcViewModel.setWishDetailData(wishCouponId)
-        Log.d("wishCouponsub", "${wishFcViewModel.wishCouponContent.value}")
-        Log.d("wishCouponId_test", "$wishCouponId")
-
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_wish_fc)
+        wishFcViewModel.setWishDetailData(wishCouponId = wishCouponId!!.id)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-//        if (currentFragment == null) {
-//            if (wishFcViewModel.isMine.value == true) {
-//                val fragment = WishUseMyFragment.newInstance(wishCouponId)
-//                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
-//            } else {
-//                val fragment = WishUseYourFragment.newInstance(wishCouponId)
-//                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
-//            }
-//        } else {
-//            if (wishFcViewModel.isMine.value == true) {
-//                val fragment = WishUseMyFragment.newInstance(wishCouponId)
-//                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
-//            } else {
-//                val fragment = WishUseYourFragment.newInstance(wishCouponId)
-//                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
-//            }
-//        }
-
-
-        if (wishCouponId == -1) {
+        if (wishCouponId.type == 0) {
             fragmentTransaction.replace(R.id.fcv_wish_fc, WishNewWishFragment()).commit()
         } else {
-            if (wishFcViewModel.isMine.value == true) {
-                val fragment = WishUseMyFragment.newInstance(wishCouponId)
-                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
+            if (wishCouponId.isMine) {
+                Log.d("aaaa","myFragment")
+                val myFragment = WishUseMyFragment.newInstance(wishCouponId)
+                fragmentTransaction.replace(R.id.fcv_wish_fc, myFragment).commit()
             } else {
-                val fragment = WishUseYourFragment.newInstance(wishCouponId)
-                fragmentTransaction.replace(R.id.fcv_wish_fc, fragment).commit()
+                Log.d("aaaa","yourFragment")
+                val YourFragment = WishUseYourFragment.newInstance(wishCouponId)
+                fragmentTransaction.replace(R.id.fcv_wish_fc, YourFragment).commit()
             }
         }
     }

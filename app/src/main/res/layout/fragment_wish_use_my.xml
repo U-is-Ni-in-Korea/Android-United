@@ -83,8 +83,8 @@
                 android:id="@+id/iv_wish_use_my"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
+                setImage="@{vm.wishCouponImage}"
                 android:layout_marginTop="62dp"
-                android:background="@color/Gray_150"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

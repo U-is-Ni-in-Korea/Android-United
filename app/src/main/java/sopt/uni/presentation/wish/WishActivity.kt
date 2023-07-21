@@ -2,10 +2,15 @@ package sopt.uni.presentation.wish
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import kotlinx.parcelize.Parcelize
 import sopt.uni.R
 import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ActivityWishBinding
@@ -16,10 +21,26 @@ import sopt.uni.util.extension.startActivity
 @AndroidEntryPoint
 class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish) {
     private val wishViewModel: WishViewModel by viewModels()
-    private lateinit var multiviewAdapter: WishMultiviewAdapter
+    private val multiviewAdapter: WishMultiviewAdapter by lazy {
+        WishMultiviewAdapter(this) { wishTypeId ->
+            val intent = Intent(this, WishFcActivity::class.java)
+            intent.putExtra(WISH_TYPE_ID, wishTypeId)
+            startActivity(intent)
+        }
+    }
+    private val yourMultiviewAdapter: YourWishMultiviewAdapter by lazy {
+        YourWishMultiviewAdapter(this) { wishTypeId ->
+            val intent = Intent(this, WishFcActivity::class.java)
+            intent.putExtra(WISH_TYPE_ID, wishTypeId)
+            startActivity(intent)
+        }
+    }
 
+    // private val partnerId = SparkleStorage.partnerId
     // private val userId = SparkleStorage.userId
+    private val partnerId = 7
     private val userId = 4
+    private var _wishList = mutableListOf<WishMultiData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +60,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 binding.rvWish.visibility = View.VISIBLE
                 binding.tvWishEmptyMy.visibility = View.INVISIBLE
             }
-            if (wishViewModel.isMineState.value != false) {
+            if (wishViewModel.isMineState.value!!) {
                 wishList.add(WishMultiData(0, wishViewModel.newWishCoupon.value))
             }
 
@@ -47,14 +68,12 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 wishList.add(WishMultiData(1, wishCoupon = it[i]))
             }
 
-            multiviewAdapter = WishMultiviewAdapter(this, ::changePageClickListener)
-            binding.rvWish.adapter = multiviewAdapter
-
-            binding.rvWish.apply {
-                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                adapter = multiviewAdapter
+            _wishList = wishList
+            if (wishViewModel.isMineState.value!!) {
+                multiviewAdapter.submitData(wishList)
+            } else {
+                yourMultiviewAdapter.submitData(wishList)
             }
-            multiviewAdapter.submitData(wishList)
         }
 
         with(binding) {
@@ -63,14 +82,27 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 tvWishYourWish.setTextColor(resources.getColor(R.color.Gray_300))
                 tvWishMyWish.setTextAppearance(R.style.Subtitle)
                 tvWishYourWish.setTextAppearance(R.style.Body1_Regular)
-                wishViewModel.getMyWishList(userId)
+                lifecycleScope.launch {
+                    wishViewModel.getMyWishList(userId).join()
+                }
+                rvWish.adapter = multiviewAdapter
+                rvWish.layoutManager =
+                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                multiviewAdapter.submitData(_wishList)
             }
             tvWishYourWish.setOnClickListener {
                 tvWishMyWish.setTextColor(resources.getColor(R.color.Gray_300))
                 tvWishYourWish.setTextColor(resources.getColor(R.color.Lightblue_600))
                 tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
                 tvWishYourWish.setTextAppearance(R.style.Subtitle)
-                wishViewModel.getPartnerWishList(userId)
+                lifecycleScope.launch {
+                    wishViewModel.getPartnerWishList(partnerId).join()
+                }
+                Log.d("asdad", "$_wishList")
+                yourMultiviewAdapter.submitData(_wishList)
+                rvWish.adapter = yourMultiviewAdapter
+                rvWish.layoutManager =
+                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             }
             btnWishBack.setOnClickListener {
                 startActivity<HomeActivity>()
@@ -79,8 +111,6 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
     }
 
     private fun initRecyclerView() {
-        multiviewAdapter = WishMultiviewAdapter(this) {
-        }
         binding.rvWish.adapter = multiviewAdapter
 
         binding.rvWish.apply {
@@ -94,14 +124,11 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         binding.rvWish.adapter = null
     }
 
-    fun changePageClickListener(position: Int) {
-        val intent = Intent(this, WishFcActivity::class.java)
-
-        if (position == 0) {
-            intent.putExtra("wishCouponId", -1)
-        } else {
-            intent.putExtra("wishCouponId", wishViewModel.wishCouponList.value!![position].id)
-        }
-        startActivity(intent)
+    companion object {
+        const val WISH_TYPE_ID = "WISH_TYPE_ID"
     }
+
+    @Parcelize
+    data class WishTypeId(val type: Int, val id: Int, val isUsed: Boolean, val isMine: Boolean) :
+        Parcelable
 }

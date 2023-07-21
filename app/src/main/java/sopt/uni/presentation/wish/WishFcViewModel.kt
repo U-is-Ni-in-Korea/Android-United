@@ -14,8 +14,14 @@ import javax.inject.Inject
 class WishFcViewModel @Inject constructor(
     private val wishRepository: WishRepository,
 ) : ViewModel() {
-    private val _wishCouponContent = MutableLiveData("`aaaaaaaa`")
-    val wishCouponContent: MutableLiveData<String?> = _wishCouponContent
+    private val _wishCouponContent = MutableLiveData("")
+    val wishCouponContent: LiveData<String?> = _wishCouponContent
+
+    private val _wishCouponIsUsed = MutableLiveData(true)
+    val wishCouponIsUsed: LiveData<Boolean> = _wishCouponIsUsed
+
+    private val _wishCouponImage = MutableLiveData("")
+    val wishCouponImage: LiveData<String> = _wishCouponImage
 
     private val _isMine = MutableLiveData<Boolean>(true)
     val isMine: LiveData<Boolean> = _isMine
@@ -27,10 +33,11 @@ class WishFcViewModel @Inject constructor(
         viewModelScope.launch {
             wishRepository.getWishDetail(wishCouponId)
                 .onSuccess {
-                    Log.e("asdads", it.toString())
-                    _wishCouponContent.value = it.wishCoupon.content
                     _isMine.value = it.isMine
                     _nickname.value = it.nickname
+                    _wishCouponContent.value = it.wishCoupon.content
+                    _wishCouponIsUsed.value = it.wishCoupon.isUsed
+                    _wishCouponImage.value = it.wishCoupon.image
                 }.onFailure {
                     // TODO: 에러 처리
                 }
