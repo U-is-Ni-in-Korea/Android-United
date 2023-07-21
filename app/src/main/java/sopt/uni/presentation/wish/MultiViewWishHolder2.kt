@@ -25,7 +25,6 @@ class MultiViewWishHolder2(private val binding: ItemWishLargeBinding) :
             }
 
             root.setOnClickListener {
-//                clickListener(item.wishCoupon.isUsed)
                 clickListener(WishActivity.WishTypeId(item.type, item.wishCoupon.id, item.wishCoupon.isUsed,isMine = true))
             }
         }
