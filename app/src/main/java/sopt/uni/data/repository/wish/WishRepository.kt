@@ -11,5 +11,5 @@ interface WishRepository {
 
     suspend fun patchCreateWish(gameType: String, content: String): Response<Unit>
 
-    suspend fun patchUseWish(wishCouponId: Int): Result<Unit>
+    suspend fun patchUseWish(wishCouponId: Int): Response<Unit>
 }

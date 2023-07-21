@@ -5,7 +5,6 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.Path
-import sopt.uni.data.source.remote.request.RequestUseWish
 import sopt.uni.data.source.remote.request.RequestWishCouponDto
 import sopt.uni.data.source.remote.response.ResponseAllWish
 import sopt.uni.data.source.remote.response.ResponseWishDetail
@@ -21,5 +20,5 @@ interface WishService {
     suspend fun patchCreateWish(@Body request: RequestWishCouponDto): Response<Unit>
 
     @PATCH("/api/wish/{wishCouponId}")
-    suspend fun patchUseWish(@Body request: RequestUseWish): Response<Unit>
+    suspend fun patchUseWish(@Path("wishCouponId") wishCouponId: Int): Response<Unit>
 }

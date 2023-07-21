@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RequestWishCouponDto(
     @SerialName("gameType")
-    val gameType: String = "SHORT",
+    val gameType: String,
     @SerialName("content")
     val content: String,
 )
