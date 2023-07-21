@@ -17,6 +17,7 @@ import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showSnackbar
 import sopt.uni.util.extension.showToast
 import sopt.uni.util.extension.startActivity
 import timber.log.Timber
@@ -37,6 +38,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         moveToShortGame()
         moveToWish()
         moveToMyPage()
+        clickHeartButton()
     }
 
     override fun onBackPressed() {
@@ -112,6 +114,12 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
     private fun moveToMyPage() {
         binding.ivProfile.setOnSingleClickListener {
             startActivity<MypageSettingActivity>()
+        }
+    }
+
+    private fun clickHeartButton() {
+        binding.llHeartCount.setOnSingleClickListener {
+            showSnackbar(binding.root, getString(R.string.prepare_heart_function))
         }
     }
 }
