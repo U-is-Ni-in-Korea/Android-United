@@ -1,15 +1,16 @@
 package sopt.uni.presentation.wish.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.FragmentWishUseMyBinding
+import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.presentation.wish.WishFcViewModel
 
 @AndroidEntryPoint
@@ -17,14 +18,17 @@ class WishUseMyFragment : Fragment() {
     private var _binding: FragmentWishUseMyBinding? = null
     private val wishFcViewModel: WishFcViewModel by viewModels()
     private var wishCouponId: Int = 0
+    private var wishCouponImage: String = ""
+    private var wishCouponIsUsed: Boolean = true
     private val binding: FragmentWishUseMyBinding
         get() = requireNotNull(_binding) { "binding is null" }
 
     companion object {
-        fun newInstance(wishCouponId: Int): WishUseMyFragment {
+        fun newInstance(wishCouponId: WishActivity.WishTypeId): WishUseMyFragment {
             val fragment = WishUseMyFragment()
             val args = Bundle()
-            args.putInt("wishCouponId", wishCouponId)
+            args.putInt("wishCouponId", wishCouponId.id)
+            args.putBoolean("isUsed", wishCouponId.isUsed)
             fragment.arguments = args
             return fragment
         }
@@ -42,16 +46,31 @@ class WishUseMyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = wishFcViewModel
+        binding.lifecycleOwner = this.viewLifecycleOwner
 
-        val bundle = arguments
-        if (bundle != null) {
-            wishCouponId = bundle.getInt("wishCouponId")
+        val bundleId = arguments
+        if (bundleId != null) {
+            wishCouponId = bundleId.getInt("wishCouponId")
         }
-        Log.d("wishCouponId", "$wishCouponId")
 
         wishFcViewModel.setWishDetailData(wishCouponId)
 
+        val bundleIsUsed = arguments
+        if (bundleIsUsed != null) {
+            wishCouponIsUsed = bundleIsUsed.getBoolean("isUsed")
+        }
+
         with(binding) {
+            if (wishCouponIsUsed == true) {
+                btnWishUseMyFinish.isEnabled = false
+                btnWishUseMyFinish.backgroundTintList =
+                    resources.getColorStateList(R.color.Gray_300)
+            } else {
+                btnWishUseMyFinish.isEnabled = true
+                btnWishUseMyFinish.backgroundTintList =
+                    resources.getColorStateList(R.color.Lightblue_500)
+            }
+
             btnWishUseMyFinish.setOnClickListener {
                 useWishDialog()
             }
@@ -59,9 +78,10 @@ class WishUseMyFragment : Fragment() {
             btnWishUseMyBack.setOnClickListener {
                 activity?.finish()
             }
-            Log.d("wishCouponContent", "${wishFcViewModel.wishCouponContent.value}")
+
+            val image = wishCouponImage
+            ivWishUseMy.load(image)
         }
-//        binding.tvWishUseMyDescription.text = wishFcViewModel.wishCouponContent.value
     }
 
     private fun useWishDialog() {

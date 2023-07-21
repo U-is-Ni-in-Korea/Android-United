@@ -9,7 +9,7 @@ import sopt.uni.data.entity.wish.WishMultiData
 import sopt.uni.databinding.ItemWishLargeBinding
 import sopt.uni.databinding.ItemWishSmallBinding
 
-class WishMultiviewAdapter(
+class YourWishMultiviewAdapter(
     private val context: Context,
     private val changePageClickListener: (WishActivity.WishTypeId) -> Unit,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -27,7 +27,7 @@ class WishMultiviewAdapter(
             else -> {
                 val binding =
                     ItemWishLargeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                MultiViewWishHolder2(binding)
+                MultiViewWishHolder3(binding)
             }
         }
     }
@@ -49,7 +49,7 @@ class WishMultiviewAdapter(
                 holder.bind(datas[position], changePageClickListener)
             }
 
-            is MultiViewWishHolder2 -> {
+            is MultiViewWishHolder3 -> {
                 holder.bind(datas[position], changePageClickListener, context)
             }
         }
