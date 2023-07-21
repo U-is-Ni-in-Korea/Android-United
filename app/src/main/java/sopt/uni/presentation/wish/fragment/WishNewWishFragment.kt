@@ -8,13 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.FragmentWishNewWishBinding
+import sopt.uni.presentation.wish.CreateWishCouponViewModel
 
+@AndroidEntryPoint
 class WishNewWishFragment : Fragment() {
     private var _binding: FragmentWishNewWishBinding? = null
     private val binding: FragmentWishNewWishBinding
         get() = requireNotNull(_binding) { "bindig is null" }
+
+    private val createWishCouponViewModel by viewModels<CreateWishCouponViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,8 +74,13 @@ class WishNewWishFragment : Fragment() {
             }
 
             btnNewWishFinish.setOnClickListener {
+                createWishCoupon(edtNewWishCv.text.toString())
                 activity?.finish()
             }
         }
+    }
+
+    private fun createWishCoupon(content: String) {
+        createWishCouponViewModel.patchCreateWishCoupon(content)
     }
 }

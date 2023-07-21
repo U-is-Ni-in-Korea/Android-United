@@ -115,6 +115,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- 비율로 그리기 -->
             <EditText
                 android:id="@+id/edt_new_wish_cv"
                 style="@style/Subtitle"
