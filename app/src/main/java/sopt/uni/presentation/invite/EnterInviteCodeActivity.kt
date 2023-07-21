@@ -60,6 +60,7 @@ class EnterInviteCodeActivity :
                         binding.tvInviteCodeErrorMessage.visibility = View.VISIBLE
                     }
                 }
+
                 else -> {}
             }
         }.launchIn(lifecycleScope)

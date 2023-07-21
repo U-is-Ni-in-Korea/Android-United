@@ -12,7 +12,6 @@ import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.util.DateUtil
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
-import timber.log.Timber
 import java.util.Calendar
 
 @AndroidEntryPoint
