@@ -14,6 +14,53 @@
 | `로그인`<br/>`메인페이지` | `한판 승부 페이지`<br/>`장기 승부 페이지` | `히스토리 페이지` | `소원권 페이지`|
 <br>
 
+# Preview
+ 
+ ## 홈
+<table>
+  <tr>
+    <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/65a389cc-2c7b-4f35-b1e9-90045c8ea93b"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>홈</b></td>   
+</table> 
+
+ ## 한판승부
+<table>
+  <tr>
+    <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/177f8f39-05a3-4c3c-9021-7a6ae3d700e1"></td>
+      <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/8af8ced1-3f44-4004-a25c-f2b26394e776"></td>
+      <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/81719de2-aeb9-47da-990a-1b6471fcf3e4"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>한판승부생성</b></td>
+    <td align="center"><b>한판승부기록</b></td>  
+    <td align="center"><b>한판승부결과</b></td>  
+</table>
+
+## 소원권
+<table>
+  <tr>
+    <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/b76e5d62-40cc-481c-a0b9-97372d30b2a3"></td>
+      <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/11d44b3f-bbc6-4033-b465-5852854b8653g"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>소원권목록</b></td>
+    <td align="center"><b>소원권</b></td>  
+</table> 
+
+## 마이페이지
+<table>
+  <tr>
+    <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/89a2fbd4-cfdf-4f3a-bb7a-04f6f640f560"></td>
+      <td><img width="200" src="https://github.com/ThinLineIT/FavorIt_Android/assets/50603273/1652107d-4600-4c03-801d-19cbc24d625c"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>마이페이지</b></td>
+    <td align="center"><b>프로필 수정</b></td>  
+</table> 
+
+
 ## 📅 Kanban Board
 [UNIROID 칸반보드1 - 프로젝트 기초세팅](https://github.com/orgs/U-is-Ni-in-Korea/projects/1)  
 [UNIROID 칸반보드2 - 뷰 관련 작업 + 서버 연결 준비](https://github.com/orgs/U-is-Ni-in-Korea/projects/2)  
