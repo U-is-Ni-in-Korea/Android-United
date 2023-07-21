@@ -13,7 +13,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import sopt.uni.BuildConfig.BASE_URL
 import sopt.uni.data.datasource.remote.AuthInterceptor
-import sopt.uni.di.qualifier.Logger
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
