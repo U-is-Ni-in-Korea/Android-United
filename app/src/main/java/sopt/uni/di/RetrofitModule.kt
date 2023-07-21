@@ -20,9 +20,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
-    private const val CONTENT_TYPE = "Content-Type"
-    private const val JSON = "application/json"
-
     @Provides
     @Singleton
     fun provideJson(): Json = Json {
