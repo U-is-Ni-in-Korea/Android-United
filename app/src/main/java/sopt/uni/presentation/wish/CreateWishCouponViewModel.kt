@@ -16,7 +16,7 @@ class CreateWishCouponViewModel @Inject constructor(
     fun patchCreateWishCoupon(content: String) {
         viewModelScope.launch {
             kotlin.runCatching {
-                wishRepository.patchCreateWish("SHORT", content)
+                wishRepository.patchCreateWish(gameType = "SHORT", content = content)
             }.fold({
                 Timber.d("소원권 생성 완료")
             }, {
