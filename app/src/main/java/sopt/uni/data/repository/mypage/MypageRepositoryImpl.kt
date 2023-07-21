@@ -37,7 +37,6 @@ class MypageRepositoryImpl @Inject constructor(
         startDate: String,
     ): Result<MyPageInfo> {
         val parsedStartDate = parseCoupleDate(startDate)
-        Timber.d("아예 못을어옴")
         return kotlin.runCatching {
             val nicknameRequestBody = nickname.toRequestBody("text/plain".toMediaType())
             val startDateRequestBody = parsedStartDate.toRequestBody("text/plain".toMediaType())
@@ -46,11 +45,9 @@ class MypageRepositoryImpl @Inject constructor(
             convertToMyPageInfo(myPageInfoResponse)
         }.fold(
             onSuccess = { response ->
-                Timber.d("여긴강")
                 Result.success(response)
             },
             onFailure = { exception ->
-                Timber.e(exception, "실패")
                 Result.failure(exception)
             },
         )
