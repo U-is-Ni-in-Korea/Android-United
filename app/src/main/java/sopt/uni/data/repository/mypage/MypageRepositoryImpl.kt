@@ -3,6 +3,7 @@ package sopt.uni.data.repository.mypage
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Response
 import sopt.uni.data.entity.history.MyPage
 import sopt.uni.data.entity.mypage.MyPageInfo
 import sopt.uni.data.service.MyPageService
@@ -52,6 +53,9 @@ class MypageRepositoryImpl @Inject constructor(
             },
         )
     }
+
+    override suspend fun deleteUser(): Response<Unit> =
+        mypageService.deleteUser()
 
     private fun parseCoupleDate(coupleDate: String): String {
         try {

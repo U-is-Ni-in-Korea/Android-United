@@ -17,7 +17,7 @@ class MypageAccountActivity :
 
         setupBackButton()
         setupAccountList1()
-        setupAccountList2()
+        secessionUser()
         setupAccountList3()
     }
 
@@ -37,7 +37,7 @@ class MypageAccountActivity :
         }
     }
 
-    private fun setupAccountList2() {
+    private fun secessionUser() {
         binding.clMypageAccountSecession.setOnSingleClickListener {
             MypageAccountDeleteDialogFragment().show(
                 supportFragmentManager,

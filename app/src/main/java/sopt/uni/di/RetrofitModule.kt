@@ -13,12 +13,25 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import sopt.uni.BuildConfig.BASE_URL
 import sopt.uni.data.datasource.remote.AuthInterceptor
+import sopt.uni.data.service.MyPageService
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
+
+    private val client by lazy {
+        OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
+            .addInterceptor(
+                HttpLoggingInterceptor()
+                    .apply {
+                        level = HttpLoggingInterceptor.Level.BODY
+                    },
+            ).build()
+    }
+
     @Provides
     @Singleton
     fun provideJson(): Json = Json {
@@ -53,4 +66,18 @@ object RetrofitModule {
         Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(
             Json.asConverterFactory("application/json".toMediaType()),
         ).build()
+
+    val retrofitForMyPage: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .build()
+    }
+
+    inline fun <reified T> createMyPageService(): T = retrofitForMyPage.create<T>(T::class.java)
+}
+
+object ServicePool {
+    val myPageService = RetrofitModule.createMyPageService<MyPageService>()
 }
