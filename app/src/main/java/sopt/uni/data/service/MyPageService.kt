@@ -2,6 +2,8 @@ package sopt.uni.data.service
 
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.PATCH
@@ -20,4 +22,7 @@ interface MyPageService {
         @Part("nickname") nickname: RequestBody,
         @Part("startDate") startDate: RequestBody,
     ): MyPageInfoResponseDto
+
+    @DELETE("api/user")
+    suspend fun deleteUser(): Response<Unit>
 }

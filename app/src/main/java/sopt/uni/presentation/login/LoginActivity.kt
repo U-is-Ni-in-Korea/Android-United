@@ -107,7 +107,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     // TODO 함수 분리
     private fun googleInit() {
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("$GOOGLE_CLIENT_ID")
+            .requestIdToken(GOOGLE_CLIENT_ID)
             .requestEmail()
             .requestId()
             .requestProfile()

@@ -3,10 +3,12 @@ package sopt.uni.presentation.mypage
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.NoBodyAction2DialogBinding
 import sopt.uni.databinding.TitleAction2DialogBinding
+import sopt.uni.di.ServicePool
 import sopt.uni.presentation.BindingDialogFragment
 import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -35,6 +37,13 @@ class MypageAccountLogoutDialogFragment :
 
 class MypageAccountDeleteDialogFragment :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
+
+    private val myPageAccountViewModel: MyPageAccountViewModel by viewModels() {
+        MyPageAccountViewModelFactory(
+            ServicePool.myPageService,
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,7 +55,11 @@ class MypageAccountDeleteDialogFragment :
                 dismiss()
             }
             btnRight.setOnSingleClickListener {
-                // 회원 탈퇴 처리
+                myPageAccountViewModel.deleteUser()
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                dismiss()
             }
         }
     }
