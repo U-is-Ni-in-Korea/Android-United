@@ -14,5 +14,5 @@ interface MypageRepository {
         startDate: String,
     ): Result<MyPageInfo>
 
-    suspend fun deleteUser() : Response<Unit>
+    suspend fun deleteUser(): Response<Unit>
 }
