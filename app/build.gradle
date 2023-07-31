@@ -101,6 +101,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-bom:32.0.0'
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
+    // FileProvider
+    implementation 'androidx.core:core:1.10.1'
+
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
