@@ -1,7 +1,6 @@
 package sopt.uni.data.repository.mypage
 
 import okhttp3.MultipartBody
-import retrofit2.Response
 import sopt.uni.data.entity.history.MyPage
 import sopt.uni.data.entity.mypage.MyPageInfo
 
