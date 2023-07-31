@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name=".presentation.home.HomeActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.LightBlueStatusBar" />
 
@@ -137,6 +137,16 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="sopt.uni.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

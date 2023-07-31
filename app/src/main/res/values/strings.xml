@@ -209,5 +209,7 @@
     <string name="success_kakao_login">카카오 로그인에 성공했어요</string>
     <string name="success_google_login">구글 로그인에 성공했어요</string>
     <string name="prepare_heart_function">하트 추가 기능은 준비중이에요!</string>
+    <string name="share">공유하기</string>
+    <string name="share_wishcoupon">Share WishCoupon</string>
 
 </resources>
