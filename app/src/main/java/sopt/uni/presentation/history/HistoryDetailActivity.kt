@@ -21,6 +21,7 @@ class HistoryDetailActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.vm = viewModel
+        binding.lifecycleOwner = this
         setHistory()
         setBackBtnOnClickListener()
     }

@@ -15,7 +15,7 @@ import javax.inject.Inject
 class HistoryViewModel @Inject constructor(
     private val historyRepository: HistoryRepository,
 ) : ViewModel() {
-    private val _historyData = MutableLiveData<List<History>>(emptyList())
+    private var _historyData = MutableLiveData<List<History>>(null)
     val historyData: LiveData<List<History>> = _historyData
 
     init {

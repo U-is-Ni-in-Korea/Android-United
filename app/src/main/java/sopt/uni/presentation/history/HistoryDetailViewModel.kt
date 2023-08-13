@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HistoryDetailViewModel @Inject constructor() : ViewModel() {
-    private val _history = MutableLiveData<History>()
+    private var _history = MutableLiveData<History>()
     val history: LiveData<History> = _history
 
     fun setHistory(history: History) {
