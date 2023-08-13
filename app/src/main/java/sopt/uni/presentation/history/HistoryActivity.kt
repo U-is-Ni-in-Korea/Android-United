@@ -51,6 +51,7 @@ class HistoryActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.vm = viewModel
+        binding.lifecycleOwner = this
         initHistoryAdapter()
         setupBackButton()
 
