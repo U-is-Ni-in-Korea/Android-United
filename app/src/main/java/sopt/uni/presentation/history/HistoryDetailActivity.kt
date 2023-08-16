@@ -23,18 +23,18 @@ class HistoryDetailActivity :
         binding.vm = viewModel
         binding.lifecycleOwner = this
         setHistory()
-        setBackBtnOnClickListener()
-    }
-
-    private fun setBackBtnOnClickListener() {
-        binding.btnHistoryDetailBack.setOnSingleClickListener {
-            startActivity<HistoryActivity>()
-            finish()
-        }
+        setupBackButton()
     }
 
     private fun setHistory() {
         val history = intent.parcelable<History>(HISTORY)
         viewModel.setHistory(requireNotNull(history))
+    }
+
+    private fun setupBackButton() {
+        binding.btnHistoryDetailBack.setOnSingleClickListener {
+            startActivity<HistoryActivity>()
+            finish()
+        }
     }
 }

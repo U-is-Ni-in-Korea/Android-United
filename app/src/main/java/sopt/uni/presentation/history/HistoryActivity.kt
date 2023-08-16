@@ -53,11 +53,8 @@ class HistoryActivity :
         binding.vm = viewModel
         binding.lifecycleOwner = this
         initHistoryAdapter()
+        observeHistoryData()
         setupBackButton()
-
-        viewModel.historyData.observe(this) { historyList ->
-            historyAdapter.submitList(historyList)
-        }
     }
 
     private fun initHistoryAdapter() {
@@ -70,6 +67,12 @@ class HistoryActivity :
             LinearLayoutManager(this@HistoryActivity).orientation,
         )
         binding.rvHistory.addItemDecoration(dividerItemDecoration)
+    }
+
+    private fun observeHistoryData() {
+        viewModel.historyData.observe(this) { historyList ->
+            historyAdapter.submitList(historyList)
+        }
     }
 
     private fun setupBackButton() {
