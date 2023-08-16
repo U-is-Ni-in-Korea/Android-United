@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.history.History
 import sopt.uni.data.repository.history.HistoryRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,6 +33,7 @@ class HistoryViewModel @Inject constructor(
                     _historyData.value = historyList
                 },
                 onFailure = {
+                    Timber.e(it)
                 },
             )
         }

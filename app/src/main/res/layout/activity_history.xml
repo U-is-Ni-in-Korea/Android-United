@@ -66,7 +66,7 @@
             android:id="@+id/tv_history_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로딩중ㅋㅋ"
+            android:text="@string/history_loading_text"
             android:visibility="@{vm.historyData == null ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/rv_history"
             app:layout_constraintEnd_toEndOf="@+id/cl_history"
