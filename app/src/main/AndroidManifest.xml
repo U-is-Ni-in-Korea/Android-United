@@ -91,7 +91,7 @@
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
             android:name=".presentation.history.HistoryActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
         <activity
