@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHistoryBinding
-import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class HistoryActivity :
@@ -23,26 +22,24 @@ class HistoryActivity :
         HistoryAdapter(
             onClick = { position ->
                 val intent = Intent(this, HistoryDetailActivity::class.java)
-                intent.putExtra(
-                    HISTORY,
-                    requireNotNull(viewModel.historyData.value).toList()[position],
-                )
+                val historyList = when (val uiState = viewModel.historyData.value) {
+                    is UiState.Success -> uiState.data
+                    else -> emptyList()
+                }
+                intent.putExtra(HISTORY, historyList[position])
                 startActivity(intent)
             },
             setResult = { position ->
-                when (requireNotNull(viewModel.historyData.value).toList()[position].result) {
-                    WIN -> {
-                        getString(R.string.history_win)
-                    }
-
-                    LOSE -> {
-                        getString(R.string.history_lose)
-                    }
-
-                    else -> {
-                        getString(R.string.history_draw)
-                    }
+                val historyList = when (val uiState = viewModel.historyData.value) {
+                    is UiState.Success -> uiState.data
+                    else -> emptyList()
                 }
+                val result = when (historyList[position].result) {
+                    WIN -> getString(R.string.history_win)
+                    LOSE -> getString(R.string.history_lose)
+                    else -> getString(R.string.history_draw)
+                }
+                result
             },
         )
     }
@@ -51,7 +48,6 @@ class HistoryActivity :
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.vm = viewModel
-        binding.lifecycleOwner = this
         initHistoryAdapter()
         observeHistoryData()
         setupBackButton()
@@ -59,8 +55,6 @@ class HistoryActivity :
 
     private fun initHistoryAdapter() {
         binding.rvHistory.adapter = historyAdapter
-
-        historyAdapter.submitList(viewModel.historyData.value)
 
         val dividerItemDecoration = DividerItemDecoration(
             binding.rvHistory.context,
@@ -70,15 +64,21 @@ class HistoryActivity :
     }
 
     private fun observeHistoryData() {
-        viewModel.historyData.observe(this) { historyList ->
-            historyAdapter.submitList(historyList)
+        viewModel.historyData.observe(this) { uiState ->
+            when (uiState) {
+                is UiState.Success -> {
+                    val historylist = uiState.data
+                    historyAdapter.submitList(historylist)
+                }
+
+                else -> {}
+            }
         }
     }
 
     private fun setupBackButton() {
         binding.btnHistoryBack.setOnSingleClickListener {
-            startActivity<HomeActivity>()
-            finishAffinity()
+            finish()
         }
     }
 

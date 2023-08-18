@@ -53,10 +53,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history"
+            android:visibility="@{vm.historyData.getUiStateModel().isSuccess ? View.VISIBLE : View.GONE}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:visibility="@{vm.historyData.isEmpty ? View.GONE : View.VISIBLE }"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_history"
@@ -64,10 +64,10 @@
 
         <TextView
             android:id="@+id/tv_history_loading"
+            android:visibility="@{vm.historyData.getUiStateModel().isLoading ? View.VISIBLE : View.GONE}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/history_loading_text"
-            android:visibility="@{vm.historyData == null ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/rv_history"
             app:layout_constraintEnd_toEndOf="@+id/cl_history"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,9 +75,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_history_empty"
+            android:visibility="@{vm.historyData.getUiStateModel().isEmpty ? View.VISIBLE : View.GONE}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{vm.historyData.isEmpty ? View.VISIBLE : View.GONE}">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_history_emptylist_image"

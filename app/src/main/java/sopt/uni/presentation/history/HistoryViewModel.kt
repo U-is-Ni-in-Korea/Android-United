@@ -1,6 +1,7 @@
 // HistoryViewModel.kt
 package sopt.uni.presentation.history
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,15 +10,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.history.History
 import sopt.uni.data.repository.history.HistoryRepository
-import timber.log.Timber
+import sopt.uni.util.UiState
 import javax.inject.Inject
 
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
     private val historyRepository: HistoryRepository,
 ) : ViewModel() {
-    private var _historyData = MutableLiveData<List<History>>(null)
-    val historyData: LiveData<List<History>> = _historyData
+    private var _historyData = MutableLiveData<UiState<List<History>>>(UiState.Loading)
+    val historyData: LiveData<UiState<List<History>>> = _historyData
 
     init {
         getHistoryList()
@@ -27,13 +28,15 @@ class HistoryViewModel @Inject constructor(
         viewModelScope.launch {
             kotlin.runCatching {
                 val result = historyRepository.getHistoryList()
-                result.getOrNull()
+                result.getOrElse { emptyList() }
             }.fold(
                 onSuccess = { historyList ->
-                    _historyData.value = historyList
+                    _historyData.value = UiState.Success(historyList)
+                    Log.d("aaaa", "성공")
                 },
-                onFailure = {
-                    Timber.e(it)
+                onFailure = { throwable ->
+                    _historyData.value = throwable.message?.let { UiState.Failure(it) }
+                    Log.d("aaaa", "실패")
                 },
             )
         }
