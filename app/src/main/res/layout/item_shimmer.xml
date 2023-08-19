@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_history_item_date"
+        style="@style/Body2"
+        android:layout_width="40dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/Gray_400"
+        android:textColor="@color/Gray_400"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_history_item"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/Gray_400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_history_item_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_date" />
+
+    <TextView
+        android:id="@+id/tv_history_item_game_title"
+        style="@style/Body1"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/Gray_400"
+        app:layout_constraintStart_toEndOf="@+id/iv_history_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_date" />
+
+    <TextView
+        android:id="@+id/tv_item_history_result"
+        android:layout_width="30dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/Gray_400"
+        android:textColor="@color/Lightblue_500"
+        app:layout_constraintStart_toEndOf="@id/iv_history_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_game_title" />
+
+    <ImageButton
+        android:id="@+id/btn_history_item_right"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/Gray_400"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_history_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_history_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

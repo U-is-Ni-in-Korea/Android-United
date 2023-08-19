@@ -2,10 +2,14 @@ package sopt.uni.presentation.history
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHistoryBinding
 import sopt.uni.util.UiState
@@ -53,8 +57,25 @@ class HistoryActivity :
         setupBackButton()
     }
 
+    private fun showLodingView(isLoading: Boolean) {
+        if (isLoading) {
+            binding.sflHistory.startShimmer()
+            binding.sflHistory.visibility = View.VISIBLE
+            binding.rvHistory.visibility = View.GONE
+        } else {
+            binding.sflHistory.stopShimmer()
+            binding.sflHistory.visibility = View.GONE
+            binding.rvHistory.visibility = View.VISIBLE
+        }
+    }
+
     private fun initHistoryAdapter() {
-        binding.rvHistory.adapter = historyAdapter
+        lifecycleScope.launch {
+            showLodingView(isLoading = true)
+            delay(1000)
+            binding.rvHistory.adapter = historyAdapter
+            showLodingView(isLoading = false)
+        }
 
         val dividerItemDecoration = DividerItemDecoration(
             binding.rvHistory.context,
