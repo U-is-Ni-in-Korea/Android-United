@@ -72,7 +72,7 @@ class HistoryActivity :
     private fun initHistoryAdapter() {
         lifecycleScope.launch {
             showLodingView(isLoading = true)
-            delay(1000)
+            delay(2000)
             binding.rvHistory.adapter = historyAdapter
             showLodingView(isLoading = false)
         }
@@ -91,7 +91,6 @@ class HistoryActivity :
                     val historylist = uiState.data
                     historyAdapter.submitList(historylist)
                 }
-
                 else -> {}
             }
         }

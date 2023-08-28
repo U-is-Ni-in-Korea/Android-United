@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_history_item_date"
         style="@style/Body2"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
@@ -30,8 +30,8 @@
     <TextView
         android:id="@+id/tv_history_item_game_title"
         style="@style/Body1"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_width="70dp"
+        android:layout_height="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="@color/Gray_400"
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/tv_item_history_result"
-        android:layout_width="30dp"
+        android:layout_width="40dp"
         android:layout_height="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
@@ -48,15 +48,5 @@
         android:textColor="@color/Lightblue_500"
         app:layout_constraintStart_toEndOf="@id/iv_history_item"
         app:layout_constraintTop_toBottomOf="@+id/tv_history_item_game_title" />
-
-    <ImageButton
-        android:id="@+id/btn_history_item_right"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/Gray_400"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_history_item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_history_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
