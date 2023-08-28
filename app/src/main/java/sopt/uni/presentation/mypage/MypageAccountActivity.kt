@@ -16,9 +16,9 @@ class MypageAccountActivity :
         setContentView(binding.root)
 
         setupBackButton()
-        setupAccountList1()
+        logoutUser()
         secessionUser()
-        setupAccountList3()
+        disconnectCouple()
     }
 
     private fun setupBackButton() {
@@ -28,7 +28,7 @@ class MypageAccountActivity :
         }
     }
 
-    private fun setupAccountList1() {
+    private fun logoutUser() {
         binding.clMypageAccountLogout.setOnSingleClickListener {
             MypageAccountLogoutDialogFragment().show(
                 supportFragmentManager,
@@ -46,7 +46,7 @@ class MypageAccountActivity :
         }
     }
 
-    private fun setupAccountList3() {
+    private fun disconnectCouple() {
         binding.clMypageAccountDisconnect.setOnSingleClickListener {
             MypageAccountCoupleDisconnectDialogFragment().show(
                 supportFragmentManager,
