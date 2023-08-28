@@ -114,7 +114,7 @@
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:maxLength="15"
+            android:maxLength="10"
             android:maxLines="1"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
@@ -162,7 +162,7 @@
             android:textColor="@color/Gray_400"
             app:layout_constraintEnd_toEndOf="@+id/et_mypage_profil_edit_nickname"
             app:layout_constraintTop_toBottomOf="@id/et_mypage_profil_edit_nickname"
-            tools:text="0/10" />
+            tools:text="0/5" />
 
         <TextView
             android:id="@+id/tv_mypage_profil_edit_couple_date_title"
