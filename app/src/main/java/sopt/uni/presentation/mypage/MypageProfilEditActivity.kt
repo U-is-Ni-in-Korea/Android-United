@@ -73,7 +73,7 @@ class MypageProfilEditActivity :
             val nickname = binding.etMypageProfilEditNickname.text.toString()
             val startDate = binding.tvMypageProfilEditCoupleDate.text.toString()
 
-            if (nickname.length <= 10 && !nickname.all { it.isWhitespace() }) {
+            if (nickname.length <= 5 && !nickname.all { it.isWhitespace() }) {
                 viewModel.saveProfile(nickname, startDate)
                 startActivity<MypageSettingActivity>()
                 finish()
@@ -113,7 +113,7 @@ class MypageProfilEditActivity :
     }
 
     companion object {
-        private const val MAX_LENGTH = 10
+        private const val MAX_LENGTH = 5
 
         @JvmStatic
         @BindingAdapter("setMypageContentLength")
