@@ -4,12 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHistoryBinding
 import sopt.uni.util.UiState
@@ -17,8 +14,7 @@ import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
-class HistoryActivity :
-    BindingActivity<ActivityHistoryBinding>(R.layout.activity_history) {
+class HistoryActivity : BindingActivity<ActivityHistoryBinding>(R.layout.activity_history) {
 
     private val viewModel: HistoryViewModel by viewModels()
 
@@ -57,26 +53,8 @@ class HistoryActivity :
         setupBackButton()
     }
 
-    private fun showLodingView(isLoading: Boolean) {
-        if (isLoading) {
-            binding.sflHistory.startShimmer()
-            binding.sflHistory.visibility = View.VISIBLE
-            binding.rvHistory.visibility = View.GONE
-        } else {
-            binding.sflHistory.stopShimmer()
-            binding.sflHistory.visibility = View.GONE
-            binding.rvHistory.visibility = View.VISIBLE
-        }
-    }
-
     private fun initHistoryAdapter() {
-        lifecycleScope.launch {
-            showLodingView(isLoading = true)
-            delay(2000)
-            binding.rvHistory.adapter = historyAdapter
-            showLodingView(isLoading = false)
-        }
-
+        binding.rvHistory.adapter = historyAdapter
         val dividerItemDecoration = DividerItemDecoration(
             binding.rvHistory.context,
             LinearLayoutManager(this@HistoryActivity).orientation,
@@ -88,9 +66,19 @@ class HistoryActivity :
         viewModel.historyData.observe(this) { uiState ->
             when (uiState) {
                 is UiState.Success -> {
+                    binding.sflHistory.stopShimmer()
+                    binding.sflHistory.visibility = View.GONE
+                    binding.rvHistory.visibility = View.VISIBLE
                     val historylist = uiState.data
                     historyAdapter.submitList(historylist)
                 }
+
+                is UiState.Loading -> {
+                    binding.sflHistory.startShimmer()
+                    binding.sflHistory.visibility = View.VISIBLE
+                    binding.rvHistory.visibility = View.GONE
+                }
+
                 else -> {}
             }
         }
