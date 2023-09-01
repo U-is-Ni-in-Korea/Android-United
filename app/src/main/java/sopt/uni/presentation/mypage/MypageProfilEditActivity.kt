@@ -1,6 +1,7 @@
 package sopt.uni.presentation.mypage
 
 import ContentUriRequestBody
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
 import android.net.Uri
@@ -13,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
@@ -115,6 +117,7 @@ class MypageProfilEditActivity :
     companion object {
         private const val MAX_LENGTH = 5
 
+        @SuppressLint("SetTextI18n")
         @JvmStatic
         @BindingAdapter("setMypageContentLength")
         fun setMypageContentLength(view: TextView, length: Int) {
@@ -149,10 +152,11 @@ class MypageProfilEditActivity :
         @JvmStatic
         @BindingAdapter("setMypageContentLength")
         fun setMypageContentLength(view: EditText, length: Int) {
+            val context = view.context
             if (length > MAX_LENGTH || length == 0) {
-                view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text_error)
+                view.background = ContextCompat.getDrawable(context, R.drawable.bg_mypage_edit_text_error)
             } else {
-                view.background = view.context.getDrawable(R.drawable.bg_mypage_edit_text)
+                view.background = ContextCompat.getDrawable(context, R.drawable.bg_mypage_edit_text)
             }
         }
     }
