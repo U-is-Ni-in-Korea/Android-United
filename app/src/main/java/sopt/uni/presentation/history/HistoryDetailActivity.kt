@@ -10,7 +10,6 @@ import sopt.uni.presentation.history.HistoryActivity.Companion.HISTORY
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class HistoryDetailActivity :
