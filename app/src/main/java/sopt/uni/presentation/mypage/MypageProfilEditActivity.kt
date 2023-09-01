@@ -154,7 +154,8 @@ class MypageProfilEditActivity :
         fun setMypageContentLength(view: EditText, length: Int) {
             val context = view.context
             if (length > MAX_LENGTH || length == 0) {
-                view.background = ContextCompat.getDrawable(context, R.drawable.bg_mypage_edit_text_error)
+                view.background =
+                    ContextCompat.getDrawable(context, R.drawable.bg_mypage_edit_text_error)
             } else {
                 view.background = ContextCompat.getDrawable(context, R.drawable.bg_mypage_edit_text)
             }
