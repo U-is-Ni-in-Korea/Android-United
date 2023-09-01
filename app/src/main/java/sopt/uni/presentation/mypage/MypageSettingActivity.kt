@@ -42,9 +42,9 @@ class MypageSettingActivity :
         }
     }
 
-    private fun observeMyPageData(){
-        viewModel.myPageData.observe(this){uiState ->
-            when(uiState){
+    private fun observeMyPageData() {
+        viewModel.myPageData.observe(this) { uiState ->
+            when (uiState) {
                 is UiState.Success -> {
                     binding.tvMypageSettingName.text = uiState.data.nickname
                     binding.tvMypageSettingProfilEdit.setOnSingleClickListener {
@@ -56,6 +56,7 @@ class MypageSettingActivity :
                         startActivity(intent)
                     }
                 }
+
                 else -> {}
             }
         }
