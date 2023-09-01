@@ -22,7 +22,7 @@ class MypageProfilEditViewModel @Inject constructor(
     val image: LiveData<ContentUriRequestBody>
         get() = _image
 
-    private val _mypageData = MutableLiveData<MyPage>()
+    private var _mypageData = MutableLiveData<MyPage>()
     val mypageData: LiveData<MyPage> = _mypageData
 
     val mypageContent = MutableLiveData<String>("")
