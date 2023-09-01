@@ -70,5 +70,12 @@
         <item name="android:lineSpacingExtra">6dp</item>
     </style>
 
+    <!-- Sfl -->
+    <style name="sfl">
+        <item name="cardBackgroundColor">@color/Gray_100</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
 
 </resources>

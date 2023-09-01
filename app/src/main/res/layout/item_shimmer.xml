@@ -4,49 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_history_item_date"
-        style="@style/Body2"
-        android:layout_width="60dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/Gray_400"
-        android:textColor="@color/Gray_400"
+    <View
+        android:id="@+id/view_sfl_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Gray_100"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_history_item"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_sfl_item_date"
+        style="@style/sfl"
+        android:layout_width="60dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_sfl_line" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/iv_sfl_item"
+        style="@style/sfl"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="11dp"
         android:layout_marginBottom="12dp"
-        android:background="@color/Gray_400"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_history_item_date"
-        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_date" />
+        app:layout_constraintStart_toStartOf="@+id/tv_sfl_item_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sfl_item_date" />
 
-    <TextView
-        android:id="@+id/tv_history_item_game_title"
-        style="@style/Body1"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_sfl_item_game_title"
+        style="@style/sfl"
         android:layout_width="70dp"
         android:layout_height="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/Gray_400"
-        app:layout_constraintStart_toEndOf="@+id/iv_history_item"
-        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_date" />
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_sfl_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sfl_item_date" />
 
-    <TextView
-        android:id="@+id/tv_item_history_result"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_sfl_result"
+        style="@style/sfl"
         android:layout_width="40dp"
         android:layout_height="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/Gray_400"
-        android:textColor="@color/Lightblue_500"
-        app:layout_constraintStart_toEndOf="@id/iv_history_item"
-        app:layout_constraintTop_toBottomOf="@+id/tv_history_item_game_title" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/iv_sfl_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sfl_item_game_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
