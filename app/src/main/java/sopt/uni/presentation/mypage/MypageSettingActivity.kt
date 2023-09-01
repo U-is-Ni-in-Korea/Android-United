@@ -7,6 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageSettingBinding
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
@@ -18,11 +19,10 @@ class MypageSettingActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.vm = viewModel
 
         setupBackButton()
         setupServiceAccount()
-        setupSettingProfilEdit()
+        observeMyPageData()
     }
 
     override fun onBackPressed() {
@@ -42,14 +42,22 @@ class MypageSettingActivity :
         }
     }
 
-    private fun setupSettingProfilEdit() {
-        binding.tvMypageSettingProfilEdit.setOnSingleClickListener {
-            val intent = Intent(this, MypageProfilEditActivity::class.java)
-            intent.putExtra(
-                MYPAGE,
-                requireNotNull(viewModel.mypage.value),
-            )
-            startActivity(intent)
+    private fun observeMyPageData(){
+        viewModel.myPageData.observe(this){uiState ->
+            when(uiState){
+                is UiState.Success -> {
+                    binding.tvMypageSettingName.text = uiState.data.nickname
+                    binding.tvMypageSettingProfilEdit.setOnSingleClickListener {
+                        val intent = Intent(this, MypageProfilEditActivity::class.java)
+                        intent.putExtra(
+                            MYPAGE,
+                            requireNotNull(uiState.data),
+                        )
+                        startActivity(intent)
+                    }
+                }
+                else -> {}
+            }
         }
     }
 

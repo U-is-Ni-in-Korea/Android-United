@@ -8,14 +8,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.history.MyPage
 import sopt.uni.data.repository.mypage.MypageRepository
+import sopt.uni.util.UiState
 import javax.inject.Inject
 
 @HiltViewModel
 class MypageSettingViewModel @Inject constructor(
     private val mypageRepository: MypageRepository,
 ) : ViewModel() {
-    private val _mypage = MutableLiveData<MyPage>()
-    val mypage: LiveData<MyPage> = _mypage
+    private val _myPageData = MutableLiveData<UiState<MyPage>>(UiState.Loading)
+    val myPageData: LiveData<UiState<MyPage>> = _myPageData
 
     init {
         getMyPageInfo()
@@ -25,12 +26,13 @@ class MypageSettingViewModel @Inject constructor(
         viewModelScope.launch {
             kotlin.runCatching {
                 val result = mypageRepository.getMyPageInfo()
-                result.getOrNull()
+                result.getOrThrow()
             }.fold(
                 onSuccess = { mypageInfo ->
-                    _mypage.value = mypageInfo
+                    _myPageData.value = UiState.Success(mypageInfo)
                 },
-                onFailure = {
+                onFailure = { throwable ->
+                    _myPageData.value = throwable.message?.let { UiState.Failure(it) }
                 },
             )
         }
