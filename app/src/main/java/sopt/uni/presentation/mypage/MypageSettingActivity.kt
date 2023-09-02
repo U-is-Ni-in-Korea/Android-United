@@ -10,6 +10,7 @@ import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showSnackbar
 import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
@@ -55,6 +56,9 @@ class MypageSettingActivity :
                         )
                         startActivity(intent)
                     }
+                }
+                is UiState.Failure -> {
+                    showSnackbar(binding.root,getString(R.string.mypage_setting_loading_fail_text))
                 }
 
                 else -> {}

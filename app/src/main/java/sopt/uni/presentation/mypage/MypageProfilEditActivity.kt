@@ -75,7 +75,7 @@ class MypageProfilEditActivity :
             val nickname = binding.etMypageProfilEditNickname.text.toString()
             val startDate = binding.tvMypageProfilEditCoupleDate.text.toString()
 
-            if (nickname.length <= 5 && !nickname.all { it.isWhitespace() }) {
+            if (nickname.length <= MAX_LENGTH && !nickname.all { it.isWhitespace() }) {
                 viewModel.saveProfile(nickname, startDate)
                 startActivity<MypageSettingActivity>()
                 finish()
