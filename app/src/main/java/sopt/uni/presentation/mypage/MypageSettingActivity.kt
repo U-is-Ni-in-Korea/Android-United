@@ -57,8 +57,9 @@ class MypageSettingActivity :
                         startActivity(intent)
                     }
                 }
+
                 is UiState.Failure -> {
-                    showSnackbar(binding.root,getString(R.string.mypage_setting_loading_fail_text))
+                    showSnackbar(binding.root, getString(R.string.mypage_setting_loading_fail_text))
                 }
 
                 else -> {}
