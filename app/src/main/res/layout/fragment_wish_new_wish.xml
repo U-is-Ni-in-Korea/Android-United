@@ -108,31 +108,30 @@
                 style="@style/Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="89dp"
+                android:layout_marginTop="70dp"
                 android:text="나의 소원은"
                 android:textColor="@color/Gray_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- 비율로 그리기 -->
             <EditText
                 android:id="@+id/edt_new_wish_cv"
                 style="@style/Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginBottom="267dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="200dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:hint="@string/wish_write_ask"
-                android:importantForAutofill="no"
-                android:maxLength="60"
-                android:inputType="textMultiLine"
                 android:imeOptions="actionDone"
-                android:textColorHint="@color/Gray_300"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:maxLength="60"
                 android:textColor="@color/Gray_600"
+                android:textColorHint="@color/Gray_300"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_new_wish_cv" />
 
@@ -151,7 +150,7 @@
                 android:id="@+id/iv_new_wish_dotted_line"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginTop="104dp"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/wish_dotted_line"
                 app:layout_constraintTop_toBottomOf="@id/tv_new_wish_content_length"
                 tools:layout_editor_absoluteX="0dp" />

@@ -10,8 +10,10 @@ class MultiViewWishHolder1(private val binding: ItemWishSmallBinding) :
         binding.apply {
             tvItemWlColor.text = "새 소원권 ${item.newWishCoupon}개"
         }
-        binding.root.setOnClickListener {
-            clickListener(WishActivity.WishTypeId(item.type, -1, false, true))
+        if (item.newWishCoupon != 0) {
+            binding.root.setOnClickListener {
+                clickListener(WishActivity.WishTypeId(item.type, -1, false, true))
+            }
         }
     }
 }
