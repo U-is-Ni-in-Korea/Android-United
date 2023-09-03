@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,37 +78,42 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
             }
         }
 
-        with(binding) {
-            val animator = rvWish.itemAnimator
-            if (animator is SimpleItemAnimator) {
-                animator.supportsChangeAnimations = false
+        fun setupRecyclerView(rv: RecyclerView, adapter: RecyclerView.Adapter<*>) {
+            rv.itemAnimator?.let { animator ->
+                if (animator is SimpleItemAnimator) {
+                    animator.supportsChangeAnimations = false
+                }
             }
+            rv.adapter = adapter
+            rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        }
+
+        fun updateTextStyles(tv1: TextView, tv2: TextView) {
+            tv1.setTextColor(resources.getColor(R.color.Lightblue_600))
+            tv2.setTextColor(resources.getColor(R.color.Gray_300))
+            tv1.setTextAppearance(R.style.Subtitle)
+            tv2.setTextAppearance(R.style.Body1_Regular)
+        }
+
+        with(binding) {
             tvWishMyWish.setOnClickListener {
-                tvWishMyWish.setTextColor(resources.getColor(R.color.Lightblue_600))
-                tvWishYourWish.setTextColor(resources.getColor(R.color.Gray_300))
-                tvWishMyWish.setTextAppearance(R.style.Subtitle)
-                tvWishYourWish.setTextAppearance(R.style.Body1_Regular)
+                updateTextStyles(tvWishMyWish, tvWishYourWish)
                 lifecycleScope.launch {
                     wishViewModel.getMyWishList(userId).join()
                 }
-                rvWish.adapter = multiviewAdapter
-                rvWish.layoutManager =
-                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                setupRecyclerView(rvWish, multiviewAdapter)
                 multiviewAdapter.submitData(_wishList)
             }
+
             tvWishYourWish.setOnClickListener {
-                tvWishMyWish.setTextColor(resources.getColor(R.color.Gray_300))
-                tvWishYourWish.setTextColor(resources.getColor(R.color.Lightblue_600))
-                tvWishMyWish.setTextAppearance(R.style.Body1_Regular)
-                tvWishYourWish.setTextAppearance(R.style.Subtitle)
+                updateTextStyles(tvWishYourWish, tvWishMyWish)
                 lifecycleScope.launch {
                     wishViewModel.getPartnerWishList(partnerId!!).join()
                 }
+                setupRecyclerView(rvWish, yourMultiviewAdapter)
                 yourMultiviewAdapter.submitData(_wishList)
-                rvWish.adapter = yourMultiviewAdapter
-                rvWish.layoutManager =
-                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             }
+
             btnWishBack.setOnClickListener {
                 startActivity<HomeActivity>()
             }

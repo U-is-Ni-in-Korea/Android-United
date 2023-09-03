@@ -48,25 +48,8 @@ class WishNewWishFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    val trimmedText = s?.toString()?.trim()
-                    val length = trimmedText?.length ?: 0
-                    binding.tvNewWishContentLength.text = "$length/54"
-
-                    if (length >= 54) {
-                        binding.tvNewWishContentLength.setTextColor(Color.RED)
-                    } else {
-                        binding.tvNewWishContentLength.setTextColor(Color.GRAY)
-                    }
-
-                    if (s?.isNotEmpty() == true || length <= 54) {
-                        binding.btnNewWishFinish.isEnabled = true
-                        binding.btnNewWishFinish.backgroundTintList =
-                            resources.getColorStateList(R.color.Lightblue_500)
-                    } else {
-                        binding.btnNewWishFinish.isEnabled = false
-                        binding.btnNewWishFinish.backgroundTintList =
-                            resources.getColorStateList(R.color.Gray_300)
-                    }
+                    val text = s?.toString()
+                    updateTextLength(text)
                 }
             })
             btnNewWishClose.setOnClickListener {
@@ -78,6 +61,30 @@ class WishNewWishFragment : Fragment() {
                 activity?.finish()
             }
         }
+    }
+
+    private fun updateTextLength(text: String?) {
+        val trimmedText = text?.trim()
+        val length = trimmedText?.length ?: 0
+        binding.tvNewWishContentLength.text = "$length/54"
+
+        if (length >= 54) {
+            binding.tvNewWishContentLength.setTextColor(Color.RED)
+        } else {
+            binding.tvNewWishContentLength.setTextColor(Color.GRAY)
+        }
+
+        val isTextNotEmpty = !trimmedText.isNullOrEmpty()
+        val isLengthValid = length <= 54
+
+        binding.btnNewWishFinish.isEnabled = isTextNotEmpty || isLengthValid
+
+        val backgroundTint = if (isTextNotEmpty && isLengthValid) {
+            R.color.Lightblue_500
+        } else {
+            R.color.Gray_300
+        }
+        binding.btnNewWishFinish.backgroundTintList = resources.getColorStateList(backgroundTint)
     }
 
     private fun createWishCoupon(content: String) {

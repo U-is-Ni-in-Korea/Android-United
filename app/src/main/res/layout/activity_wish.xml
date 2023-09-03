@@ -122,7 +122,7 @@
                 android:layout_marginBottom="4dp"
                 android:paddingVertical="7dp"
                 android:text="@string/wish_contour"
-                android:textColor="@color/Gray_300"
+                android:textColor="@color/Gray_200"
                 app:layout_constraintLeft_toRightOf="@id/tv_wish_my_wish"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_ment_sub" />
 
