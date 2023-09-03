@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Gray_100"
+    tools:context=".presentation.timer.TimerStartActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageButton
+        android:id="@+id/btn_timer_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@null"
+        android:src="@drawable/ic_backarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        style="@style/Title1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/timer_title"
+        android:textColor="@color/Gray_600"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_timer_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_timer_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_timer_back" />
+
+    <TextView
+        android:id="@+id/tv_minute"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="22dp"
+        android:paddingHorizontal="18dp"
+        android:text="@string/timer_minute"
+        android:textColor="@color/Lightblue_600"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_timer" />
+
+    <TextView
+        android:id="@+id/tv_seconds"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:paddingHorizontal="18dp"
+        android:text="@string/timer_seconds"
+        android:textColor="@color/Lightblue_600"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_minute"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tv_minute" />
+
+    <NumberPicker
+        android:id="@+id/numberpicker_minute"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="22dp"
+        android:theme="@style/DefaultNumberPickerTheme"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/tv_minute"
+        app:layout_constraintTop_toBottomOf="@+id/tv_minute" />
+
+    <TextView
+        android:id="@+id/tv_timer_colon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard_medium"
+        android:gravity="center"
+        android:text="@string/timer_colon"
+        android:textColor="@color/Gray_600"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/numberpicker_minute"
+        app:layout_constraintEnd_toStartOf="@+id/numberpicker_seconds"
+        app:layout_constraintStart_toEndOf="@+id/numberpicker_minute"
+        app:layout_constraintTop_toTopOf="@+id/numberpicker_minute" />
+
+    <NumberPicker
+        android:id="@+id/numberpicker_seconds"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:theme="@style/DefaultNumberPickerTheme"
+        app:layout_constraintEnd_toEndOf="@+id/tv_seconds"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_seconds" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_timer_rule"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_mission_detail_textbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberpicker_minute">
+
+        <TextView
+            android:id="@+id/tv_timer_rule_title"
+            style="@style/Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/timer_rule_title"
+            android:textColor="@color/Lightblue_500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_timer_rule_description"
+            style="@style/Body2_long"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/Gray_600"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_timer_rule_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_timer_rule_title"
+            tools:text="추천하는 제한 시간은 5분입니다\n타이머를 설정하고 원하는 시간 동안 승부를 즐겨보세요" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_timer_start"
+        style="@style/Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/bg_timer_start"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="45dp"
+        android:paddingVertical="13dp"
+        android:text="@string/timer_start"
+        android:textColor="@color/Gray_000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_timer_rule" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

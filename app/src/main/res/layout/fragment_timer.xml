@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Gray_100">
+
+
+    <ImageButton
+        android:id="@+id/btn_timer_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@null"
+        android:src="@drawable/ic_backarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        style="@style/Title1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/timer_title"
+        android:textColor="@color/Gray_600"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_timer_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_timer_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_timer_back" />
+
+    <ImageView
+        android:id="@+id/iv_inside_circular"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="4dp"
+        android:background="@drawable/bg_timer_circle_inner"
+        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/circularProgressBar" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="29dp"
+        android:layout_marginTop="69dp"
+        app:cpb_background_progressbar_color="@color/Gray_150"
+        app:cpb_background_progressbar_width="3dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progress_max="2400"
+        app:cpb_progressbar_color="@color/Lightblue_500"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_timer"
+        tools:cpb_progress="1850" />
+
+    <TextView
+        android:id="@+id/tv_timer_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard"
+        android:textColor="@color/Gray_600"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_inside_circular"
+        app:layout_constraintEnd_toEndOf="@+id/iv_inside_circular"
+        app:layout_constraintStart_toStartOf="@id/iv_inside_circular"
+        app:layout_constraintTop_toTopOf="@id/iv_inside_circular"
+        tools:text="00:00" />
+
+    <Button
+        android:id="@+id/btn_timer_left"
+        style="@style/Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/bg_timer_delete"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="45dp"
+        android:paddingVertical="13dp"
+        android:text="@string/timer_delete"
+        android:textColor="@color/Gray_400"
+        app:layout_constraintEnd_toStartOf="@+id/btn_timer_continue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
+
+    <Button
+        android:id="@+id/btn_timer_continue"
+        style="@style/Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="46dp"
+        android:background="@drawable/bg_timer_start"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="45dp"
+        android:paddingVertical="13dp"
+        android:text="@string/timer_continue"
+        android:textColor="@color/Gray_000"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
+
+    <Button
+        android:id="@+id/btn_timer_stop"
+        style="@style/Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="46dp"
+        android:background="@drawable/bg_timer_stop"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="31dp"
+        android:paddingVertical="13dp"
+        android:text="@string/timer_stop"
+        android:textColor="@color/Gray_000"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

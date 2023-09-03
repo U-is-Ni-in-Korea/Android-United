@@ -115,4 +115,7 @@ dependencies {
 
     //shimmer-android
     implementation "com.facebook.shimmer:shimmer:0.5.0"
+
+    //progressbar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }
