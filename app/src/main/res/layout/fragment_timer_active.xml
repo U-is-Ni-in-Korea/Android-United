@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="sopt.uni.presentation.timer.TimerViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,21 +35,21 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="29dp"
             android:layout_marginTop="55dp"
+            android:progress="@{vm.leftTime}"
             app:cpb_background_progressbar_color="@color/Gray_150"
             app:cpb_background_progressbar_width="3dp"
             app:cpb_progress_direction="to_right"
-            app:cpb_progress_max="2400"
             app:cpb_progressbar_color="@color/Lightblue_500"
             app:cpb_progressbar_width="10dp"
             app:cpb_round_border="true"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:cpb_progress="1850" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_timer_time"
+            convertToMinAndSec="@{vm.leftTime}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pretendard"

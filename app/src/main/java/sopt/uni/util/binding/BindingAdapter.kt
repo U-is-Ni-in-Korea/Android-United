@@ -37,4 +37,12 @@ object BindingAdapter {
         val parsedDate = LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE)
         text = parsedDate.format(DateTimeFormatter.ofPattern("yyyy년 M월 d일", Locale.getDefault()))
     }
+
+    @JvmStatic
+    @BindingAdapter("convertToMinAndSec")
+    fun TextView.convertToMinAndSec(left: Long) {
+        val minutes = left / 60
+        val seconds = left % 60
+        text = String.format(context.getString(R.string.timer_left_time_format), minutes, seconds)
+    }
 }

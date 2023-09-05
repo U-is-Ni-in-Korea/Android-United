@@ -223,5 +223,6 @@
     <string name="timer_colon">:</string>
     <string name="timer_start">시작</string>
     <string name="timer_rule_title">타이머 활용법</string>
+    <string name="timer_left_time_format">%02d:%02d</string>
 
 </resources>

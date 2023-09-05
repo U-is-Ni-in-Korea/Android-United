@@ -7,6 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageSettingBinding
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.presentation.timer.TimerStartActivity
 import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -24,6 +25,10 @@ class MypageSettingActivity :
         setupBackButton()
         setupServiceAccount()
         observeMyPageData()
+
+        binding.btnTimerGo.setOnSingleClickListener {
+            startActivity<TimerStartActivity>()
+        }
     }
 
     override fun onBackPressed() {
