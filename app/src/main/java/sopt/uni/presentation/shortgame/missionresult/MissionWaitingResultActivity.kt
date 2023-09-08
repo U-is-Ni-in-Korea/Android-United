@@ -3,25 +3,21 @@ package sopt.uni.presentation.shortgame.missionresult
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
-import sopt.uni.data.entity.shortgame.MissionResultState
-import sopt.uni.databinding.ActivityMissionResultBinding
-import sopt.uni.presentation.common.content.UNDECIDED
+import sopt.uni.databinding.ActivityMissionWaitingResultBinding
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
-import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showSnackbar
 import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
-class MissionResultActivity :
-    BindingActivity<ActivityMissionResultBinding>(R.layout.activity_mission_result) {
-
+class MissionWaitingResultActivity :
+    BindingActivity<ActivityMissionWaitingResultBinding>(R.layout.activity_mission_waiting_result) {
     private val viewModel: MissionResultViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,58 +25,34 @@ class MissionResultActivity :
         setContentView(binding.root)
         binding.missionResultViewModel = viewModel
         initViewModelObserve()
-        initClickListener()
+        closeClickListener()
     }
 
     private fun initViewModelObserve() {
         viewModel.apply {
-            myMissionResultState.observe(this@MissionResultActivity) {
-                setResultImageText(it)
-                setButtonVisible(it)
-            }
-            partnerMissionResult.observe(this@MissionResultActivity) {
+            partnerMissionResult.observe(this@MissionWaitingResultActivity) {
                 if (it == null) {
-                    setPartnerMissionContent(true)
+                    goFinalClickListener(true)
                 } else {
-                    setPartnerMissionContent(it.result == UNDECIDED)
+                    goFinalClickListener(false)
                 }
             }
         }
     }
 
-    private fun setResultImageText(state: MissionResultState) {
-        val imageArray = this.resources.obtainTypedArray(R.array.result_state_image)
-        val stringArray = this.resources.getStringArray(R.array.result_state_text)
-        binding.ivMissionResult.setImageResource(imageArray.getResourceId(state.order, 0))
-        binding.tvMissionResultScript.text = stringArray[state.order]
-    }
-
-    private fun setButtonVisible(state: MissionResultState) {
-        when (state) {
-            MissionResultState.WIN -> binding.btnGoWish.visibility = View.VISIBLE
-            else -> binding.btnGoHome.visibility = View.VISIBLE
-        }
-    }
-
-    private fun setPartnerMissionContent(isEmpty: Boolean) {
-        if (isEmpty) {
-            binding.clCardPartnerMission.visibility = View.INVISIBLE
-            binding.clCardPartnerMissionEmpty.visibility = View.VISIBLE
-        } else {
-            binding.clCardPartnerMission.visibility = View.VISIBLE
-            binding.clCardPartnerMissionEmpty.visibility = View.INVISIBLE
-        }
-    }
-
-    private fun initClickListener() {
-        binding.apply {
-            ivClose.setOnSingleClickListener { finish() }
-            btnGoHome.setOnSingleClickListener { finish() }
-            btnGoWish.setOnClickListener {
-                startActivity<WishActivity>()
+    private fun goFinalClickListener(isEmpty: Boolean) {
+        binding.btnGoFinalResult.setOnClickListener {
+            if (isEmpty) {
+                showSnackbar(binding.root, getString(R.string.mission_waiting_partner_result))
+            } else {
+                startActivity<MissionResultActivity>()
                 finish()
             }
         }
+    }
+
+    private fun closeClickListener() {
+        binding.ivClose.setOnSingleClickListener { finish() }
     }
 
     companion object {
@@ -90,7 +62,7 @@ class MissionResultActivity :
         }
 
         private fun getIntent(context: Context, roundGameId: Int) =
-            Intent(context, MissionResultActivity::class.java).putExtra(
+            Intent(context, MissionWaitingResultActivity::class.java).putExtra(
                 MissionRecordActivity.ROUND_GAME_ID,
                 roundGameId,
             )
