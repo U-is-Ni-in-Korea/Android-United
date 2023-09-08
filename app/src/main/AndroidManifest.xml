@@ -138,6 +138,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
 
+        <activity
+            android:name=".presentation.shortgame.missionresult.MissionWaitingResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="sopt.uni.fileprovider"

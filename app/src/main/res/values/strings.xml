@@ -186,6 +186,10 @@
     <string name="mission_result_partner_empty_script">상대가 미션을 끝내면\n 승부 히스토리에서\n 확인할 수 있어요</string>
     <string name="mission_result_complete">미션 성공</string>
     <string name="mission_result_failure">미션 실패</string>
+    <string name="mission_waiting_result_partner_script">승부가 끝난 뒤\n 공개</string>
+    <string name="mission_waiting_result">승부 결과를 기다리고 있어요</string>
+    <string name="mission_waiting_partner_result">상대가 결과를 입력하기 전이에요</string>
+    <string name="mission_wating_result_go_final_result">최종 결과 확인하기</string>
 
     <!-- CreateShortGame dialog -->
     <string name="create_short_game_exit_dialog_title">승부 만들기가 완료되지 않았어요</string>
