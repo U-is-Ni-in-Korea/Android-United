@@ -3,6 +3,7 @@ package sopt.uni.presentation.timer
 import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +17,15 @@ class TimerActiveFragment :
     private val viewModel by activityViewModels<TimerViewModel>()
     private val updateIntervalMillis = 1L
 
+    private val updateTimer = object : CountDownTimer(Long.MAX_VALUE, updateIntervalMillis) {
+        override fun onTick(millisUntilFinished: Long) {
+            getLeftTime()
+        }
+
+        override fun onFinish() {
+
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
@@ -23,17 +33,10 @@ class TimerActiveFragment :
         updateTimer.start()
     }
 
-    private val updateTimer = object : CountDownTimer(Long.MAX_VALUE, updateIntervalMillis) {
-        override fun onTick(millisUntilFinished: Long) {
-            updateLeftTime()
-        }
-
-        override fun onFinish() {
-        }
-    }
 
 
-    private fun updateLeftTime() {
+
+    private fun getLeftTime() {
         // SharedPreferences에서 타이머 계산 결과를 읽어옴
         val sharedPreferences =
             requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
@@ -43,7 +46,12 @@ class TimerActiveFragment :
     }
 
     private fun initCircularProgressBar() {
-        binding.circularProgressBar.progress = viewModel.leftTime.value?.toFloat() ?: 0f
+        val sharedPreferences =
+            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
+        val totalTime = sharedPreferences.getFloat("total_time", 0F)
+
+        viewModel.setMaxTime(totalTime)
+
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
             binding.circularProgressBar.progress = time.toFloat()
         }

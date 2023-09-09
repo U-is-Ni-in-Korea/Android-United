@@ -1,7 +1,9 @@
 package sopt.uni.presentation.timer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -16,6 +18,7 @@ class TimerSettingFragment :
     BindingFragment<FragmentTimerSettingBinding>(R.layout.fragment_timer_setting) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initTimerSetting()
         setupStartButton()
     }
@@ -25,6 +28,10 @@ class TimerSettingFragment :
             val minuteValue = binding.numberpickerMinute.value
             val secondValue = binding.numberpickerSeconds.value
             val total = minuteValue * 60 + secondValue
+
+            val sharedPreferences =
+                requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
+            sharedPreferences.edit().putFloat("total_time", total.toFloat()).apply()
 
             val data = Data.Builder()
                 .putLong("totalSeconds", total.toLong())
