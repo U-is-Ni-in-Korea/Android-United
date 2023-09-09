@@ -10,6 +10,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TimerViewModel @Inject constructor() : ViewModel() {
+
+    private var _maxTime = MutableLiveData<Float>()
+    val maxTime: LiveData<Float>
+        get() = _maxTime
+
+
     private var _leftTime = MutableLiveData<Long>()
     val leftTime: LiveData<Long>
         get() = _leftTime
@@ -18,5 +24,9 @@ class TimerViewModel @Inject constructor() : ViewModel() {
         _leftTime.value = secondsRemaining
         // LiveData 값 로그로 출력
         Log.d("TimerViewModel", "updateLeftTime: $secondsRemaining")
+    }
+
+    fun setMaxTime(maxTime: Float) {
+        _maxTime.value = maxTime
     }
 }

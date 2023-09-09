@@ -4,7 +4,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import coil.load
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import sopt.uni.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -44,5 +46,10 @@ object BindingAdapter {
         val minutes = left / 60
         val seconds = left % 60
         text = String.format(context.getString(R.string.timer_left_time_format), minutes, seconds)
+    }
+    @JvmStatic
+    @BindingAdapter("app:cpb_progress_max")
+    fun setCircularProgressBarMax(circularProgressBar: CircularProgressBar, max: LiveData<Float>) {
+        circularProgressBar.progressMax = max.value?.toFloat() ?: 0f
     }
 }
