@@ -12,16 +12,27 @@ import sopt.uni.R
 import sopt.uni.databinding.FragmentTimerSettingBinding
 import sopt.uni.util.binding.BindingFragment
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showSnackbar
 
 @AndroidEntryPoint
 class TimerSettingFragment :
     BindingFragment<FragmentTimerSettingBinding>(R.layout.fragment_timer_setting) {
+    private val viewModel by activityViewModels<TimerViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initTimerSetting()
         setupStartButton()
+
+        viewModel.snackbarMessage.observe(viewLifecycleOwner) { message ->
+            if (!message.isNullOrEmpty()) {
+                showSnackbar(binding.root, message)
+                // 스낵바 메시지를 한 번 표시한 후 다시 초기화
+                viewModel.resetSnackbarMessage()
+            }
+        }
     }
+
 
     private fun setupStartButton() {
         binding.btnTimerStart.setOnSingleClickListener {
@@ -29,9 +40,11 @@ class TimerSettingFragment :
             val secondValue = binding.numberpickerSeconds.value
             val total = minuteValue * 60 + secondValue
 
+
             val sharedPreferences =
                 requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
             sharedPreferences.edit().putFloat("total_time", total.toFloat()).apply()
+            sharedPreferences.edit().putBoolean("isTimerActive", true).apply()
 
             val data = Data.Builder()
                 .putLong("totalSeconds", total.toLong())
@@ -39,14 +52,14 @@ class TimerSettingFragment :
 
             val timerWorkRequest = OneTimeWorkRequestBuilder<TimerWorker>()
                 .setInputData(data) // 타이머 시간을 Worker에 전달
+                .addTag("timer_work_tag") // 태그를 지정
                 .build()
 
             // WorkManager를 사용하여 Worker를 실행합니다.
             val workManager = WorkManager.getInstance(requireContext())
             workManager.enqueue(timerWorkRequest)
 
-
-            val fragmentTimerActive = TimerActiveFragment()
+            val fragmentTimerActive = TimerActiveFragment(total.toLong())
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
             fragmentTransaction.commit()
