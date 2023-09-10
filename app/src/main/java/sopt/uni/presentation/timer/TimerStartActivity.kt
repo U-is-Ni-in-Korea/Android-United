@@ -31,8 +31,10 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (isActive) {
+            val totalFloat = sharedPreferences.getFloat("total_time", 0F)
+            val totalLong = totalFloat.toLong()
             // SharedPreferences에 타이머 상태가 활성화되어 있다면 TimerActiveFragment 실행
-            val fragmentTimerActive = TimerActiveFragment()
+            val fragmentTimerActive = TimerActiveFragment(totalLong)
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
         } else {
             // SharedPreferences에 타이머 상태가 비활성화되어 있다면 TimerSettingFragment 실행
