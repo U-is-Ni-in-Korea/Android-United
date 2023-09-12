@@ -17,14 +17,16 @@ class TimerWorker(context: Context, params: WorkerParameters) :
         totalSeconds = inputData.getLong("totalSeconds", 0L)
         val startTimer = sharedPreferences.getBoolean("isTimerActive", false)
 
-        while (totalSeconds > 0 && startTimer) {
+        while (totalSeconds >= 0 && startTimer) {
             val cancel = sharedPreferences.getBoolean("isTimerActive", true)
+            val pause = sharedPreferences.getBoolean("isTimerPause", false)
+
             if (!cancel) {
-                Log.d("TimerWorker", "Cancel requested.")
-                sharedPreferences.edit().remove("remainingSeconds").apply()
-                sharedPreferences.edit().remove("total_time").apply()
-                sharedPreferences.edit().putBoolean("isTimerActive", false).apply()
                 break
+            }
+
+            if (pause) {
+                continue
             }
 
             Log.d("TimerWorker", "Remaining Seconds: $totalSeconds")
@@ -32,9 +34,10 @@ class TimerWorker(context: Context, params: WorkerParameters) :
             totalSeconds--
             sharedPreferences.edit().putLong("remainingSeconds", totalSeconds).apply()
         }
+
+        sharedPreferences.edit().putBoolean("isTimerActive", false).apply()
         sharedPreferences.edit().remove("remainingSeconds").apply()
         sharedPreferences.edit().remove("total_time").apply()
-        sharedPreferences.edit().putBoolean("isTimerActive", false).apply()
 
         // Worker가 실행을 완료했을 때 Result.success()를 반환합니다.
         return Result.success()

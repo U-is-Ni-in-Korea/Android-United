@@ -24,7 +24,10 @@ class TimerSettingFragment :
 
         initTimerSetting()
         setupStartButton()
+        timerFinished()
+    }
 
+    private fun timerFinished() {
         viewModel.snackbarMessage.observe(viewLifecycleOwner) { message ->
             if (!message.isNullOrEmpty()) {
                 showSnackbar(binding.root, message)
@@ -41,7 +44,6 @@ class TimerSettingFragment :
         vibrator.make(2000)
     }
 
-
     private fun setupStartButton() {
         binding.btnTimerStart.setOnSingleClickListener {
             val minuteValue = binding.numberpickerMinute.value
@@ -53,6 +55,7 @@ class TimerSettingFragment :
                 requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
             sharedPreferences.edit().putFloat("total_time", total.toFloat()).apply()
             sharedPreferences.edit().putBoolean("isTimerActive", true).apply()
+            sharedPreferences.edit().putBoolean("isTimerPause", false).apply()
 
             val data = Data.Builder()
                 .putLong("totalSeconds", total.toLong())
@@ -67,7 +70,7 @@ class TimerSettingFragment :
             val workManager = WorkManager.getInstance(requireContext())
             workManager.enqueue(timerWorkRequest)
 
-            val fragmentTimerActive = TimerActiveFragment(total.toLong())
+            val fragmentTimerActive = TimerActiveFragment(total.toFloat())
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
             fragmentTransaction.commit()

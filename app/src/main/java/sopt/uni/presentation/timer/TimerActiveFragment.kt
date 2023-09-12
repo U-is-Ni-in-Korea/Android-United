@@ -10,32 +10,52 @@ import sopt.uni.R
 import sopt.uni.databinding.FragmentTimerActiveBinding
 import sopt.uni.util.binding.BindingFragment
 import sopt.uni.util.extension.setOnSingleClickListener
+import kotlin.math.roundToLong
 
 @AndroidEntryPoint
-class TimerActiveFragment(total: Long) :
+class TimerActiveFragment(total: Float) :
     BindingFragment<FragmentTimerActiveBinding>(R.layout.fragment_timer_active) {
     private val viewModel by activityViewModels<TimerViewModel>()
     private val updateIntervalMillis = 100L
     private var totalTime = total
 
     private val updateTimer =
-        object : CountDownTimer(totalTime * 1000 + updateIntervalMillis, updateIntervalMillis) {
+        object : CountDownTimer(
+            (totalTime * 1000 + updateIntervalMillis).roundToLong(),
+            updateIntervalMillis
+        ) {
             override fun onTick(millisUntilFinished: Long) {
                 getLeftTime()
             }
 
-            override fun onFinish() {
-                timerEnd()
-                /** TODO 타이머 종료시 진동, 알람 기능 **/
-            }
+            override fun onFinish() {}
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
         initCircularProgressBar()
-        deleteTimer()
         updateTimer.start()
+        deleteTimer()
+        timerEnd()
+        pauseTimer()
+
+    }
+
+    private fun pauseTimer() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
+        binding.btnTimerStop.setOnSingleClickListener {
+            sharedPreferences.edit().putBoolean("isTimerPause", true).apply()
+            binding.btnTimerStop.visibility = View.GONE
+            binding.btnTimerContinue.visibility = View.VISIBLE
+        }
+
+        binding.btnTimerContinue.setOnSingleClickListener {
+            sharedPreferences.edit().putBoolean("isTimerPause", false).apply()
+            binding.btnTimerContinue.visibility = View.GONE
+            binding.btnTimerStop.visibility = View.VISIBLE
+        }
 
     }
 
@@ -44,6 +64,9 @@ class TimerActiveFragment(total: Long) :
             val sharedPreferences =
                 requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
             sharedPreferences.edit().putBoolean("isTimerActive", false).apply()
+            sharedPreferences.edit().remove("remainingSeconds").apply()
+            sharedPreferences.edit().remove("total_time").apply()
+
             stopTimer()
             goTimerSettingFragment()
         }
@@ -60,7 +83,7 @@ class TimerActiveFragment(total: Long) :
         // SharedPreferences에서 타이머 계산 결과를 읽어옴
         val sharedPreferences =
             requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-        val totalSeconds = sharedPreferences.getLong("remainingSeconds", totalTime)
+        val totalSeconds = sharedPreferences.getLong("remainingSeconds", totalTime.toLong())
         viewModel.updateLeftTime(totalSeconds) // totalSeconds 값을 설정
     }
 
@@ -72,7 +95,9 @@ class TimerActiveFragment(total: Long) :
         viewModel.setMaxTime(totalTime)
 
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
-            binding.circularProgressBar.progress = time.toFloat()
+            time?.let {
+                binding.circularProgressBar.progress = it.toFloat()
+            }
         }
     }
 
@@ -81,8 +106,15 @@ class TimerActiveFragment(total: Long) :
     }
 
     private fun timerEnd() {
-        viewModel.setSnackbarMessage(SNACKBARMESSAGE)
-        goTimerSettingFragment()
+        viewModel.leftTime.observe(viewLifecycleOwner) { time ->
+            if (time == 0L) {
+                viewModel.updateLeftTime(null)
+                viewModel.setSnackbarMessage(SNACKBARMESSAGE)
+                goTimerSettingFragment()
+            }
+
+        }
+
     }
 
     private fun goTimerSettingFragment() {
