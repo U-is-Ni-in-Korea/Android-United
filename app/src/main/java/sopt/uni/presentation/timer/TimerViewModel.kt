@@ -23,6 +23,10 @@ class TimerViewModel @Inject constructor() : ViewModel() {
     val snackbarMessage: LiveData<String?>
         get() = _snackbarMessage
 
+    private var _isPaused = MutableLiveData<Boolean>()
+    val isPaused: LiveData<Boolean>
+        get() = _isPaused
+
     fun updateLeftTime(secondsRemaining: Long?) {
         _leftTime.value = secondsRemaining
         // LiveData 값 로그로 출력
@@ -31,6 +35,11 @@ class TimerViewModel @Inject constructor() : ViewModel() {
 
     fun setMaxTime(maxTime: Float) {
         _maxTime.value = maxTime
+        Log.d("TimerViewModel", "max: $maxTime")
+    }
+
+    fun setPauseState(isPaused: Boolean) {
+        _isPaused.value = isPaused
     }
 
     fun setSnackbarMessage(message: String) {
