@@ -78,7 +78,6 @@
             android:text="@string/timer_delete"
             android:textColor="@color/Gray_400"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_timer_continue"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -94,7 +93,7 @@
             android:paddingVertical="13dp"
             android:text="@string/timer_continue"
             android:textColor="@color/Gray_000"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/btn_timer_left"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_timer_left" />
@@ -112,7 +111,7 @@
             android:paddingVertical="13dp"
             android:text="@string/timer_stop"
             android:textColor="@color/Gray_000"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/btn_timer_left"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_timer_left" />
