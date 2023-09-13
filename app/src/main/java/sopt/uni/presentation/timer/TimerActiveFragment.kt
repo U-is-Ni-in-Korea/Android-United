@@ -34,6 +34,7 @@ class TimerActiveFragment(total: Float) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
+        buttonState()
         initCircularProgressBar()
         updateTimer.start()
         deleteTimer()
@@ -41,6 +42,18 @@ class TimerActiveFragment(total: Float) :
         pauseTimer()
 
     }
+
+    private fun buttonState() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
+        val isPause = sharedPreferences.getBoolean("isTimerPause", false)
+
+        if (isPause) {
+            binding.btnTimerStop.visibility = View.GONE
+            binding.btnTimerContinue.visibility = View.VISIBLE
+        }
+    }
+
 
     private fun pauseTimer() {
         val sharedPreferences =
@@ -53,6 +66,7 @@ class TimerActiveFragment(total: Float) :
 
         binding.btnTimerContinue.setOnSingleClickListener {
             sharedPreferences.edit().putBoolean("isTimerPause", false).apply()
+            updateTimer.start()
             binding.btnTimerContinue.visibility = View.GONE
             binding.btnTimerStop.visibility = View.VISIBLE
         }
