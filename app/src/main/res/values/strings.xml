@@ -224,5 +224,9 @@
     <string name="timer_start">시작</string>
     <string name="timer_rule_title">타이머 활용법</string>
     <string name="timer_left_time_format">%02d:%02d</string>
+    <string name="timer_dialog_title">타이머가 아직 끝나지 않았어요</string>
+    <string name="timer_dialog_body">타이머는 종료되지 않지만 종료 알림을 받\n을 수 없어요</string>
+    <string name="timer_dialog_cancel">취소</string>
+    <string name="timer_dialog_out">나가기</string>
 
 </resources>

@@ -1,6 +1,5 @@
 package sopt.uni.presentation.timer
 
-import android.content.Context
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
@@ -16,30 +15,40 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnTimerBack.setOnSingleClickListener {
-            TimerDialogFragment().show(
-                supportFragmentManager,
-                "MypageAccountCoupleDisconnectDialogFragment",
-            )
-        }
+        setBackButton()
+        setTimerFragment()
+    }
 
-        // 이전에 설정한 타이머 상태가 있는지 확인하고 복원
+    private fun setTimerFragment() {
         val sharedPreferences =
-            applicationContext.getSharedPreferences(NAME, Context.MODE_PRIVATE)
+            applicationContext.getSharedPreferences(NAME, MODE_PRIVATE)
         val isActive = sharedPreferences.getBoolean(ACTIVEKEY, false)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (isActive) {
-            // SharedPreferences에 타이머 상태가 활성화되어 있다면 TimerActiveFragment 실행
             val fragmentTimerActive =
                 TimerActiveFragment(sharedPreferences.getFloat(TOTALTIMEKEY, 0F))
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
         } else {
-            // SharedPreferences에 타이머 상태가 비활성화되어 있다면 TimerSettingFragment 실행
             val fragmentTimerSetting = TimerSettingFragment()
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerSetting)
         }
         fragmentTransaction.commit()
+    }
+
+    private fun setBackButton() {
+        binding.btnTimerBack.setOnSingleClickListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_timer)
+
+            if (currentFragment is TimerSettingFragment) {
+                finish()
+            } else {
+                TimerDialogFragment().show(
+                    supportFragmentManager,
+                    "MypageAccountCoupleDisconnectDialogFragment",
+                )
+            }
+        }
     }
 
     companion object {

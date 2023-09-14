@@ -15,10 +15,10 @@ class TimerDialogFragment :
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            dialogTitle.setText("타이머가 아직 끝나지 않았어요")
-            dialogBody.setText("타이머는 종료되지 않지만 종료 알림을 받\n을 수 없어요")
-            btnLeft.setText("취소")
-            btnRight.setText("나가기")
+            dialogTitle.text = getString(R.string.timer_dialog_title)
+            dialogBody.text = getString(R.string.timer_dialog_body)
+            btnLeft.text = getString(R.string.timer_dialog_cancel)
+            btnRight.text = getString(R.string.timer_dialog_out)
             btnLeft.setOnSingleClickListener {
                 dismiss()
             }
