@@ -29,12 +29,8 @@ class TimerSettingFragment :
 
     private fun timerFinished() {
         viewModel.snackbarMessage.observe(viewLifecycleOwner) { message ->
-            if (!message.isNullOrEmpty()) {
-                showSnackbar(binding.root, message)
-                vibrateSingle()
-                // 스낵바 메시지를 한 번 표시한 후 다시 초기화
-                viewModel.resetSnackbarMessage()
-            }
+            showSnackbar(binding.root, message.peekContent())
+            vibrateSingle()
         }
     }
 
