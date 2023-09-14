@@ -1,10 +1,10 @@
 package sopt.uni.presentation.timer
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import sopt.uni.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,14 +18,12 @@ class TimerViewModel @Inject constructor() : ViewModel() {
     val leftTime: LiveData<Long?>
         get() = _leftTime
 
-    private var _snackbarMessage = MutableLiveData<String?>()
-    val snackbarMessage: LiveData<String?>
+    private var _snackbarMessage = MutableLiveData<Event<String>>()
+    val snackbarMessage: LiveData<Event<String>>
         get() = _snackbarMessage
 
     fun updateLeftTime(secondsRemaining: Long?) {
         _leftTime.value = secondsRemaining
-        // LiveData 값 로그로 출력
-        Log.d("TimerViewModel", "updateLeftTime: $secondsRemaining")
     }
 
     fun setMaxTime(maxTime: Float) {
@@ -33,10 +31,7 @@ class TimerViewModel @Inject constructor() : ViewModel() {
     }
 
     fun setSnackbarMessage(message: String) {
-        _snackbarMessage.value = message
+        _snackbarMessage.value = Event(message)
     }
 
-    fun resetSnackbarMessage() {
-        _snackbarMessage.value = null
-    }
 }
