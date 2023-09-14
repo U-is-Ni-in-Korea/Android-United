@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
@@ -36,17 +37,16 @@ class TimerActiveFragment(total: Float) :
         binding.vm = viewModel
         buttonState()
         initCircularProgressBar()
-        updateTimer.start()
+        startTimer()
         deleteTimer()
         timerEnd()
-        pauseTimer()
-
+        pauseResumeTimer()
     }
 
     private fun buttonState() {
         val sharedPreferences =
-            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-        val isPause = sharedPreferences.getBoolean("isTimerPause", false)
+            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+        val isPause = sharedPreferences.getBoolean(PAUSEKEY, false)
 
         if (isPause) {
             binding.btnTimerStop.visibility = View.GONE
@@ -54,32 +54,34 @@ class TimerActiveFragment(total: Float) :
         }
     }
 
-
-    private fun pauseTimer() {
+    private fun pauseResumeTimer() {
         val sharedPreferences =
-            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
+            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
         binding.btnTimerStop.setOnSingleClickListener {
-            sharedPreferences.edit().putBoolean("isTimerPause", true).apply()
+            stopTimer()
+            sharedPreferences.edit().putBoolean(PAUSEKEY, true).apply()
             binding.btnTimerStop.visibility = View.GONE
             binding.btnTimerContinue.visibility = View.VISIBLE
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
         }
-
         binding.btnTimerContinue.setOnSingleClickListener {
-            sharedPreferences.edit().putBoolean("isTimerPause", false).apply()
-            updateTimer.start()
+            sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
+            startTimer()
             binding.btnTimerContinue.visibility = View.GONE
             binding.btnTimerStop.visibility = View.VISIBLE
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
         }
-
     }
 
     private fun deleteTimer() {
         binding.btnTimerLeft.setOnSingleClickListener {
             val sharedPreferences =
-                requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-            sharedPreferences.edit().putBoolean("isTimerActive", false).apply()
-            sharedPreferences.edit().remove("remainingSeconds").apply()
-            sharedPreferences.edit().remove("total_time").apply()
+                requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+            sharedPreferences.edit().putBoolean(ACTIVEKEY, false).apply()
+            sharedPreferences.edit().remove(REMAINTIMEKEY).apply()
+            sharedPreferences.edit().remove(TOTALTIMEKEY).apply()
 
             stopTimer()
             goTimerSettingFragment()
@@ -88,26 +90,23 @@ class TimerActiveFragment(total: Float) :
 
     override fun onDestroy() {
         super.onDestroy()
-        // Fragment가 파괴될 때 타이머를 중지해야 합니다.
         stopTimer()
     }
-
 
     private fun getLeftTime() {
         // SharedPreferences에서 타이머 계산 결과를 읽어옴
         val sharedPreferences =
-            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-        val totalSeconds = sharedPreferences.getLong("remainingSeconds", totalTime.toLong())
+            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+        val totalSeconds = sharedPreferences.getLong(REMAINTIMEKEY, totalTime.toLong())
         viewModel.updateLeftTime(totalSeconds) // totalSeconds 값을 설정
     }
 
     private fun initCircularProgressBar() {
         val sharedPreferences =
-            requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-        val totalTime = sharedPreferences.getFloat("total_time", 0F)
+            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+        val totalTime = sharedPreferences.getFloat(TOTALTIMEKEY, 0F)
 
         viewModel.setMaxTime(totalTime)
-
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
             time?.let {
                 binding.circularProgressBar.progress = it.toFloat()
@@ -119,6 +118,10 @@ class TimerActiveFragment(total: Float) :
         updateTimer.cancel()
     }
 
+    private fun startTimer() {
+        updateTimer.start()
+    }
+
     private fun timerEnd() {
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
             if (time == 0L) {
@@ -126,9 +129,7 @@ class TimerActiveFragment(total: Float) :
                 viewModel.setSnackbarMessage(SNACKBARMESSAGE)
                 goTimerSettingFragment()
             }
-
         }
-
     }
 
     private fun goTimerSettingFragment() {
@@ -140,7 +141,10 @@ class TimerActiveFragment(total: Float) :
 
     companion object {
         private const val SNACKBARMESSAGE = "타이머가 종료되었어요."
-
+        private const val NAME = "timer_prefs"
+        private const val PAUSEKEY = "isTimerPause"
+        private const val ACTIVEKEY = "isTimerActive"
+        private const val TOTALTIMEKEY = "totalTime"
+        private const val REMAINTIMEKEY = "remainingSeconds"
     }
-
 }

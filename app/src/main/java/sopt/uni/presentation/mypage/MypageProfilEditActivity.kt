@@ -31,17 +31,16 @@ class MypageProfilEditActivity :
     BindingActivity<ActivityMypageProfilEditBinding>(R.layout.activity_mypage_profil_edit) {
 
     private val viewModel: MypageProfilEditViewModel by viewModels()
-
     private val launcher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
             binding.ivMypageProfilEdit.load(imageUri)
             viewModel.setRequestBody(ContentUriRequestBody(this, imageUri!!))
         }
+    private val datePickerDialogFragment = MypageDatePickerDialogFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val datePickerDialogFragment = MypageDatePickerDialogFragment()
         binding.viewModel = viewModel
 
         setMyPage()

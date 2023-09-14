@@ -50,31 +50,42 @@ class TimerSettingFragment :
             val secondValue = binding.numberpickerSeconds.value
             val total = minuteValue * 60 + secondValue
 
+            initsharedPrefSetting(total)
+            setWorkManager(total)
+            goTimerActiveFragment(total)
+        }
+    }
 
-            val sharedPreferences =
-                requireContext().getSharedPreferences("timer_prefs", Context.MODE_PRIVATE)
-            sharedPreferences.edit().putFloat("total_time", total.toFloat()).apply()
-            sharedPreferences.edit().putBoolean("isTimerActive", true).apply()
-            sharedPreferences.edit().putBoolean("isTimerPause", false).apply()
-
-            val data = Data.Builder()
-                .putLong("totalSeconds", total.toLong())
-                .build()
-
-            val timerWorkRequest = OneTimeWorkRequestBuilder<TimerWorker>()
-                .setInputData(data) // 타이머 시간을 Worker에 전달
-                .addTag("timer_work_tag") // 태그를 지정
-                .build()
-
-            // WorkManager를 사용하여 Worker를 실행합니다.
-            val workManager = WorkManager.getInstance(requireContext())
-            workManager.enqueue(timerWorkRequest)
-
+    private fun goTimerActiveFragment(total: Int) {
+        if (total == 0) {
+            showSnackbar(binding.root, "시간을 설정해주세요")
+        } else {
             val fragmentTimerActive = TimerActiveFragment(total.toFloat())
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
             fragmentTransaction.commit()
         }
+    }
+
+    private fun setWorkManager(total: Int) {
+        val data = Data.Builder()
+            .putLong(TOTALTIMEKEY, total.toLong())
+            .build()
+
+        val timerWorkRequest = OneTimeWorkRequestBuilder<TimerWorker>()
+            .setInputData(data)
+            .build()
+
+        val workManager = WorkManager.getInstance(requireContext())
+        workManager.enqueue(timerWorkRequest)
+    }
+
+    private fun initsharedPrefSetting(total: Int) {
+        val sharedPreferences =
+            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+        sharedPreferences.edit().putFloat(TOTALTIMEKEY, total.toFloat()).apply()
+        sharedPreferences.edit().putBoolean(ACTIVEKEY, true).apply()
+        sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
     }
 
     private fun initTimerSetting() {
@@ -94,4 +105,13 @@ class TimerSettingFragment :
             }
         }
     }
+
+    companion object {
+        private const val NAME = "timer_prefs"
+        private const val PAUSEKEY = "isTimerPause"
+        private const val ACTIVEKEY = "isTimerActive"
+        private const val TOTALTIMEKEY = "totalTime"
+    }
 }
+
+
