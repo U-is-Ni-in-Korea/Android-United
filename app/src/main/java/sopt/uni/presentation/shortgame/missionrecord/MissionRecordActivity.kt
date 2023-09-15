@@ -84,8 +84,7 @@ class MissionRecordActivity :
                 viewModel.requestMission(false)
             }
 
-            //나중에 지우기~~
-
+            // 나중에 지우기~~
             btnTimerGo.setOnSingleClickListener {
                 startActivity<TimerStartActivity>()
             }
