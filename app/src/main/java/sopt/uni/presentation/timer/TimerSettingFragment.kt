@@ -1,7 +1,10 @@
 package sopt.uni.presentation.timer
 
 import android.content.Context
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.work.Data
@@ -19,6 +22,8 @@ import sopt.uni.util.extension.showSnackbar
 class TimerSettingFragment :
     BindingFragment<FragmentTimerSettingBinding>(R.layout.fragment_timer_setting) {
     private val viewModel by activityViewModels<TimerViewModel>()
+    private var mediaPlayer: MediaPlayer? = null
+    private lateinit var audioManager: AudioManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -27,10 +32,47 @@ class TimerSettingFragment :
         timerFinished()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
     private fun timerFinished() {
-        viewModel.snackbarMessage.observe(viewLifecycleOwner) { message ->
-            showSnackbar(binding.root, message.peekContent())
+        viewModel.snackbarMessage.observe(viewLifecycleOwner) { event ->
+            showSnackbar(binding.root, event.peekContent())
+            vibrateOrPlaySound()
+        }
+    }
+
+    private fun vibrateOrPlaySound() {
+        audioManager = requireContext().getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        val ringerMode = audioManager.ringerMode
+        if (ringerMode == AudioManager.RINGER_MODE_VIBRATE) {
             vibrateSingle()
+        } else if (ringerMode == AudioManager.RINGER_MODE_NORMAL) {
+            playSound()
+        }
+    }
+
+    private fun playSound() {
+        try {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(requireContext(), R.raw.chime_time)
+                mediaPlayer?.start()
+                object : CountDownTimer(10000, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                    }
+
+                    override fun onFinish() {
+                        mediaPlayer?.stop()
+                        mediaPlayer?.release()
+                        mediaPlayer = null
+                    }
+                }.start()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -54,7 +96,7 @@ class TimerSettingFragment :
 
     private fun goTimerActiveFragment(total: Int) {
         if (total == 0) {
-            showSnackbar(binding.root, "시간을 설정해주세요")
+            showSnackbar(binding.root, getString(R.string.timer_snackbar_message))
         } else {
             val fragmentTimerActive = TimerActiveFragment(total.toFloat())
             val fragmentTransaction = parentFragmentManager.beginTransaction()

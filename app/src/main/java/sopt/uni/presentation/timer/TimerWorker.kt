@@ -37,7 +37,6 @@ class TimerWorker(context: Context, params: WorkerParameters) :
         sharedPreferences.edit().remove(REMAINTIMEKEY).apply()
         sharedPreferences.edit().remove(TOTALTIMEKEY).apply()
 
-        // Worker가 실행을 완료했을 때 Result.success()를 반환합니다.
         return Result.success()
     }
 
