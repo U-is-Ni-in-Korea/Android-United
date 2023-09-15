@@ -10,8 +10,10 @@ import sopt.uni.databinding.ActivityMissionRecordBinding
 import sopt.uni.presentation.shortgame.createshortgame.dialog.CreateShortGameDialogFragment
 import sopt.uni.presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity
 import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
+import sopt.uni.presentation.timer.TimerStartActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.startActivity
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -80,6 +82,11 @@ class MissionRecordActivity :
             }
             btnMissionFail.setOnSingleClickListener {
                 viewModel.requestMission(false)
+            }
+
+            //나중에 지우기~~
+            btnTimerGo.setOnSingleClickListener {
+                startActivity<TimerStartActivity>()
             }
         }
     }

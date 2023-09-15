@@ -6,7 +6,7 @@ import android.view.View
 import sopt.uni.R
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.presentation.BindingDialogFragment
-import sopt.uni.presentation.mypage.MypageSettingActivity
+import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
 class TimerDialogFragment :
@@ -24,7 +24,7 @@ class TimerDialogFragment :
             }
             btnRight.setOnSingleClickListener {
                 activity?.finish()
-                val intent = Intent(requireContext(), MypageSettingActivity::class.java)
+                val intent = Intent(requireContext(), MissionRecordActivity::class.java)
                 startActivity(intent)
             }
         }

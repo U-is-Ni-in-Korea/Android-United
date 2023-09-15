@@ -228,5 +228,6 @@
     <string name="timer_dialog_body">타이머는 종료되지 않지만 종료 알림을 받\n을 수 없어요</string>
     <string name="timer_dialog_cancel">취소</string>
     <string name="timer_dialog_out">나가기</string>
+    <string name="timer_snackbar_message">시간을 설정해주세요</string>
 
 </resources>

@@ -105,6 +105,7 @@ class TimerActiveFragment(total: Float) :
         val sharedPreferences =
             requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
         val totalTime = sharedPreferences.getFloat(TOTALTIMEKEY, 0F)
+        val isPause = sharedPreferences.getBoolean(PAUSEKEY, false)
 
         viewModel.setMaxTime(totalTime)
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
@@ -112,6 +113,15 @@ class TimerActiveFragment(total: Float) :
                 binding.circularProgressBar.progress = it.toFloat()
             }
         }
+
+        if (!isPause) {
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
+        } else {
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
+        }
+
     }
 
     private fun stopTimer() {
