@@ -39,9 +39,12 @@ class TimerSettingFragment :
     }
 
     private fun timerFinished() {
-        viewModel.snackbarMessage.observe(viewLifecycleOwner) { event ->
-            showSnackbar(binding.root, event.peekContent())
-            vibrateOrPlaySound()
+        viewModel.snackbarMessage.observe(viewLifecycleOwner) { message ->
+            if (!message.isNullOrEmpty()) {
+                showSnackbar(binding.root, message)
+                viewModel.resetSnackbarMessage()
+                vibrateOrPlaySound()
+            }
         }
     }
 

@@ -35,7 +35,7 @@ class TimerActiveFragment(total: Float) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
-        buttonState()
+        stateTimer()
         initCircularProgressBar()
         startTimer()
         deleteTimer()
@@ -43,7 +43,7 @@ class TimerActiveFragment(total: Float) :
         pauseResumeTimer()
     }
 
-    private fun buttonState() {
+    private fun stateTimer() {
         val sharedPreferences =
             requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
         val isPause = sharedPreferences.getBoolean(PAUSEKEY, false)
@@ -51,12 +51,18 @@ class TimerActiveFragment(total: Float) :
         if (isPause) {
             binding.btnTimerStop.visibility = View.GONE
             binding.btnTimerContinue.visibility = View.VISIBLE
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
+        } else {
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
         }
     }
 
     private fun pauseResumeTimer() {
         val sharedPreferences =
             requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+
         binding.btnTimerStop.setOnSingleClickListener {
             stopTimer()
             sharedPreferences.edit().putBoolean(PAUSEKEY, true).apply()
@@ -94,7 +100,6 @@ class TimerActiveFragment(total: Float) :
     }
 
     private fun getLeftTime() {
-        // SharedPreferences에서 타이머 계산 결과를 읽어옴
         val sharedPreferences =
             requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
         val totalSeconds = sharedPreferences.getLong(REMAINTIMEKEY, totalTime.toLong())
@@ -113,15 +118,6 @@ class TimerActiveFragment(total: Float) :
                 binding.circularProgressBar.progress = it.toFloat()
             }
         }
-
-        if (!isPause) {
-            binding.circularProgressBar.progressBarColor =
-                ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
-        } else {
-            binding.circularProgressBar.progressBarColor =
-                ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
-        }
-
     }
 
     private fun stopTimer() {
