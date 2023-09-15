@@ -154,5 +154,3 @@ class TimerSettingFragment :
         private const val TOTALTIMEKEY = "totalTime"
     }
 }
-
-

@@ -7,7 +7,6 @@ import sopt.uni.databinding.ActivityTimerBinding
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
-
 @AndroidEntryPoint
 class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activity_timer) {
 
