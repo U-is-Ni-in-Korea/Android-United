@@ -1,7 +1,6 @@
 package sopt.uni.presentation.timer
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -13,6 +12,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.FragmentTimerSettingBinding
 import sopt.uni.util.MakeVibrator
 import sopt.uni.util.binding.BindingFragment
@@ -25,9 +25,6 @@ class TimerSettingFragment :
     private val viewModel by activityViewModels<TimerViewModel>()
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var audioManager: AudioManager
-    private val sharedPreferences: SharedPreferences by lazy {
-        requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -127,9 +124,9 @@ class TimerSettingFragment :
     }
 
     private fun initsharedPrefSetting(total: Int) {
-        sharedPreferences.edit().putFloat(TOTALTIMEKEY, total.toFloat()).apply()
-        sharedPreferences.edit().putBoolean(ACTIVEKEY, true).apply()
-        sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
+        SparkleStorage.totalTime = total.toFloat()
+        SparkleStorage.isActive = true
+        SparkleStorage.isPause = false
     }
 
     private fun initTimerSetting() {
@@ -151,9 +148,6 @@ class TimerSettingFragment :
     }
 
     companion object {
-        private const val NAME = "timer_prefs"
-        private const val PAUSEKEY = "isTimerPause"
-        private const val ACTIVEKEY = "isTimerActive"
         private const val TOTALTIMEKEY = "totalTime"
         private const val ZERO = 0
         private const val MAXNUM = 59

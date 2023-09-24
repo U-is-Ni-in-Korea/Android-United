@@ -1,7 +1,5 @@
 package sopt.uni.presentation.timer
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -9,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.FragmentTimerActiveBinding
 import sopt.uni.util.binding.BindingFragment
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -20,9 +19,6 @@ class TimerActiveFragment(total: Float) :
     private val viewModel by activityViewModels<TimerViewModel>()
     private val updateIntervalMillis = INTERVAL
     private var totalTime = total
-    private val sharedPreferences: SharedPreferences by lazy {
-        requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
-    }
 
     private val updateTimer =
         object : CountDownTimer(
@@ -49,7 +45,7 @@ class TimerActiveFragment(total: Float) :
     }
 
     private fun stateTimer() {
-        val isPause = sharedPreferences.getBoolean(PAUSEKEY, false)
+        val isPause = SparkleStorage.isPause
 
         if (isPause) {
             binding.btnTimerStop.visibility = View.GONE
@@ -65,7 +61,7 @@ class TimerActiveFragment(total: Float) :
     private fun pauseTimer() {
         binding.btnTimerStop.setOnSingleClickListener {
             stopTimer()
-            sharedPreferences.edit().putBoolean(PAUSEKEY, true).apply()
+            SparkleStorage.isPause = true
             binding.btnTimerStop.visibility = View.GONE
             binding.btnTimerContinue.visibility = View.VISIBLE
             binding.circularProgressBar.progressBarColor =
@@ -75,7 +71,7 @@ class TimerActiveFragment(total: Float) :
 
     private fun resumeTimer() {
         binding.btnTimerContinue.setOnSingleClickListener {
-            sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
+            SparkleStorage.isPause = false
             startTimer()
             binding.btnTimerContinue.visibility = View.GONE
             binding.btnTimerStop.visibility = View.VISIBLE
@@ -86,10 +82,7 @@ class TimerActiveFragment(total: Float) :
 
     private fun deleteTimer() {
         binding.btnTimerLeft.setOnSingleClickListener {
-            sharedPreferences.edit().putBoolean(ACTIVEKEY, false).apply()
-            sharedPreferences.edit().remove(REMAINTIMEKEY).apply()
-            sharedPreferences.edit().remove(TOTALTIMEKEY).apply()
-
+            SparkleStorage.timerClear()
             stopTimer()
             goTimerSettingFragment()
         }
@@ -101,12 +94,12 @@ class TimerActiveFragment(total: Float) :
     }
 
     private fun getLeftTime() {
-        val totalSeconds = sharedPreferences.getLong(REMAINTIMEKEY, totalTime.toLong())
+        val totalSeconds = SparkleStorage.remainTime
         viewModel.updateLeftTime(totalSeconds)
     }
 
     private fun initCircularProgressBar() {
-        val totalTime = sharedPreferences.getFloat(TOTALTIMEKEY, ZEROFLOAT)
+        val totalTime = SparkleStorage.totalTime
 
         viewModel.setMaxTime(totalTime)
         viewModel.leftTime.observe(viewLifecycleOwner) { time ->
@@ -143,14 +136,8 @@ class TimerActiveFragment(total: Float) :
 
     companion object {
         private const val SNACKBARMESSAGE = "타이머가 종료되었어요."
-        private const val NAME = "timer_prefs"
-        private const val PAUSEKEY = "isTimerPause"
-        private const val ACTIVEKEY = "isTimerActive"
-        private const val TOTALTIMEKEY = "totalTime"
-        private const val REMAINTIMEKEY = "remainingSeconds"
         private const val INTERVAL = 100L
         private const val MILLISECONDS = 1000
-        private const val ZEROFLOAT = 0F
         private const val ZEROLONG = 0L
     }
 }
