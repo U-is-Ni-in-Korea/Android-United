@@ -1,6 +1,7 @@
 package sopt.uni.presentation.timer
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -24,6 +25,10 @@ class TimerSettingFragment :
     private val viewModel by activityViewModels<TimerViewModel>()
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var audioManager: AudioManager
+    private val sharedPreferences: SharedPreferences by lazy {
+        requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,7 +68,7 @@ class TimerSettingFragment :
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(requireContext(), R.raw.chime_time)
                 mediaPlayer?.start()
-                object : CountDownTimer(10000, 1000) {
+                object : CountDownTimer(TENSECONDS, ONESECONDS) {
                     override fun onTick(millisUntilFinished: Long) {
                     }
 
@@ -82,14 +87,14 @@ class TimerSettingFragment :
     private fun vibrateSingle() {
         val vibrator = MakeVibrator()
         vibrator.init(requireContext())
-        vibrator.make(2000)
+        vibrator.make(TWOSECONDS)
     }
 
     private fun setupStartButton() {
         binding.btnTimerStart.setOnSingleClickListener {
             val minuteValue = binding.numberpickerMinute.value
             val secondValue = binding.numberpickerSeconds.value
-            val total = minuteValue * 60 + secondValue
+            val total = minuteValue * SIXTY + secondValue
 
             initsharedPrefSetting(total)
             setWorkManager(total)
@@ -98,7 +103,7 @@ class TimerSettingFragment :
     }
 
     private fun goTimerActiveFragment(total: Int) {
-        if (total == 0) {
+        if (total == ZERO) {
             showSnackbar(binding.root, getString(R.string.timer_snackbar_message))
         } else {
             val fragmentTimerActive = TimerActiveFragment(total.toFloat())
@@ -122,8 +127,6 @@ class TimerSettingFragment :
     }
 
     private fun initsharedPrefSetting(total: Int) {
-        val sharedPreferences =
-            requireContext().getSharedPreferences(NAME, Context.MODE_PRIVATE)
         sharedPreferences.edit().putFloat(TOTALTIMEKEY, total.toFloat()).apply()
         sharedPreferences.edit().putBoolean(ACTIVEKEY, true).apply()
         sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
@@ -131,18 +134,18 @@ class TimerSettingFragment :
 
     private fun initTimerSetting() {
         binding.numberpickerMinute.apply {
-            minValue = 0
-            maxValue = 59
+            minValue = ZERO
+            maxValue = MAXNUM
             setFormatter { i ->
-                String.format("%02d", i)
+                String.format(context.getString(R.string.timer_number_picker_format), i)
             }
         }
 
         binding.numberpickerSeconds.apply {
-            minValue = 0
-            maxValue = 59
+            minValue = ZERO
+            maxValue = MAXNUM
             setFormatter { i ->
-                String.format("%02d", i)
+                String.format(context.getString(R.string.timer_number_picker_format), i)
             }
         }
     }
@@ -152,5 +155,12 @@ class TimerSettingFragment :
         private const val PAUSEKEY = "isTimerPause"
         private const val ACTIVEKEY = "isTimerActive"
         private const val TOTALTIMEKEY = "totalTime"
+        private const val ZERO = 0
+        private const val MAXNUM = 59
+        private const val SIXTY = 60
+        private const val ONESECONDS = 1000L
+        private const val TWOSECONDS = 2000L
+        private const val TENSECONDS = 10000L
+
     }
 }
