@@ -161,6 +161,5 @@ class TimerSettingFragment :
         private const val ONESECONDS = 1000L
         private const val TWOSECONDS = 2000L
         private const val TENSECONDS = 10000L
-
     }
 }

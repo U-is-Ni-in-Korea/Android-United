@@ -57,5 +57,4 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
         private const val ZEROFLOAT = 0F
         private const val TIMER_DIALOG_TAG = "LeaveTimerDialogFragment"
     }
-
 }

@@ -84,7 +84,6 @@ class TimerActiveFragment(total: Float) :
         }
     }
 
-
     private fun deleteTimer() {
         binding.btnTimerLeft.setOnSingleClickListener {
             sharedPreferences.edit().putBoolean(ACTIVEKEY, false).apply()
@@ -153,6 +152,5 @@ class TimerActiveFragment(total: Float) :
         private const val MILLISECONDS = 1000
         private const val ZEROFLOAT = 0F
         private const val ZEROLONG = 0L
-
     }
 }
