@@ -26,7 +26,7 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
 
         if (isActive) {
             val fragmentTimerActive =
-                TimerActiveFragment(sharedPreferences.getFloat(TOTALTIMEKEY, 0F))
+                TimerActiveFragment(sharedPreferences.getFloat(TOTALTIMEKEY, ZEROFLOAT))
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
         } else {
             val fragmentTimerSetting = TimerSettingFragment()
@@ -44,7 +44,7 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
             } else {
                 TimerDialogFragment().show(
                     supportFragmentManager,
-                    "MypageAccountCoupleDisconnectDialogFragment",
+                    TIMER_DIALOG_TAG
                 )
             }
         }
@@ -54,5 +54,8 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
         private const val NAME = "timer_prefs"
         private const val ACTIVEKEY = "isTimerActive"
         private const val TOTALTIMEKEY = "totalTime"
+        private const val ZEROFLOAT = 0F
+        private const val TIMER_DIALOG_TAG = "LeaveTimerDialogFragment"
     }
+
 }

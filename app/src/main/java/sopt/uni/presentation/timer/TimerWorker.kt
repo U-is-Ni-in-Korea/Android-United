@@ -3,21 +3,20 @@ package sopt.uni.presentation.timer
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import timber.log.Timber
 
 class TimerWorker(context: Context, params: WorkerParameters) :
     Worker(context, params) {
 
-    private var totalSeconds: Long = 0L
+    private var totalSeconds: Long = ZEROLONG
 
     override fun doWork(): Result {
         val sharedPreferences =
             applicationContext.getSharedPreferences(NAME, Context.MODE_PRIVATE)
         val inputData = inputData
-        totalSeconds = inputData.getLong(TOTALTIMEKEY, 0L)
+        totalSeconds = inputData.getLong(TOTALTIMEKEY, ZEROLONG)
         val startTimer = sharedPreferences.getBoolean(ACTIVEKEY, false)
 
-        while (totalSeconds >= 0 && startTimer) {
+        while (totalSeconds >= ZERO && startTimer) {
             val cancel = sharedPreferences.getBoolean(ACTIVEKEY, true)
             val pause = sharedPreferences.getBoolean(PAUSEKEY, false)
 
@@ -27,10 +26,9 @@ class TimerWorker(context: Context, params: WorkerParameters) :
             if (pause) {
                 continue
             }
-            Timber.d("Remaining Seconds: $totalSeconds")
             totalSeconds--
             sharedPreferences.edit().putLong(REMAINTIMEKEY, totalSeconds).apply()
-            Thread.sleep(1000)
+            Thread.sleep(ONESECONDS)
         }
 
         sharedPreferences.edit().putBoolean(ACTIVEKEY, false).apply()
@@ -46,5 +44,8 @@ class TimerWorker(context: Context, params: WorkerParameters) :
         private const val ACTIVEKEY = "isTimerActive"
         private const val TOTALTIMEKEY = "totalTime"
         private const val REMAINTIMEKEY = "remainingSeconds"
+        private const val ONESECONDS = 1000L
+        private const val ZEROLONG = 0L
+        private const val ZERO = 0
     }
 }
