@@ -3,6 +3,7 @@ package sopt.uni.presentation.timer
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.ActivityTimerBinding
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -19,14 +20,12 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
     }
 
     private fun setTimerFragment() {
-        val sharedPreferences =
-            applicationContext.getSharedPreferences(NAME, MODE_PRIVATE)
-        val isActive = sharedPreferences.getBoolean(ACTIVEKEY, false)
+        val isActive = SparkleStorage.isActive
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if (isActive) {
             val fragmentTimerActive =
-                TimerActiveFragment(sharedPreferences.getFloat(TOTALTIMEKEY, ZEROFLOAT))
+                TimerActiveFragment(SparkleStorage.totalTime)
             fragmentTransaction.replace(R.id.fcv_timer, fragmentTimerActive)
         } else {
             val fragmentTimerSetting = TimerSettingFragment()
@@ -51,10 +50,6 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
     }
 
     companion object {
-        private const val NAME = "timer_prefs"
-        private const val ACTIVEKEY = "isTimerActive"
-        private const val TOTALTIMEKEY = "totalTime"
-        private const val ZEROFLOAT = 0F
         private const val TIMER_DIALOG_TAG = "LeaveTimerDialogFragment"
     }
 }
