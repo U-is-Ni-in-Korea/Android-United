@@ -13,6 +13,7 @@ class UniApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         SparkleStorage.init(this)
+        SparkleStorage.timerClear()
         KakaoSdk.init(this, BuildConfig.KAKAO_APP_KEY)
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
