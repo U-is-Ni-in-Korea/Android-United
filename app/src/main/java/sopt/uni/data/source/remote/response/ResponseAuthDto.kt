@@ -10,6 +10,8 @@ data class ResponseAuthDto(
     val accessToken: String,
     @SerialName("refresh_token")
     val refreshToken: String?,
+    @SerialName("couple_id")
+    val coupleId: Int?,
 ) {
     fun toToken(): Token = Token(accessToken = this.accessToken, refreshToken = this.refreshToken)
 }
