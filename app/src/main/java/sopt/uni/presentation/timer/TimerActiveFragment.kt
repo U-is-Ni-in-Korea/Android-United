@@ -63,21 +63,25 @@ class TimerActiveFragment(total: Float) :
     }
 
     private fun pauseTimer() {
-        stopTimer()
-        sharedPreferences.edit().putBoolean(PAUSEKEY, true).apply()
-        binding.btnTimerStop.visibility = View.GONE
-        binding.btnTimerContinue.visibility = View.VISIBLE
-        binding.circularProgressBar.progressBarColor =
-            ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
+        binding.btnTimerStop.setOnSingleClickListener {
+            stopTimer()
+            sharedPreferences.edit().putBoolean(PAUSEKEY, true).apply()
+            binding.btnTimerStop.visibility = View.GONE
+            binding.btnTimerContinue.visibility = View.VISIBLE
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_150)
+        }
     }
 
     private fun resumeTimer() {
-        sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
-        startTimer()
-        binding.btnTimerContinue.visibility = View.GONE
-        binding.btnTimerStop.visibility = View.VISIBLE
-        binding.circularProgressBar.progressBarColor =
-            ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
+        binding.btnTimerContinue.setOnSingleClickListener {
+            sharedPreferences.edit().putBoolean(PAUSEKEY, false).apply()
+            startTimer()
+            binding.btnTimerContinue.visibility = View.GONE
+            binding.btnTimerStop.visibility = View.VISIBLE
+            binding.circularProgressBar.progressBarColor =
+                ContextCompat.getColor(requireContext(), R.color.Lightblue_500)
+        }
     }
 
 
