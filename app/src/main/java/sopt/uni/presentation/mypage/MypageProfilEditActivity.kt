@@ -1,10 +1,8 @@
 package sopt.uni.presentation.mypage
 
-import ContentUriRequestBody
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -12,11 +10,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.history.MyPage
@@ -31,11 +27,12 @@ class MypageProfilEditActivity :
     BindingActivity<ActivityMypageProfilEditBinding>(R.layout.activity_mypage_profil_edit) {
 
     private val viewModel: MypageProfilEditViewModel by viewModels()
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
-            binding.ivMypageProfilEdit.load(imageUri)
-            viewModel.setRequestBody(ContentUriRequestBody(this, imageUri!!))
-        }
+
+    //    private val launcher =
+//        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
+//            binding.ivMypageProfilEdit.load(imageUri)
+//            viewModel.setRequestBody(ContentUriRequestBody(this, imageUri!!))
+//        }
     private val datePickerDialogFragment = MypageDatePickerDialogFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +44,7 @@ class MypageProfilEditActivity :
         setupDatePicker(datePickerDialogFragment)
         setupBackButton()
         setupSaveButton()
-        setupImageChangeButton()
+        //setupImageChangeButton()
     }
 
     private fun setupDatePicker(datePickerDialogFragment: MypageDatePickerDialogFragment) {
@@ -84,11 +81,11 @@ class MypageProfilEditActivity :
         }
     }
 
-    private fun setupImageChangeButton() {
-        binding.tvMypageProfilEditImageChange.setOnSingleClickListener {
-            // 프로필 이미지 바꾸기
-        }
-    }
+//    private fun setupImageChangeButton() {
+//        binding.tvMypageProfilEditImageChange.setOnSingleClickListener {
+//            // 프로필 이미지 바꾸기
+//        }
+//    }
 
     private fun setMyPage() {
         val mypage = intent.parcelable<MyPage>(MypageSettingActivity.MYPAGE)

@@ -148,7 +148,7 @@
     <!-- MypageAccount -->
     <string name="mypage_account_title">계정</string>
     <string name="mypage_account_logout_text">로그아웃</string>
-    <string name="mypage_account_delete_text">탈퇴</string>
+    <string name="mypage_account_delete_text">계정 탈퇴</string>
     <string name="mypage_account_disconnect_text">커플 연결 해제</string>
 
     <!-- MypageProfilEdit -->
@@ -172,6 +172,7 @@
     <string name="mypage_setting_service_opensource_text">오픈소스 라이브러리</string>
     <string name="mypage_setting_service_developer_info_text">개발자 정보</string>
     <string name="mypage_setting_loading_fail_text">정보를 불러오는데 실패하였습니다</string>
+    <string name="mypage_setting_myinfo">내정보</string>
 
     <!-- missionResult -->
     <string name="mission_result_title">한판 승부 결과</string>
