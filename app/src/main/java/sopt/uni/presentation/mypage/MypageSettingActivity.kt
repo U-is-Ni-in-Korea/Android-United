@@ -12,6 +12,8 @@ import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
 import sopt.uni.util.extension.startActivity
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class MypageSettingActivity :
@@ -47,7 +49,10 @@ class MypageSettingActivity :
         viewModel.myPageData.observe(this) { uiState ->
             when (uiState) {
                 is UiState.Success -> {
+                    val dateFormat = SimpleDateFormat("yyyy.MM.dd (E)", Locale.getDefault())
+                    val startDate = dateFormat.format(uiState.data.startDate)
                     binding.tvMypageSettingName.text = uiState.data.nickname
+                    binding.tvMypageSettingStartDate.text = startDate
                     binding.tvMypageSettingProfilEdit.setOnSingleClickListener {
                         val intent = Intent(this, MypageProfilEditActivity::class.java)
                         intent.putExtra(

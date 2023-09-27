@@ -39,9 +39,9 @@ class MypageProfilEditViewModel @Inject constructor(
         mypageContent.value = nickname
     }
 
-    fun setRequestBody(requestBody: ContentUriRequestBody) {
-        _image.value = requestBody
-    }
+//    fun setRequestBody(requestBody: ContentUriRequestBody) {
+//        _image.value = requestBody
+//    }
 
     fun saveProfile(nickname: String, startDate: String) {
         viewModelScope.launch {

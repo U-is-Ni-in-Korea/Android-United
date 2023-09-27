@@ -64,32 +64,6 @@
                 app:layout_constraintTop_toTopOf="@+id/tv_mypage_profil_edit_title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/iv_mypage_profil_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
-            android:contentDescription="@string/my_page_profile_image"
-            android:src="@drawable/ic_my_page_profile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_mypage_profil_edit_app_bar" />
-
-        <TextView
-            android:id="@+id/tv_mypage_profil_edit_image_change"
-            style="@style/Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
-            android:background="@drawable/bg_mypage_profil"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:text="@string/mypage_profil_edit_image_change"
-            android:textColor="@color/Lightblue_600"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_mypage_profil_edit" />
-
         <TextView
             android:id="@+id/tv_mypage_profil_edit_nickname"
             style="@style/Body2"
@@ -100,7 +74,7 @@
             android:text="@string/mypage_profil_edit_nickname_title"
             android:textColor="@color/Gray_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_mypage_profil_edit_image_change" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_mypage_profil_edit_app_bar" />
 
         <EditText
             android:id="@+id/et_mypage_profil_edit_nickname"
@@ -170,6 +144,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
             android:text="@string/mypage_profil_edit_couple_date_title"
             android:textColor="@color/Gray_400"
             app:layout_constraintStart_toStartOf="parent"
