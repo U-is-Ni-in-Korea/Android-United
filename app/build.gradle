@@ -131,6 +131,9 @@ dependencies {
     // Glide Transformations
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
+    // BlurView
+    implementation 'com.github.Dimezis:BlurView:version-2.0.3'
+
     //OSS Licenses Gradle Plugin
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
