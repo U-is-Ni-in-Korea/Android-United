@@ -226,10 +226,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
+        <ImageView
+            android:id="@+id/score_board_background"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/bg_score_board"
+            android:src="@drawable/bg_score_board"
             app:layout_constraintTop_toTopOf="@id/cl_score_board"
             app:layout_constraintBottom_toBottomOf="@id/cl_score_board"
             app:layout_constraintStart_toStartOf="@id/cl_score_board"
