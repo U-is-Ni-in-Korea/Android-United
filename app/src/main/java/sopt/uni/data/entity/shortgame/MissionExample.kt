@@ -9,4 +9,6 @@ data class MissionExample(
     val id: Int,
     @SerialName("content")
     val content: String,
+    @SerialName("recommend_time")
+    val recommendTime: String?
 )

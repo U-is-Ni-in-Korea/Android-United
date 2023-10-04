@@ -9,5 +9,5 @@ data class ResponseShortGameResultDto(
     @SerialName("myRoundMission")
     val myRoundMission: RoundMission,
     @SerialName("partnerRoundMission")
-    val partnerRoundMission: RoundMission?,
+    val partnerRoundMission: RoundMission? = null,
 )
