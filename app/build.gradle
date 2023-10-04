@@ -8,6 +8,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 Properties properties = new Properties()
@@ -122,5 +123,8 @@ dependencies {
     //workmanager
     implementation "androidx.work:work-runtime:2.8.1"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+
+    //OSS Licenses Gradle Plugin
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
 }

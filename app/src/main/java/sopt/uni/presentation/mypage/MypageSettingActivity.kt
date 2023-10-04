@@ -3,6 +3,7 @@ package sopt.uni.presentation.mypage
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageSettingBinding
@@ -27,6 +28,7 @@ class MypageSettingActivity :
         setupBackButton()
         setupServiceAccount()
         observeMyPageData()
+        setupOSSLicenses()
     }
 
     override fun onBackPressed() {
@@ -43,6 +45,12 @@ class MypageSettingActivity :
     private fun setupServiceAccount() {
         binding.clMypageSettingServiceAccount.setOnSingleClickListener {
             startActivity<MypageAccountActivity>()
+        }
+    }
+
+    private fun setupOSSLicenses() {
+        binding.clMypageSettingServiceOpensource.setOnSingleClickListener {
+            startActivity(Intent(this, OssLicensesMenuActivity::class.java))
         }
     }
 
