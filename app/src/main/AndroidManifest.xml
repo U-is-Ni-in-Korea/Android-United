@@ -87,11 +87,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.shortgame.missiondetailcreate.MissionDetailCreateActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
-        <activity
             android:name=".presentation.history.HistoryActivity"
             android:exported="false"
             android:screenOrientation="portrait"
