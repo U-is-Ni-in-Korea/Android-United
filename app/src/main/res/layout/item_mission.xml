@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="missionDetail"
+            type="sopt.uni.data.entity.shortgame.MissionDetail" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_background"
@@ -13,6 +19,7 @@
 
         <ImageView
             android:id="@+id/iv_mission"
+            setImage="@{missionDetail.image}"
             android:layout_width="32dp"
             android:layout_height="32dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -23,6 +30,7 @@
             style="@style/Btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{missionDetail.title}"
             android:textFontWeight="600"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
