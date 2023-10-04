@@ -27,12 +27,6 @@ class MypageProfilEditActivity :
     BindingActivity<ActivityMypageProfilEditBinding>(R.layout.activity_mypage_profil_edit) {
 
     private val viewModel: MypageProfilEditViewModel by viewModels()
-
-    //    private val launcher =
-//        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
-//            binding.ivMypageProfilEdit.load(imageUri)
-//            viewModel.setRequestBody(ContentUriRequestBody(this, imageUri!!))
-//        }
     private val datePickerDialogFragment = MypageDatePickerDialogFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +38,6 @@ class MypageProfilEditActivity :
         setupDatePicker(datePickerDialogFragment)
         setupBackButton()
         setupSaveButton()
-        //setupImageChangeButton()
     }
 
     private fun setupDatePicker(datePickerDialogFragment: MypageDatePickerDialogFragment) {
@@ -80,12 +73,6 @@ class MypageProfilEditActivity :
             }
         }
     }
-
-//    private fun setupImageChangeButton() {
-//        binding.tvMypageProfilEditImageChange.setOnSingleClickListener {
-//            // 프로필 이미지 바꾸기
-//        }
-//    }
 
     private fun setMyPage() {
         val mypage = intent.parcelable<MyPage>(MypageSettingActivity.MYPAGE)
