@@ -118,9 +118,11 @@
     <string name="create_short_game_title">한판승부</string>
     <string name="create_short_game_select_mission">미션 카테고리 선택하기</string>
     <string name="create_short_game_more_script">더보기 버튼을 눌러 설명을 볼 수 있어요</string>
-    <string name="create_short_game_wish">소원 정하기</string>
+    <string name="create_short_game_wish">소원 작성하기</string>
     <string name="create_short_game_wish_content_hint">이번 승부에 걸 소원을 입력해주세요! \n소원은 지금 정하지 않고 승부가 끝난 뒤에도 작성할 수 있어요</string>
     <string name="create_short_game_btn">한판 승부 만들기</string>
+    <string name="label_short_game">SHORT_GAME</string>
+    <string name="label_mission_detail">MISSION_DETAIL</string>
 
     <!-- missionRecord -->
     <string name="mission_record_title">한판 승부 기록</string>
@@ -213,6 +215,8 @@
     <string name="prepare_heart_function">하트 추가 기능은 준비중이에요!</string>
     <string name="share">공유하기</string>
     <string name="share_wishcoupon">Share WishCoupon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Timer -->
     <string name="timer_title">타이머</string>
