@@ -1,5 +1,6 @@
 package sopt.uni.presentation.shortgame.createshortgame
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
@@ -13,14 +14,18 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateShortGameViewModel @Inject constructor(private val shortGameRepository: ShortGameRepository) :
     ViewModel() {
-    private val _selectedMissionId = MutableLiveData<Int>()
-    val selectedMissionId = _selectedMissionId
+    private val _missionId = MutableLiveData<Int>()
+    val missionId = _missionId
 
     private val _roundGameId = MutableLiveData<Int>()
     val roundGameId = _roundGameId
 
     private val _missionList = MutableLiveData<List<MissionDetail>>()
     val missionList = _missionList
+
+    val missionDetail: LiveData<MissionDetail?> = missionId.map { id ->
+        missionList.value?.find { it.id == id }
+    }
 
     val wishContent = MutableLiveData<String>("")
 
@@ -39,7 +44,6 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
         viewModelScope.launch {
             shortGameRepository.getMissionCategory().onSuccess {
                 _missionList.postValue(it)
-                selectedMissionId.postValue(it[0].id)
             }.onFailure {
                 // TODO: 실패시 예외처리
             }
@@ -49,7 +53,7 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
     fun createShortGame() {
         viewModelScope.launch {
             shortGameRepository.createShortGame(
-                selectedMissionId.value ?: return@launch,
+                missionId.value ?: return@launch,
                 wishContent.value ?: "",
             ).onSuccess {
                 _roundGameId.value = it.roundGameId
@@ -61,6 +65,6 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
     }
 
     fun setSelectedMissionId(missionId: Int) {
-        _selectedMissionId.value = missionId
+        _missionId.value = missionId
     }
 }
