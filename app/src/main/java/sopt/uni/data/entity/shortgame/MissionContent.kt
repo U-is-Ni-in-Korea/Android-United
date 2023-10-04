@@ -9,8 +9,8 @@ data class MissionContent(
     val content: String,
     @SerialName("id")
     val id: Int,
-    @SerialName("image")
-    val image: String,
+    @SerialName("recommendTime")
+    val recommendTime: String?,
     @SerialName("missionCategory")
     val missionCategory: MissionCategory,
 )
