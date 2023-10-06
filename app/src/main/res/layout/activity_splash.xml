@@ -14,7 +14,7 @@
             android:layout_width="160dp"
             android:layout_height="0dp"
             android:contentDescription="@string/sparkle_logo"
-            android:src="@mipmap/ic_sparkle"
+            android:src="@drawable/sparkle_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
