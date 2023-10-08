@@ -66,16 +66,17 @@ class WishNewWishFragment : Fragment() {
     private fun updateTextLength(text: String?) {
         val trimmedText = text?.trim()
         val length = trimmedText?.length ?: 0
-        binding.tvNewWishContentLength.text = "$length/54"
+        val textLength = 54
+        binding.tvNewWishContentLength.text = "$length/textLength"
 
-        if (length >= 54) {
+        if (length >= textLength) {
             binding.tvNewWishContentLength.setTextColor(Color.RED)
         } else {
             binding.tvNewWishContentLength.setTextColor(Color.GRAY)
         }
 
         val isTextNotEmpty = !trimmedText.isNullOrEmpty()
-        val isLengthValid = length <= 54
+        val isLengthValid = length <= textLength
 
         binding.btnNewWishFinish.isEnabled = isTextNotEmpty || isLengthValid
 
