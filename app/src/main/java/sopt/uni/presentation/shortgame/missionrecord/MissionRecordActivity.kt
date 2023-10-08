@@ -63,13 +63,6 @@ class MissionRecordActivity :
                 finish()
             }
         }
-//        partnerMissionResult.observe(this@MissionResultActivity) {
-//            if (it == null) {
-//                setPartnerMissionContent(true)
-//            } else {
-//                setPartnerMissionContent(it.result == UNDECIDED)
-//            }
-//        }
     }
 
     private fun setClickListener() {
