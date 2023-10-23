@@ -32,6 +32,11 @@ interface ShortGameService {
         @Path("roundGameId") roundGameId: Int,
     ): ResponseShortGameResultDto
 
+    @GET("/api/game/short/result/{roundGameId}")
+    suspend fun getShortGameFinalResult(
+        @Path("roundGameId") roundGameId: Int,
+    ): ResponseShortGameResultDto
+
     @PATCH("/api/game/short/{roundGameId}")
     suspend fun patchShortGameResult(
         @Path("roundGameId") roundGameId: Int,
