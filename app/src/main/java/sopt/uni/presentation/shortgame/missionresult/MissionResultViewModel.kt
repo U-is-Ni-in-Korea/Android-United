@@ -41,19 +41,24 @@ class MissionResultViewModel @Inject constructor(
         viewModelScope.launch {
             shortGameRepository.getShortGameResult(roundGameId).onSuccess {
                 _myMissionResult.value = it.myRoundMission
+//                if (it.partnerRoundMission != null) {
+//                    _partnerMissionResult.value =
+//                        it.partnerRoundMission
+//                }
+                _myMissionResultState.value =
+                    MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
+
+            }.onFailure {
+                // TODO: 실패 로직 구현
+            }
+
+            shortGameRepository.getShortGameFinalResult(roundGameId).onSuccess {
                 if (it.partnerRoundMission != null) {
                     _partnerMissionResult.value =
                         it.partnerRoundMission
                 }
-                _myMissionResultState.value =
-                    MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
                 Log.e("subin", "it.partnerRoundMission: ${it.partnerRoundMission}")
                 Log.e("subin", "_partnerMissionResult.value: ${_partnerMissionResult.value}")
-//                _partnerMissionResult.value = it.partnerRoundMission
-//                _myMissionResultState.value =
-//                    MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
-            }.onFailure {
-                // TODO: 실패 로직 구현
             }
         }
     }

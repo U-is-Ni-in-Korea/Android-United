@@ -55,6 +55,17 @@ class ShortGameRepositoryImpl @Inject constructor(
             Result.failure<ResponseShortGameResultDto>(it)
         }
 
+    override suspend fun getShortGameFinalResult(
+        roundGameId: Int,
+    ): Result<ResponseShortGameResultDto> =
+        kotlin.runCatching {
+            shortGameService.getShortGameFinalResult(roundGameId)
+        }.onSuccess {
+            Result.success(it)
+        }.onFailure {
+            Result.failure<ResponseShortGameResultDto>(it)
+        }
+
     override suspend fun recordShortGame(
         roundGameId: Int,
         result: Boolean,

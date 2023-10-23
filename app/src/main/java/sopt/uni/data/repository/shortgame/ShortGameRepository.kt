@@ -16,6 +16,8 @@ interface ShortGameRepository {
 
     suspend fun getShortGameResult(roundGameId: Int): Result<ResponseShortGameResultDto>
 
+    suspend fun getShortGameFinalResult(roundGameId: Int): Result<ResponseShortGameResultDto>
+
     suspend fun recordShortGame(
         roundGameId: Int,
         result: Boolean,
