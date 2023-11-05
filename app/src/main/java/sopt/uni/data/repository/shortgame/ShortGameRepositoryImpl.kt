@@ -1,5 +1,6 @@
 package sopt.uni.data.repository.shortgame
 
+import sopt.uni.data.datasource.local.LocalPreferenceDataSource
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.service.ShortGameService
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
@@ -8,8 +9,10 @@ import sopt.uni.data.source.remote.response.ResponseCreateShortGameDto
 import sopt.uni.data.source.remote.response.ResponseShortGameResultDto
 import javax.inject.Inject
 
-class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: ShortGameService) :
-    ShortGameRepository {
+class ShortGameRepositoryImpl @Inject constructor(
+    private val shortGameService: ShortGameService,
+    private val memoDataSource: LocalPreferenceDataSource,
+) : ShortGameRepository {
     override suspend fun getMissionCategory(): Result<List<MissionDetail>> =
         kotlin.runCatching {
             shortGameService.getMissionCategoryList()
@@ -73,4 +76,12 @@ class ShortGameRepositoryImpl @Inject constructor(private val shortGameService: 
         }.onFailure {
             Result.failure<Unit>(it)
         }
+
+    override fun getMemoText(): String {
+        return memoDataSource.getMemo()
+    }
+
+    override fun setMemoText(text: String) {
+        memoDataSource.setMemo(text)
+    }
 }

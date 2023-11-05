@@ -22,4 +22,8 @@ interface ShortGameRepository {
     ): Result<ResponseShortGameResultDto>
 
     suspend fun deleteShortGame(roundGameId: Int): Result<Unit>
+
+    fun getMemoText(): String
+
+    fun setMemoText(text: String): Unit
 }

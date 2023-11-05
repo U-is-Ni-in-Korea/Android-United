@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import sopt.uni.data.datasource.local.LocalPreferenceDataSource
 import sopt.uni.data.repository.auth.AuthRepository
 import sopt.uni.data.repository.auth.AuthRepositoryImpl
 import sopt.uni.data.repository.history.HistoryRepository
@@ -35,8 +36,11 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideShortGameRepository(shortGameService: ShortGameService): ShortGameRepository =
-        ShortGameRepositoryImpl(shortGameService)
+    fun provideShortGameRepository(
+        shortGameService: ShortGameService,
+        localPreferenceDataSource: LocalPreferenceDataSource,
+    ): ShortGameRepository =
+        ShortGameRepositoryImpl(shortGameService, localPreferenceDataSource)
 
     @Provides
     @Singleton
