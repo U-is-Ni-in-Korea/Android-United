@@ -10,6 +10,7 @@ import sopt.uni.BuildConfig
 object SparkleStorage {
     private lateinit var pref: SharedPreferences
     private lateinit var prefTimer: SharedPreferences
+    private lateinit var prefMemo: SharedPreferences
 
     fun init(context: Context) {
         val masterKeyAlias = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
@@ -32,7 +33,12 @@ object SparkleStorage {
 
         prefTimer = context.getSharedPreferences(
             NAME,
-            Context.MODE_PRIVATE
+            Context.MODE_PRIVATE,
+        )
+
+        prefMemo = context.getSharedPreferences(
+            context.packageName,
+            Context.MODE_PRIVATE,
         )
     }
 
@@ -69,6 +75,10 @@ object SparkleStorage {
         get() = prefTimer.getLong(REMAINTIMEKEY, totalTime.toLong())
         set(value) = prefTimer.edit { putLong(REMAINTIMEKEY, value).apply() }
 
+    var memoText: String?
+        get() = prefMemo.getString(MEMO_TEXT, EMPTY_TEXT)
+        set(value) = prefMemo.edit { putString(MEMO_TEXT, value).apply() }
+
     fun clear() {
         pref.edit().clear().apply()
     }
@@ -88,3 +98,5 @@ const val ACTIVEKEY = "isTimerActive"
 const val TOTALTIMEKEY = "totalTime"
 const val PAUSEKEY = "isTimerPause"
 const val REMAINTIMEKEY = "remainingSeconds"
+const val MEMO_TEXT = "memoText"
+const val EMPTY_TEXT = ""
