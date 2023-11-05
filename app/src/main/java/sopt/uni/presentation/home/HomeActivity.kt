@@ -1,12 +1,6 @@
 package sopt.uni.presentation.home
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.BlurMaskFilter
-import android.graphics.Canvas
-import android.graphics.Paint
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -39,7 +33,6 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
 
         binding.viewModel = homeViewModel
 
-        setScoreBoardBLurEffect()
         moveToHistory()
         getRoundResult()
         moveToShortGame()
@@ -66,24 +59,6 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         super.onResume()
         result = ""
         homeViewModel.fetchHomeInfo()
-    }
-
-    private fun setScoreBoardBLurEffect() {
-        with(binding) {
-            scoreBoardBackground.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-
-            val originalBitmap =
-                BitmapFactory.decodeResource(resources, R.drawable.score_board)
-            val blurredBitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true)
-
-            val paint = Paint()
-            paint.maskFilter = BlurMaskFilter(50f, BlurMaskFilter.Blur.NORMAL)
-
-            val canvas = Canvas(blurredBitmap)
-            canvas.drawBitmap(blurredBitmap, 0f, 0f, paint)
-
-            scoreBoardBackground.setImageBitmap(blurredBitmap)
-        }
     }
 
     private fun moveToShortGame() {
