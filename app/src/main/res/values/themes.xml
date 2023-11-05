@@ -33,4 +33,8 @@
         <item name="fontFamily">@font/pretendard</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.App.CornerRadius20dp" parent="">
+        <item name="cornerSize">10%</item>
+    </style>
+
 </resources>
