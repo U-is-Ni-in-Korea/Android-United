@@ -125,14 +125,19 @@
     <string name="label_mission_detail">MISSION_DETAIL</string>
 
     <!-- missionRecord -->
-    <string name="mission_record_title">한판 승부 기록</string>
-    <string name="mission_record_my_mission">나의 미션은</string>
-    <string name="mission_record_your_mission">상대의 미션은</string>
+    <string name="mission_record_title">한판 승부 진행중</string>
+    <string name="mission_record_my_mission">나의 미션</string>
     <string name="mission_record_your_mission_script">상대가 미션을 수행하면 공개</string>
     <string name="mission_record_mission_complete">미션 완료</string>
     <string name="mission_record_mission_fail">미션 실패</string>
     <string name="mission_record_stop_game">승부 그만두기</string>
     <string name="on_boarding_image">온보딩 이미지</string>
+    <string name="mission_record_game_guide">게임 사용법</string>
+    <string name="mission_record_record_play">기록하며 플레이</string>
+    <string name="mission_record_memo">메모장</string>
+    <string name="mission_record_timer">타이머</string>
+    <string name="mission_record_rule">룰 소개</string>
+    <string name="mission_record_tip">공략 팁</string>
 
     <!-- MypageDialog -->
     <string name="logout_dialog_title">로그아웃 하시겠습니까?</string>
@@ -217,6 +222,12 @@
     <string name="share_wishcoupon">Share WishCoupon</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Memo -->
+    <string name="memo_title">메모장</string>
+    <string name="memo_space_holder">묻고 답한 내용들 기록해보세요</string>
+    <string name="memo_exit_dialog_title">메모장을 나가시나요?</string>
+    <string name="memo_exit_dialog_body">승부가 끝나기 전에는 내용이 남아있지만 앱을 종료하면 내용이 사라질 수 있어요</string>
 
     <!-- Timer -->
     <string name="timer_title">타이머</string>
