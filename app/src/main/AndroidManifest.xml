@@ -138,6 +138,10 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
+        <activity
+            android:name=".presentation.memo.MemoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
