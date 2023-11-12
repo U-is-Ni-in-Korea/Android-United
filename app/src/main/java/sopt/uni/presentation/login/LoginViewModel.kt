@@ -1,5 +1,6 @@
 package sopt.uni.presentation.login
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,6 +29,7 @@ class LoginViewModel @Inject constructor(
                     SparkleStorage.accessToken = token.toToken().accessToken
                     _loginResult.value = InHouseLoginState.Success
                     Timber.tag("accessToken").d("getAccessToken with server: ${token.toToken().accessToken}")
+                    Log.e("subin","token : ${token.toToken().accessToken}")
                 }.onFailure {
                     _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
                 }

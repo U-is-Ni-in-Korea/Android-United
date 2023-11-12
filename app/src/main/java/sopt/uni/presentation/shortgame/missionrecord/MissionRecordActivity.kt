@@ -3,6 +3,7 @@ package sopt.uni.presentation.shortgame.missionrecord
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,21 +34,27 @@ class MissionRecordActivity :
         binding.missionRecordViewModel = viewModel
         setClickListener()
         setViewModelObserve()
+        Log.e("subin", "recordActivity onCreate 안")
     }
 
     private fun setViewModelObserve() {
         viewModel.isMissionDeleteSuccess.observe(this) {
             if (it) finish()
         }
+
         missionResultViewModel.partnerMissionResult.observe(this@MissionRecordActivity) {
-            if (it == null) {
-                checkPartnerResultIfNull = true
-            } else if (it != null) {
-                checkPartnerResultIfNull = false
-            }
+            Log.e("subin", "missionResultViewModel.partnerMissionResult : $it")
+            Log.e("subin", "partnerResult 변화 감지 observe")
+            checkPartnerResultIfNull = it == null
+            Log.d("subin", "checkPartnerResultIfNull : $checkPartnerResultIfNull")
         }
+
         viewModel.isMissionRequestSuccess.observe(this) {
             if (it) {
+                Log.d(
+                    "subin",
+                    "isMissionRequestSuccess안 checkPartnerResultIfNull : {$checkPartnerResultIfNull}",
+                )
                 if (checkPartnerResultIfNull) {
                     MissionWaitingResultActivity.start(this, viewModel.roundGameId)
                 } else {
@@ -98,6 +105,7 @@ class MissionRecordActivity :
             }
             btnMissionComplete.setOnClickListener {
                 viewModel.requestMission(true)
+                Log.e("subin", "roundGameId : ${viewModel.roundGameId}")
             }
             btnMissionFail.setOnSingleClickListener {
                 viewModel.requestMission(false)
