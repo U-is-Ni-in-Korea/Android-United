@@ -32,33 +32,29 @@ class MissionResultViewModel @Inject constructor(
 
     init {
         setMissionRecord()
-        Log.e("subin", "viewModel init")
+        Log.e("subin", "result viewModel init")
     }
 
     private fun setMissionRecord() {
-        Log.e("subin", "setMissionRecord 함수 시작 부분")
-        // 여기 값이 안들어옴
         viewModelScope.launch {
             shortGameRepository.getShortGameResult(roundGameId).onSuccess {
                 _myMissionResult.value = it.myRoundMission
-//                if (it.partnerRoundMission != null) {
-//                    _partnerMissionResult.value =
-//                        it.partnerRoundMission
-//                }
                 _myMissionResultState.value =
                     MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
-
             }.onFailure {
                 // TODO: 실패 로직 구현
             }
 
             shortGameRepository.getShortGameFinalResult(roundGameId).onSuccess {
+             //   Log.e("subin", "getShortGameFinalResult - onSuccess 실행함")
                 if (it.partnerRoundMission != null) {
                     _partnerMissionResult.value =
                         it.partnerRoundMission
                 }
-                Log.e("subin", "it.partnerRoundMission: ${it.partnerRoundMission}")
-                Log.e("subin", "_partnerMissionResult.value: ${_partnerMissionResult.value}")
+            //    Log.e("subin", "_partnerMissionResult.value: ${_partnerMissionResult.value}")
+            }.onFailure {
+                Log.e("subin", "getShortGameFinalResult - onFailure 실행함")
+                // TODO: 실패 로직 구현
             }
         }
     }

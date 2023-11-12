@@ -1,5 +1,6 @@
 package sopt.uni.presentation.shortgame.missionrecord
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -26,6 +27,12 @@ class MissionRecordViewModel @Inject constructor(
 
     private val _missionId = MutableLiveData<Int>()
     val missionId = _missionId
+
+    private val _partnerMissionResult = MutableLiveData<RoundMission?>()
+    val partnerMissionResult = _partnerMissionResult
+
+    private val _partnerId = MutableLiveData<Int?>()
+    val partnerId = _partnerId
 
     private val _missionToolState = MutableLiveData<MissionToolState>()
     val missionToolState = _missionToolState
@@ -60,5 +67,28 @@ class MissionRecordViewModel @Inject constructor(
 
     private fun resetMemoText() {
         shortGameRepository.setMemoText("")
+    fun getMissionResult(){
+        Log.e("subin","get function start")
+        viewModelScope.launch{
+            shortGameRepository.getShortGameFinalResult(roundGameId).onSuccess {
+                _partnerMissionResult.postValue(it.partnerRoundMission)
+                Log.e("subin","${it.partnerRoundMission.toString()} server data value")
+                Log.e("subin","${_partnerMissionResult.value.toString()} livedata value")
+                _isMissionRequestSuccess.postValue(true)
+            }.onFailure {
+                Log.e("subin",it.toString())
+            }
+        }
+    }
+
+    fun requestStopMission() {
+        viewModelScope.launch {
+            shortGameRepository.deleteShortGame(roundGameId).onSuccess {
+                _isMissionDeleteSuccess.postValue(true)
+            }.onFailure {
+                // TODO: 실패 로직 구현
+                Timber.tag("testt3").d(it.toString())
+            }
+        }
     }
 }
