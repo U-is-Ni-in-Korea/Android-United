@@ -11,6 +11,8 @@ import sopt.uni.R
 import sopt.uni.data.entity.shortgame.GameGuideItem
 import sopt.uni.data.entity.shortgame.MissionToolState
 import sopt.uni.databinding.ActivityMissionRecordBinding
+import sopt.uni.presentation.shortgame.createshortgame.dialog.CreateShortGameDialogFragment
+import sopt.uni.presentation.shortgame.missiondetailrecord.MissionDetailRecordActivity
 import sopt.uni.presentation.memo.MemoActivity
 import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.presentation.shortgame.missionresult.MissionResultViewModel
@@ -25,8 +27,6 @@ class MissionRecordActivity :
     BindingActivity<ActivityMissionRecordBinding>(R.layout.activity_mission_record) {
 
     private val viewModel: MissionRecordViewModel by viewModels()
-    private val missionResultViewModel: MissionResultViewModel by viewModels()
-    private var checkPartnerResultIfNull: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class MissionRecordActivity :
         binding.missionRecordViewModel = viewModel
         setViewModelObserve()
         setClickListener()
-        Log.e("subin", "recordActivity onCreate 안")
     }
 
     private fun cancelDialog() {
@@ -57,41 +56,15 @@ class MissionRecordActivity :
         }.show(supportFragmentManager, "")
     }
 
-    // 문제 : viewModel.isMissionRequestSuccess.observe(this) 가 실행되어 화면 전환 후 missionResultViewModel.partnerMissionResult.observe가 실행되어 변수값 변경됌
-    // 이유 : missionResultViewModel.partnerMissionResult에 접근하려면 getShortGameFinalResult가 onSuccess해야하는데 그러려면 화면전환시 intent값이 있어야함
     private fun setViewModelObserve() {
-        missionResultViewModel.partnerMissionResult.observe(this@MissionRecordActivity) {
-            Log.e("subin", "missionResultViewModel.partnerMissionResult : $it")
-            Log.e("subin", "partnerResult 변화 감지 observe")
-            checkPartnerResultIfNull = it == null
-            Log.d("subin", "checkPartnerResultIfNull : $checkPartnerResultIfNull")
-        }
-
         viewModel.isMissionDeleteSuccess.observe(this) {
             if (it) finish()
         }
 
         viewModel.isMissionRequestSuccess.observe(this) {
             if (it) {
-                Log.d(
-                    "subin",
-                    "isMissionRequestSuccess안 checkPartnerResultIfNull : {$checkPartnerResultIfNull}",
-                )
-                Log.e("subin","isMissionReq observe zone")
-                Log.e("subin",viewModel.partnerMissionResult.value.toString())
-                Log.e("subin","------------")
-                if(viewModel.partnerMissionResult.value!=null){
-                    Log.e("subin","change result view")
-                    // 화면전환 성공
-                    MissionResultActivity.start(this, viewModel.roundGameId)
-                    finish()
-                }
-                else {
-                    // wating 화면전환
-                    Log.e("subin","change waiting view")
-                    MissionWaitingResultActivity.start(this, viewModel.roundGameId)
-                    finish()
-                }
+                MissionWaitingResultActivity.start(this, viewModel.roundGameId)
+                finish()
             }
         }
         viewModel.myMissionResult.observe(this) {
@@ -136,7 +109,6 @@ class MissionRecordActivity :
             }
             btnMissionComplete.setOnClickListener {
                 viewModel.requestMission(true)
-                Log.e("subin", "roundGameId : ${viewModel.roundGameId}")
             }
             btnMissionFail.setOnSingleClickListener {
                 viewModel.requestMission(false)

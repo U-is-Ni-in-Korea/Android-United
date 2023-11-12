@@ -6,48 +6,52 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMissionWaitingResultBinding
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
-import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class MissionWaitingResultActivity :
     BindingActivity<ActivityMissionWaitingResultBinding>(R.layout.activity_mission_waiting_result) {
     private val viewModel: MissionResultViewModel by viewModels()
-
+    private var checkPartnerResultIfNull: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.missionResultViewModel = viewModel
         initViewModelObserve()
         closeClickListener()
+        goFinalClickListener()
     }
 
     private fun initViewModelObserve() {
-        viewModel.apply {
-            partnerMissionResult.observe(this@MissionWaitingResultActivity) {
-                if (it == null) {
-                    goFinalClickListener(true)
-                } else {
-                    goFinalClickListener(false)
-                }
+        viewModel.isMissionFinalRequestSuccess.observe(this) {
+            checkPartnerResultIfNull = it != true
+        }
+    }
+
+    private fun goFinalClickListener() {
+        binding.btnGoFinalResult.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.getFinalRequestResult().join()
+                initViewModelObserve()
+                processByPartnerResult()
             }
         }
     }
 
-    private fun goFinalClickListener(isEmpty: Boolean) {
-        binding.btnGoFinalResult.setOnClickListener {
-            if (isEmpty) {
-                showSnackbar(binding.root, getString(R.string.mission_waiting_partner_result))
-            } else {
-                startActivity<MissionResultActivity>()
-                finish()
-            }
+    private fun processByPartnerResult() {
+        if (checkPartnerResultIfNull) {
+            showSnackbar(binding.root, getString(R.string.mission_waiting_partner_result))
+        } else {
+            MissionResultActivity.start(this, viewModel.roundGameId)
+            finish()
         }
     }
 
@@ -56,16 +60,15 @@ class MissionWaitingResultActivity :
     }
 
     companion object {
-
         fun start(context: Context, roundGameId: Int) {
             context.startActivity(getIntent(context, roundGameId))
         }
 
         private fun getIntent(context: Context, roundGameId: Int) =
-            Intent(context, MissionWaitingResultActivity::class.java).putExtra(
-                MissionRecordActivity.ROUND_GAME_ID,
-                roundGameId,
-            )
+            Intent(
+                context,
+                MissionWaitingResultActivity::class.java,
+            ).putExtra(MissionRecordActivity.ROUND_GAME_ID, roundGameId)
 
         @JvmStatic
         @BindingAdapter("setDateResult", "setMissionComplete")

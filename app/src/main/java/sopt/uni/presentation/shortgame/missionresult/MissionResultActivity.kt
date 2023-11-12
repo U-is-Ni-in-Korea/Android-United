@@ -11,7 +11,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.databinding.ActivityMissionResultBinding
-import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.presentation.wish.WishActivity
 import sopt.uni.util.binding.BindingActivity
@@ -38,13 +37,6 @@ class MissionResultActivity :
                 setResultImageText(it)
                 setButtonVisible(it)
             }
-            partnerMissionResult.observe(this@MissionResultActivity) {
-                if (it == null) {
-                    setPartnerMissionContent(true)
-                } else {
-                    setPartnerMissionContent(it.result == UNDECIDED)
-                }
-            }
         }
     }
 
@@ -59,16 +51,6 @@ class MissionResultActivity :
         when (state) {
             MissionResultState.WIN -> binding.btnGoWish.visibility = View.VISIBLE
             else -> binding.btnGoHome.visibility = View.VISIBLE
-        }
-    }
-
-    private fun setPartnerMissionContent(isEmpty: Boolean) {
-        if (isEmpty) {
-            binding.clCardPartnerMission.visibility = View.INVISIBLE
-            binding.clCardPartnerMissionEmpty.visibility = View.VISIBLE
-        } else {
-            binding.clCardPartnerMission.visibility = View.VISIBLE
-            binding.clCardPartnerMissionEmpty.visibility = View.INVISIBLE
         }
     }
 

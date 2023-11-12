@@ -1,11 +1,11 @@
 package sopt.uni.presentation.shortgame.missionresult
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.shortgame.MissionResultState
 import sopt.uni.data.entity.shortgame.RoundMission
@@ -30,9 +30,12 @@ class MissionResultViewModel @Inject constructor(
     private val _myMissionResultState = MutableLiveData<MissionResultState>()
     val myMissionResultState = _myMissionResultState
 
+    private val _isMissionFinalRequestSuccess = MutableLiveData<Boolean>(false)
+    val isMissionFinalRequestSuccess = _isMissionFinalRequestSuccess
+
     init {
         setMissionRecord()
-        Log.e("subin", "result viewModel init")
+        setFinalResultRecord()
     }
 
     private fun setMissionRecord() {
@@ -44,18 +47,26 @@ class MissionResultViewModel @Inject constructor(
             }.onFailure {
                 // TODO: 실패 로직 구현
             }
+        }
+    }
 
+    private fun setFinalResultRecord(): Job {
+        return viewModelScope.launch {
             shortGameRepository.getShortGameFinalResult(roundGameId).onSuccess {
-             //   Log.e("subin", "getShortGameFinalResult - onSuccess 실행함")
                 if (it.partnerRoundMission != null) {
                     _partnerMissionResult.value =
                         it.partnerRoundMission
                 }
-            //    Log.e("subin", "_partnerMissionResult.value: ${_partnerMissionResult.value}")
+                _isMissionFinalRequestSuccess.value = true
             }.onFailure {
-                Log.e("subin", "getShortGameFinalResult - onFailure 실행함")
-                // TODO: 실패 로직 구현
+                _isMissionFinalRequestSuccess.value = false
             }
+        }
+    }
+
+    fun getFinalRequestResult(): Job {
+        return viewModelScope.launch {
+            setFinalResultRecord().join()
         }
     }
 }

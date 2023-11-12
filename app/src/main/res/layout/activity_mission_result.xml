@@ -133,7 +133,6 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bg_mission_detail_textbox"
                 android:padding="20dp"
-                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cl_card_my_mission"
                 app:layout_constraintTop_toBottomOf="@id/tv_my_mission">
@@ -182,31 +181,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_card_partner_mission_empty"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/bg_gray_150_round_10"
-                android:padding="20dp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@id/cl_card_partner_mission"
-                app:layout_constraintEnd_toEndOf="@id/cl_card_partner_mission"
-                app:layout_constraintStart_toStartOf="@id/cl_card_partner_mission"
-                app:layout_constraintTop_toTopOf="@id/cl_card_partner_mission">
 
-                <TextView
-                    android:id="@+id/tv_partner_mission_empty_script"
-                    style="@style/Body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:paddingVertical="10dp"
-                    android:text="@string/mission_result_partner_empty_script"
-                    android:textAlignment="center"
-                    android:textColor="@color/Gray_300"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tv_mission_result_script"
