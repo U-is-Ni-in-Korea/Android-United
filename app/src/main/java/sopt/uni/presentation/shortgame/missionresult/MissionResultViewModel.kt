@@ -1,5 +1,6 @@
 package sopt.uni.presentation.shortgame.missionresult
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -31,15 +32,26 @@ class MissionResultViewModel @Inject constructor(
 
     init {
         setMissionRecord()
+        Log.e("subin", "viewModel init")
     }
 
     private fun setMissionRecord() {
+        Log.e("subin", "setMissionRecord 함수 시작 부분")
+        // 여기 값이 안들어옴
         viewModelScope.launch {
             shortGameRepository.getShortGameResult(roundGameId).onSuccess {
                 _myMissionResult.value = it.myRoundMission
-                _partnerMissionResult.value = it.partnerRoundMission
+                if (it.partnerRoundMission != null) {
+                    _partnerMissionResult.value =
+                        it.partnerRoundMission
+                }
                 _myMissionResultState.value =
                     MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
+                Log.e("subin", "it.partnerRoundMission: ${it.partnerRoundMission}")
+                Log.e("subin", "_partnerMissionResult.value: ${_partnerMissionResult.value}")
+//                _partnerMissionResult.value = it.partnerRoundMission
+//                _myMissionResultState.value =
+//                    MissionResultState.getMissionResultType(it.myRoundMission.finalResult)
             }.onFailure {
                 // TODO: 실패 로직 구현
             }
