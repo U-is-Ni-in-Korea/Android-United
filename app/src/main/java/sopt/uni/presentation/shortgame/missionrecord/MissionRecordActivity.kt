@@ -13,6 +13,7 @@ import sopt.uni.databinding.ActivityMissionRecordBinding
 import sopt.uni.presentation.memo.MemoActivity
 import sopt.uni.presentation.shortgame.missionresult.MissionResultActivity
 import sopt.uni.presentation.shortgame.missionresult.MissionResultViewModel
+import sopt.uni.presentation.shortgame.missionresult.MissionWaitingResultActivity
 import sopt.uni.presentation.timer.TimerStartActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -23,7 +24,8 @@ class MissionRecordActivity :
     BindingActivity<ActivityMissionRecordBinding>(R.layout.activity_mission_record) {
 
     private val viewModel: MissionRecordViewModel by viewModels()
-    private val viewModelMissionResult: MissionResultViewModel by viewModels()
+    private val missionResultViewModel: MissionResultViewModel by viewModels()
+    private var checkPartnerResultIfNull: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +36,23 @@ class MissionRecordActivity :
     }
 
     private fun setViewModelObserve() {
+        viewModel.isMissionDeleteSuccess.observe(this) {
+            if (it) finish()
+        }
+        missionResultViewModel.partnerMissionResult.observe(this@MissionRecordActivity) {
+            if (it == null) {
+                checkPartnerResultIfNull = true
+            } else if (it != null) {
+                checkPartnerResultIfNull = false
+            }
+        }
         viewModel.isMissionRequestSuccess.observe(this) {
             if (it) {
-                MissionResultActivity.start(this, viewModel.roundGameId)
+                if (checkPartnerResultIfNull) {
+                    MissionWaitingResultActivity.start(this, viewModel.roundGameId)
+                } else {
+                    MissionResultActivity.start(this, viewModel.roundGameId)
+                }
                 finish()
             }
         }
