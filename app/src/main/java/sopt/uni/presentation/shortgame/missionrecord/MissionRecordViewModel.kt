@@ -1,6 +1,5 @@
 package sopt.uni.presentation.shortgame.missionrecord
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -58,7 +57,6 @@ class MissionRecordViewModel @Inject constructor(
         viewModelScope.launch {
             shortGameRepository.recordShortGame(roundGameId, missionRequest).onSuccess {
                 _isMissionRequestSuccess.postValue(true)
-                resetMemoText()
             }.onFailure {
                 // TODO: 실패 로직 구현
             }
