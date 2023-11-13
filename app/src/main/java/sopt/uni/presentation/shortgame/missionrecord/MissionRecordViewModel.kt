@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import sopt.uni.data.entity.shortgame.MissionToolState
 import sopt.uni.data.entity.shortgame.RoundMission
 import sopt.uni.data.repository.shortgame.ShortGameRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,6 +17,9 @@ class MissionRecordViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     val roundGameId: Int = savedStateHandle.get<Int>(MissionRecordActivity.ROUND_GAME_ID) ?: -1
+
+    private val _isMissionDeleteSuccess = MutableLiveData<Boolean>(false)
+    val isMissionDeleteSuccess = _isMissionDeleteSuccess
 
     private val _isMissionRequestSuccess = MutableLiveData<Boolean>(false)
     val isMissionRequestSuccess = _isMissionRequestSuccess
@@ -27,15 +30,6 @@ class MissionRecordViewModel @Inject constructor(
     private val _missionId = MutableLiveData<Int>()
     val missionId = _missionId
 
-    private val _partnerMissionResult = MutableLiveData<RoundMission?>()
-    val partnerMissionResult = _partnerMissionResult
-
-    private val _partnerId = MutableLiveData<Int?>()
-    val partnerId = _partnerId
-
-    private val _missionToolState = MutableLiveData<MissionToolState>()
-    val missionToolState = _missionToolState
-
     init {
         setMissionRecord()
     }
@@ -43,10 +37,8 @@ class MissionRecordViewModel @Inject constructor(
     private fun setMissionRecord() {
         viewModelScope.launch {
             shortGameRepository.getShortGameResult(roundGameId).onSuccess {
-                _myMissionResult.value = it.myRoundMission
-                _missionId.value = it.myRoundMission.missionContent.missionCategory.id
-                _missionToolState.value =
-                    MissionToolState.getMissionTool(it.myRoundMission.missionContent.missionCategory.missionTool)
+                myMissionResult.value = it.myRoundMission
+                missionId.value = it.myRoundMission.missionContent.missionCategory.id
             }.onFailure {
                 // TODO: 실패 로직 구현
             }
@@ -59,22 +51,7 @@ class MissionRecordViewModel @Inject constructor(
                 _isMissionRequestSuccess.postValue(true)
             }.onFailure {
                 // TODO: 실패 로직 구현
-            }
-        }
-    }
-
-    private fun resetMemoText() {
-        shortGameRepository.setMemoText("")
-    fun getMissionResult(){
-        Log.e("subin","get function start")
-        viewModelScope.launch{
-            shortGameRepository.getShortGameFinalResult(roundGameId).onSuccess {
-                _partnerMissionResult.postValue(it.partnerRoundMission)
-                Log.e("subin","${it.partnerRoundMission.toString()} server data value")
-                Log.e("subin","${_partnerMissionResult.value.toString()} livedata value")
-                _isMissionRequestSuccess.postValue(true)
-            }.onFailure {
-                Log.e("subin",it.toString())
+                Timber.tag("testt2").d(it.toString())
             }
         }
     }
