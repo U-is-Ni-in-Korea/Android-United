@@ -42,6 +42,14 @@ object SparkleStorage {
         )
     }
 
+    fun setUpdateAvailableBoolean(key: String, value: Boolean) {
+        pref.edit { putBoolean(key, value) }
+    }
+
+    fun getUpdateAvailableBoolean(key: String): Boolean {
+        return pref.getBoolean(key, false)
+    }
+
     var accessToken: String?
         get() = pref.getString(ACCESS_TOKEN, null)
         set(value) = pref.edit { putString(ACCESS_TOKEN, value).apply() }
