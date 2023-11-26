@@ -121,6 +121,11 @@
     <string name="dialog_ok_text">확인</string>
     <string name="dialog_title_text">Title</string>
 
+    <!-- updateDialog -->
+    <string name="update_dialog_title">새로운 버전이 업데이트 되었어요</string>
+    <string name="update_dialog_body">새로운 버전으로 업데이트 하시겠습니까?</string>
+    <string name="update_dialog_ok">업데이트</string>
+
     <!-- createShortGame -->
     <string name="create_short_game_title">한판승부</string>
     <string name="create_short_game_select_mission">미션 카테고리 선택하기</string>
