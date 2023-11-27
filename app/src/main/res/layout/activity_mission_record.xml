@@ -157,6 +157,7 @@
                     android:padding="16dp"
                     android:text="@string/mission_record_record_play"
                     android:textColor="@color/Gray_600"
+                    android:visibility="visible"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/indicator" />
 

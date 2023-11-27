@@ -59,7 +59,7 @@ class MissionRecordActivity :
 
                 MissionToolState.TIMER -> binding.clCardTimer.visibility = View.VISIBLE
 
-                else -> {}
+                else -> binding.tvRecordPlay.visibility = View.INVISIBLE
             }
         }
     }
