@@ -13,6 +13,7 @@ import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.ActivitySplashBinding
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.presentation.home.UpdateDialogFragment
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.binding.BindingActivity
@@ -46,19 +47,23 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
     }
 
     private fun isUpdateAvailable() {
-        val appUpdateManager = AppUpdateManagerFactory.create(this)
-        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
-        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
-                    AppUpdateType.IMMEDIATE,
-                )
-            ) {
-                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, true)
-                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-            } else {
-                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, false)
-                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-            }
+//        val appUpdateManager = AppUpdateManagerFactory.create(this)
+//        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+//        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
+//                    AppUpdateType.IMMEDIATE,
+//                )
+//            ) {
+//                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, true)
+//                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
+//            } else {
+//                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, false)
+//                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
+//            }
+//        }
+        Log.e("hyeon","${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
+        if(SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)){
+            UpdateDialogFragment().show(supportFragmentManager,"UpdateDialog")
         }
     }
 
