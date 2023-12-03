@@ -43,7 +43,7 @@ class TimerStartActivity : BindingActivity<ActivityTimerBinding>(R.layout.activi
             } else {
                 TimerDialogFragment().show(
                     supportFragmentManager,
-                    TIMER_DIALOG_TAG
+                    TIMER_DIALOG_TAG,
                 )
             }
         }

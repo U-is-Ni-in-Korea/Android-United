@@ -47,6 +47,7 @@ object BindingAdapter {
         val seconds = left % 60
         text = String.format(context.getString(R.string.timer_left_time_format), minutes, seconds)
     }
+
     @JvmStatic
     @BindingAdapter("app:cpb_progress_max")
     fun setCircularProgressBarMax(circularProgressBar: CircularProgressBar, max: LiveData<Float>) {

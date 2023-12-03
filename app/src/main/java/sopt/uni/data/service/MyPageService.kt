@@ -25,4 +25,7 @@ interface MyPageService {
 
     @DELETE("api/user")
     suspend fun deleteUser(): Response<Unit>
+
+    @DELETE("api/couple")
+    suspend fun disconnectCouple(): Response<Unit>
 }

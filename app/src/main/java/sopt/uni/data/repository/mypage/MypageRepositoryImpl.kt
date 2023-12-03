@@ -57,6 +57,9 @@ class MypageRepositoryImpl @Inject constructor(
     override suspend fun deleteUser(): Response<Unit> =
         mypageService.deleteUser()
 
+    override suspend fun disconnectCouple(): Response<Unit> =
+        mypageService.disconnectCouple()
+
     private fun parseCoupleDate(coupleDate: String): String {
         try {
             val inputFormat = SimpleDateFormat("yyyy년 M월 d일", Locale.getDefault())
