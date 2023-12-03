@@ -10,6 +10,7 @@ import sopt.uni.databinding.NoBodyAction2DialogBinding
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.di.ServicePool
 import sopt.uni.presentation.BindingDialogFragment
+import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
@@ -38,7 +39,7 @@ class MypageAccountLogoutDialogFragment :
 class MypageAccountDeleteDialogFragment :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
 
-    private val myPageAccountViewModel: MyPageAccountViewModel by viewModels() {
+    private val myPageAccountViewModel by viewModels<MyPageAccountViewModel>() {
         MyPageAccountViewModelFactory(
             ServicePool.myPageService,
         )
@@ -68,7 +69,7 @@ class MypageAccountDeleteDialogFragment :
 class MypageAccountCoupleDisconnectDialogFragment :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
 
-    private val myPageAccountViewModel: MyPageAccountViewModel by viewModels() {
+    private val myPageAccountViewModel by viewModels<MyPageAccountViewModel>() {
         MyPageAccountViewModelFactory(
             ServicePool.myPageService,
         )
@@ -86,6 +87,10 @@ class MypageAccountCoupleDisconnectDialogFragment :
             }
             btnRight.setOnSingleClickListener {
                 myPageAccountViewModel.disconnectCouple()
+                val intent = Intent(requireContext(), NickNameActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                dismiss()
             }
         }
     }

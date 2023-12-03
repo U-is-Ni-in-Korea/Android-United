@@ -1,7 +1,6 @@
 // HistoryViewModel.kt
 package sopt.uni.presentation.history
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,11 +31,9 @@ class HistoryViewModel @Inject constructor(
             }.fold(
                 onSuccess = { historyList ->
                     _historyData.value = UiState.Success(historyList)
-                    Log.d("aaaa", "성공")
                 },
                 onFailure = { throwable ->
                     _historyData.value = throwable.message?.let { UiState.Failure(it) }
-                    Log.d("aaaa", "실패")
                 },
             )
         }
