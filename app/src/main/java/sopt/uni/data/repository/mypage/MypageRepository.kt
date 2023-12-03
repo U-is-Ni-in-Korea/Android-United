@@ -15,4 +15,6 @@ interface MypageRepository {
     ): Result<MyPageInfo>
 
     suspend fun deleteUser(): Response<Unit>
+
+    suspend fun disconnectCouple(): Response<Unit>
 }

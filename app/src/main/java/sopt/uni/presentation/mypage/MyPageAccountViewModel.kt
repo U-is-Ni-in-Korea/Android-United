@@ -14,4 +14,10 @@ class MyPageAccountViewModel(
             mypageRepository.deleteUser()
         }
     }
+
+    fun disconnectCouple() {
+        viewModelScope.launch {
+            mypageRepository.disconnectCouple()
+        }
+    }
 }

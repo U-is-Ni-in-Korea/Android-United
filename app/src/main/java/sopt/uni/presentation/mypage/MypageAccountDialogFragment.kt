@@ -67,6 +67,13 @@ class MypageAccountDeleteDialogFragment :
 
 class MypageAccountCoupleDisconnectDialogFragment :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
+
+    private val myPageAccountViewModel: MyPageAccountViewModel by viewModels() {
+        MyPageAccountViewModelFactory(
+            ServicePool.myPageService,
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -78,7 +85,7 @@ class MypageAccountCoupleDisconnectDialogFragment :
                 dismiss()
             }
             btnRight.setOnSingleClickListener {
-                // 커플 연결 해제 처리
+                myPageAccountViewModel.disconnectCouple()
             }
         }
     }
