@@ -3,6 +3,7 @@ buildscript {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     ext {
         hiltVersion = "2.44"
@@ -22,3 +23,4 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
+
