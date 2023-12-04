@@ -57,19 +57,24 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_score_board"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_score_board"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:elevation="4dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/score_board"
-            android:translationZ="2dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="@id/cl_score_board"
             app:layout_constraintEnd_toEndOf="@id/cl_score_board"
             app:layout_constraintStart_toStartOf="@id/cl_score_board"
-            app:layout_constraintTop_toTopOf="@id/cl_score_board"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRadius20dp" />
+            app:layout_constraintTop_toTopOf="@id/cl_score_board">
+
+            <com.github.mmin18.widget.RealtimeBlurView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:realtimeBlurRadius="28dp"
+                app:realtimeOverlayColor="#30FFFFFF" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_score_board"
@@ -77,10 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="20dp"
-            android:background="@null"
-            android:elevation="8dp"
-            android:paddingVertical="20dp"
-            android:translationZ="10dp"
+            android:elevation="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_home_header">
@@ -91,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:paddingTop="20dp"
                 android:text="@string/home_couple_score"
                 android:textColor="@color/Gray_000"
                 app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +146,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:paddingBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ll_game_history">
