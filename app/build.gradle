@@ -130,4 +130,7 @@ dependencies {
     //OSS Licenses Gradle Plugin
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
+    // Realtime BlurView
+    implementation 'com.github.mmin18:realtimeblurview:master-SNAPSHOT'
+
 }
