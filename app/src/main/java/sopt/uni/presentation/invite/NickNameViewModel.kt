@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
+import sopt.uni.presentation.common.content.MAX_LENGTH
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -24,7 +25,7 @@ class NickNameViewModel @Inject constructor(
 
     val checkNickNameState: StateFlow<Boolean?> = nickName.debounce(300L)
         .distinctUntilChanged()
-        .map { it.length <= 5 && !it.all { char -> char.isWhitespace() } }
+        .map { it.length <= MAX_LENGTH && !it.all { char -> char.isWhitespace() } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun patchNickName(nickName: String) {

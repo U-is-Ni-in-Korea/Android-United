@@ -8,7 +8,7 @@ import sopt.uni.R
 
 @BindingAdapter("setNicknameErrorMessage")
 fun setNicknameErrorMessage(view: TextView, length: Int) {
-    if (length in 0..5) {
+    if (length in 0..MAX_LENGTH) {
         view.visibility = View.INVISIBLE
     } else {
         view.text = "글자 수를 초과했어요"
