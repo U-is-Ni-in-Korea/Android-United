@@ -39,5 +39,6 @@ class LoginViewModel @Inject constructor(
         object Init : SparkleLoginState()
         object Success : SparkleLoginState()
         data class Failure(val message: String) : SparkleLoginState()
+        object AlreadyCoupled : SparkleLoginState()
     }
 }
