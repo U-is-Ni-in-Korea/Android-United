@@ -24,11 +24,16 @@ class LoginViewModel @Inject constructor(
     fun getAccessToken(social: String, code: String) {
         viewModelScope.launch {
             authRepository.getToken(social, code)
-                .onSuccess { token ->
-                    SparkleStorage.accessToken = token.toToken().accessToken
-                    _loginResult.value = SparkleLoginState.Success
+                .onSuccess { authDto ->
+                    SparkleStorage.accessToken = authDto.accessToken
                     Timber.tag("accessToken")
-                        .d("getAccessToken with server: ${token.toToken().accessToken}")
+                        .d("getAccessToken with server: ${authDto.accessToken}")
+
+                    if (authDto.coupleId == null) {
+                        _loginResult.value = SparkleLoginState.Success
+                    } else {
+                        _loginResult.value = SparkleLoginState.AlreadyCoupled
+                    }
                 }.onFailure {
                     _loginResult.value = SparkleLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
                 }
