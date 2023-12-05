@@ -2,7 +2,6 @@ package sopt.uni.presentation.history
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,16 +66,12 @@ class HistoryActivity : BindingActivity<ActivityHistoryBinding>(R.layout.activit
             when (uiState) {
                 is UiState.Success -> {
                     binding.sflHistory.stopShimmer()
-                    binding.sflHistory.visibility = View.GONE
-                    binding.rvHistory.visibility = View.VISIBLE
                     val historylist = uiState.data
                     historyAdapter.submitList(historylist)
                 }
 
                 is UiState.Loading -> {
                     binding.sflHistory.startShimmer()
-                    binding.sflHistory.visibility = View.VISIBLE
-                    binding.rvHistory.visibility = View.GONE
                 }
 
                 else -> {}

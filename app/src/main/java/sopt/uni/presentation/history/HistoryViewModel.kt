@@ -25,12 +25,16 @@ class HistoryViewModel @Inject constructor(
 
     private fun getHistoryList() {
         viewModelScope.launch {
-            kotlin.runCatching {
+            runCatching {
                 val result = historyRepository.getHistoryList()
                 result.getOrElse { emptyList() }
             }.fold(
                 onSuccess = { historyList ->
-                    _historyData.value = UiState.Success(historyList)
+                    if (historyList.isEmpty()) {
+                        _historyData.value = UiState.Empty
+                    } else {
+                        _historyData.value = UiState.Success(historyList)
+                    }
                 },
                 onFailure = { throwable ->
                     _historyData.value = throwable.message?.let { UiState.Failure(it) }
