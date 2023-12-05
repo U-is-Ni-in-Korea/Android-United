@@ -67,7 +67,7 @@ class WishNewWishFragment : Fragment() {
         val trimmedText = text?.trim()
         val length = trimmedText?.length ?: 0
         val textLength = 54
-        binding.tvNewWishContentLength.text = "$length/textLength"
+        binding.tvNewWishContentLength.text = "$length/$textLength"
 
         if (length >= textLength) {
             binding.tvNewWishContentLength.setTextColor(Color.RED)
