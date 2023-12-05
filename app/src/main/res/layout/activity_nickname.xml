@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="sopt.uni.presentation.invite.NickNameViewModel" />
@@ -52,7 +54,7 @@
         <EditText
             android:id="@+id/et_nickname"
             style="@style/Body2"
-            setNicknameContentLength="@{viewModel.nickName.length()}"
+            nicknameFieldStrokeColor="@{viewModel.nickName.length()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -70,12 +72,11 @@
         <TextView
             android:id="@+id/tv_nickname_error_message"
             style="@style/Caption"
-            setNicknameErrorMessage="@{viewModel.nickName.length()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/over_nickname"
             android:textColor="@color/Red_500"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.nickName.length() > 5 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_nickname_count"
             app:layout_constraintStart_toStartOf="@id/et_nickname"
             app:layout_constraintTop_toTopOf="@+id/tv_nickname_count" />
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@{viewModel.nickName.length() + ` / 10`}"
-            android:textColor="@color/Gray_400"
+            android:textColor="@{viewModel.nickName.length() > 5 ?  @color/Red_500 : @color/Gray_400}"
             app:layout_constraintEnd_toEndOf="@id/et_nickname"
             app:layout_constraintTop_toBottomOf="@id/et_nickname"
             tools:text="0 / 10" />
