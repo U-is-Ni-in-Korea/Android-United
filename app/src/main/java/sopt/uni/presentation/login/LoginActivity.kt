@@ -77,14 +77,15 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 .collect {
                     when (it) {
                         is KakaoLoginService.LoginState.Success -> {
-                            this@LoginActivity.showToast(getString(R.string.success_kakao_login))
                             loginViewModel.getAccessToken("kakao", it.token)
                             when (loginViewModel.loginResult.value) {
                                 is LoginViewModel.SparkleLoginState.Success -> {
+                                    this@LoginActivity.showToast(getString(R.string.success_kakao_login))
                                     startActivity<NickNameActivity>()
                                 }
 
                                 is LoginViewModel.SparkleLoginState.AlreadyCoupled -> {
+                                    this@LoginActivity.showToast(getString(R.string.success_kakao_login))
                                     startActivity<HomeActivity>()
                                 }
 
@@ -96,8 +97,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                                     Timber.d("Login Init")
                                 }
                             }
-
-//                            }
                         }
 
                         is KakaoLoginService.LoginState.Failure -> {
@@ -161,8 +160,25 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Timber.e("signInWithCredential:success")
-                    startActivity<NickNameActivity>()
-                    this@LoginActivity.showToast(getString(R.string.success_google_login))
+                    when (loginViewModel.loginResult.value) {
+                        is LoginViewModel.SparkleLoginState.Success -> {
+                            this@LoginActivity.showToast(getString(R.string.success_google_login))
+                            startActivity<NickNameActivity>()
+                        }
+
+                        is LoginViewModel.SparkleLoginState.AlreadyCoupled -> {
+                            this@LoginActivity.showToast(getString(R.string.success_google_login))
+                            startActivity<HomeActivity>()
+                        }
+
+                        is LoginViewModel.SparkleLoginState.Failure -> {
+                            Timber.e("Login Failed")
+                        }
+
+                        is LoginViewModel.SparkleLoginState.Init -> {
+                            Timber.d("Login Init")
+                        }
+                    }
                 } else {
                     Timber.e("signInWithCredential:failure", task.exception)
                 }
