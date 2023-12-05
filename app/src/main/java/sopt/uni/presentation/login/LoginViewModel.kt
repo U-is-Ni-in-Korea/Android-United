@@ -17,26 +17,27 @@ class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository,
 ) : ViewModel() {
 
-    private val _loginResult: MutableStateFlow<InHouseLoginState> =
-        MutableStateFlow(InHouseLoginState.Init)
-    val loginResult: StateFlow<InHouseLoginState> = _loginResult.asStateFlow()
+    private val _loginResult: MutableStateFlow<SparkleLoginState> =
+        MutableStateFlow(SparkleLoginState.Init)
+    val loginResult: StateFlow<SparkleLoginState> = _loginResult.asStateFlow()
 
     fun getAccessToken(social: String, code: String) {
         viewModelScope.launch {
             authRepository.getToken(social, code)
                 .onSuccess { token ->
                     SparkleStorage.accessToken = token.toToken().accessToken
-                    _loginResult.value = InHouseLoginState.Success
-                    Timber.tag("accessToken").d("getAccessToken with server: ${token.toToken().accessToken}")
+                    _loginResult.value = SparkleLoginState.Success
+                    Timber.tag("accessToken")
+                        .d("getAccessToken with server: ${token.toToken().accessToken}")
                 }.onFailure {
-                    _loginResult.value = InHouseLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
+                    _loginResult.value = SparkleLoginState.Failure(it.message ?: "로그인에 실패했습니다.")
                 }
         }
     }
 
-    sealed class InHouseLoginState {
-        object Init : InHouseLoginState()
-        object Success : InHouseLoginState()
-        data class Failure(val message: String) : InHouseLoginState()
+    sealed class SparkleLoginState {
+        object Init : SparkleLoginState()
+        object Success : SparkleLoginState()
+        data class Failure(val message: String) : SparkleLoginState()
     }
 }
