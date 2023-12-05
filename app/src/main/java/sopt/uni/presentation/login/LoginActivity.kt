@@ -22,6 +22,7 @@ import sopt.uni.BuildConfig.GOOGLE_CLIENT_ID
 import sopt.uni.R
 import sopt.uni.data.service.KakaoLoginService
 import sopt.uni.databinding.ActivityLoginBinding
+import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -76,10 +77,27 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 .collect {
                     when (it) {
                         is KakaoLoginService.LoginState.Success -> {
-                            startActivity<NickNameActivity>()
                             this@LoginActivity.showToast(getString(R.string.success_kakao_login))
                             loginViewModel.getAccessToken("kakao", it.token)
-                            Timber.e("Kakao Login Success ${it.token} ${it.id}")
+                            when (loginViewModel.loginResult.value) {
+                                is LoginViewModel.SparkleLoginState.Success -> {
+                                    startActivity<NickNameActivity>()
+                                }
+
+                                is LoginViewModel.SparkleLoginState.AlreadyCoupled -> {
+                                    startActivity<HomeActivity>()
+                                }
+
+                                is LoginViewModel.SparkleLoginState.Failure -> {
+                                    Timber.e("Login Failed")
+                                }
+
+                                is LoginViewModel.SparkleLoginState.Init -> {
+                                    Timber.d("Login Init")
+                                }
+                            }
+
+//                            }
                         }
 
                         is KakaoLoginService.LoginState.Failure -> {
