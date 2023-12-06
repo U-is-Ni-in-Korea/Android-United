@@ -7,6 +7,7 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageSettingBinding
+import sopt.uni.presentation.WebViewActivity
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
@@ -29,6 +30,8 @@ class MypageSettingActivity :
         setupServiceAccount()
         observeMyPageData()
         setupOSSLicenses()
+        moveToTermsOfService()
+        moveToPrivacyPolicy()
     }
 
     override fun onBackPressed() {
@@ -45,6 +48,22 @@ class MypageSettingActivity :
     private fun setupServiceAccount() {
         binding.clMypageSettingServiceAccount.setOnSingleClickListener {
             startActivity<MypageAccountActivity>()
+        }
+    }
+
+    private fun moveToTermsOfService() {
+        binding.clMypageSettingServiceInfo.setOnSingleClickListener {
+            Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", resources.getString(R.string.service_url))
+            }.run(::startActivity)
+        }
+    }
+
+    private fun moveToPrivacyPolicy() {
+        binding.clMypageSettingServicePrivacy.setOnSingleClickListener {
+            Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", resources.getString(R.string.privacy_policy_url))
+            }.run(::startActivity)
         }
     }
 
