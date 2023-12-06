@@ -94,6 +94,18 @@
             app:layout_constraintTop_toBottomOf="@id/et_nickname"
             tools:text="0 / 10" />
 
+        <TextView
+            android:id="@+id/tv_ask"
+            style="@style/Btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="16dp"
+            android:text="문의하기"
+            android:textColor="@color/Gray_300"
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
             style="@style/Btn1"
