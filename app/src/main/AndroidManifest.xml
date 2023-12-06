@@ -149,6 +149,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.UNIAOS.GrayStatusBar" />
 
+        <activity
+            android:name=".presentation.WebViewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="sopt.uni.fileprovider"
