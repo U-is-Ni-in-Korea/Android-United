@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import sopt.uni.R
 import sopt.uni.databinding.ActivityHomeBinding
+import sopt.uni.presentation.common.content.ErrorCodeState
 import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.history.HistoryActivity
 import sopt.uni.presentation.mypage.MypageSettingActivity
@@ -33,6 +34,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
 
         binding.viewModel = homeViewModel
 
+        collectErrorCode()
         moveToHistory()
         getRoundResult()
         moveToShortGame()
@@ -120,6 +122,22 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
     private fun clickHeartButton() {
         binding.llHeartCount.setOnSingleClickListener {
             showSnackbar(binding.root, getString(R.string.prepare_heart_function))
+        }
+    }
+
+    private fun collectErrorCode() {
+        lifecycleScope.launch {
+            homeViewModel.errorState.collect {
+                when (it) {
+                    is ErrorCodeState.NoToken -> {
+                        showToast("존재하지 않는 사용자입니다. 다시 로그인해주세요")
+                    }
+
+                    else -> {
+                        Timber.e("error: $it")
+                    }
+                }
+            }
         }
     }
 }
