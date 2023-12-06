@@ -13,6 +13,7 @@ import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.data.entity.home.HomeInfo
 import sopt.uni.data.repository.home.HomeRepository
 import sopt.uni.data.repository.shortgame.ShortGameRepository
+import sopt.uni.presentation.common.content.ErrorCodeState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -33,6 +34,9 @@ class HomeViewModel @Inject constructor(
     private var _roundResult = MutableLiveData("")
     val roundResult: LiveData<String> = _roundResult
 
+    private val _errorState = MutableStateFlow<ErrorCodeState>(ErrorCodeState.NoError)
+    val errorState = _errorState.asStateFlow()
+
     init {
         fetchHomeInfo()
     }
@@ -47,8 +51,12 @@ class HomeViewModel @Inject constructor(
                 _roundGameId.value = it.roundGameId
                 _shortGameEnabled.value = it.shortGame?.enable ?: false
                 Timber.e("viewmodel's shortGame : ${it.shortGame}")
-            }.onFailure {
-                Timber.e(it)
+            }.onFailure { errorCode ->
+                Timber.e("Exception : $errorCode")
+                if (errorCode is Exception && errorCode.message.toString() == "UE1008") {
+                    Timber.e("No Token")
+                    _errorState.value = ErrorCodeState.NoToken
+                }
             }
         }
     }
