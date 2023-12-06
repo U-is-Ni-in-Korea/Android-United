@@ -106,6 +106,18 @@
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_nickname_logout"
+            style="@style/Btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="16dp"
+            android:text="로그아웃"
+            android:textColor="@color/Gray_300"
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
             style="@style/Btn1"
