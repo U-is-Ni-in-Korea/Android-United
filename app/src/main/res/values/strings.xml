@@ -185,6 +185,8 @@
     <string name="mypage_setting_service_developer_info_text">개발자 정보</string>
     <string name="mypage_setting_loading_fail_text">정보를 불러오는데 실패하였습니다</string>
     <string name="mypage_setting_myinfo">내정보</string>
+    <string name="service_url">https://sparkle-uni.notion.site/5852b2d5f5b24121a4b28b93a8d2e5b6?pvs=4</string>
+    <string name="privacy_policy_url">https://sparkle-uni.notion.site/aebe71410014461d85c96851bae1d5cb?pvs=4</string>
 
     <!-- missionResult -->
     <string name="mission_result_title">한판 승부 결과</string>
