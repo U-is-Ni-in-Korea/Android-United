@@ -1,5 +1,6 @@
 package sopt.uni.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import sopt.uni.databinding.ActivityHomeBinding
 import sopt.uni.presentation.common.content.ErrorCodeState
 import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.history.HistoryActivity
+import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.presentation.mypage.MypageSettingActivity
 import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameActivity
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
@@ -131,6 +133,8 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
                 when (it) {
                     is ErrorCodeState.NoToken -> {
                         showToast("존재하지 않는 사용자입니다. 다시 로그인해주세요")
+                        startActivity<LoginActivity>()
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     }
 
                     else -> {
