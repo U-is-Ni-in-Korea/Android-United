@@ -41,6 +41,11 @@
     <string name="connect">연결하기</string>
     <string name="d_day">D+%d</string>
 
+    <!-- 닉네임 설정 -->
+    <string name="nickname_ask">문의하기</string>
+    <string name="nickname_logout">로그아웃</string>
+    <string name="ask_url">https://sparkle-uni.notion.site/eb45a613d2be46a6b11c5111759600b2?pvs=4</string>
+
     <!-- 소원권 -->
     <string name="wish_title">소원권</string>
     <string name="wish_ment_main">남은 소원권을 써보세요!</string>
