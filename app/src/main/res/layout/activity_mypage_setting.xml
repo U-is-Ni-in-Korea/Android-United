@@ -118,6 +118,7 @@
             android:id="@+id/cl_mypage_setting_service_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_mypage_ripple"
             android:paddingHorizontal="16dp"
             android:paddingVertical="9dp"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_setting_service_title">
@@ -139,6 +140,7 @@
             android:id="@+id/cl_mypage_setting_service_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_mypage_ripple"
             android:paddingHorizontal="16dp"
             android:paddingVertical="9dp"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_service_account">
@@ -160,6 +162,7 @@
             android:id="@+id/cl_mypage_setting_service_privacy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_mypage_ripple"
             android:paddingHorizontal="16dp"
             android:paddingVertical="9dp"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_service_info">
@@ -181,6 +184,7 @@
             android:id="@+id/cl_mypage_setting_service_opensource"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_mypage_ripple"
             android:paddingHorizontal="16dp"
             android:paddingVertical="9dp"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_service_privacy">
@@ -202,6 +206,7 @@
             android:id="@+id/cl_mypage_setting_service_developer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_mypage_ripple"
             android:paddingHorizontal="16dp"
             android:paddingVertical="9dp"
             app:layout_constraintTop_toBottomOf="@id/cl_mypage_setting_service_opensource">
