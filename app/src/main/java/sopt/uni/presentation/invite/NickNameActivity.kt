@@ -1,6 +1,7 @@
 package sopt.uni.presentation.invite
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
@@ -11,6 +12,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityNicknameBinding
+import sopt.uni.presentation.WebViewActivity
 import sopt.uni.presentation.mypage.MypageAccountLogoutDialogFragment
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -26,6 +28,7 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
 
         moveToInviteHub()
         moveToPrevPage()
+        moveToAskPage()
         logoutOnNickNamePage()
     }
 
@@ -57,6 +60,14 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    private fun moveToAskPage() {
+        binding.tvAsk.setOnSingleClickListener {
+            Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", resources.getString(R.string.ask_url))
+            }.run(::startActivity)
+        }
     }
 
     private fun logoutOnNickNamePage() {

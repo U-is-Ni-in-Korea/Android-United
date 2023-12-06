@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginBottom="16dp"
-            android:text="문의하기"
+            android:text="@string/nickname_ask"
             android:textColor="@color/Gray_300"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintStart_toStartOf="parent" />
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="16dp"
-            android:text="로그아웃"
+            android:text="@string/nickname_logout"
             android:textColor="@color/Gray_300"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintEnd_toEndOf="parent" />
