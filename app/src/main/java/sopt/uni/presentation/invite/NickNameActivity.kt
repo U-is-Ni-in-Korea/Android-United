@@ -11,7 +11,6 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityNicknameBinding
-import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
@@ -37,7 +36,6 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
-            startActivity<LoginActivity>()
             finish()
         }
     }
