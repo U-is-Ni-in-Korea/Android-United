@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityNicknameBinding
+import sopt.uni.presentation.mypage.MypageAccountLogoutDialogFragment
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.startActivity
@@ -25,6 +26,7 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
 
         moveToInviteHub()
         moveToPrevPage()
+        logoutOnNickNamePage()
     }
 
     private fun moveToInviteHub() {
@@ -55,5 +57,14 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    private fun logoutOnNickNamePage() {
+        binding.tvNicknameLogout.setOnSingleClickListener {
+            MypageAccountLogoutDialogFragment().show(
+                supportFragmentManager,
+                "MypageAccountLogoutDialogFragment",
+            )
+        }
     }
 }
