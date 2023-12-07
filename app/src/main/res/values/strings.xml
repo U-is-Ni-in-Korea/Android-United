@@ -258,4 +258,8 @@
     <string name="timer_number_picker_format">%02d</string>
     <string name="invite_code_description">초대코드는 상대방로부터 공유받을 수 있어요</string>
 
+    <!-- UE Error Message -->
+    <string name="ue1006_error_message">더 이상 기록에 접근할 수 없습니다.</string>
+    <string name="ue1008_error_message">존재하지 않는 사용자입니다. 다시 로그인해주세요</string>
+
 </resources>
