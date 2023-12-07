@@ -14,6 +14,7 @@ import sopt.uni.data.entity.home.HomeInfo
 import sopt.uni.data.repository.home.HomeRepository
 import sopt.uni.data.repository.shortgame.ShortGameRepository
 import sopt.uni.presentation.common.content.ErrorCodeState
+import sopt.uni.presentation.common.content.UE1006
 import sopt.uni.presentation.common.content.UE1008
 import timber.log.Timber
 import javax.inject.Inject
@@ -57,6 +58,9 @@ class HomeViewModel @Inject constructor(
                 if (errorCode is Exception && errorCode.message.toString() == UE1008) {
                     Timber.e("No Token")
                     _errorState.value = ErrorCodeState.NoToken
+                } else if (errorCode is Exception && errorCode.message.toString() == UE1006) {
+                    Timber.e("No Partner")
+                    _errorState.value = ErrorCodeState.NoPartner
                 }
             }
         }
