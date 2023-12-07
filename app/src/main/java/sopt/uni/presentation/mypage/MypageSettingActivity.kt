@@ -52,27 +52,27 @@ class MypageSettingActivity :
         }
     }
 
+    private fun moveToWebView(url: Int) {
+        Intent(this, WebViewActivity::class.java).apply {
+            putExtra("url", resources.getString(url))
+        }.run(::startActivity)
+    }
+
     private fun moveToTermsOfService() {
         binding.clMypageSettingServiceInfo.setOnSingleClickListener {
-            Intent(this, WebViewActivity::class.java).apply {
-                putExtra("url", resources.getString(R.string.service_url))
-            }.run(::startActivity)
+            moveToWebView(R.string.service_url)
         }
     }
 
     private fun moveToPrivacyPolicy() {
         binding.clMypageSettingServicePrivacy.setOnSingleClickListener {
-            Intent(this, WebViewActivity::class.java).apply {
-                putExtra("url", resources.getString(R.string.privacy_policy_url))
-            }.run(::startActivity)
+            moveToWebView(R.string.privacy_policy_url)
         }
     }
 
     private fun moveToDeveloperInfo() {
         binding.clMypageSettingServiceDeveloper.setOnSingleClickListener {
-            Intent(this, WebViewActivity::class.java).apply {
-                putExtra("url", resources.getString(R.string.developer_info_url))
-            }.run(::startActivity)
+            moveToWebView(R.string.developer_info_url)
         }
     }
 
