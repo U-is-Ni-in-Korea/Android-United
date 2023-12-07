@@ -12,6 +12,7 @@ import sopt.uni.databinding.ActivityHomeBinding
 import sopt.uni.presentation.common.content.ErrorCodeState
 import sopt.uni.presentation.common.content.UNDECIDED
 import sopt.uni.presentation.history.HistoryActivity
+import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.presentation.mypage.MypageSettingActivity
 import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameActivity
@@ -132,8 +133,14 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
             homeViewModel.errorState.collect {
                 when (it) {
                     is ErrorCodeState.NoToken -> {
-                        showToast("존재하지 않는 사용자입니다. 다시 로그인해주세요")
+                        showToast(getString(R.string.ue1008_error_message))
                         startActivity<LoginActivity>()
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+
+                    is ErrorCodeState.NoPartner -> {
+                        showToast(getString(R.string.ue1006_error_message))
+                        startActivity<NickNameActivity>()
                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     }
 
