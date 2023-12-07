@@ -32,6 +32,7 @@ class MypageSettingActivity :
         setupOSSLicenses()
         moveToTermsOfService()
         moveToPrivacyPolicy()
+        moveToDeveloperInfo()
     }
 
     override fun onBackPressed() {
@@ -63,6 +64,14 @@ class MypageSettingActivity :
         binding.clMypageSettingServicePrivacy.setOnSingleClickListener {
             Intent(this, WebViewActivity::class.java).apply {
                 putExtra("url", resources.getString(R.string.privacy_policy_url))
+            }.run(::startActivity)
+        }
+    }
+
+    private fun moveToDeveloperInfo() {
+        binding.clMypageSettingServiceDeveloper.setOnSingleClickListener {
+            Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", resources.getString(R.string.developer_info_url))
             }.run(::startActivity)
         }
     }
