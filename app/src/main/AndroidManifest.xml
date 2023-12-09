@@ -14,15 +14,16 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_sparkle"
+        android:theme="@style/Theme.UNIAOS"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_sparkle_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.UNIAOS"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".presentation.IntroActivity"
             android:exported="true"
+            android:theme="@style/Theme.App.Starting"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
