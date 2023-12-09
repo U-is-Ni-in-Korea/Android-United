@@ -81,6 +81,7 @@
             style="@style/Btn1"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:enabled="@{viewModel.inviteCode.length() > 0}"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/bg_nickname_btn"
