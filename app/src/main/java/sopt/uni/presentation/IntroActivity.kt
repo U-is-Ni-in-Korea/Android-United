@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.presentation.home.HomeActivity
@@ -15,6 +16,7 @@ import sopt.uni.util.extension.startActivity
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
 
         checkUserStatus()
     }
