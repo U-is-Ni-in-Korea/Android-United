@@ -133,4 +133,7 @@ dependencies {
     // Realtime BlurView
     implementation 'com.github.mmin18:realtimeblurview:master-SNAPSHOT'
 
+    // Splash Screen
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+
 }
