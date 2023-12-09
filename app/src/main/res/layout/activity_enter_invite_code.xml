@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="sopt.uni.presentation.invite.EnterInviteCodeViewModel" />
@@ -72,7 +74,7 @@
             android:layout_marginTop="4dp"
             android:text="@string/cannot_find_code_information"
             android:textColor="@color/Red_500"
-            android:visibility="invisible"
+            android:visibility="@{viewModel.inviteCode.length() >= 0 ? View.INVISIBLE : View.INVISIBLE}"
             app:layout_constraintStart_toStartOf="@id/et_invite_code"
             app:layout_constraintTop_toBottomOf="@id/et_invite_code" />
 
