@@ -87,11 +87,16 @@ class MypageAccountCoupleDisconnectDialogFragment :
             }
             btnRight.setOnSingleClickListener {
                 myPageAccountViewModel.disconnectCouple()
+                SparkleStorage.partnerId = NO_PARTNER
                 val intent = Intent(requireContext(), NickNameActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 dismiss()
             }
         }
+    }
+
+    companion object {
+        const val NO_PARTNER = -1
     }
 }
