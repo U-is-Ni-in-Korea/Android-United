@@ -37,13 +37,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_back_arrow" />
 
+        <TextView
+            android:id="@+id/tv_invite_code_description"
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/invite_code_description"
+            android:textColor="@color/Gray_350"
+            app:layout_constraintStart_toStartOf="@id/tv_invite_code_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_invite_code_title" />
+
         <EditText
             android:id="@+id/et_invite_code"
             style="@style/Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="27dp"
             android:background="@drawable/bg_enter_edit_text"
             android:hint="@string/invite_code_example"
             android:imeOptions="actionDone"
@@ -51,7 +62,7 @@
             android:paddingHorizontal="15dp"
             android:paddingVertical="14dp"
             android:text="@={viewModel.inviteCode}"
-            app:layout_constraintTop_toBottomOf="@id/tv_invite_code_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_invite_code_description" />
 
         <TextView
             android:id="@+id/tv_invite_code_error_message"
