@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="85dp"
+            android:layout_marginTop="77dp"
             android:text="@string/please_enter_invite_code"
             android:textColor="@color/Gray_600"
             app:layout_constraintStart_toStartOf="parent"
