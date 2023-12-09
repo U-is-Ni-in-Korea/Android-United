@@ -2,6 +2,7 @@ package sopt.uni.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.data.datasource.local.SparkleStorage
@@ -20,6 +21,8 @@ class IntroActivity : AppCompatActivity() {
 
     private fun checkUserStatus() {
         if (SparkleStorage.accessToken != null) {
+            Log.e("accessToken", SparkleStorage.accessToken.toString())
+            Log.e("partnerId", SparkleStorage.partnerId.toString())
             if (SparkleStorage.partnerId != -1) {
                 startActivity<HomeActivity>()
                 Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -28,13 +31,8 @@ class IntroActivity : AppCompatActivity() {
                 Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             }
         } else {
-            if (SparkleStorage.partnerId != -1) {
-                startActivity<HomeActivity>()
-                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            } else {
-                startActivity<OnBoardingActivity>()
-                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            }
+            startActivity<OnBoardingActivity>()
+            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         }
         overridePendingTransition(0, 0)
     }
