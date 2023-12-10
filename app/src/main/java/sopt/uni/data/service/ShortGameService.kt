@@ -20,7 +20,7 @@ interface ShortGameService {
     @POST("/api/game/short")
     suspend fun postCreateShortGame(
         @Body request: RequestCreateShortGameDto,
-    ): ResponseCreateShortGameDto
+    ): Response<ResponseCreateShortGameDto>
 
     @GET("/api/mission/{missionCategoryId}")
     suspend fun getMissionDetail(

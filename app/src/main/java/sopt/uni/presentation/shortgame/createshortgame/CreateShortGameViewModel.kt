@@ -9,6 +9,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.repository.shortgame.ShortGameRepository
+import sopt.uni.presentation.common.content.ErrorCodeState
+import sopt.uni.presentation.common.content.UE1003
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,6 +21,9 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
 
     private val _roundGameId = MutableLiveData<Int>()
     val roundGameId = _roundGameId
+
+    private val _errorState = MutableLiveData<ErrorCodeState>()
+    val errorState = _errorState
 
     private val _missionList = MutableLiveData<List<MissionDetail>>()
     val missionList = _missionList
@@ -58,8 +63,12 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
             ).onSuccess {
                 _roundGameId.value = it.roundGameId
                 _isCreateSuccess.value = true
-            }.onFailure {
-                // TODO: 실패시 예외처리
+            }.onFailure { errorCode ->
+                if (errorCode is Exception && errorCode.message == UE1003) {
+                    _errorState.value = ErrorCodeState.DuplicateGame
+                } else {
+                    _errorState.value = ErrorCodeState.ServerError
+                }
             }
         }
     }

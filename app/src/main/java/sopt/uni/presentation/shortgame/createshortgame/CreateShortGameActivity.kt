@@ -10,8 +10,10 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityCreateShortGameBinding
+import sopt.uni.presentation.common.content.ErrorCodeState
 import sopt.uni.presentation.shortgame.missiondetailcreate.MissionDetailCreateFragment
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.showToast
 
 @AndroidEntryPoint
 class CreateShortGameActivity :
@@ -25,6 +27,7 @@ class CreateShortGameActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
+        setObserve()
         changeFragment(getString(R.string.label_short_game))
     }
 
@@ -44,6 +47,20 @@ class CreateShortGameActivity :
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    private fun setObserve() {
+        viewModel.errorState.observe(this) {
+            when (it) {
+                is ErrorCodeState.DuplicateGame ->
+                    showToast(getString(R.string.ue1003_error_message))
+
+                is ErrorCodeState.ServerError ->
+                    showToast(getString(R.string.server_error_message))
+
+                else -> {}
+            }
+        }
     }
 
     fun changeFragment(tag: String) {

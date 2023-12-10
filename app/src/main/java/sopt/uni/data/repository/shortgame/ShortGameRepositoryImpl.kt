@@ -1,10 +1,13 @@
 package sopt.uni.data.repository.shortgame
 
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import sopt.uni.data.datasource.local.LocalPreferenceDataSource
 import sopt.uni.data.entity.shortgame.MissionDetail
 import sopt.uni.data.service.ShortGameService
 import sopt.uni.data.source.remote.request.RequestCreateShortGameDto
 import sopt.uni.data.source.remote.request.RequestRecordShortGameDto
+import sopt.uni.data.source.remote.response.ErrorCode
 import sopt.uni.data.source.remote.response.ResponseCreateShortGameDto
 import sopt.uni.data.source.remote.response.ResponseShortGameResultDto
 import javax.inject.Inject
@@ -28,11 +31,15 @@ class ShortGameRepositoryImpl @Inject constructor(
     ): Result<ResponseCreateShortGameDto> =
         kotlin.runCatching {
             val requestBody = RequestCreateShortGameDto(missionCategoryId, wishContent)
-            shortGameService.postCreateShortGame(requestBody)
-        }.onSuccess {
-            Result.success(it)
-        }.onFailure {
-            Result.failure<ResponseCreateShortGameDto>(it)
+            val response = shortGameService.postCreateShortGame(requestBody)
+
+            if (response.isSuccessful) {
+                response.body() ?: throw Exception("Response body is null")
+            } else {
+                val errorResponse =
+                    Json.decodeFromString<ErrorCode>(response.errorBody()?.string().orEmpty())
+                throw Exception(errorResponse.code)
+            }
         }
 
     override suspend fun getMissionDetail(missionCategoryId: Int): Result<MissionDetail> =
