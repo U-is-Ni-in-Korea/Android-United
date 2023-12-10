@@ -73,10 +73,12 @@ class WishUseMyFragment : Fragment() {
         with(binding) {
             if (wishCouponIsUsed == true) {
                 btnWishUseMyFinish.isEnabled = false
+                btnWishUseMyFinish.setText(R.string.wish_used)
                 btnWishUseMyFinish.backgroundTintList =
                     resources.getColorStateList(R.color.Gray_300)
             } else {
                 btnWishUseMyFinish.isEnabled = true
+                btnWishUseMyFinish.setText(R.string.wish_use_wish)
                 btnWishUseMyFinish.backgroundTintList =
                     resources.getColorStateList(R.color.Lightblue_500)
             }

@@ -54,13 +54,20 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         wishViewModel.wishCouponList.observe(this) {
             var wishList = mutableListOf<WishMultiData>()
 
-            if (it.isEmpty() && !wishViewModel.isMineState.value!!) {
+            if (it.isEmpty() && wishViewModel.isMineState.value!!) {
                 binding.rvWish.visibility = View.INVISIBLE
                 binding.tvWishEmptyMy.visibility = View.VISIBLE
+                binding.tvWishEmptyYour.visibility = View.INVISIBLE
+                return@observe
+            } else if (it.isEmpty() && !wishViewModel.isMineState.value!!) {
+                binding.rvWish.visibility = View.INVISIBLE
+                binding.tvWishEmptyYour.visibility = View.VISIBLE
+                binding.tvWishEmptyMy.visibility = View.INVISIBLE
                 return@observe
             } else {
                 binding.rvWish.visibility = View.VISIBLE
                 binding.tvWishEmptyMy.visibility = View.INVISIBLE
+                binding.tvWishEmptyYour.visibility = View.INVISIBLE
             }
             if (wishViewModel.isMineState.value!!) {
                 wishList.add(WishMultiData(0, wishViewModel.newWishCoupon.value))
