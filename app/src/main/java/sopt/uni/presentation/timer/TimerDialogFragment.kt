@@ -24,8 +24,6 @@ class TimerDialogFragment :
             }
             btnRight.setOnSingleClickListener {
                 activity?.finish()
-                val intent = Intent(requireContext(), MissionRecordActivity::class.java)
-                startActivity(intent)
             }
         }
     }
