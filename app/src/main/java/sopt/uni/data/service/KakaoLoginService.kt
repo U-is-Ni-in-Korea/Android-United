@@ -43,11 +43,6 @@ class KakaoLoginService @Inject constructor(
         }
     }
 
-//    로그아웃 구현 시 추가 예정
-//    fun logout() {
-//        client.logout(Timber::e)
-//    }
-
     sealed class LoginState {
         object Init : LoginState()
         data class Success(val token: String, val id: String) : LoginState()
