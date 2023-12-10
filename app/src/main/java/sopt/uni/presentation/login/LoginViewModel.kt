@@ -3,6 +3,7 @@ package sopt.uni.presentation.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,8 +22,8 @@ class LoginViewModel @Inject constructor(
         MutableStateFlow(SparkleLoginState.Init)
     val loginResult: StateFlow<SparkleLoginState> = _loginResult.asStateFlow()
 
-    fun getAccessToken(social: String, code: String) {
-        viewModelScope.launch {
+    fun getAccessToken(social: String, code: String): Job {
+        return viewModelScope.launch {
             authRepository.getToken(social, code)
                 .onSuccess { authDto ->
                     SparkleStorage.accessToken = authDto.accessToken
