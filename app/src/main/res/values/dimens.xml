@@ -4,6 +4,6 @@
     <dimen name="divider_width">49dp</dimen>
     <dimen name="on_boarding_image">328dp</dimen>
     <dimen name="dialog_width">300dp</dimen>
-    <dimen name="dialog_height">150dp</dimen>
+    <dimen name="dialog_height">165dp</dimen>
 </resources>
 

@@ -62,7 +62,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_inside_circular"
             tools:text="00:00" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_timer_left"
             style="@style/Body1"
             android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_timer_continue"
             style="@style/Body1"
             android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_timer_left" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_timer_stop"
             style="@style/Body1"
             android:layout_width="wrap_content"
