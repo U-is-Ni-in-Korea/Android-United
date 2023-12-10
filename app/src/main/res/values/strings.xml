@@ -265,6 +265,7 @@
     <!-- UE Error Message -->
     <string name="ue1006_error_message">더 이상 기록에 접근할 수 없습니다.</string>
     <string name="ue1008_error_message">존재하지 않는 사용자입니다. 다시 로그인해주세요</string>
+    <string name="home_already_game_created">이미 게임이 생성되었습니다</string>
     <string name="ue1003_error_message">이미 생성된 승부가 있어요.</string>
 
     <!-- Server Error Message -->

@@ -79,7 +79,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         if (!homeViewModel.shortGameEnabled.value) {
             startActivity<CreateShortGameActivity>()
         } else {
-            this@HomeActivity.showToast("상대가 이미 게임을 생성했습니다.")
+            this@HomeActivity.showToast(getString(R.string.home_already_game_created))
             homeViewModel.getShortGameResult()
         }
     }
