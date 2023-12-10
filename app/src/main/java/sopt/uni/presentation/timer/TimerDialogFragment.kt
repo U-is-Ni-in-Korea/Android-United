@@ -1,12 +1,10 @@
 package sopt.uni.presentation.timer
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import sopt.uni.R
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.presentation.BindingDialogFragment
-import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 
 class TimerDialogFragment :

@@ -23,7 +23,7 @@ class TimerActiveFragment(total: Float) :
     private val updateTimer =
         object : CountDownTimer(
             (totalTime * MILLISECONDS + updateIntervalMillis).roundToLong(),
-            updateIntervalMillis
+            updateIntervalMillis,
         ) {
             override fun onTick(millisUntilFinished: Long) {
                 getLeftTime()
