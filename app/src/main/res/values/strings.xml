@@ -79,6 +79,7 @@
     <string name="use_wish_dialog_description">사용한 소원권은 취소할 수 없어요</string>
     <string name="wish_your">상대가 아직 사용하지 않은 소원권이에요</string>
     <string name="wish_your_used">이미 사용한 소원권이에요</string>
+    <string name="wish_used">이미 사용한 소원권입니다</string>
     <string name="your_wish_is">%s의 소원은</string>
 
     <!-- History -->
