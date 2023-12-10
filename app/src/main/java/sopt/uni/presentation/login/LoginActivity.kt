@@ -2,6 +2,7 @@ package sopt.uni.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -15,7 +16,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.kakao.sdk.common.util.Utility
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import sopt.uni.BuildConfig.GOOGLE_CLIENT_ID
@@ -45,9 +45,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val keyHash = Utility.getKeyHash(this)
-        Timber.d(keyHash)
-
         auth = FirebaseAuth.getInstance()
         googleInit()
 
@@ -75,6 +72,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             kakaoLoginService.loginState
                 .flowWithLifecycle(lifecycle)
                 .collect {
+                    Log.e("kakaologinservice.loginstate", "collectIsTokenAvailability: $it")
                     when (it) {
                         is KakaoLoginService.LoginState.Success -> {
                             loginViewModel.getAccessToken("kakao", it.token)
