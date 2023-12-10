@@ -47,6 +47,7 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="28dp"
             app:layout_constraintBottom_toTopOf="@+id/cl_bottom_navigation_bar"
             app:layout_constraintTop_toBottomOf="@id/cl_toolbar">
 
@@ -176,10 +177,10 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="18dp"
-                        android:src="@drawable/ic_heart_filled"
+                        android:src="@drawable/ic_memo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/ic_heart_filled" />
+                        tools:src="@drawable/ic_memo" />
 
                     <TextView
                         android:id="@+id/tv_memo"
@@ -212,10 +213,10 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="18dp"
-                        android:src="@drawable/ic_heart_filled"
+                        android:src="@drawable/ic_timer"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/ic_heart_filled" />
+                        tools:src="@drawable/ic_timer"/>
 
                     <TextView
                         android:id="@+id/tv_timer"
