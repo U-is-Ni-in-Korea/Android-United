@@ -7,18 +7,25 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.data.datasource.local.SparkleStorage
+import sopt.uni.data.repository.shortgame.ShortGameRepository
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.extension.startActivity
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class IntroActivity : AppCompatActivity() {
+    @Inject
+    lateinit var shortGameRepository: ShortGameRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
         checkUserStatus()
+
+        // 메모장 초기화
+        shortGameRepository.setMemoText("")
     }
 
     private fun checkUserStatus() {
