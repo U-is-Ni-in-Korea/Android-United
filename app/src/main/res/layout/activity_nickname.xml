@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="cons"
+            type="sopt.uni.presentation.common.content.ConstKt" />
+
+        <variable
             name="viewModel"
             type="sopt.uni.presentation.invite.NickNameViewModel" />
 
@@ -88,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@{viewModel.nickName.length() + ` / 10`}"
+            android:text="@{viewModel.nickName.length() + ` / ` + cons.MAX_LENGTH}"
             android:textColor="@{viewModel.nickName.length() > 5 ?  @color/Red_500 : @color/Gray_400}"
             app:layout_constraintEnd_toEndOf="@id/et_nickname"
             app:layout_constraintTop_toBottomOf="@id/et_nickname"
