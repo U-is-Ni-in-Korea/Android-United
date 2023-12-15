@@ -59,6 +59,10 @@ object SparkleStorage {
         get() = pref.getInt(PARTNER_ID, -1)
         set(value) = pref.edit { putInt(PARTNER_ID, value ?: -1).apply() }
 
+    var coupleId: Int?
+        get() = pref.getInt(COUPLE_ID, -1)
+        set(value) = pref.edit { putInt(COUPLE_ID, value ?: -1).apply() }
+
     var isActive: Boolean
         get() = prefTimer.getBoolean(ACTIVEKEY, false)
         set(value) = prefTimer.edit { putBoolean(ACTIVEKEY, value).apply() }
@@ -93,6 +97,7 @@ const val REFRESH_TOKEN = "refreshToken"
 const val AUTH = "auth"
 const val USER_ID = "userId"
 const val PARTNER_ID = "partnerId"
+const val COUPLE_ID = "coupleId"
 const val NAME = "timer_prefs"
 const val ACTIVEKEY = "isTimerActive"
 const val TOTALTIMEKEY = "totalTime"
