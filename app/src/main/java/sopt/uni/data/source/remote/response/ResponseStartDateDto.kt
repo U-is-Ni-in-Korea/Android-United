@@ -8,7 +8,7 @@ data class ResponseStartDateDto(
     @SerialName("heartToken")
     val heartToken: Int,
     @SerialName("id")
-    val id: Int,
+    val coupleId: Int,
     @SerialName("inviteCode")
     val inviteCode: String,
     @SerialName("startDate")
