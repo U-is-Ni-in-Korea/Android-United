@@ -20,7 +20,6 @@ import sopt.uni.databinding.ActivityMypageProfilEditBinding
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class MypageProfilEditActivity :
@@ -65,7 +64,6 @@ class MypageProfilEditActivity :
 
             if (nickname.length <= MAX_LENGTH && !nickname.all { it.isWhitespace() }) {
                 viewModel.saveProfile(nickname, startDate)
-                startActivity<MypageSettingActivity>()
                 finish()
             } else {
                 Toast.makeText(this, "닉네임을 올바르게 입력해주세요.", Toast.LENGTH_SHORT).show()
