@@ -54,7 +54,6 @@ class MypageProfilEditActivity :
 
     private fun setupBackButton() {
         binding.btnMypageProfilEditBack.setOnSingleClickListener {
-            startActivity<MypageSettingActivity>()
             finish()
         }
     }

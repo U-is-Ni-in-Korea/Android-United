@@ -8,7 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageSettingBinding
 import sopt.uni.presentation.WebViewActivity
-import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -41,7 +40,6 @@ class MypageSettingActivity :
 
     private fun setupBackButton() {
         binding.btnMypageSettingBack.setOnSingleClickListener {
-            startActivity<HomeActivity>()
             finish()
         }
     }
