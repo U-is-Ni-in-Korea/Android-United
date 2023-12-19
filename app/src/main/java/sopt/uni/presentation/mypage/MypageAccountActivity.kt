@@ -6,7 +6,6 @@ import sopt.uni.R
 import sopt.uni.databinding.ActivityMypageAccountBinding
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.startActivity
 
 @AndroidEntryPoint
 class MypageAccountActivity :
@@ -23,7 +22,6 @@ class MypageAccountActivity :
 
     private fun setupBackButton() {
         binding.btnMypageAccountBack.setOnSingleClickListener {
-            startActivity<MypageSettingActivity>()
             finish()
         }
     }
