@@ -9,15 +9,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import sopt.uni.R
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.ActivityShareInviteCodeBinding
-import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.util.UiState
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showToast
 import sopt.uni.util.extension.startActivity
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ShareInviteCodeActivity :
@@ -34,8 +33,7 @@ class ShareInviteCodeActivity :
     }
 
     private fun getInviteCode() {
-        Timber.e(intent.getStringExtra(INVITECODE))
-        binding.tvInviteCode.text = intent.getStringExtra(INVITECODE)
+        binding.tvInviteCode.text = SparkleStorage.inviteCode
     }
 
     private fun moveToPrevPage() {
