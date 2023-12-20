@@ -22,7 +22,7 @@ interface OnBoardingService {
     @POST("api/couple")
     suspend fun postStartDate(
         @Body request: RequestStartDateDto,
-    ): ResponseStartDateDto
+    ): Response<ResponseStartDateDto>
 
     @GET("api/couple/join")
     suspend fun checkConnection(): ResponseCheckConnectionDto

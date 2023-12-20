@@ -5,6 +5,7 @@ import sopt.uni.data.service.OnBoardingService
 import sopt.uni.data.source.remote.request.RequestNickNameDto
 import sopt.uni.data.source.remote.request.RequestPostCheckConnectionDto
 import sopt.uni.data.source.remote.request.RequestStartDateDto
+import sopt.uni.data.source.remote.response.ResponseStartDateDto
 import javax.inject.Inject
 
 class OnBoardingRepositoryImpl @Inject constructor(
@@ -15,8 +16,8 @@ class OnBoardingRepositoryImpl @Inject constructor(
         onBoardingService.patchNickName(RequestNickNameDto(nickname))
     }
 
-    override suspend fun postStartDate(startDate: String): String {
-        return onBoardingService.postStartDate(RequestStartDateDto(startDate)).inviteCode
+    override suspend fun postStartDate(startDate: String): Response<ResponseStartDateDto> {
+        return onBoardingService.postStartDate(RequestStartDateDto(startDate))
     }
 
     override suspend fun checkCoupleConnection(): Boolean {
