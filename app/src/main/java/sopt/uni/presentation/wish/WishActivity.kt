@@ -54,23 +54,20 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
         wishViewModel.wishCouponList.observe(this) {
             var wishList = mutableListOf<WishMultiData>()
 
-            if (it.isEmpty() && wishViewModel.isMineState.value!!) {
-                binding.rvWish.visibility = View.INVISIBLE
-                binding.tvWishEmptyMy.visibility = View.VISIBLE
-                binding.tvWishEmptyYour.visibility = View.INVISIBLE
-                return@observe
-            } else if (it.isEmpty() && !wishViewModel.isMineState.value!!) {
-                binding.rvWish.visibility = View.INVISIBLE
-                binding.tvWishEmptyYour.visibility = View.VISIBLE
-                binding.tvWishEmptyMy.visibility = View.INVISIBLE
-                return@observe
-            } else {
-                binding.rvWish.visibility = View.VISIBLE
-                binding.tvWishEmptyMy.visibility = View.INVISIBLE
-                binding.tvWishEmptyYour.visibility = View.INVISIBLE
-            }
             if (wishViewModel.isMineState.value!!) {
                 wishList.add(WishMultiData(0, wishViewModel.newWishCoupon.value))
+            }
+
+            if (it.isEmpty() && !wishViewModel.isMineState.value!!) {
+                binding.rvWish.visibility = View.INVISIBLE
+                binding.tvWishEmpty.visibility = View.VISIBLE
+                return@observe
+            } else if (wishViewModel.isMineState.value!! && wishViewModel.availableWishCoupon.value == 0) {
+                binding.rvWish.visibility = View.INVISIBLE
+                binding.tvWishEmpty.visibility = View.VISIBLE
+            } else {
+                binding.rvWish.visibility = View.VISIBLE
+                binding.tvWishEmpty.visibility = View.INVISIBLE
             }
 
             for (i in 0 until it.size) {
@@ -108,6 +105,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 lifecycleScope.launch {
                     wishViewModel.getMyWishList(userId).join()
                 }
+                binding.tvWishEmpty.setText(R.string.wish_empty_my)
                 setupRecyclerView(rvWish, multiviewAdapter)
                 multiviewAdapter.submitData(_wishList)
             }
@@ -117,6 +115,7 @@ class WishActivity : BindingActivity<ActivityWishBinding>(R.layout.activity_wish
                 lifecycleScope.launch {
                     wishViewModel.getPartnerWishList(partnerId!!).join()
                 }
+                binding.tvWishEmpty.setText(R.string.wish_empty_your)
                 setupRecyclerView(rvWish, yourMultiviewAdapter)
                 yourMultiviewAdapter.submitData(_wishList)
             }
