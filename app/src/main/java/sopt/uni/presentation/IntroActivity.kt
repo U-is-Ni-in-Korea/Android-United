@@ -10,6 +10,7 @@ import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.data.repository.shortgame.ShortGameRepository
 import sopt.uni.presentation.home.HomeActivity
 import sopt.uni.presentation.invite.NickNameActivity
+import sopt.uni.presentation.invite.ShareInviteCodeActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.extension.startActivity
 import javax.inject.Inject
@@ -32,8 +33,11 @@ class IntroActivity : AppCompatActivity() {
         if (SparkleStorage.accessToken != null) {
             Log.e("accessToken", SparkleStorage.accessToken.toString())
             Log.e("partnerId", SparkleStorage.partnerId.toString())
-            if (SparkleStorage.partnerId != -1) {
+            if (SparkleStorage.partnerId != -1 && SparkleStorage.coupleId != -1) {
                 startActivity<HomeActivity>()
+                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            } else if (SparkleStorage.partnerId == -1 && SparkleStorage.coupleId != -1) {
+                startActivity<ShareInviteCodeActivity>()
                 Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             } else {
                 startActivity<NickNameActivity>()
