@@ -2,6 +2,7 @@ package sopt.uni.presentation.invite
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -30,6 +31,7 @@ class ShareInviteCodeActivity :
         getInviteCode()
         checkCoupleConnection()
         copyInviteCode()
+        initOnBackPressedListener()
     }
 
     private fun getInviteCode() {
@@ -38,7 +40,7 @@ class ShareInviteCodeActivity :
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
-            finish()
+            backToDdayActivity()
         }
     }
 
@@ -78,5 +80,20 @@ class ShareInviteCodeActivity :
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
         }
+    }
+
+    private fun initOnBackPressedListener() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                backToDdayActivity()
+            }
+        }
+        this.onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private fun backToDdayActivity() {
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity<DdayActivity>()
+        finish()
     }
 }
