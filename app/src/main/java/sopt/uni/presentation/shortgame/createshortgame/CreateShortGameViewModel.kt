@@ -25,6 +25,10 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
     private val _errorState = MutableLiveData<ErrorCodeState>()
     val errorState = _errorState
 
+    private val _uiState =
+        MutableLiveData<CreateShortGameState>(CreateShortGameState.ShortGameState)
+    val uiState = _uiState
+
     private val _missionList = MutableLiveData<List<MissionDetail>>()
     val missionList = _missionList
 
@@ -75,5 +79,17 @@ class CreateShortGameViewModel @Inject constructor(private val shortGameReposito
 
     fun setSelectedMissionId(missionId: Int) {
         _missionId.value = missionId
+    }
+
+    fun changeUIState() {
+        when (uiState.value ?: return) {
+            CreateShortGameState.ShortGameState ->
+                _uiState.value =
+                    CreateShortGameState.MissionDetailState
+
+            CreateShortGameState.MissionDetailState ->
+                _uiState.value =
+                    CreateShortGameState.ShortGameState
+        }
     }
 }
