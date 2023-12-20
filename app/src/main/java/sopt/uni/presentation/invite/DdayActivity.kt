@@ -2,6 +2,7 @@ package sopt.uni.presentation.invite
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +13,7 @@ import sopt.uni.presentation.common.content.INVITECODE
 import sopt.uni.util.DateUtil
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.startActivity
 import java.util.Calendar
 
 @AndroidEntryPoint
@@ -24,6 +26,7 @@ class DdayActivity : BindingActivity<ActivityDDayBinding>(R.layout.activity_d_da
         setMaxDate()
         moveToShareInviteCode()
         moveToPrevPage()
+        initOnBackPressedListener()
     }
 
     private fun moveToShareInviteCode() {
@@ -48,12 +51,27 @@ class DdayActivity : BindingActivity<ActivityDDayBinding>(R.layout.activity_d_da
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
-            finish()
+            backToInviteHub()
         }
     }
 
     private fun setMaxDate() {
         val calendar = Calendar.getInstance()
         binding.dpDDay.maxDate = calendar.timeInMillis
+    }
+
+    private fun initOnBackPressedListener() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                backToInviteHub()
+            }
+        }
+        this.onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private fun backToInviteHub() {
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity<InviteHubActivity>()
+        finish()
     }
 }

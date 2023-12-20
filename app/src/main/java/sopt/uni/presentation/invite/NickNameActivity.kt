@@ -1,16 +1,19 @@
 package sopt.uni.presentation.invite
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.MotionEvent.ACTION_DOWN
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityNicknameBinding
+import sopt.uni.presentation.login.LoginActivity
 import sopt.uni.presentation.mypage.MypageAccountLogoutDialogFragment
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -28,6 +31,7 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
         moveToPrevPage()
         moveToAskPage()
         logoutOnNickNamePage()
+        initOnBackPressedListener()
     }
 
     private fun moveToInviteHub() {
@@ -39,7 +43,7 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
-            finish()
+            backToLogin()
         }
     }
 
@@ -73,5 +77,20 @@ class NickNameActivity : BindingActivity<ActivityNicknameBinding>(R.layout.activ
                 "MypageAccountLogoutDialogFragment",
             )
         }
+    }
+
+    private fun initOnBackPressedListener() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                backToLogin()
+            }
+        }
+        this.onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private fun backToLogin() {
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity<LoginActivity>()
+        finish()
     }
 }

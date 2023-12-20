@@ -1,6 +1,8 @@
 package sopt.uni.presentation.invite
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.databinding.ActivityInviteHubBinding
@@ -17,6 +19,7 @@ class InviteHubActivity : BindingActivity<ActivityInviteHubBinding>(R.layout.act
         moveToEnterDday()
         moveToEnterInviteCode()
         moveToPrevPage()
+        initOnBackPressedListener()
     }
 
     private fun moveToEnterDday() {
@@ -33,7 +36,22 @@ class InviteHubActivity : BindingActivity<ActivityInviteHubBinding>(R.layout.act
 
     private fun moveToPrevPage() {
         binding.ivBackArrow.setOnSingleClickListener {
-            finish()
+            backToNickNameActivity()
         }
+    }
+
+    private fun initOnBackPressedListener() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                backToNickNameActivity()
+            }
+        }
+        this.onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private fun backToNickNameActivity() {
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity<NickNameActivity>()
+        finish()
     }
 }
