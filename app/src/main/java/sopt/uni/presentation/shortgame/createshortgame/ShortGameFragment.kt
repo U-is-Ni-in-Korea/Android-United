@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.activityViewModels
 import sopt.uni.R
@@ -37,23 +37,17 @@ class ShortGameFragment : BindingFragment<FragmentShortGameBinding>(R.layout.fra
         binding.apply {
             viewModel = this@ShortGameFragment.viewModel
         }
-        setBackPressed()
         setAdapter()
         setClickListener()
         setViewModelObserve()
-
+        setBackPressed()
         return binding.root
     }
 
     private fun setBackPressed() {
-        this.activity?.onBackPressedDispatcher?.addCallback(
+        requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    exitDialog()
-                }
-            },
-        )
+        ) { exitDialog() }
     }
 
     private fun setAdapter() {
@@ -81,8 +75,7 @@ class ShortGameFragment : BindingFragment<FragmentShortGameBinding>(R.layout.fra
             return
         }
         viewModel.setSelectedMissionId(missionId)
-        val activity = activity as CreateShortGameActivity
-        activity.changeFragment(getString(R.string.label_mission_detail))
+        viewModel.changeUIState()
     }
 
     private fun exitDialog() {

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.activityViewModels
 import sopt.uni.R
 import sopt.uni.databinding.FragmentMissionDetailCreateBinding
-import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameActivity
 import sopt.uni.presentation.shortgame.createshortgame.CreateShortGameViewModel
 import sopt.uni.presentation.shortgame.createshortgame.dialog.CreateShortGameDialogFragment
 import sopt.uni.presentation.shortgame.missionrecord.MissionRecordActivity
@@ -24,9 +23,7 @@ class MissionDetailCreateFragment :
         savedInstanceState: Bundle?,
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.apply {
-            viewModel = this@MissionDetailCreateFragment.viewModel
-        }
+        binding.viewModel = this@MissionDetailCreateFragment.viewModel
         setViewModelObserve()
         setClickListener()
         setBackPressed()
@@ -47,30 +44,20 @@ class MissionDetailCreateFragment :
     }
 
     private fun setBackPressed() {
-        this.activity?.onBackPressedDispatcher?.addCallback(
+        requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    goToShortGame()
-                }
-            },
-        )
+        ) { this@MissionDetailCreateFragment.viewModel.changeUIState() }
     }
 
     private fun setClickListener() {
         binding.apply {
             missionDetailCreateBack.setOnSingleClickListener {
-                goToShortGame()
+                this@MissionDetailCreateFragment.viewModel.changeUIState()
             }
             btnCreateShortGame.setOnSingleClickListener {
                 createDialog()
             }
         }
-    }
-
-    private fun goToShortGame() {
-        val activity = activity as CreateShortGameActivity
-        activity.changeFragment(getString(R.string.label_short_game))
     }
 
     private fun createDialog() {

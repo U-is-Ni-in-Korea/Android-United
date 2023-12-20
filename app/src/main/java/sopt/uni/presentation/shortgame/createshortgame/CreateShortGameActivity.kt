@@ -61,30 +61,29 @@ class CreateShortGameActivity :
                 else -> {}
             }
         }
+
+        viewModel.uiState.observe(this) {
+            when (it) {
+                is CreateShortGameState.ShortGameState ->
+                    changeFragment(getString(R.string.label_short_game))
+
+                is CreateShortGameState.MissionDetailState ->
+                    changeFragment(getString(R.string.label_mission_detail))
+            }
+        }
     }
 
-    fun changeFragment(tag: String) {
+    private fun changeFragment(tag: String) {
         val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+
         val fragment = fragmentManager.findFragmentByTag(tag) ?: when (tag) {
             getString(R.string.label_mission_detail) -> missionDetailCreateFragment
             getString(R.string.label_short_game) -> shortGameFragment
             else -> null
         } ?: return
 
-        if (fragment.isVisible) return
-
-        val transaction = fragmentManager.beginTransaction()
-
-        fragmentManager.fragments.filter { it.isVisible }
-            .forEach {
-                transaction.hide(it)
-            }
-
-        if (fragment.isAdded) {
-            transaction.show(fragment)
-        } else {
-            transaction.add(R.id.fcv_create_short_game, fragment, tag)
-        }
+        transaction.replace(R.id.fcv_create_short_game, fragment, tag)
 
         transaction.commit()
     }
