@@ -153,7 +153,7 @@
                 tools:listitem="@layout/item_wish_large" />
 
             <TextView
-                android:id="@+id/tv_wish_empty_my"
+                android:id="@+id/tv_wish_empty"
                 style="@style/Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,18 +165,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_wish_my_wish" />
 
-            <TextView
-                android:id="@+id/tv_wish_empty_your"
-                style="@style/Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/wish_empty_your"
-                android:textColor="@color/Gray_400"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_wish_my_wish" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
