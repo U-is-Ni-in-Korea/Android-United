@@ -56,7 +56,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="12dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_title"
         tools:text="제시된 키워드를 너무 티내지 않는 것이 핵심입니다.
