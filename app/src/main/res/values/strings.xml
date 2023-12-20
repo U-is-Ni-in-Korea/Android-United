@@ -93,7 +93,7 @@
     <string name="history_win">승리</string>
     <string name="history_lose">패배</string>
     <string name="history_draw">무승부</string>
-    <string name="history_result_draw_comment">무승부에요</string>
+    <string name="history_result_draw_comment">무승부예요</string>
     <string name="history_result_win_comment">%s님이 이겼어요</string>
     <string name="history_result_win">님이 이겼어요</string>
 
