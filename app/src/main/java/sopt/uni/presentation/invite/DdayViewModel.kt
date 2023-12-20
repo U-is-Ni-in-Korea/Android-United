@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.data.repository.onboarding.OnBoardingRepository
 import timber.log.Timber
 import javax.inject.Inject
@@ -26,6 +27,7 @@ class DdayViewModel @Inject constructor(
                 it.body()?.let { response ->
                     Timber.d("기념일 갱신이 성공했습니다.")
                     _inviteCode.value = response.inviteCode
+                    SparkleStorage.coupleId = response.coupleId
                 } ?: run {
                     Timber.d("기념일 갱신에서 null이 반환되었습니다.")
                 }
