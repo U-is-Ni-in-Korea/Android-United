@@ -15,6 +15,7 @@ import sopt.uni.presentation.shortgame.createshortgame.dialog.CreateShortGameDia
 import sopt.uni.util.ItemDecorations
 import sopt.uni.util.binding.BindingFragment
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showToast
 
 class ShortGameFragment : BindingFragment<FragmentShortGameBinding>(R.layout.fragment_short_game) {
     private val viewModel by activityViewModels<CreateShortGameViewModel>()
@@ -75,7 +76,10 @@ class ShortGameFragment : BindingFragment<FragmentShortGameBinding>(R.layout.fra
     }
 
     private fun goToMissionDetail(missionId: Int) {
-        if ((viewModel.contentLength.value ?: 0) > MAX_LENGTH) return
+        if ((viewModel.contentLength.value ?: 0) > MAX_LENGTH) {
+            requireActivity().showToast(getString(R.string.charactor_over_error_message))
+            return
+        }
         viewModel.setSelectedMissionId(missionId)
         val activity = activity as CreateShortGameActivity
         activity.changeFragment(getString(R.string.label_mission_detail))

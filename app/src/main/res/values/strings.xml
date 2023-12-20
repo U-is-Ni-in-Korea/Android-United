@@ -130,6 +130,7 @@
     <string name="create_short_game_btn">한판 승부 만들기</string>
     <string name="label_short_game">SHORT_GAME</string>
     <string name="label_mission_detail">MISSION_DETAIL</string>
+    <string name="charactor_over_error_message">글자수를 초과했어요! 소원을 수정해주세요</string>
 
     <!-- missionRecord -->
     <string name="mission_record_title">한판 승부 진행중</string>
