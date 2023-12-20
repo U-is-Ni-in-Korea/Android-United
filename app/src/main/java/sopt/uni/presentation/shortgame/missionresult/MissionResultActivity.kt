@@ -83,11 +83,13 @@ class MissionResultActivity :
             if (date == null || isMissionComplete == "LOSE") {
                 view.text = view.context.getString(R.string.mission_result_failure)
                 view.background = view.context.getDrawable(R.drawable.wish_ment_pink_rectangle)
+                view.setTextColor(view.context.resources.getColor(R.color.Pink_600))
             } else {
                 val dateString = date.split("T")[1].substring(0, 5)
                 view.text =
                     "$dateString ${view.context.getString(R.string.mission_result_complete)}"
                 view.background = view.context.getDrawable(R.drawable.wish_ment_green_rectangle)
+                view.setTextColor(view.context.resources.getColor(R.color.Green_600))
             }
         }
     }
