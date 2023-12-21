@@ -49,7 +49,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
     override fun onBackPressed() {
         if (backPressedTime + 3000 > System.currentTimeMillis()) {
             super.onBackPressed()
-            finish()
+            finishAffinity()
         } else {
             Toast.makeText(
                 applicationContext,
