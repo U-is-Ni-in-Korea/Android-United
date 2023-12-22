@@ -65,7 +65,7 @@
             android:id="@+id/btn_copy_invite_code"
             style="@style/Btn1"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/long_button_height"
             android:layout_margin="16dp"
             android:background="@drawable/bg_nickname_btn"
             android:stateListAnimator="@null"
@@ -79,7 +79,7 @@
         <LinearLayout
             android:id="@+id/ll_check_connection"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/long_button_height"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="100dp"
             android:background="@drawable/bg_enter_invite_code_btn"
