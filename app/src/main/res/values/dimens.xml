@@ -5,5 +5,8 @@
     <dimen name="on_boarding_image">328dp</dimen>
     <dimen name="dialog_width">300dp</dimen>
     <dimen name="dialog_height">165dp</dimen>
+
+    <!-- Button -->
+    <dimen name="long_button_height">48dp</dimen>
 </resources>
 
