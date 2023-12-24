@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/long_button_height"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_enter_invite_code_btn"
             android:gravity="center"
             android:orientation="horizontal"
