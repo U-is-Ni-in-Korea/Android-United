@@ -1,11 +1,7 @@
 package sopt.uni.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.UpdateAvailability
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,7 +20,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        isUpdateAvailable()
+        isAvailableUpdateVersion()
 
         lifecycleScope.launch {
             delay(2000)
@@ -46,24 +42,16 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
         }
     }
 
-    private fun isUpdateAvailable() {
-//        val appUpdateManager = AppUpdateManagerFactory.create(this)
-//        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
-//        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
-//                    AppUpdateType.IMMEDIATE,
-//                )
-//            ) {
-//                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, true)
-//                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-//            } else {
-//                SparkleStorage.setUpdateAvailableBoolean(IS_UPDATE_AVAILABLE, false)
-//                Log.e("subin", "${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-//            }
-//        }
-        Log.e("hyeon","${SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-        if(SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)){
-            UpdateDialogFragment().show(supportFragmentManager,"UpdateDialog")
+    private fun showUpdateDialog() {
+        UpdateDialogFragment().show(
+            supportFragmentManager,
+            "UpdateDialog",
+        )
+    }
+
+    private fun isAvailableUpdateVersion() {
+        if (SparkleStorage.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)) {
+            showUpdateDialog()
         }
     }
 
