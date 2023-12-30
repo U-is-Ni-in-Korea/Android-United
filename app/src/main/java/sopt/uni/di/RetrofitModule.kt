@@ -11,6 +11,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import sopt.uni.BuildConfig
 import sopt.uni.BuildConfig.BASE_URL
 import sopt.uni.data.datasource.remote.AuthInterceptor
 import sopt.uni.data.service.MyPageService
@@ -45,7 +46,8 @@ object RetrofitModule {
     @Singleton
     @Logger
     fun provideHttpLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level =
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
     }
 
     @Provides
