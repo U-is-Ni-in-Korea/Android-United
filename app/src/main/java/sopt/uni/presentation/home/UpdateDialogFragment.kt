@@ -1,6 +1,6 @@
 package sopt.uni.presentation.home
 
-import android.app.Activity.RESULT_OK
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -20,7 +20,7 @@ class UpdateDialogFragment :
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
-            if (it.resultCode != RESULT_OK) {
+            if (it.resultCode != Activity.RESULT_OK) {
                 Toast.makeText(requireContext(), "업데이트에 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT)
                     .show()
             } else {
@@ -28,7 +28,6 @@ class UpdateDialogFragment :
                 dismiss()
             }
         }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
