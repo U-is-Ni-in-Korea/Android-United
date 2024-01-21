@@ -5,10 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.data.repository.shortgame.ShortGameRepository
 import sopt.uni.presentation.home.HomeActivity
+import sopt.uni.presentation.home.UpdateDialogFragment
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.invite.ShareInviteCodeActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
@@ -19,14 +23,38 @@ import javax.inject.Inject
 class IntroActivity : AppCompatActivity() {
     @Inject
     lateinit var shortGameRepository: ShortGameRepository
+
+    @Inject
+    lateinit var appUpdateManager: AppUpdateManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
+        checkUpdateAvailability()
         checkUserStatus()
 
         // 메모장 초기화
         shortGameRepository.setMemoText("")
+    }
+
+    private fun checkUpdateAvailability() {
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
+                    AppUpdateType.IMMEDIATE,
+                )
+            ) {
+                showUpdateDialog()
+            }
+        }
+    }
+
+    private fun showUpdateDialog() {
+        UpdateDialogFragment().show(
+            supportFragmentManager,
+            "UpdateDialog",
+        )
     }
 
     private fun checkUserStatus() {
