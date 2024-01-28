@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.View
 import sopt.uni.R
 import sopt.uni.databinding.DatepickerDialogBinding
-import sopt.uni.presentation.BindingDialogFragment
+import sopt.uni.util.binding.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 import java.util.Calendar
 
 class MypageDatePickerDialogFragment :
     BindingDialogFragment<DatepickerDialogBinding>(
         R.layout.datepicker_dialog,
-        isWrapContent = true,
     ) {
     private var listener: DatePickerDialogListener? = null
 
@@ -21,6 +20,7 @@ class MypageDatePickerDialogFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayoutSizeRatio(0.77f, 0.34f)
 
         setMaxDate()
 

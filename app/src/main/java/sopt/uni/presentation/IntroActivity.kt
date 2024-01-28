@@ -50,8 +50,9 @@ class IntroActivity : AppCompatActivity() {
                 checkUserStatus()
             }
         }
-        appUpdateInfoTask.addOnFailureListener {exception ->
+        appUpdateInfoTask.addOnFailureListener { exception ->
             Timber.tag("inappUpdate").e("업데이트 체크 실패: ${exception.message}")
+            showUpdateDialog()
         }
     }
 

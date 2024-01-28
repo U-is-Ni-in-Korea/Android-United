@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import sopt.uni.R
 import sopt.uni.databinding.TitleAction2DialogBinding
-import sopt.uni.presentation.BindingDialogFragment
+import sopt.uni.util.binding.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 
 class NewWishDialogFragment :

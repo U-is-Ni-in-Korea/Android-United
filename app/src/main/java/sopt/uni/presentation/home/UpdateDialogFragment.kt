@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.TitleAction2DialogBinding
-import sopt.uni.presentation.BindingDialogFragment
+import sopt.uni.util.binding.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 import javax.inject.Inject
 
@@ -26,6 +26,7 @@ class UpdateDialogFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayoutSizeRatio(0.778f, 0.2f)
 
         with(binding) {
             dialogTitle.setText(getString(R.string.update_dialog_title))
@@ -56,7 +57,7 @@ class UpdateDialogFragment :
                 Log.e("update", it.resultCode.toString())
             } else {
                 SparkleStorage.setUpdateAvailableBoolean(
-                    UpdateDialogFragment.IS_UPDATE_AVAILABLE,
+                    IS_UPDATE_AVAILABLE,
                     true,
                 )
             }
