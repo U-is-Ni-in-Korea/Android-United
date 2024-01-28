@@ -9,15 +9,16 @@ import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.NoBodyAction2DialogBinding
 import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.di.ServicePool
-import sopt.uni.presentation.BindingDialogFragment
 import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.login.LoginActivity
+import sopt.uni.util.binding.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 
 class MypageAccountLogoutDialogFragment :
     BindingDialogFragment<NoBodyAction2DialogBinding>(R.layout.no_body_action2_dialog) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayoutSizeRatio(0.778f, 0.16f)
 
         with(binding) {
             dialogTitle.setText(getString(R.string.logout_dialog_title))
@@ -47,6 +48,7 @@ class MypageAccountDeleteDialogFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayoutSizeRatio(0.778f, 0.22f)
 
         with(binding) {
             dialogTitle.setText(getString(R.string.delete_dialog_title))
@@ -77,6 +79,7 @@ class MypageAccountCoupleDisconnectDialogFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayoutSizeRatio(0.778f, 0.22f)
 
         with(binding) {
             dialogTitle.setText(getString(R.string.disconnect_dialog_title))

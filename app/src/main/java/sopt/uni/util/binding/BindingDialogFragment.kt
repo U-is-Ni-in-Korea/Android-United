@@ -1,5 +1,7 @@
-package sopt.uni.presentation
+package sopt.uni.util.binding
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,21 +12,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import sopt.uni.R
 
-abstract class BindingDialogFragment<B : ViewDataBinding>(
+abstract class BindingDialogFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
-    private val isWrapContent: Boolean = false,
-) :
-    DialogFragment() {
-    private var _binding: B? = null
-    val binding get() = requireNotNull(_binding!!) { "${this::class.java.simpleName}에서 에러가 발생했습니다." }
-
-    override fun onStart() {
-        super.onStart()
-        val width = if (isWrapContent) ViewGroup.LayoutParams.WRAP_CONTENT else resources.getDimensionPixelSize(R.dimen.dialog_width)
-        val height = if (isWrapContent) ViewGroup.LayoutParams.WRAP_CONTENT else resources.getDimensionPixelSize(R.dimen.dialog_height)
-        dialog?.window?.setLayout(width, height)
-        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    }
+) : DialogFragment() {
+    private var _binding: T? = null
+    protected val binding get() = _binding ?: error(getString(R.string.binding_error))
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +27,22 @@ abstract class BindingDialogFragment<B : ViewDataBinding>(
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    protected fun setLayoutSizeRatio(widthPercent: Float, heightPercent: Float) {
+        context?.resources?.displayMetrics?.let { metrics ->
+            binding.root.layoutParams.apply {
+                width = ((metrics.widthPixels * widthPercent).toInt())
+                height = ((metrics.heightPixels * heightPercent).toInt())
+            }
+        }
+    }
+
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }
