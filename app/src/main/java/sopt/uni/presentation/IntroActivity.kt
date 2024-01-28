@@ -17,6 +17,7 @@ import sopt.uni.presentation.invite.NickNameActivity
 import sopt.uni.presentation.invite.ShareInviteCodeActivity
 import sopt.uni.presentation.onboarding.OnBoardingActivity
 import sopt.uni.util.extension.startActivity
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,7 +33,6 @@ class IntroActivity : AppCompatActivity() {
         installSplashScreen()
 
         checkUpdateAvailability()
-        checkUserStatus()
 
         // 메모장 초기화
         shortGameRepository.setMemoText("")
@@ -46,7 +46,12 @@ class IntroActivity : AppCompatActivity() {
                 )
             ) {
                 showUpdateDialog()
+            } else {
+                checkUserStatus()
             }
+        }
+        appUpdateInfoTask.addOnFailureListener {exception ->
+            Timber.tag("inappUpdate").e("업데이트 체크 실패: ${exception.message}")
         }
     }
 

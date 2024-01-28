@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
+import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
 import sopt.uni.databinding.TitleAction2DialogBinding
@@ -16,6 +17,7 @@ import sopt.uni.presentation.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class UpdateDialogFragment :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
 
