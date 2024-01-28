@@ -21,7 +21,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity(), UpdateDialogFragment.UpdateDialogListener {
     @Inject
     lateinit var shortGameRepository: ShortGameRepository
 
@@ -52,15 +52,23 @@ class IntroActivity : AppCompatActivity() {
         }
         appUpdateInfoTask.addOnFailureListener { exception ->
             Timber.tag("inappUpdate").e("업데이트 체크 실패: ${exception.message}")
-            showUpdateDialog()
+            checkUserStatus()
         }
     }
 
+    override fun onDialogDismissed() {
+        checkUserStatus()
+    }
+
+    override fun onUpdateComplete() {
+        checkUserStatus()
+    }
+
     private fun showUpdateDialog() {
-        UpdateDialogFragment().show(
-            supportFragmentManager,
-            "UpdateDialog",
-        )
+        val dialogFragment = UpdateDialogFragment().apply {
+            updateDialogListener = this@IntroActivity
+        }
+        dialogFragment.show(supportFragmentManager, "UpdateDialog")
     }
 
     private fun checkUserStatus() {
