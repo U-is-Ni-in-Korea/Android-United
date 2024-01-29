@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.uni.R
 import sopt.uni.data.datasource.local.SparkleStorage
@@ -15,6 +16,7 @@ import sopt.uni.databinding.TitleAction2DialogBinding
 import sopt.uni.util.binding.BindingDialogFragment
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,11 +47,19 @@ class UpdateDialogFragment :
     }
 
     private fun updateSparkle() {
-        appUpdateManager.startUpdateFlowForResult(
-            appUpdateManager.appUpdateInfo.result,
-            startForResult,
-            AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build(),
-        )
+        appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
+                appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
+            ) {
+                appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    startForResult,
+                    AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build(),
+                )
+            }
+        }.addOnFailureListener {
+            Timber.tag("updateSparkleFail").e("업뎃실패ㅠ")
+        }
     }
 
     private val startForResult =
