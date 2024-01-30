@@ -20,10 +20,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class UpdateDialogFragment :
+class UpdateDialogFragment(private val onDismissOrComplete: () -> Unit) :
     BindingDialogFragment<TitleAction2DialogBinding>(R.layout.title_action2_dialog) {
-
-    lateinit var updateDialogListener: UpdateDialogListener
 
     @Inject
     lateinit var appUpdateManager: AppUpdateManager
@@ -38,7 +36,7 @@ class UpdateDialogFragment :
             btnRight.setText(getString(R.string.update_dialog_ok))
             btnLeft.setOnSingleClickListener {
                 dismiss()
-                updateDialogListener.onDialogDismissed()
+                onDismissOrComplete()
             }
             btnRight.setOnSingleClickListener {
                 updateSparkle()
@@ -72,16 +70,11 @@ class UpdateDialogFragment :
                     IS_UPDATE_AVAILABLE,
                     true,
                 )
-                updateDialogListener.onUpdateComplete()
+                onDismissOrComplete()
             }
         }
 
     companion object {
         const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
-    }
-
-    interface UpdateDialogListener {
-        fun onUpdateComplete()
-        fun onDialogDismissed()
     }
 }
