@@ -21,7 +21,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class IntroActivity : AppCompatActivity(), UpdateDialogFragment.UpdateDialogListener {
+class IntroActivity : AppCompatActivity() {
     @Inject
     lateinit var shortGameRepository: ShortGameRepository
 
@@ -56,18 +56,12 @@ class IntroActivity : AppCompatActivity(), UpdateDialogFragment.UpdateDialogList
         }
     }
 
-    override fun onDialogDismissed() {
-        checkUserStatus()
-    }
-
-    override fun onUpdateComplete() {
-        checkUserStatus()
-    }
-
     private fun showUpdateDialog() {
-        val dialogFragment = UpdateDialogFragment().apply {
-            updateDialogListener = this@IntroActivity
-        }
+        val dialogFragment = UpdateDialogFragment(
+            onDismissOrComplete = {
+                checkUserStatus()
+            },
+        )
         dialogFragment.show(supportFragmentManager, "UpdateDialog")
     }
 
